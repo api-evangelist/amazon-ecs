@@ -1,0 +1,50 @@
+name: Amazon ECS
+description: Amazon Elastic Container Service (ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications.
+url: https://aws.amazon.com/ecs/
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+apis:
+- name: Amazon ECS API
+  description: The Amazon ECS API provides programmatic access to manage containerized applications using Docker containers.
+  image: https://aws.amazon.com/favicon.ico
+  humanURL: https://aws.amazon.com/ecs/
+  baseURL: https://ecs.amazonaws.com
+  tags:
+  - containers
+  - orchestration
+  - docker
+  - microservices
+  - cloud
+  properties:
+  - type: Documentation
+    url: https://docs.aws.amazon.com/ecs/
+  - type: OpenAPI
+    url: https://api.apis.guru/v2/specs/amazonaws.com/ecs/2014-11-13/openapi.yaml
+  - type: API Reference
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+  - type: Getting Started
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started.html
+  - type: Pricing
+    url: https://aws.amazon.com/ecs/pricing/
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: CLI
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecs/
+  - type: FAQ
+    url: https://aws.amazon.com/ecs/faqs/
+  - type: Best Practices
+    url: https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/intro.html
+  - type: Service Health
+    url: https://status.aws.amazon.com/
+maintainers:
+- name: Amazon Web Services
+  email: support@aws.amazon.com
+  url: https://aws.amazon.com
+tags:
+- aws
+- amazon
+- containers
+- ecs
+- docker
+- orchestration
