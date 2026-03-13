@@ -1,0 +1,3653 @@
+openapi: 3.1.0
+info:
+  title: Amazon Elastic Container Service (ECS) API
+  description: >-
+    Amazon Elastic Container Service (Amazon ECS) is a fully managed container
+    orchestration service that makes it easy to deploy, manage, and scale
+    containerized applications. The Amazon ECS API uses an RPC model where all
+    actions are routed to a single endpoint via POST with an X-Amz-Target header
+    specifying the action. This specification models the core ECS resource
+    operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+    - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+    - format: openapi
+      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+      version: '3.1'
+
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+
+servers:
+  - url: https://ecs.{region}.amazonaws.com
+    description: Amazon ECS regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS region
+        enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-central-1
+          - eu-north-1
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-south-1
+          - sa-east-1
+          - ca-central-1
+
+security:
+  - aws_sig_v4: []
+
+tags:
+  - name: Clusters
+    description: Operations for managing ECS clusters
+    externalDocs:
+      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
+  - name: Services
+    description: Operations for managing ECS services
+    externalDocs:
+      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html
+  - name: Tasks
+    description: Operations for running and managing ECS tasks
+    externalDocs:
+      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html
+  - name: Task Definitions
+    description: Operations for managing ECS task definitions
+    externalDocs:
+      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html
+  - name: Container Instances
+    description: Operations for managing container instances
+  - name: Capacity Providers
+    description: Operations for managing capacity providers
+
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster:
+    post:
+      operationId: CreateCluster
+      summary: Create a new ECS cluster
+      description: >-
+        Creates a new Amazon ECS cluster. By default, your account receives a
+        default cluster when you launch your first container instance. You can
+        create additional clusters to group resources.
+      tags:
+        - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateClusterRequest'
+      responses:
+        '200':
+          description: Cluster created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster:
+    post:
+      operationId: DeleteCluster
+      summary: Delete an ECS cluster
+      description: >-
+        Deletes the specified cluster. The cluster must have been deregistered,
+        and must not contain any services or tasks.
+      tags:
+        - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteCluster.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - cluster
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster to delete.
+      responses:
+        '200':
+          description: Cluster deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cluster:
+                    $ref: '#/components/schemas/Cluster'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters:
+    post:
+      operationId: DescribeClusters
+      summary: Describe one or more ECS clusters
+      description: >-
+        Describes one or more of your clusters. Returns details about a cluster
+        including its status, statistics, tags, and settings.
+      tags:
+        - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeClusters.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                clusters:
+                  type: array
+                  description: >-
+                    A list of up to 100 cluster names or full cluster ARN
+                    entries.
+                  items:
+                    type: string
+                include:
+                  type: array
+                  description: Additional information about your clusters to include in the response.
+                  items:
+                    type: string
+                    enum:
+                      - ATTACHMENTS
+                      - CONFIGURATIONS
+                      - SETTINGS
+                      - STATISTICS
+                      - TAGS
+      responses:
+        '200':
+          description: Clusters described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusters:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cluster'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters:
+    post:
+      operationId: ListClusters
+      summary: List ECS clusters
+      description: Returns a list of existing clusters.
+      tags:
+        - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListClusters.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                maxResults:
+                  type: integer
+                  description: Maximum number of cluster results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+      responses:
+        '200':
+          description: Clusters listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusterArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster:
+    post:
+      operationId: UpdateCluster
+      summary: Update an ECS cluster
+      description: Updates the cluster settings and configuration.
+      tags:
+        - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateCluster.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - cluster
+              properties:
+                cluster:
+                  type: string
+                  description: The name or ARN of the cluster to update.
+                settings:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ClusterSetting'
+                configuration:
+                  $ref: '#/components/schemas/ClusterConfiguration'
+                serviceConnectDefaults:
+                  $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+      responses:
+        '200':
+          description: Cluster updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cluster:
+                    $ref: '#/components/schemas/Cluster'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService:
+    post:
+      operationId: CreateService
+      summary: Create a new ECS service
+      description: >-
+        Runs and maintains a specified number of instances of a task definition
+        simultaneously in an ECS cluster. If the desired count of tasks in a
+        service drops below the desired count, Amazon ECS runs another
+        instantiation of the task to bring the count back up.
+      tags:
+        - Services
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+      responses:
+        '200':
+          description: Service created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service:
+                    $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteService:
+    post:
+      operationId: DeleteService
+      summary: Delete an ECS service
+      description: >-
+        Deletes a specified service within a cluster. You can delete a service if
+        you have no running tasks in it and the desired task count is zero.
+      tags:
+        - Services
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteService.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - service
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster hosting the service.
+                service:
+                  type: string
+                  description: The name or ARN of the service to delete.
+                force:
+                  type: boolean
+                  description: >-
+                    If true, you can delete a service even if it has not been
+                    scaled down to zero tasks.
+      responses:
+        '200':
+          description: Service deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service:
+                    $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeServices:
+    post:
+      operationId: DescribeServices
+      summary: Describe one or more ECS services
+      description: Describes the specified services running in a cluster.
+      tags:
+        - Services
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServices.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - services
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster hosting the services.
+                services:
+                  type: array
+                  description: A list of services to describe (up to 10).
+                  items:
+                    type: string
+                  maxItems: 10
+                include:
+                  type: array
+                  description: Additional information to include in the response.
+                  items:
+                    type: string
+                    enum:
+                      - TAGS
+      responses:
+        '200':
+          description: Services described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Service'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListServices:
+    post:
+      operationId: ListServices
+      summary: List ECS services
+      description: Returns a list of services in a specified cluster.
+      tags:
+        - Services
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListServices.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster.
+                maxResults:
+                  type: integer
+                  description: Maximum number of service results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+                launchType:
+                  type: string
+                  enum:
+                    - EC2
+                    - FARGATE
+                    - EXTERNAL
+                  description: Filter services by launch type.
+                schedulingStrategy:
+                  type: string
+                  enum:
+                    - REPLICA
+                    - DAEMON
+                  description: Filter services by scheduling strategy.
+      responses:
+        '200':
+          description: Services listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  serviceArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateService:
+    post:
+      operationId: UpdateService
+      summary: Update an ECS service
+      description: >-
+        Modifies the parameters of a service. Changes take effect in a rolling
+        update fashion depending on the deployment configuration.
+      tags:
+        - Services
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateService.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - service
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster hosting the service.
+                service:
+                  type: string
+                  description: The name or ARN of the service to update.
+                taskDefinition:
+                  type: string
+                  description: The family and revision or full ARN of the task definition.
+                desiredCount:
+                  type: integer
+                  description: The number of instantiations of the task to place and keep running.
+                deploymentConfiguration:
+                  $ref: '#/components/schemas/DeploymentConfiguration'
+                networkConfiguration:
+                  $ref: '#/components/schemas/NetworkConfiguration'
+                capacityProviderStrategy:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CapacityProviderStrategyItem'
+                placementConstraints:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PlacementConstraint'
+                placementStrategy:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PlacementStrategy'
+                platformVersion:
+                  type: string
+                  description: The platform version for Fargate tasks.
+                forceNewDeployment:
+                  type: boolean
+                  description: >-
+                    Whether to force a new deployment of the service.
+                healthCheckGracePeriodSeconds:
+                  type: integer
+                  description: Health check grace period in seconds.
+                enableExecuteCommand:
+                  type: boolean
+                  description: Whether to enable Amazon ECS Exec.
+                enableECSManagedTags:
+                  type: boolean
+                loadBalancers:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/LoadBalancer'
+                propagateTags:
+                  type: string
+                  enum:
+                    - TASK_DEFINITION
+                    - SERVICE
+                    - NONE
+                serviceConnectConfiguration:
+                  $ref: '#/components/schemas/ServiceConnectConfiguration'
+                serviceRegistries:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ServiceRegistry'
+      responses:
+        '200':
+          description: Service updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service:
+                    $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition:
+    post:
+      operationId: RegisterTaskDefinition
+      summary: Register a new task definition
+      description: >-
+        Registers a new task definition from the supplied family and container
+        definitions. You can also register task definitions with a volumes
+        parameter for data volumes used by the task containers.
+      tags:
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/RegisterTaskDefinitionRequest'
+      responses:
+        '200':
+          description: Task definition registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinition:
+                    $ref: '#/components/schemas/TaskDefinition'
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition:
+    post:
+      operationId: DeregisterTaskDefinition
+      summary: Deregister a task definition
+      description: >-
+        Deregisters the specified task definition by family and revision. Upon
+        deregistration, the task definition is marked as INACTIVE.
+      tags:
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeregisterTaskDefinition.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - taskDefinition
+              properties:
+                taskDefinition:
+                  type: string
+                  description: >-
+                    The family and revision (family:revision) or full ARN of the
+                    task definition to deregister.
+      responses:
+        '200':
+          description: Task definition deregistered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinition:
+                    $ref: '#/components/schemas/TaskDefinition'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition:
+    post:
+      operationId: DescribeTaskDefinition
+      summary: Describe a task definition
+      description: >-
+        Describes a task definition. You can specify a family and revision to
+        find information about a specific task definition, or you can simply
+        specify the family to find the latest ACTIVE revision in that family.
+      tags:
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTaskDefinition.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - taskDefinition
+              properties:
+                taskDefinition:
+                  type: string
+                  description: >-
+                    The family and revision or full ARN of the task definition to
+                    describe.
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - TAGS
+      responses:
+        '200':
+          description: Task definition described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinition:
+                    $ref: '#/components/schemas/TaskDefinition'
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions:
+    post:
+      operationId: ListTaskDefinitions
+      summary: List task definitions
+      description: >-
+        Returns a list of task definitions that are registered to your account.
+        You can filter by family name to find all revisions for a specific
+        family.
+      tags:
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTaskDefinitions.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                familyPrefix:
+                  type: string
+                  description: Filter by family name prefix.
+                status:
+                  type: string
+                  enum:
+                    - ACTIVE
+                    - INACTIVE
+                    - DELETE_IN_PROGRESS
+                  description: Filter by task definition status.
+                sort:
+                  type: string
+                  enum:
+                    - ASC
+                    - DESC
+                  description: Sort order for results.
+                maxResults:
+                  type: integer
+                  description: Maximum number of results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+      responses:
+        '200':
+          description: Task definitions listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinitionArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies:
+    post:
+      operationId: ListTaskDefinitionFamilies
+      summary: List task definition families
+      description: >-
+        Returns a list of task definition families that are registered to your
+        account, with ACTIVE task definitions.
+      tags:
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTaskDefinitionFamilies.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                familyPrefix:
+                  type: string
+                  description: Filter by family name prefix.
+                status:
+                  type: string
+                  enum:
+                    - ACTIVE
+                    - INACTIVE
+                    - ALL
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+      responses:
+        '200':
+          description: Task definition families listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  families:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask:
+    post:
+      operationId: RunTask
+      summary: Run a new task
+      description: >-
+        Starts a new task using the specified task definition. You can specify
+        the cluster, launch type, network configuration, and overrides.
+      tags:
+        - Tasks
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/RunTaskRequest'
+      responses:
+        '200':
+          description: Task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunTaskResponse'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask:
+    post:
+      operationId: StartTask
+      summary: Start a task on a specific container instance
+      description: >-
+        Starts a new task from the specified task definition on the specified
+        container instance or instances.
+      tags:
+        - Tasks
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - taskDefinition
+                - containerInstances
+              properties:
+                cluster:
+                  type: string
+                taskDefinition:
+                  type: string
+                  description: The family and revision or full ARN of the task definition.
+                containerInstances:
+                  type: array
+                  description: The container instance IDs or ARNs to start the task on.
+                  items:
+                    type: string
+                overrides:
+                  $ref: '#/components/schemas/TaskOverride'
+                startedBy:
+                  type: string
+                group:
+                  type: string
+                networkConfiguration:
+                  $ref: '#/components/schemas/NetworkConfiguration'
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+                enableECSManagedTags:
+                  type: boolean
+                enableExecuteCommand:
+                  type: boolean
+                propagateTags:
+                  type: string
+                  enum:
+                    - TASK_DEFINITION
+                    - SERVICE
+                    - NONE
+      responses:
+        '200':
+          description: Task started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunTaskResponse'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask:
+    post:
+      operationId: StopTask
+      summary: Stop a running task
+      description: >-
+        Stops a running task. Resources are cleaned up and the task transitions
+        to STOPPED status.
+      tags:
+        - Tasks
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StopTask.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - task
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster hosting the task.
+                task:
+                  type: string
+                  description: The task ID or full ARN of the task to stop.
+                reason:
+                  type: string
+                  description: An optional message to record why the task was stopped.
+      responses:
+        '200':
+          description: Task stopped successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task:
+                    $ref: '#/components/schemas/Task'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks:
+    post:
+      operationId: DescribeTasks
+      summary: Describe one or more tasks
+      description: Describes a specified task or tasks in a cluster.
+      tags:
+        - Tasks
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - tasks
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster hosting the tasks.
+                tasks:
+                  type: array
+                  description: A list of up to 100 task IDs or full ARN entries.
+                  items:
+                    type: string
+                  maxItems: 100
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - TAGS
+      responses:
+        '200':
+          description: Tasks described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tasks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Task'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks:
+    post:
+      operationId: ListTasks
+      summary: List tasks
+      description: >-
+        Returns a list of tasks. You can filter by cluster, container instance,
+        family, or service.
+      tags:
+        - Tasks
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTasks.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster.
+                containerInstance:
+                  type: string
+                  description: The container instance ID or full ARN.
+                family:
+                  type: string
+                  description: Filter by task definition family name.
+                serviceName:
+                  type: string
+                  description: Filter by service name.
+                desiredStatus:
+                  type: string
+                  enum:
+                    - RUNNING
+                    - PENDING
+                    - STOPPED
+                  description: Filter by desired task status.
+                launchType:
+                  type: string
+                  enum:
+                    - EC2
+                    - FARGATE
+                    - EXTERNAL
+                startedBy:
+                  type: string
+                  description: Filter by the startedBy value.
+                maxResults:
+                  type: integer
+                  description: Maximum number of results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+      responses:
+        '200':
+          description: Tasks listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider:
+    post:
+      operationId: CreateCapacityProvider
+      summary: Create a capacity provider
+      description: >-
+        Creates a new capacity provider. Capacity providers are associated with
+        an Auto Scaling group to manage the infrastructure for your tasks and
+        services.
+      tags:
+        - Capacity Providers
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCapacityProvider.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - name
+                - autoScalingGroupProvider
+              properties:
+                name:
+                  type: string
+                  description: The name of the capacity provider (up to 255 characters).
+                autoScalingGroupProvider:
+                  $ref: '#/components/schemas/AutoScalingGroupProvider'
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Capacity provider created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  capacityProvider:
+                    $ref: '#/components/schemas/CapacityProvider'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders:
+    post:
+      operationId: DescribeCapacityProviders
+      summary: Describe capacity providers
+      description: Describes one or more capacity providers.
+      tags:
+        - Capacity Providers
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeCapacityProviders.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                capacityProviders:
+                  type: array
+                  items:
+                    type: string
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - TAGS
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+      responses:
+        '200':
+          description: Capacity providers described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  capacityProviders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CapacityProvider'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeContainerInstances:
+    post:
+      operationId: DescribeContainerInstances
+      summary: Describe container instances
+      description: Describes Amazon ECS container instances in a cluster.
+      tags:
+        - Container Instances
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeContainerInstances.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - containerInstances
+              properties:
+                cluster:
+                  type: string
+                containerInstances:
+                  type: array
+                  items:
+                    type: string
+                  maxItems: 100
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - TAGS
+                      - CONTAINER_INSTANCE_HEALTH
+      responses:
+        '200':
+          description: Container instances described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  containerInstances:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContainerInstance'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListContainerInstances:
+    post:
+      operationId: ListContainerInstances
+      summary: List container instances
+      description: Returns a list of container instances in a specified cluster.
+      tags:
+        - Container Instances
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListContainerInstances.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                filter:
+                  type: string
+                  description: Filter using cluster query language expressions.
+                status:
+                  type: string
+                  enum:
+                    - ACTIVE
+                    - DRAINING
+                    - REGISTERING
+                    - DEREGISTERING
+                    - REGISTRATION_FAILED
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+      responses:
+        '200':
+          description: Container instances listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  containerInstanceArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource:
+    post:
+      operationId: TagResource
+      summary: Tag an ECS resource
+      description: >-
+        Associates the specified tags to a resource with the specified
+        resourceArn.
+      tags:
+        - Clusters
+        - Services
+        - Tasks
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TagResource.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - resourceArn
+                - tags
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to tag.
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Resource tagged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource:
+    post:
+      operationId: UntagResource
+      summary: Remove tags from an ECS resource
+      description: Deletes specified tags from a resource.
+      tags:
+        - Clusters
+        - Services
+        - Tasks
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UntagResource.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - resourceArn
+                - tagKeys
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to untag.
+                tagKeys:
+                  type: array
+                  items:
+                    type: string
+                  description: The keys of the tags to remove.
+      responses:
+        '200':
+          description: Tags removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource:
+    post:
+      operationId: ListTagsForResource
+      summary: List tags for an ECS resource
+      description: Lists the tags for the specified resource.
+      tags:
+        - Clusters
+        - Services
+        - Tasks
+        - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTagsForResource.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - resourceArn
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to list tags for.
+      responses:
+        '200':
+          description: Tags listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand:
+    post:
+      operationId: ExecuteCommand
+      summary: Execute a command in a running container
+      description: >-
+        Runs a command remotely on a container within a task that is managed by
+        Amazon ECS using AWS Systems Manager Session Manager.
+      tags:
+        - Tasks
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExecuteCommand.html
+      parameters:
+        - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - command
+                - interactive
+                - task
+              properties:
+                cluster:
+                  type: string
+                container:
+                  type: string
+                  description: >-
+                    The name of the container to execute the command on. If not
+                    specified, the default container is used.
+                command:
+                  type: string
+                  description: The command to run on the container.
+                interactive:
+                  type: boolean
+                  description: Whether to run the command in interactive mode.
+                task:
+                  type: string
+                  description: The task ID or full ARN of the task.
+      responses:
+        '200':
+          description: Command executed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusterArn:
+                    type: string
+                  containerArn:
+                    type: string
+                  containerName:
+                    type: string
+                  interactive:
+                    type: boolean
+                  session:
+                    type: object
+                    properties:
+                      sessionId:
+                        type: string
+                      streamUrl:
+                        type: string
+                      tokenValue:
+                        type: string
+                  taskArn:
+                    type: string
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+
+  responses:
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable description of the error.
+
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+        reason:
+          type: string
+          description: The reason for the failure.
+        detail:
+          type: string
+          description: The details of the failure.
+
+    CapacityProviderStrategyItem:
+      type: object
+      required:
+        - capacityProvider
+      properties:
+        capacityProvider:
+          type: string
+          description: The short name of the capacity provider.
+        weight:
+          type: integer
+          description: >-
+            The weight value designating the relative percentage of the total
+            number of tasks launched that should use the capacity provider
+            (0-1000).
+          minimum: 0
+          maximum: 1000
+        base:
+          type: integer
+          description: >-
+            The number of tasks, at a minimum, to run on the specified capacity
+            provider (0-100000).
+          minimum: 0
+          maximum: 100000
+
+    ClusterSetting:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the cluster setting (e.g., containerInsights).
+        value:
+          type: string
+          description: The value of the cluster setting.
+
+    ClusterConfiguration:
+      type: object
+      properties:
+        executeCommandConfiguration:
+          type: object
+          properties:
+            kmsKeyId:
+              type: string
+              description: The KMS key ID to encrypt data between the container and the SSM session.
+            logConfiguration:
+              type: object
+              properties:
+                cloudWatchEncryptionEnabled:
+                  type: boolean
+                cloudWatchLogGroupName:
+                  type: string
+                s3BucketName:
+                  type: string
+                s3EncryptionEnabled:
+                  type: boolean
+                s3KeyPrefix:
+                  type: string
+            logging:
+              type: string
+              enum:
+                - NONE
+                - DEFAULT
+                - OVERRIDE
+              description: The log setting to use for redirecting logs for execute command results.
+        managedStorageConfiguration:
+          type: object
+          properties:
+            fargateEphemeralStorageKmsKeyId:
+              type: string
+            kmsKeyId:
+              type: string
+
+    ClusterServiceConnectDefaults:
+      type: object
+      properties:
+        namespace:
+          type: string
+          description: >-
+            The namespace name or ARN of the Cloud Map namespace that is used
+            when a service is created without specifying a Service Connect
+            configuration.
+
+    CreateClusterRequest:
+      type: object
+      properties:
+        clusterName:
+          type: string
+          description: >-
+            The name of the cluster to create (up to 255 characters). If not
+            specified, the default cluster is created.
+          maxLength: 255
+        capacityProviders:
+          type: array
+          description: The short names of capacity providers to associate with the cluster.
+          items:
+            type: string
+        defaultCapacityProviderStrategy:
+          type: array
+          description: The default capacity provider strategy for the cluster.
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+        settings:
+          type: array
+          description: The cluster settings (e.g., Container Insights).
+          items:
+            $ref: '#/components/schemas/ClusterSetting'
+        configuration:
+          $ref: '#/components/schemas/ClusterConfiguration'
+        serviceConnectDefaults:
+          $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+        tags:
+          type: array
+          description: Metadata tags to apply to the cluster (up to 50).
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+
+    Cluster:
+      type: object
+      description: A regional grouping of one or more container instances on which you can run tasks and services.
+      properties:
+        clusterArn:
+          type: string
+          description: The ARN that identifies the cluster.
+        clusterName:
+          type: string
+          description: A user-generated string that you use to identify your cluster.
+        status:
+          type: string
+          description: The status of the cluster.
+          enum:
+            - ACTIVE
+            - PROVISIONING
+            - DEPROVISIONING
+            - FAILED
+            - INACTIVE
+        registeredContainerInstancesCount:
+          type: integer
+          description: The number of container instances registered into the cluster.
+        runningTasksCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the RUNNING state.
+        pendingTasksCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the PENDING state.
+        activeServicesCount:
+          type: integer
+          description: The number of services in the cluster that are in an ACTIVE state.
+        statistics:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        settings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClusterSetting'
+        capacityProviders:
+          type: array
+          items:
+            type: string
+        defaultCapacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        attachmentsStatus:
+          type: string
+        configuration:
+          $ref: '#/components/schemas/ClusterConfiguration'
+        serviceConnectDefaults:
+          $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+
+    NetworkConfiguration:
+      type: object
+      description: The network configuration for a task or service.
+      properties:
+        awsvpcConfiguration:
+          type: object
+          required:
+            - subnets
+          properties:
+            subnets:
+              type: array
+              description: The IDs of the subnets associated with the task or service.
+              items:
+                type: string
+            securityGroups:
+              type: array
+              description: The IDs of the security groups associated with the task or service.
+              items:
+                type: string
+            assignPublicIp:
+              type: string
+              description: Whether the task's elastic network interface receives a public IP address.
+              enum:
+                - ENABLED
+                - DISABLED
+
+    LoadBalancer:
+      type: object
+      properties:
+        targetGroupArn:
+          type: string
+          description: The full ARN of the Elastic Load Balancing target group.
+        loadBalancerName:
+          type: string
+          description: The name of the load balancer (Classic Load Balancer only).
+        containerName:
+          type: string
+          description: The name of the container to associate with the load balancer.
+        containerPort:
+          type: integer
+          description: The port on the container to associate with the load balancer.
+
+    DeploymentConfiguration:
+      type: object
+      description: Deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.
+      properties:
+        deploymentCircuitBreaker:
+          type: object
+          properties:
+            enable:
+              type: boolean
+              description: Whether to use the deployment circuit breaker logic.
+            rollback:
+              type: boolean
+              description: Whether to roll back to the last completed deployment on failure.
+        maximumPercent:
+          type: integer
+          description: >-
+            The upper limit (as a percentage of the service's desiredCount) of
+            the number of running tasks that can be running during a deployment.
+        minimumHealthyPercent:
+          type: integer
+          description: >-
+            The lower limit (as a percentage of the service's desiredCount) of
+            the number of running tasks that must remain running during a
+            deployment.
+        alarms:
+          type: object
+          properties:
+            alarmNames:
+              type: array
+              items:
+                type: string
+            enable:
+              type: boolean
+            rollback:
+              type: boolean
+
+    DeploymentController:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The deployment controller type to use.
+          enum:
+            - ECS
+            - CODE_DEPLOY
+            - EXTERNAL
+
+    ServiceConnectConfiguration:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether Service Connect is enabled for this service.
+        namespace:
+          type: string
+          description: The namespace name or ARN of the Cloud Map namespace for the service.
+        services:
+          type: array
+          items:
+            type: object
+            properties:
+              portName:
+                type: string
+              discoveryName:
+                type: string
+              clientAliases:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    port:
+                      type: integer
+                    dnsName:
+                      type: string
+              ingressPortOverride:
+                type: integer
+              timeout:
+                type: object
+                properties:
+                  idleTimeoutSeconds:
+                    type: integer
+                  perRequestTimeoutSeconds:
+                    type: integer
+              tls:
+                type: object
+                properties:
+                  issuerCertificateAuthority:
+                    type: object
+                    properties:
+                      awsPcaAuthorityArn:
+                        type: string
+                  kmsKey:
+                    type: string
+                  roleArn:
+                    type: string
+        logConfiguration:
+          type: object
+          properties:
+            logDriver:
+              type: string
+              enum:
+                - json-file
+                - syslog
+                - journald
+                - gelf
+                - fluentd
+                - awslogs
+                - splunk
+                - awsfirelens
+            options:
+              type: object
+              additionalProperties:
+                type: string
+            secretOptions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  valueFrom:
+                    type: string
+
+    ServiceRegistry:
+      type: object
+      properties:
+        registryArn:
+          type: string
+          description: The ARN of the Cloud Map service registry.
+        port:
+          type: integer
+        containerName:
+          type: string
+        containerPort:
+          type: integer
+
+    PlacementConstraint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - distinctInstance
+            - memberOf
+          description: The type of placement constraint.
+        expression:
+          type: string
+          description: A cluster query language expression.
+
+    PlacementStrategy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - random
+            - spread
+            - binpack
+          description: The type of placement strategy.
+        field:
+          type: string
+          description: The field to apply the placement strategy against.
+
+    CreateServiceRequest:
+      type: object
+      required:
+        - serviceName
+      properties:
+        serviceName:
+          type: string
+          description: The name of your service (up to 255 characters).
+          maxLength: 255
+        cluster:
+          type: string
+          description: The short name or full ARN of the cluster to run the service on.
+        taskDefinition:
+          type: string
+          description: The family and revision or full ARN of the task definition.
+        desiredCount:
+          type: integer
+          description: The number of instantiations of the specified task definition to place and keep running.
+        launchType:
+          type: string
+          description: The launch type on which to run your service.
+          enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+        platformVersion:
+          type: string
+          description: The platform version that your tasks in the service are running on (Fargate only).
+        loadBalancers:
+          type: array
+          description: A load balancer object representing the load balancers to use with your service.
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        deploymentConfiguration:
+          $ref: '#/components/schemas/DeploymentConfiguration'
+        deploymentController:
+          $ref: '#/components/schemas/DeploymentController'
+        schedulingStrategy:
+          type: string
+          description: The scheduling strategy to use for the service.
+          enum:
+            - REPLICA
+            - DAEMON
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementConstraint'
+        placementStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementStrategy'
+        healthCheckGracePeriodSeconds:
+          type: integer
+          description: >-
+            The period of time, in seconds, that the ECS service scheduler
+            ignores unhealthy Elastic Load Balancing target health checks after a
+            task has first started.
+        enableECSManagedTags:
+          type: boolean
+        enableExecuteCommand:
+          type: boolean
+          description: Whether to enable Amazon ECS Exec for the tasks within the service.
+        propagateTags:
+          type: string
+          enum:
+            - TASK_DEFINITION
+            - SERVICE
+            - NONE
+        role:
+          type: string
+          description: The IAM role that allows Amazon ECS to make calls to your load balancer.
+        serviceRegistries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceRegistry'
+        serviceConnectConfiguration:
+          $ref: '#/components/schemas/ServiceConnectConfiguration'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+        clientToken:
+          type: string
+          description: An identifier you provide to ensure the idempotency of the request.
+
+    Service:
+      type: object
+      description: >-
+        Details on a service within a cluster. A service runs and maintains a
+        specified number of instances of a task definition.
+      properties:
+        serviceArn:
+          type: string
+          description: The ARN that identifies the service.
+        serviceName:
+          type: string
+          description: The name of your service.
+        clusterArn:
+          type: string
+          description: The ARN of the cluster that hosts the service.
+        loadBalancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+        serviceRegistries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceRegistry'
+        status:
+          type: string
+          description: The status of the service.
+          enum:
+            - ACTIVE
+            - DRAINING
+            - INACTIVE
+        desiredCount:
+          type: integer
+          description: The desired number of instantiations of the task definition to keep running on the service.
+        runningCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the RUNNING state.
+        pendingCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the PENDING state.
+        launchType:
+          type: string
+          enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+        platformVersion:
+          type: string
+        platformFamily:
+          type: string
+        taskDefinition:
+          type: string
+          description: The task definition ARN used by tasks in the service.
+        deploymentConfiguration:
+          $ref: '#/components/schemas/DeploymentConfiguration'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+        roleArn:
+          type: string
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              createdAt:
+                type: number
+              message:
+                type: string
+        createdAt:
+          type: number
+          description: The Unix timestamp for when the service was created.
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementConstraint'
+        placementStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementStrategy'
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        healthCheckGracePeriodSeconds:
+          type: integer
+        schedulingStrategy:
+          type: string
+          enum:
+            - REPLICA
+            - DAEMON
+        deploymentController:
+          $ref: '#/components/schemas/DeploymentController'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        createdBy:
+          type: string
+        enableECSManagedTags:
+          type: boolean
+        enableExecuteCommand:
+          type: boolean
+        propagateTags:
+          type: string
+          enum:
+            - TASK_DEFINITION
+            - SERVICE
+            - NONE
+
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+            - PRIMARY
+            - ACTIVE
+            - INACTIVE
+        taskDefinition:
+          type: string
+        desiredCount:
+          type: integer
+        pendingCount:
+          type: integer
+        runningCount:
+          type: integer
+        failedTasks:
+          type: integer
+        createdAt:
+          type: number
+        updatedAt:
+          type: number
+        launchType:
+          type: string
+        platformVersion:
+          type: string
+        platformFamily:
+          type: string
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        rolloutState:
+          type: string
+          enum:
+            - COMPLETED
+            - IN_PROGRESS
+            - FAILED
+        rolloutStateReason:
+          type: string
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+
+    RegisterTaskDefinitionRequest:
+      type: object
+      required:
+        - family
+        - containerDefinitions
+      properties:
+        family:
+          type: string
+          description: >-
+            You must specify a family for a task definition. Up to 255
+            characters (uppercase and lowercase letters, numbers, underscores,
+            and hyphens are allowed).
+          maxLength: 255
+        containerDefinitions:
+          type: array
+          description: A list of container definitions that describe the containers that make up the task.
+          items:
+            $ref: '#/components/schemas/ContainerDefinition'
+        taskRoleArn:
+          type: string
+          description: >-
+            The short name or full ARN of the IAM role that containers in this
+            task can assume.
+        executionRoleArn:
+          type: string
+          description: >-
+            The ARN of the task execution role that grants the ECS container
+            agent permission to make API calls on your behalf.
+        networkMode:
+          type: string
+          description: The Docker networking mode to use for the containers in the task.
+          enum:
+            - bridge
+            - host
+            - awsvpc
+            - none
+        volumes:
+          type: array
+          description: A list of volume definitions for the task.
+          items:
+            $ref: '#/components/schemas/Volume'
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskDefinitionPlacementConstraint'
+          maxItems: 10
+        requiresCompatibilities:
+          type: array
+          description: The task launch type compatibility requirement.
+          items:
+            type: string
+            enum:
+              - EC2
+              - FARGATE
+              - EXTERNAL
+        cpu:
+          type: string
+          description: >-
+            The number of CPU units used by the task. Required for Fargate
+            launch type. Valid values: 256 (.25 vCPU) through 16384 (16 vCPU).
+        memory:
+          type: string
+          description: >-
+            The amount of memory (in MiB) used by the task. Required for Fargate
+            launch type.
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+        pidMode:
+          type: string
+          description: The process namespace to use for the containers in the task.
+          enum:
+            - host
+            - task
+        ipcMode:
+          type: string
+          description: The IPC resource namespace to use for the containers in the task.
+          enum:
+            - host
+            - task
+            - none
+        proxyConfiguration:
+          $ref: '#/components/schemas/ProxyConfiguration'
+        inferenceAccelerators:
+          type: array
+          items:
+            $ref: '#/components/schemas/InferenceAccelerator'
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        runtimePlatform:
+          $ref: '#/components/schemas/RuntimePlatform'
+        enableFaultInjection:
+          type: boolean
+          description: Whether to enable fault injection for the task definition.
+
+    TaskDefinition:
+      type: object
+      description: >-
+        The details of a task definition which describes the container and volume
+        definitions of an Amazon ECS task.
+      properties:
+        taskDefinitionArn:
+          type: string
+          description: The full ARN of the task definition.
+        containerDefinitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainerDefinition'
+        family:
+          type: string
+          description: The family of your task definition.
+        taskRoleArn:
+          type: string
+        executionRoleArn:
+          type: string
+        networkMode:
+          type: string
+          enum:
+            - bridge
+            - host
+            - awsvpc
+            - none
+        revision:
+          type: integer
+          description: The revision of the task in a particular family.
+        volumes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Volume'
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+            - DELETE_IN_PROGRESS
+        requiresAttributes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              targetType:
+                type: string
+              targetId:
+                type: string
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskDefinitionPlacementConstraint'
+        compatibilities:
+          type: array
+          items:
+            type: string
+            enum:
+              - EC2
+              - FARGATE
+              - EXTERNAL
+        requiresCompatibilities:
+          type: array
+          items:
+            type: string
+            enum:
+              - EC2
+              - FARGATE
+              - EXTERNAL
+        cpu:
+          type: string
+        memory:
+          type: string
+        pidMode:
+          type: string
+          enum:
+            - host
+            - task
+        ipcMode:
+          type: string
+          enum:
+            - host
+            - task
+            - none
+        proxyConfiguration:
+          $ref: '#/components/schemas/ProxyConfiguration'
+        inferenceAccelerators:
+          type: array
+          items:
+            $ref: '#/components/schemas/InferenceAccelerator'
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        runtimePlatform:
+          $ref: '#/components/schemas/RuntimePlatform'
+        registeredAt:
+          type: number
+          description: Unix timestamp for when the task definition was registered.
+        deregisteredAt:
+          type: number
+          description: Unix timestamp for when the task definition was deregistered.
+        registeredBy:
+          type: string
+        enableFaultInjection:
+          type: boolean
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+
+    ContainerDefinition:
+      type: object
+      description: A container definition describes a container within a task definition.
+      required:
+        - name
+        - image
+      properties:
+        name:
+          type: string
+          description: >-
+            The name of a container. Up to 255 characters (uppercase and
+            lowercase letters, numbers, underscores, and hyphens).
+        image:
+          type: string
+          description: >-
+            The image used to start a container. Images in the Docker Hub
+            registry are available by default. You can also specify an ECR
+            repository.
+        cpu:
+          type: integer
+          description: The number of cpu units reserved for the container.
+        memory:
+          type: integer
+          description: >-
+            The amount (in MiB) of memory to present to the container. Corresponds
+            to the hard limit.
+        memoryReservation:
+          type: integer
+          description: The soft limit (in MiB) of memory to reserve for the container.
+        links:
+          type: array
+          description: >-
+            Allows containers to communicate without port mappings. Only
+            supported for bridge network mode.
+          items:
+            type: string
+        portMappings:
+          type: array
+          description: The list of port mappings for the container.
+          items:
+            $ref: '#/components/schemas/PortMapping'
+        essential:
+          type: boolean
+          description: >-
+            If the essential parameter of a container is marked as true and that
+            container fails or stops, all other containers that are part of the
+            task are stopped.
+          default: true
+        entryPoint:
+          type: array
+          description: The entry point that is passed to the container.
+          items:
+            type: string
+        command:
+          type: array
+          description: The command that is passed to the container.
+          items:
+            type: string
+        environment:
+          type: array
+          description: The environment variables to pass to a container.
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+        environmentFiles:
+          type: array
+          description: A list of files containing the environment variables to pass to a container.
+          items:
+            type: object
+            required:
+              - value
+              - type
+            properties:
+              value:
+                type: string
+                description: The ARN of the Amazon S3 object containing the environment variable file.
+              type:
+                type: string
+                enum:
+                  - s3
+        mountPoints:
+          type: array
+          description: The mount points for data volumes in your container.
+          items:
+            $ref: '#/components/schemas/MountPoint'
+        volumesFrom:
+          type: array
+          description: Data volumes to mount from another container.
+          items:
+            type: object
+            properties:
+              sourceContainer:
+                type: string
+              readOnly:
+                type: boolean
+        secrets:
+          type: array
+          description: The secrets to pass to the container from AWS Secrets Manager or SSM Parameter Store.
+          items:
+            type: object
+            required:
+              - name
+              - valueFrom
+            properties:
+              name:
+                type: string
+              valueFrom:
+                type: string
+                description: The secret ARN from Secrets Manager or the full ARN of the SSM parameter.
+        logConfiguration:
+          $ref: '#/components/schemas/LogConfiguration'
+        healthCheck:
+          $ref: '#/components/schemas/HealthCheck'
+        linuxParameters:
+          $ref: '#/components/schemas/LinuxParameters'
+        dependsOn:
+          type: array
+          description: The dependencies defined for container startup and shutdown.
+          items:
+            type: object
+            required:
+              - containerName
+              - condition
+            properties:
+              containerName:
+                type: string
+              condition:
+                type: string
+                enum:
+                  - START
+                  - COMPLETE
+                  - SUCCESS
+                  - HEALTHY
+        startTimeout:
+          type: integer
+          description: >-
+            Time duration (in seconds) to wait before giving up on resolving
+            dependencies for a container.
+        stopTimeout:
+          type: integer
+          description: >-
+            Time duration (in seconds) to wait before the container is forcefully
+            killed if it does not exit normally on its own.
+        hostname:
+          type: string
+        user:
+          type: string
+          description: The user to run as inside the container.
+        workingDirectory:
+          type: string
+          description: The working directory to run commands inside the container in.
+        disableNetworking:
+          type: boolean
+        privileged:
+          type: boolean
+          description: When this parameter is true, the container is given elevated privileges on the host container instance.
+        readonlyRootFilesystem:
+          type: boolean
+          description: >-
+            When this parameter is true, the container is given read-only access
+            to its root file system.
+        dnsServers:
+          type: array
+          items:
+            type: string
+        dnsSearchDomains:
+          type: array
+          items:
+            type: string
+        extraHosts:
+          type: array
+          items:
+            type: object
+            required:
+              - hostname
+              - ipAddress
+            properties:
+              hostname:
+                type: string
+              ipAddress:
+                type: string
+        dockerSecurityOptions:
+          type: array
+          items:
+            type: string
+        interactive:
+          type: boolean
+        pseudoTerminal:
+          type: boolean
+        dockerLabels:
+          type: object
+          additionalProperties:
+            type: string
+          description: A key/value map of labels to add to the container.
+        ulimits:
+          type: array
+          items:
+            type: object
+            required:
+              - name
+              - softLimit
+              - hardLimit
+            properties:
+              name:
+                type: string
+                enum:
+                  - core
+                  - cpu
+                  - data
+                  - fsize
+                  - locks
+                  - memlock
+                  - msgqueue
+                  - nice
+                  - nofile
+                  - nproc
+                  - rss
+                  - rtprio
+                  - rttime
+                  - sigpending
+                  - stack
+              softLimit:
+                type: integer
+              hardLimit:
+                type: integer
+        systemControls:
+          type: array
+          items:
+            type: object
+            properties:
+              namespace:
+                type: string
+              value:
+                type: string
+        resourceRequirements:
+          type: array
+          items:
+            type: object
+            required:
+              - type
+              - value
+            properties:
+              type:
+                type: string
+                enum:
+                  - GPU
+                  - InferenceAccelerator
+              value:
+                type: string
+        firelensConfiguration:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - fluentd
+                - fluentbit
+            options:
+              type: object
+              additionalProperties:
+                type: string
+        repositoryCredentials:
+          type: object
+          properties:
+            credentialsParameter:
+              type: string
+              description: The ARN of the secret containing the private repository credentials.
+        restartPolicy:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+            restartAttemptPeriod:
+              type: integer
+            ignoredExitCodes:
+              type: array
+              items:
+                type: integer
+        credentialSpecs:
+          type: array
+          items:
+            type: string
+
+    PortMapping:
+      type: object
+      properties:
+        containerPort:
+          type: integer
+          description: The port number on the container bound to the host port.
+        hostPort:
+          type: integer
+          description: The port number on the container instance to reserve for the container.
+        protocol:
+          type: string
+          description: The protocol used for the port mapping.
+          enum:
+            - tcp
+            - udp
+          default: tcp
+        name:
+          type: string
+          description: The name to use for the port mapping (used with Service Connect).
+        appProtocol:
+          type: string
+          description: The application protocol used for the port mapping.
+          enum:
+            - http
+            - http2
+            - grpc
+        containerPortRange:
+          type: string
+          description: The port number range on the container.
+
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+        value:
+          type: string
+          description: The value of the key-value pair.
+
+    MountPoint:
+      type: object
+      properties:
+        sourceVolume:
+          type: string
+          description: The name of the volume to mount.
+        containerPath:
+          type: string
+          description: The path on the container to mount the volume at.
+        readOnly:
+          type: boolean
+          description: If this value is true, the container has read-only access to the volume.
+
+    LogConfiguration:
+      type: object
+      required:
+        - logDriver
+      properties:
+        logDriver:
+          type: string
+          description: The log driver to use for the container.
+          enum:
+            - json-file
+            - syslog
+            - journald
+            - gelf
+            - fluentd
+            - awslogs
+            - splunk
+            - awsfirelens
+        options:
+          type: object
+          additionalProperties:
+            type: string
+          description: The configuration options to send to the log driver.
+        secretOptions:
+          type: array
+          description: The secrets to pass to the log driver configuration.
+          items:
+            type: object
+            required:
+              - name
+              - valueFrom
+            properties:
+              name:
+                type: string
+              valueFrom:
+                type: string
+
+    HealthCheck:
+      type: object
+      required:
+        - command
+      properties:
+        command:
+          type: array
+          description: >-
+            A string array representing the command that the container runs to
+            determine if it is healthy. The first element is CMD or CMD-SHELL.
+          items:
+            type: string
+        interval:
+          type: integer
+          description: The time period in seconds between each health check execution (default 30).
+          default: 30
+        timeout:
+          type: integer
+          description: >-
+            The time period in seconds to wait for a health check to succeed
+            before it is considered a failure (default 5).
+          default: 5
+        retries:
+          type: integer
+          description: The number of times to retry a failed health check before the container is considered unhealthy (default 3).
+          default: 3
+        startPeriod:
+          type: integer
+          description: >-
+            The optional grace period to provide containers time to bootstrap
+            before failed health checks count towards the maximum retries
+            (default 0).
+          default: 0
+
+    LinuxParameters:
+      type: object
+      properties:
+        capabilities:
+          type: object
+          properties:
+            add:
+              type: array
+              items:
+                type: string
+            drop:
+              type: array
+              items:
+                type: string
+        devices:
+          type: array
+          items:
+            type: object
+            required:
+              - hostPath
+            properties:
+              hostPath:
+                type: string
+              containerPath:
+                type: string
+              permissions:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - read
+                    - write
+                    - mknod
+        initProcessEnabled:
+          type: boolean
+          description: >-
+            Run an init process inside the container that forwards signals and
+            reaps processes.
+        sharedMemorySize:
+          type: integer
+          description: The value for the size (in MiB) of the /dev/shm volume.
+        tmpfs:
+          type: array
+          items:
+            type: object
+            required:
+              - containerPath
+              - size
+            properties:
+              containerPath:
+                type: string
+              size:
+                type: integer
+              mountOptions:
+                type: array
+                items:
+                  type: string
+        maxSwap:
+          type: integer
+          description: The total amount of swap memory (in MiB) a container can use.
+        swappiness:
+          type: integer
+          description: >-
+            The container's memory swappiness behavior. A value of 0 prevents
+            swapping; a value of 100 causes pages to be swapped aggressively.
+          minimum: 0
+          maximum: 100
+
+    Volume:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the volume (up to 255 characters).
+        host:
+          type: object
+          description: The contents of the host parameter determine whether your data volume persists on the host container instance.
+          properties:
+            sourcePath:
+              type: string
+        dockerVolumeConfiguration:
+          type: object
+          properties:
+            scope:
+              type: string
+              enum:
+                - task
+                - shared
+            autoprovision:
+              type: boolean
+            driver:
+              type: string
+            driverOpts:
+              type: object
+              additionalProperties:
+                type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+        efsVolumeConfiguration:
+          type: object
+          required:
+            - fileSystemId
+          properties:
+            fileSystemId:
+              type: string
+              description: The Amazon EFS file system ID to use.
+            rootDirectory:
+              type: string
+              description: The directory within the EFS file system to mount as the root directory.
+            transitEncryption:
+              type: string
+              enum:
+                - ENABLED
+                - DISABLED
+            transitEncryptionPort:
+              type: integer
+            authorizationConfig:
+              type: object
+              properties:
+                accessPointId:
+                  type: string
+                iam:
+                  type: string
+                  enum:
+                    - ENABLED
+                    - DISABLED
+        fsxWindowsFileServerVolumeConfiguration:
+          type: object
+          required:
+            - fileSystemId
+            - rootDirectory
+            - authorizationConfig
+          properties:
+            fileSystemId:
+              type: string
+            rootDirectory:
+              type: string
+            authorizationConfig:
+              type: object
+              required:
+                - credentialsParameter
+                - domain
+              properties:
+                credentialsParameter:
+                  type: string
+                domain:
+                  type: string
+
+    TaskDefinitionPlacementConstraint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - memberOf
+          description: The type of constraint.
+        expression:
+          type: string
+          description: A cluster query language expression to apply to the constraint.
+
+    ProxyConfiguration:
+      type: object
+      required:
+        - containerName
+      properties:
+        type:
+          type: string
+          enum:
+            - APPMESH
+          description: The proxy type. The only supported value is APPMESH.
+        containerName:
+          type: string
+          description: The name of the container that will serve as the App Mesh proxy.
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+
+    InferenceAccelerator:
+      type: object
+      required:
+        - deviceName
+        - deviceType
+      properties:
+        deviceName:
+          type: string
+          description: The Elastic Inference accelerator device name.
+        deviceType:
+          type: string
+          description: The Elastic Inference accelerator type to use.
+
+    EphemeralStorage:
+      type: object
+      required:
+        - sizeInGiB
+      properties:
+        sizeInGiB:
+          type: integer
+          description: >-
+            The total amount, in GiB, of ephemeral storage to set for the task.
+            The minimum supported value is 21 GiB and the maximum supported value
+            is 200 GiB.
+          minimum: 21
+          maximum: 200
+
+    RuntimePlatform:
+      type: object
+      properties:
+        cpuArchitecture:
+          type: string
+          description: The CPU architecture.
+          enum:
+            - X86_64
+            - ARM64
+        operatingSystemFamily:
+          type: string
+          description: The operating system.
+          enum:
+            - LINUX
+            - WINDOWS_SERVER_2019_FULL
+            - WINDOWS_SERVER_2019_CORE
+            - WINDOWS_SERVER_2022_FULL
+            - WINDOWS_SERVER_2022_CORE
+
+    RunTaskRequest:
+      type: object
+      required:
+        - taskDefinition
+      properties:
+        taskDefinition:
+          type: string
+          description: The family and revision or full ARN of the task definition to run.
+        cluster:
+          type: string
+          description: The short name or full ARN of the cluster to run the task on.
+        count:
+          type: integer
+          description: The number of instantiations of the specified task to place on your cluster (1-10).
+          minimum: 1
+          maximum: 10
+          default: 1
+        launchType:
+          type: string
+          description: The launch type on which to run your task.
+          enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+        platformVersion:
+          type: string
+          description: The platform version the task uses (Fargate launch type only).
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        overrides:
+          $ref: '#/components/schemas/TaskOverride'
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementConstraint'
+        placementStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementStrategy'
+        group:
+          type: string
+          description: The name of the task group to associate with the task.
+        startedBy:
+          type: string
+          description: An optional tag specified when a task is started.
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+        enableECSManagedTags:
+          type: boolean
+        enableExecuteCommand:
+          type: boolean
+          description: Whether to enable Amazon ECS Exec for the task.
+        propagateTags:
+          type: string
+          enum:
+            - TASK_DEFINITION
+            - SERVICE
+            - NONE
+        clientToken:
+          type: string
+          description: An identifier you provide to ensure the idempotency of the request.
+
+    RunTaskResponse:
+      type: object
+      properties:
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Failure'
+
+    TaskOverride:
+      type: object
+      description: The overrides associated with a task.
+      properties:
+        containerOverrides:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the container that receives the override.
+              command:
+                type: array
+                items:
+                  type: string
+              environment:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KeyValuePair'
+              environmentFiles:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                        - s3
+              cpu:
+                type: integer
+              memory:
+                type: integer
+              memoryReservation:
+                type: integer
+              resourceRequirements:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    value:
+                      type: string
+        cpu:
+          type: string
+        memory:
+          type: string
+        taskRoleArn:
+          type: string
+        executionRoleArn:
+          type: string
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        inferenceAcceleratorOverrides:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceName:
+                type: string
+              deviceType:
+                type: string
+
+    Task:
+      type: object
+      description: Details on a task in a cluster.
+      properties:
+        taskArn:
+          type: string
+          description: The ARN of the task.
+        clusterArn:
+          type: string
+          description: The ARN of the cluster that hosts the task.
+        taskDefinitionArn:
+          type: string
+          description: The ARN of the task definition that creates the task.
+        containerInstanceArn:
+          type: string
+          description: The ARN of the container instances that host the task.
+        overrides:
+          $ref: '#/components/schemas/TaskOverride'
+        lastStatus:
+          type: string
+          description: The last known status for the task.
+          enum:
+            - PROVISIONING
+            - PENDING
+            - ACTIVATING
+            - RUNNING
+            - DEACTIVATING
+            - STOPPING
+            - DEPROVISIONING
+            - STOPPED
+        desiredStatus:
+          type: string
+          description: The desired status of the task.
+          enum:
+            - RUNNING
+            - PENDING
+            - STOPPED
+        cpu:
+          type: string
+        memory:
+          type: string
+        containers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Container'
+        startedBy:
+          type: string
+        version:
+          type: integer
+        stoppedReason:
+          type: string
+        stopCode:
+          type: string
+          enum:
+            - TaskFailedToStart
+            - EssentialContainerExited
+            - UserInitiated
+            - ServiceSchedulerInitiated
+            - SpotInterruption
+            - TerminationNotice
+        connectivity:
+          type: string
+          enum:
+            - CONNECTED
+            - DISCONNECTED
+        connectivityAt:
+          type: number
+        pullStartedAt:
+          type: number
+        pullStoppedAt:
+          type: number
+        executionStoppedAt:
+          type: number
+        createdAt:
+          type: number
+        startedAt:
+          type: number
+        stoppingAt:
+          type: number
+        stoppedAt:
+          type: number
+        group:
+          type: string
+        launchType:
+          type: string
+          enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+        platformVersion:
+          type: string
+        platformFamily:
+          type: string
+        capacityProviderName:
+          type: string
+        availabilityZone:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        healthStatus:
+          type: string
+          enum:
+            - HEALTHY
+            - UNHEALTHY
+            - UNKNOWN
+        enableExecuteCommand:
+          type: boolean
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        inferenceAccelerators:
+          type: array
+          items:
+            $ref: '#/components/schemas/InferenceAccelerator'
+        attributes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              targetType:
+                type: string
+              targetId:
+                type: string
+
+    Container:
+      type: object
+      description: A container that is part of a task.
+      properties:
+        containerArn:
+          type: string
+        taskArn:
+          type: string
+        name:
+          type: string
+        image:
+          type: string
+        imageDigest:
+          type: string
+        runtimeId:
+          type: string
+        lastStatus:
+          type: string
+        exitCode:
+          type: integer
+        reason:
+          type: string
+        healthStatus:
+          type: string
+          enum:
+            - HEALTHY
+            - UNHEALTHY
+            - UNKNOWN
+        cpu:
+          type: string
+        memory:
+          type: string
+        memoryReservation:
+          type: string
+        gpuIds:
+          type: array
+          items:
+            type: string
+        networkBindings:
+          type: array
+          items:
+            type: object
+            properties:
+              bindIP:
+                type: string
+              containerPort:
+                type: integer
+              hostPort:
+                type: integer
+              protocol:
+                type: string
+                enum:
+                  - tcp
+                  - udp
+              containerPortRange:
+                type: string
+              hostPortRange:
+                type: string
+        networkInterfaces:
+          type: array
+          items:
+            type: object
+            properties:
+              attachmentId:
+                type: string
+              privateIpv4Address:
+                type: string
+              ipv6Address:
+                type: string
+        managedAgents:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              lastStatus:
+                type: string
+              lastStartedAt:
+                type: number
+              reason:
+                type: string
+
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+
+    ContainerInstance:
+      type: object
+      description: An Amazon EC2 instance that is registered into an ECS cluster and running the ECS agent.
+      properties:
+        containerInstanceArn:
+          type: string
+        ec2InstanceId:
+          type: string
+        version:
+          type: integer
+        versionInfo:
+          type: object
+          properties:
+            agentVersion:
+              type: string
+            agentHash:
+              type: string
+            dockerVersion:
+              type: string
+        remainingResources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        registeredResources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - DRAINING
+            - REGISTERING
+            - DEREGISTERING
+            - REGISTRATION_FAILED
+        statusReason:
+          type: string
+        agentConnected:
+          type: boolean
+        runningTasksCount:
+          type: integer
+        pendingTasksCount:
+          type: integer
+        agentUpdateStatus:
+          type: string
+          enum:
+            - PENDING
+            - STAGING
+            - STAGED
+            - UPDATING
+            - UPDATED
+            - FAILED
+        attributes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+        registeredAt:
+          type: number
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        capacityProviderName:
+          type: string
+        healthStatus:
+          type: object
+          properties:
+            overallStatus:
+              type: string
+              enum:
+                - OK
+                - IMPAIRED
+                - INSUFFICIENT_DATA
+                - INITIALIZING
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  lastUpdated:
+                    type: number
+                  lastStatusChange:
+                    type: number
+
+    Resource:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        doubleValue:
+          type: number
+        longValue:
+          type: integer
+        integerValue:
+          type: integer
+        stringSetValue:
+          type: array
+          items:
+            type: string
+
+    CapacityProvider:
+      type: object
+      properties:
+        capacityProviderArn:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        autoScalingGroupProvider:
+          $ref: '#/components/schemas/AutoScalingGroupProvider'
+        updateStatus:
+          type: string
+          enum:
+            - DELETE_IN_PROGRESS
+            - DELETE_COMPLETE
+            - DELETE_FAILED
+            - UPDATE_IN_PROGRESS
+            - UPDATE_COMPLETE
+            - UPDATE_FAILED
+        updateStatusReason:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+
+    AutoScalingGroupProvider:
+      type: object
+      required:
+        - autoScalingGroupArn
+      properties:
+        autoScalingGroupArn:
+          type: string
+          description: The ARN of the Auto Scaling group.
+        managedScaling:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+                - ENABLED
+                - DISABLED
+            targetCapacity:
+              type: integer
+              description: The target capacity utilization as a percentage (1-100).
+              minimum: 1
+              maximum: 100
+            minimumScalingStepSize:
+              type: integer
+              minimum: 1
+              maximum: 10000
+            maximumScalingStepSize:
+              type: integer
+              minimum: 1
+              maximum: 10000
+            instanceWarmupPeriod:
+              type: integer
+              minimum: 0
+              maximum: 10000
+        managedTerminationProtection:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
+        managedDraining:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
