@@ -57,27 +57,23 @@ security:
   - aws_sig_v4: []
 
 tags:
+  - name: Capacity Providers
+    description: Operations for managing capacity providers
+
   - name: Clusters
     description: Operations for managing ECS clusters
     externalDocs:
       url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
-  - name: Services
-    description: Operations for managing ECS services
-    externalDocs:
-      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html
-  - name: Tasks
-    description: Operations for running and managing ECS tasks
-    externalDocs:
-      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html
+  - name: Container Instances
+    description: Operations for managing container instances
   - name: Task Definitions
     description: Operations for managing ECS task definitions
     externalDocs:
       url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html
-  - name: Container Instances
-    description: Operations for managing container instances
-  - name: Capacity Providers
-    description: Operations for managing capacity providers
-
+  - name: Tasks
+    description: Operations for running and managing ECS tasks
+    externalDocs:
+      url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html
 paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster:
     post:
@@ -308,8 +304,7 @@ paths:
         simultaneously in an ECS cluster. If the desired count of tasks in a
         service drops below the desired count, Amazon ECS runs another
         instantiation of the task to bring the count back up.
-      tags:
-        - Services
+      tags: []
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html
       parameters:
@@ -342,8 +337,7 @@ paths:
       description: >-
         Deletes a specified service within a cluster. You can delete a service if
         you have no running tasks in it and the desired task count is zero.
-      tags:
-        - Services
+      tags: []
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteService.html
       parameters:
@@ -388,8 +382,7 @@ paths:
       operationId: DescribeServices
       summary: Amazon ECS Describe one or more ECS services
       description: Describes the specified services running in a cluster.
-      tags:
-        - Services
+      tags: []
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServices.html
       parameters:
@@ -445,8 +438,7 @@ paths:
       operationId: ListServices
       summary: Amazon ECS List ECS services
       description: Returns a list of services in a specified cluster.
-      tags:
-        - Services
+      tags: []
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListServices.html
       parameters:
@@ -506,8 +498,7 @@ paths:
       description: >-
         Modifies the parameters of a service. Changes take effect in a rolling
         update fashion depending on the deployment configuration.
-      tags:
-        - Services
+      tags: []
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateService.html
       parameters:
@@ -1337,9 +1328,8 @@ paths:
         resourceArn.
       tags:
         - Clusters
-        - Services
-        - Tasks
         - Task Definitions
+        - Tasks
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TagResource.html
       parameters:
@@ -1380,9 +1370,8 @@ paths:
       description: Deletes specified tags from a resource.
       tags:
         - Clusters
-        - Services
-        - Tasks
         - Task Definitions
+        - Tasks
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UntagResource.html
       parameters:
@@ -1424,9 +1413,8 @@ paths:
       description: Lists the tags for the specified resource.
       tags:
         - Clusters
-        - Services
-        - Tasks
         - Task Definitions
+        - Tasks
       externalDocs:
         url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTagsForResource.html
       parameters:
