@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Amazon Elastic Container Service (ECS) API
+  title: Amazon ECS Amazon Elastic Container Service (ECS) API
   description: >-
     Amazon Elastic Container Service (Amazon ECS) is a fully managed container
     orchestration service that makes it easy to deploy, manage, and scale
@@ -82,7 +82,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster:
     post:
       operationId: CreateCluster
-      summary: Create a new ECS cluster
+      summary: Amazon ECS Create a new ECS cluster
       description: >-
         Creates a new Amazon ECS cluster. By default, your account receives a
         default cluster when you launch your first container instance. You can
@@ -114,7 +114,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster:
     post:
       operationId: DeleteCluster
-      summary: Delete an ECS cluster
+      summary: Amazon ECS Delete an ECS cluster
       description: >-
         Deletes the specified cluster. The cluster must have been deregistered,
         and must not contain any services or tasks.
@@ -154,7 +154,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters:
     post:
       operationId: DescribeClusters
-      summary: Describe one or more ECS clusters
+      summary: Amazon ECS Describe one or more ECS clusters
       description: >-
         Describes one or more of your clusters. Returns details about a cluster
         including its status, statistics, tags, and settings.
@@ -213,7 +213,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters:
     post:
       operationId: ListClusters
-      summary: List ECS clusters
+      summary: Amazon ECS List ECS clusters
       description: Returns a list of existing clusters.
       tags:
         - Clusters
@@ -256,7 +256,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster:
     post:
       operationId: UpdateCluster
-      summary: Update an ECS cluster
+      summary: Amazon ECS Update an ECS cluster
       description: Updates the cluster settings and configuration.
       tags:
         - Clusters
@@ -302,7 +302,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService:
     post:
       operationId: CreateService
-      summary: Create a new ECS service
+      summary: Amazon ECS Create a new ECS service
       description: >-
         Runs and maintains a specified number of instances of a task definition
         simultaneously in an ECS cluster. If the desired count of tasks in a
@@ -338,7 +338,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteService:
     post:
       operationId: DeleteService
-      summary: Delete an ECS service
+      summary: Amazon ECS Delete an ECS service
       description: >-
         Deletes a specified service within a cluster. You can delete a service if
         you have no running tasks in it and the desired task count is zero.
@@ -386,7 +386,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeServices:
     post:
       operationId: DescribeServices
-      summary: Describe one or more ECS services
+      summary: Amazon ECS Describe one or more ECS services
       description: Describes the specified services running in a cluster.
       tags:
         - Services
@@ -443,7 +443,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListServices:
     post:
       operationId: ListServices
-      summary: List ECS services
+      summary: Amazon ECS List ECS services
       description: Returns a list of services in a specified cluster.
       tags:
         - Services
@@ -502,7 +502,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateService:
     post:
       operationId: UpdateService
-      summary: Update an ECS service
+      summary: Amazon ECS Update an ECS service
       description: >-
         Modifies the parameters of a service. Changes take effect in a rolling
         update fashion depending on the deployment configuration.
@@ -598,7 +598,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition:
     post:
       operationId: RegisterTaskDefinition
-      summary: Register a new task definition
+      summary: Amazon ECS Register a new task definition
       description: >-
         Registers a new task definition from the supplied family and container
         definitions. You can also register task definitions with a volumes
@@ -637,7 +637,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition:
     post:
       operationId: DeregisterTaskDefinition
-      summary: Deregister a task definition
+      summary: Amazon ECS Deregister a task definition
       description: >-
         Deregisters the specified task definition by family and revision. Upon
         deregistration, the task definition is marked as INACTIVE.
@@ -679,7 +679,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition:
     post:
       operationId: DescribeTaskDefinition
-      summary: Describe a task definition
+      summary: Amazon ECS Describe a task definition
       description: >-
         Describes a task definition. You can specify a family and revision to
         find information about a specific task definition, or you can simply
@@ -732,7 +732,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions:
     post:
       operationId: ListTaskDefinitions
-      summary: List task definitions
+      summary: Amazon ECS List task definitions
       description: >-
         Returns a list of task definitions that are registered to your account.
         You can filter by family name to find all revisions for a specific
@@ -794,7 +794,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies:
     post:
       operationId: ListTaskDefinitionFamilies
-      summary: List task definition families
+      summary: Amazon ECS List task definition families
       description: >-
         Returns a list of task definition families that are registered to your
         account, with ACTIVE task definitions.
@@ -846,7 +846,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask:
     post:
       operationId: RunTask
-      summary: Run a new task
+      summary: Amazon ECS Run a new task
       description: >-
         Starts a new task using the specified task definition. You can specify
         the cluster, launch type, network configuration, and overrides.
@@ -877,7 +877,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask:
     post:
       operationId: StartTask
-      summary: Start a task on a specific container instance
+      summary: Amazon ECS Start a task on a specific container instance
       description: >-
         Starts a new task from the specified task definition on the specified
         container instance or instances.
@@ -944,7 +944,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask:
     post:
       operationId: StopTask
-      summary: Stop a running task
+      summary: Amazon ECS Stop a running task
       description: >-
         Stops a running task. Resources are cleaned up and the task transitions
         to STOPPED status.
@@ -990,7 +990,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks:
     post:
       operationId: DescribeTasks
-      summary: Describe one or more tasks
+      summary: Amazon ECS Describe one or more tasks
       description: Describes a specified task or tasks in a cluster.
       tags:
         - Tasks
@@ -1046,7 +1046,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks:
     post:
       operationId: ListTasks
-      summary: List tasks
+      summary: Amazon ECS List tasks
       description: >-
         Returns a list of tasks. You can filter by cluster, container instance,
         family, or service.
@@ -1119,7 +1119,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider:
     post:
       operationId: CreateCapacityProvider
-      summary: Create a capacity provider
+      summary: Amazon ECS Create a capacity provider
       description: >-
         Creates a new capacity provider. Capacity providers are associated with
         an Auto Scaling group to manage the infrastructure for your tasks and
@@ -1167,7 +1167,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders:
     post:
       operationId: DescribeCapacityProviders
-      summary: Describe capacity providers
+      summary: Amazon ECS Describe capacity providers
       description: Describes one or more capacity providers.
       tags:
         - Capacity Providers
@@ -1222,7 +1222,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeContainerInstances:
     post:
       operationId: DescribeContainerInstances
-      summary: Describe container instances
+      summary: Amazon ECS Describe container instances
       description: Describes Amazon ECS container instances in a cluster.
       tags:
         - Container Instances
@@ -1277,7 +1277,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListContainerInstances:
     post:
       operationId: ListContainerInstances
-      summary: List container instances
+      summary: Amazon ECS List container instances
       description: Returns a list of container instances in a specified cluster.
       tags:
         - Container Instances
@@ -1331,7 +1331,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource:
     post:
       operationId: TagResource
-      summary: Tag an ECS resource
+      summary: Amazon ECS Tag an ECS resource
       description: >-
         Associates the specified tags to a resource with the specified
         resourceArn.
@@ -1376,7 +1376,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource:
     post:
       operationId: UntagResource
-      summary: Remove tags from an ECS resource
+      summary: Amazon ECS Remove tags from an ECS resource
       description: Deletes specified tags from a resource.
       tags:
         - Clusters
@@ -1420,7 +1420,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource:
     post:
       operationId: ListTagsForResource
-      summary: List tags for an ECS resource
+      summary: Amazon ECS List tags for an ECS resource
       description: Lists the tags for the specified resource.
       tags:
         - Clusters
@@ -1463,7 +1463,7 @@ paths:
   /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand:
     post:
       operationId: ExecuteCommand
-      summary: Execute a command in a running container
+      summary: Amazon ECS Execute a command in a running container
       description: >-
         Runs a command remotely on a container within a task that is managed by
         Amazon ECS using AWS Systems Manager Session Manager.
