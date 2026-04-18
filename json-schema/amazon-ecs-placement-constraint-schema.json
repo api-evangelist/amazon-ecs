@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlacementConstraint",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of placement constraint."
+    },
+    "expression": {
+      "type": "string",
+      "description": "A cluster query language expression."
+    }
+  }
+}

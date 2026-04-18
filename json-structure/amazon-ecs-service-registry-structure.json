@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ServiceRegistry",
+  "type": "object",
+  "properties": {
+    "registryArn": {
+      "type": "string"
+    },
+    "port": {
+      "type": "integer"
+    },
+    "containerName": {
+      "type": "string"
+    },
+    "containerPort": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "containerInstanceArn": "example_value",
+  "ec2InstanceId": "500123",
+  "version": 10,
+  "versionInfo": "example_value",
+  "remainingResources": [],
+  "registeredResources": [],
+  "status": "example_value",
+  "statusReason": "example_value",
+  "agentConnected": true,
+  "runningTasksCount": 10,
+  "pendingTasksCount": 10,
+  "agentUpdateStatus": "example_value",
+  "attributes": [],
+  "registeredAt": 42.5,
+  "attachments": [],
+  "tags": [],
+  "capacityProviderName": "example_value",
+  "healthStatus": "example_value"
+}

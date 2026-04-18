@@ -1,0 +1,6 @@
+{
+  "targetGroupArn": "example_value",
+  "loadBalancerName": "example_value",
+  "containerName": "example_value",
+  "containerPort": 10
+}

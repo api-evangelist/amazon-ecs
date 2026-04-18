@@ -1,0 +1,19 @@
+{
+  "containerArn": "example_value",
+  "taskArn": "example_value",
+  "name": "Example Title",
+  "image": "example_value",
+  "imageDigest": "example_value",
+  "runtimeId": "500123",
+  "lastStatus": "example_value",
+  "exitCode": 10,
+  "reason": "example_value",
+  "healthStatus": "example_value",
+  "cpu": "example_value",
+  "memory": "example_value",
+  "memoryReservation": "example_value",
+  "gpuIds": [],
+  "networkBindings": [],
+  "networkInterfaces": [],
+  "managedAgents": []
+}

@@ -1,0 +1,5 @@
+{
+  "logDriver": "example_value",
+  "options": "example_value",
+  "secretOptions": []
+}

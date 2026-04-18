@@ -1,0 +1,8 @@
+{
+  "containerPort": 10,
+  "hostPort": 10,
+  "protocol": "example_value",
+  "name": "Example Title",
+  "appProtocol": "example_value",
+  "containerPortRange": "example_value"
+}

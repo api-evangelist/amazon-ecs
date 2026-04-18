@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LogConfiguration",
+  "type": "object",
+  "properties": {
+    "logDriver": {
+      "type": "string",
+      "description": "The log driver to use for the container."
+    },
+    "options": {
+      "type": "object",
+      "description": "The configuration options to send to the log driver."
+    },
+    "secretOptions": {
+      "type": "array",
+      "description": "The secrets to pass to the log driver configuration."
+    }
+  }
+}

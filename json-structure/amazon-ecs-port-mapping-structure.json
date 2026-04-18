@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PortMapping",
+  "type": "object",
+  "properties": {
+    "containerPort": {
+      "type": "integer"
+    },
+    "hostPort": {
+      "type": "integer"
+    },
+    "protocol": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "appProtocol": {
+      "type": "string"
+    },
+    "containerPortRange": {
+      "type": "string"
+    }
+  }
+}

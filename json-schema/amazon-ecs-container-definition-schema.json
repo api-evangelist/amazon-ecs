@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContainerDefinition",
+  "type": "object",
+  "description": "A container definition describes a container within a task definition.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of a container. Up to 255 characters (uppercase and lowercase letters, numbers, underscores, and hyphens)."
+    },
+    "image": {
+      "type": "string",
+      "description": "The image used to start a container. Images in the Docker Hub registry are available by default. You can also specify an ECR repository."
+    },
+    "cpu": {
+      "type": "integer",
+      "description": "The number of cpu units reserved for the container."
+    },
+    "memory": {
+      "type": "integer",
+      "description": "The amount (in MiB) of memory to present to the container. Corresponds to the hard limit."
+    },
+    "memoryReservation": {
+      "type": "integer",
+      "description": "The soft limit (in MiB) of memory to reserve for the container."
+    },
+    "links": {
+      "type": "array",
+      "description": "Allows containers to communicate without port mappings. Only supported for bridge network mode."
+    },
+    "portMappings": {
+      "type": "array",
+      "description": "The list of port mappings for the container."
+    },
+    "essential": {
+      "type": "boolean",
+      "description": "If the essential parameter of a container is marked as true and that container fails or stops, all other containers that are part of the task are stopped."
+    },
+    "entryPoint": {
+      "type": "array",
+      "description": "The entry point that is passed to the container."
+    },
+    "command": {
+      "type": "array",
+      "description": "The command that is passed to the container."
+    },
+    "environment": {
+      "type": "array",
+      "description": "The environment variables to pass to a container."
+    },
+    "environmentFiles": {
+      "type": "array",
+      "description": "A list of files containing the environment variables to pass to a container."
+    },
+    "mountPoints": {
+      "type": "array",
+      "description": "The mount points for data volumes in your container."
+    },
+    "volumesFrom": {
+      "type": "array",
+      "description": "Data volumes to mount from another container."
+    },
+    "secrets": {
+      "type": "array",
+      "description": "The secrets to pass to the container from AWS Secrets Manager or SSM Parameter Store."
+    },
+    "dependsOn": {
+      "type": "array",
+      "description": "The dependencies defined for container startup and shutdown."
+    },
+    "startTimeout": {
+      "type": "integer",
+      "description": "Time duration (in seconds) to wait before giving up on resolving dependencies for a container."
+    },
+    "stopTimeout": {
+      "type": "integer",
+      "description": "Time duration (in seconds) to wait before the container is forcefully killed if it does not exit normally on its own."
+    },
+    "hostname": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string",
+      "description": "The user to run as inside the container."
+    },
+    "workingDirectory": {
+      "type": "string",
+      "description": "The working directory to run commands inside the container in."
+    },
+    "disableNetworking": {
+      "type": "boolean"
+    },
+    "privileged": {
+      "type": "boolean",
+      "description": "When this parameter is true, the container is given elevated privileges on the host container instance."
+    },
+    "readonlyRootFilesystem": {
+      "type": "boolean",
+      "description": "When this parameter is true, the container is given read-only access to its root file system."
+    },
+    "dnsServers": {
+      "type": "array"
+    },
+    "dnsSearchDomains": {
+      "type": "array"
+    },
+    "extraHosts": {
+      "type": "array"
+    },
+    "dockerSecurityOptions": {
+      "type": "array"
+    },
+    "interactive": {
+      "type": "boolean"
+    },
+    "pseudoTerminal": {
+      "type": "boolean"
+    },
+    "dockerLabels": {
+      "type": "object",
+      "description": "A key/value map of labels to add to the container."
+    },
+    "ulimits": {
+      "type": "array"
+    },
+    "systemControls": {
+      "type": "array"
+    },
+    "resourceRequirements": {
+      "type": "array"
+    },
+    "firelensConfiguration": {
+      "type": "object"
+    },
+    "repositoryCredentials": {
+      "type": "object"
+    },
+    "restartPolicy": {
+      "type": "object"
+    },
+    "credentialSpecs": {
+      "type": "array"
+    }
+  }
+}

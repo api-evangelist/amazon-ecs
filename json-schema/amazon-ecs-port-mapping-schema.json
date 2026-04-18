@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PortMapping",
+  "type": "object",
+  "properties": {
+    "containerPort": {
+      "type": "integer",
+      "description": "The port number on the container bound to the host port."
+    },
+    "hostPort": {
+      "type": "integer",
+      "description": "The port number on the container instance to reserve for the container."
+    },
+    "protocol": {
+      "type": "string",
+      "description": "The protocol used for the port mapping."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name to use for the port mapping (used with Service Connect)."
+    },
+    "appProtocol": {
+      "type": "string",
+      "description": "The application protocol used for the port mapping."
+    },
+    "containerPortRange": {
+      "type": "string",
+      "description": "The port number range on the container."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+name: amazon-ecs API Vocabulary
+provider: amazon-ecs
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 28
+schemas: 46
+tags:
+- Capacity Providers
+- Clusters
+- Container Instances
+- Task Definitions
+- Tasks

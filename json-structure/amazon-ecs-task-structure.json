@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "taskArn": {
+      "type": "string"
+    },
+    "clusterArn": {
+      "type": "string"
+    },
+    "taskDefinitionArn": {
+      "type": "string"
+    },
+    "containerInstanceArn": {
+      "type": "string"
+    },
+    "lastStatus": {
+      "type": "string"
+    },
+    "desiredStatus": {
+      "type": "string"
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "memory": {
+      "type": "string"
+    },
+    "containers": {
+      "type": "array"
+    },
+    "startedBy": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "stoppedReason": {
+      "type": "string"
+    },
+    "stopCode": {
+      "type": "string"
+    },
+    "connectivity": {
+      "type": "string"
+    },
+    "connectivityAt": {
+      "type": "number"
+    },
+    "pullStartedAt": {
+      "type": "number"
+    },
+    "pullStoppedAt": {
+      "type": "number"
+    },
+    "executionStoppedAt": {
+      "type": "number"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "startedAt": {
+      "type": "number"
+    },
+    "stoppingAt": {
+      "type": "number"
+    },
+    "stoppedAt": {
+      "type": "number"
+    },
+    "group": {
+      "type": "string"
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "platformFamily": {
+      "type": "string"
+    },
+    "capacityProviderName": {
+      "type": "string"
+    },
+    "availabilityZone": {
+      "type": "string"
+    },
+    "attachments": {
+      "type": "array"
+    },
+    "healthStatus": {
+      "type": "string"
+    },
+    "enableExecuteCommand": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "inferenceAccelerators": {
+      "type": "array"
+    },
+    "attributes": {
+      "type": "array"
+    }
+  }
+}

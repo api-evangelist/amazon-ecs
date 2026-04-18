@@ -1,0 +1,7 @@
+{
+  "command": [],
+  "interval": 10,
+  "timeout": 10,
+  "retries": 10,
+  "startPeriod": 10
+}

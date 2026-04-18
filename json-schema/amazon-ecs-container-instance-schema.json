@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContainerInstance",
+  "type": "object",
+  "description": "An Amazon EC2 instance that is registered into an ECS cluster and running the ECS agent.",
+  "properties": {
+    "containerInstanceArn": {
+      "type": "string"
+    },
+    "ec2InstanceId": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "versionInfo": {
+      "type": "object"
+    },
+    "remainingResources": {
+      "type": "array"
+    },
+    "registeredResources": {
+      "type": "array"
+    },
+    "status": {
+      "type": "string"
+    },
+    "statusReason": {
+      "type": "string"
+    },
+    "agentConnected": {
+      "type": "boolean"
+    },
+    "runningTasksCount": {
+      "type": "integer"
+    },
+    "pendingTasksCount": {
+      "type": "integer"
+    },
+    "agentUpdateStatus": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "array"
+    },
+    "registeredAt": {
+      "type": "number"
+    },
+    "attachments": {
+      "type": "array"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "capacityProviderName": {
+      "type": "string"
+    },
+    "healthStatus": {
+      "type": "object"
+    }
+  }
+}

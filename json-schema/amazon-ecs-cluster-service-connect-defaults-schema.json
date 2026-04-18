@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClusterServiceConnectDefaults",
+  "type": "object",
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "description": "The namespace name or ARN of the Cloud Map namespace that is used when a service is created without specifying a Service Connect configuration."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "family": "example_value",
+  "containerDefinitions": [],
+  "taskRoleArn": "example_value",
+  "executionRoleArn": "example_value",
+  "networkMode": "example_value",
+  "volumes": [],
+  "placementConstraints": [],
+  "requiresCompatibilities": [],
+  "cpu": "example_value",
+  "memory": "example_value",
+  "tags": [],
+  "pidMode": "example_value",
+  "ipcMode": "example_value",
+  "inferenceAccelerators": [],
+  "enableFaultInjection": true
+}

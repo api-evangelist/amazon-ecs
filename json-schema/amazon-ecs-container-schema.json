@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Container",
+  "type": "object",
+  "description": "A container that is part of a task.",
+  "properties": {
+    "containerArn": {
+      "type": "string"
+    },
+    "taskArn": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "imageDigest": {
+      "type": "string"
+    },
+    "runtimeId": {
+      "type": "string"
+    },
+    "lastStatus": {
+      "type": "string"
+    },
+    "exitCode": {
+      "type": "integer"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "healthStatus": {
+      "type": "string"
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "memory": {
+      "type": "string"
+    },
+    "memoryReservation": {
+      "type": "string"
+    },
+    "gpuIds": {
+      "type": "array"
+    },
+    "networkBindings": {
+      "type": "array"
+    },
+    "networkInterfaces": {
+      "type": "array"
+    },
+    "managedAgents": {
+      "type": "array"
+    }
+  }
+}

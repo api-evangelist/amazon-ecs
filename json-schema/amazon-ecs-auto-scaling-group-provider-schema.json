@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AutoScalingGroupProvider",
+  "type": "object",
+  "properties": {
+    "autoScalingGroupArn": {
+      "type": "string",
+      "description": "The ARN of the Auto Scaling group."
+    },
+    "managedScaling": {
+      "type": "object"
+    },
+    "managedTerminationProtection": {
+      "type": "string"
+    },
+    "managedDraining": {
+      "type": "string"
+    }
+  }
+}

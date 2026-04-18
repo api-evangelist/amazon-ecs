@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ContainerDefinition",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "cpu": {
+      "type": "integer"
+    },
+    "memory": {
+      "type": "integer"
+    },
+    "memoryReservation": {
+      "type": "integer"
+    },
+    "links": {
+      "type": "array"
+    },
+    "portMappings": {
+      "type": "array"
+    },
+    "essential": {
+      "type": "boolean"
+    },
+    "entryPoint": {
+      "type": "array"
+    },
+    "command": {
+      "type": "array"
+    },
+    "environment": {
+      "type": "array"
+    },
+    "environmentFiles": {
+      "type": "array"
+    },
+    "mountPoints": {
+      "type": "array"
+    },
+    "volumesFrom": {
+      "type": "array"
+    },
+    "secrets": {
+      "type": "array"
+    },
+    "dependsOn": {
+      "type": "array"
+    },
+    "startTimeout": {
+      "type": "integer"
+    },
+    "stopTimeout": {
+      "type": "integer"
+    },
+    "hostname": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "workingDirectory": {
+      "type": "string"
+    },
+    "disableNetworking": {
+      "type": "boolean"
+    },
+    "privileged": {
+      "type": "boolean"
+    },
+    "readonlyRootFilesystem": {
+      "type": "boolean"
+    },
+    "dnsServers": {
+      "type": "array"
+    },
+    "dnsSearchDomains": {
+      "type": "array"
+    },
+    "extraHosts": {
+      "type": "array"
+    },
+    "dockerSecurityOptions": {
+      "type": "array"
+    },
+    "interactive": {
+      "type": "boolean"
+    },
+    "pseudoTerminal": {
+      "type": "boolean"
+    },
+    "dockerLabels": {
+      "type": "object"
+    },
+    "ulimits": {
+      "type": "array"
+    },
+    "systemControls": {
+      "type": "array"
+    },
+    "resourceRequirements": {
+      "type": "array"
+    },
+    "firelensConfiguration": {
+      "type": "object"
+    },
+    "repositoryCredentials": {
+      "type": "object"
+    },
+    "restartPolicy": {
+      "type": "object"
+    },
+    "credentialSpecs": {
+      "type": "array"
+    }
+  }
+}

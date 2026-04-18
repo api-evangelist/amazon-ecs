@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KeyValuePair",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the key-value pair."
+    },
+    "value": {
+      "type": "string",
+      "description": "The value of the key-value pair."
+    }
+  }
+}

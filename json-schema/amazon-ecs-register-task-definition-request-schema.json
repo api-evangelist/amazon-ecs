@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RegisterTaskDefinitionRequest",
+  "type": "object",
+  "properties": {
+    "family": {
+      "type": "string",
+      "description": "You must specify a family for a task definition. Up to 255 characters (uppercase and lowercase letters, numbers, underscores, and hyphens are allowed)."
+    },
+    "containerDefinitions": {
+      "type": "array",
+      "description": "A list of container definitions that describe the containers that make up the task."
+    },
+    "taskRoleArn": {
+      "type": "string",
+      "description": "The short name or full ARN of the IAM role that containers in this task can assume."
+    },
+    "executionRoleArn": {
+      "type": "string",
+      "description": "The ARN of the task execution role that grants the ECS container agent permission to make API calls on your behalf."
+    },
+    "networkMode": {
+      "type": "string",
+      "description": "The Docker networking mode to use for the containers in the task."
+    },
+    "volumes": {
+      "type": "array",
+      "description": "A list of volume definitions for the task."
+    },
+    "placementConstraints": {
+      "type": "array"
+    },
+    "requiresCompatibilities": {
+      "type": "array",
+      "description": "The task launch type compatibility requirement."
+    },
+    "cpu": {
+      "type": "string",
+      "description": "The number of CPU units used by the task. Required for Fargate launch type. Valid values: 256 (.25 vCPU) through 16384 (16 vCPU)."
+    },
+    "memory": {
+      "type": "string",
+      "description": "The amount of memory (in MiB) used by the task. Required for Fargate launch type."
+    },
+    "tags": {
+      "type": "array"
+    },
+    "pidMode": {
+      "type": "string",
+      "description": "The process namespace to use for the containers in the task."
+    },
+    "ipcMode": {
+      "type": "string",
+      "description": "The IPC resource namespace to use for the containers in the task."
+    },
+    "inferenceAccelerators": {
+      "type": "array"
+    },
+    "enableFaultInjection": {
+      "type": "boolean",
+      "description": "Whether to enable fault injection for the task definition."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "clusterArn": "example_value",
+  "clusterName": "example_value",
+  "status": "example_value",
+  "registeredContainerInstancesCount": 10,
+  "runningTasksCount": 10,
+  "pendingTasksCount": 10,
+  "activeServicesCount": 10,
+  "statistics": [],
+  "tags": [],
+  "settings": [],
+  "capacityProviders": [],
+  "defaultCapacityProviderStrategy": [],
+  "attachments": [],
+  "attachmentsStatus": "example_value"
+}

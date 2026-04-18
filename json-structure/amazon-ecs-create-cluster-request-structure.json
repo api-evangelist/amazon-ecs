@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CreateClusterRequest",
+  "type": "object",
+  "properties": {
+    "clusterName": {
+      "type": "string"
+    },
+    "capacityProviders": {
+      "type": "array"
+    },
+    "defaultCapacityProviderStrategy": {
+      "type": "array"
+    },
+    "settings": {
+      "type": "array"
+    },
+    "tags": {
+      "type": "array"
+    }
+  }
+}

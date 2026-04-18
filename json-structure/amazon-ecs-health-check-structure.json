@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "HealthCheck",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "array"
+    },
+    "interval": {
+      "type": "integer"
+    },
+    "timeout": {
+      "type": "integer"
+    },
+    "retries": {
+      "type": "integer"
+    },
+    "startPeriod": {
+      "type": "integer"
+    }
+  }
+}

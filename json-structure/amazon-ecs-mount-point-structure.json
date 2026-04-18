@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MountPoint",
+  "type": "object",
+  "properties": {
+    "sourceVolume": {
+      "type": "string"
+    },
+    "containerPath": {
+      "type": "string"
+    },
+    "readOnly": {
+      "type": "boolean"
+    }
+  }
+}

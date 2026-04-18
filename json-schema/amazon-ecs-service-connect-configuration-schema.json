@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ServiceConnectConfiguration",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether Service Connect is enabled for this service."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace name or ARN of the Cloud Map namespace for the service."
+    },
+    "services": {
+      "type": "array"
+    },
+    "logConfiguration": {
+      "type": "object"
+    }
+  }
+}

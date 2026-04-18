@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimePlatform",
+  "type": "object",
+  "properties": {
+    "cpuArchitecture": {
+      "type": "string",
+      "description": "The CPU architecture."
+    },
+    "operatingSystemFamily": {
+      "type": "string",
+      "description": "The operating system."
+    }
+  }
+}

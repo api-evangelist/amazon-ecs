@@ -1,0 +1,9 @@
+{
+  "capabilities": "example_value",
+  "devices": [],
+  "initProcessEnabled": true,
+  "sharedMemorySize": 10,
+  "tmpfs": [],
+  "maxSwap": 10,
+  "swappiness": 10
+}

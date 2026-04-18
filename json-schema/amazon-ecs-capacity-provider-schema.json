@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapacityProvider",
+  "type": "object",
+  "properties": {
+    "capacityProviderArn": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "updateStatus": {
+      "type": "string"
+    },
+    "updateStatusReason": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    }
+  }
+}

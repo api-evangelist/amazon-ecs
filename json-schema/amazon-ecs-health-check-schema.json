@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HealthCheck",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "array",
+      "description": "A string array representing the command that the container runs to determine if it is healthy. The first element is CMD or CMD-SHELL."
+    },
+    "interval": {
+      "type": "integer",
+      "description": "The time period in seconds between each health check execution (default 30)."
+    },
+    "timeout": {
+      "type": "integer",
+      "description": "The time period in seconds to wait for a health check to succeed before it is considered a failure (default 5)."
+    },
+    "retries": {
+      "type": "integer",
+      "description": "The number of times to retry a failed health check before the container is considered unhealthy (default 3)."
+    },
+    "startPeriod": {
+      "type": "integer",
+      "description": "The optional grace period to provide containers time to bootstrap before failed health checks count towards the maximum retries (default 0)."
+    }
+  }
+}

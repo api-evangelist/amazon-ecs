@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cluster",
+  "type": "object",
+  "description": "A regional grouping of one or more container instances on which you can run tasks and services.",
+  "properties": {
+    "clusterArn": {
+      "type": "string",
+      "description": "The ARN that identifies the cluster."
+    },
+    "clusterName": {
+      "type": "string",
+      "description": "A user-generated string that you use to identify your cluster."
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the cluster."
+    },
+    "registeredContainerInstancesCount": {
+      "type": "integer",
+      "description": "The number of container instances registered into the cluster."
+    },
+    "runningTasksCount": {
+      "type": "integer",
+      "description": "The number of tasks in the cluster that are in the RUNNING state."
+    },
+    "pendingTasksCount": {
+      "type": "integer",
+      "description": "The number of tasks in the cluster that are in the PENDING state."
+    },
+    "activeServicesCount": {
+      "type": "integer",
+      "description": "The number of services in the cluster that are in an ACTIVE state."
+    },
+    "statistics": {
+      "type": "array"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "settings": {
+      "type": "array"
+    },
+    "capacityProviders": {
+      "type": "array"
+    },
+    "defaultCapacityProviderStrategy": {
+      "type": "array"
+    },
+    "attachments": {
+      "type": "array"
+    },
+    "attachmentsStatus": {
+      "type": "string"
+    }
+  }
+}

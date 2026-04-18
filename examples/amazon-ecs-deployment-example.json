@@ -1,0 +1,17 @@
+{
+  "id": "abc123",
+  "status": "example_value",
+  "taskDefinition": "example_value",
+  "desiredCount": 10,
+  "pendingCount": 10,
+  "runningCount": 10,
+  "failedTasks": 10,
+  "createdAt": 42.5,
+  "updatedAt": 42.5,
+  "launchType": "example_value",
+  "platformVersion": "example_value",
+  "platformFamily": "example_value",
+  "rolloutState": "example_value",
+  "rolloutStateReason": "example_value",
+  "capacityProviderStrategy": []
+}

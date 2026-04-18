@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LinuxParameters",
+  "type": "object",
+  "properties": {
+    "capabilities": {
+      "type": "object"
+    },
+    "devices": {
+      "type": "array"
+    },
+    "initProcessEnabled": {
+      "type": "boolean",
+      "description": "Run an init process inside the container that forwards signals and reaps processes."
+    },
+    "sharedMemorySize": {
+      "type": "integer",
+      "description": "The value for the size (in MiB) of the /dev/shm volume."
+    },
+    "tmpfs": {
+      "type": "array"
+    },
+    "maxSwap": {
+      "type": "integer",
+      "description": "The total amount of swap memory (in MiB) a container can use."
+    },
+    "swappiness": {
+      "type": "integer",
+      "description": "The container's memory swappiness behavior. A value of 0 prevents swapping; a value of 100 causes pages to be swapped aggressively."
+    }
+  }
+}

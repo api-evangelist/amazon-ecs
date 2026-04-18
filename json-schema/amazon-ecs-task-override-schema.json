@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskOverride",
+  "type": "object",
+  "description": "The overrides associated with a task.",
+  "properties": {
+    "containerOverrides": {
+      "type": "array"
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "memory": {
+      "type": "string"
+    },
+    "taskRoleArn": {
+      "type": "string"
+    },
+    "executionRoleArn": {
+      "type": "string"
+    },
+    "inferenceAcceleratorOverrides": {
+      "type": "array"
+    }
+  }
+}

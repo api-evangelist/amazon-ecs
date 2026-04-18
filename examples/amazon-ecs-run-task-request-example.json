@@ -1,0 +1,17 @@
+{
+  "taskDefinition": "example_value",
+  "cluster": "example_value",
+  "count": 10,
+  "launchType": "example_value",
+  "capacityProviderStrategy": [],
+  "platformVersion": "example_value",
+  "placementConstraints": [],
+  "placementStrategy": [],
+  "group": "example_value",
+  "startedBy": "example_value",
+  "tags": [],
+  "enableECSManagedTags": true,
+  "enableExecuteCommand": true,
+  "propagateTags": "example_value",
+  "clientToken": "example_value"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tag",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "The tag key (up to 128 characters)."
+    },
+    "value": {
+      "type": "string",
+      "description": "The tag value (up to 256 characters)."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RegisterTaskDefinitionRequest",
+  "type": "object",
+  "properties": {
+    "family": {
+      "type": "string"
+    },
+    "containerDefinitions": {
+      "type": "array"
+    },
+    "taskRoleArn": {
+      "type": "string"
+    },
+    "executionRoleArn": {
+      "type": "string"
+    },
+    "networkMode": {
+      "type": "string"
+    },
+    "volumes": {
+      "type": "array"
+    },
+    "placementConstraints": {
+      "type": "array"
+    },
+    "requiresCompatibilities": {
+      "type": "array"
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "memory": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "pidMode": {
+      "type": "string"
+    },
+    "ipcMode": {
+      "type": "string"
+    },
+    "inferenceAccelerators": {
+      "type": "array"
+    },
+    "enableFaultInjection": {
+      "type": "boolean"
+    }
+  }
+}

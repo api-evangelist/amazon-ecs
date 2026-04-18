@@ -1,0 +1,6 @@
+{
+  "autoScalingGroupArn": "example_value",
+  "managedScaling": "example_value",
+  "managedTerminationProtection": "example_value",
+  "managedDraining": "example_value"
+}

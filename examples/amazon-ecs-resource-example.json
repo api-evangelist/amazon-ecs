@@ -1,0 +1,8 @@
+{
+  "name": "Example Title",
+  "type": "example_value",
+  "doubleValue": 42.5,
+  "longValue": 10,
+  "integerValue": 10,
+  "stringSetValue": []
+}

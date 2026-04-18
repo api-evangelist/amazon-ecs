@@ -1,0 +1,8 @@
+{
+  "containerOverrides": [],
+  "cpu": "example_value",
+  "memory": "example_value",
+  "taskRoleArn": "example_value",
+  "executionRoleArn": "example_value",
+  "inferenceAcceleratorOverrides": []
+}

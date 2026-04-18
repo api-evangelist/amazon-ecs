@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LinuxParameters",
+  "type": "object",
+  "properties": {
+    "capabilities": {
+      "type": "object"
+    },
+    "devices": {
+      "type": "array"
+    },
+    "initProcessEnabled": {
+      "type": "boolean"
+    },
+    "sharedMemorySize": {
+      "type": "integer"
+    },
+    "tmpfs": {
+      "type": "array"
+    },
+    "maxSwap": {
+      "type": "integer"
+    },
+    "swappiness": {
+      "type": "integer"
+    }
+  }
+}

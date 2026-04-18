@@ -1,0 +1,7 @@
+{
+  "name": "Example Title",
+  "host": "example_value",
+  "dockerVolumeConfiguration": "example_value",
+  "efsVolumeConfiguration": "example_value",
+  "fsxWindowsFileServerVolumeConfiguration": "example_value"
+}

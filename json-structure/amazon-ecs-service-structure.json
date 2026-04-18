@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Service",
+  "type": "object",
+  "properties": {
+    "serviceArn": {
+      "type": "string"
+    },
+    "serviceName": {
+      "type": "string"
+    },
+    "clusterArn": {
+      "type": "string"
+    },
+    "loadBalancers": {
+      "type": "array"
+    },
+    "serviceRegistries": {
+      "type": "array"
+    },
+    "status": {
+      "type": "string"
+    },
+    "desiredCount": {
+      "type": "integer"
+    },
+    "runningCount": {
+      "type": "integer"
+    },
+    "pendingCount": {
+      "type": "integer"
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "capacityProviderStrategy": {
+      "type": "array"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "platformFamily": {
+      "type": "string"
+    },
+    "taskDefinition": {
+      "type": "string"
+    },
+    "deployments": {
+      "type": "array"
+    },
+    "roleArn": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "placementConstraints": {
+      "type": "array"
+    },
+    "placementStrategy": {
+      "type": "array"
+    },
+    "healthCheckGracePeriodSeconds": {
+      "type": "integer"
+    },
+    "schedulingStrategy": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "enableECSManagedTags": {
+      "type": "boolean"
+    },
+    "enableExecuteCommand": {
+      "type": "boolean"
+    },
+    "propagateTags": {
+      "type": "string"
+    }
+  }
+}

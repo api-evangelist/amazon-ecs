@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Failure",
+  "type": "object",
+  "properties": {
+    "arn": {
+      "type": "string",
+      "description": "The ARN of the failed resource."
+    },
+    "reason": {
+      "type": "string",
+      "description": "The reason for the failure."
+    },
+    "detail": {
+      "type": "string",
+      "description": "The details of the failure."
+    }
+  }
+}

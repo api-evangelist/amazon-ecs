@@ -1,0 +1,6 @@
+{
+  "registryArn": "example_value",
+  "port": 10,
+  "containerName": "example_value",
+  "containerPort": 10
+}

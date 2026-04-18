@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Cluster",
+  "type": "object",
+  "properties": {
+    "clusterArn": {
+      "type": "string"
+    },
+    "clusterName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "registeredContainerInstancesCount": {
+      "type": "integer"
+    },
+    "runningTasksCount": {
+      "type": "integer"
+    },
+    "pendingTasksCount": {
+      "type": "integer"
+    },
+    "activeServicesCount": {
+      "type": "integer"
+    },
+    "statistics": {
+      "type": "array"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "settings": {
+      "type": "array"
+    },
+    "capacityProviders": {
+      "type": "array"
+    },
+    "defaultCapacityProviderStrategy": {
+      "type": "array"
+    },
+    "attachments": {
+      "type": "array"
+    },
+    "attachmentsStatus": {
+      "type": "string"
+    }
+  }
+}

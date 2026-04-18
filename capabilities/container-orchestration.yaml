@@ -1,0 +1,301 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon ECS Container Orchestration"
+  description: "Container orchestration workflow for DevOps engineers and platform teams to manage ECS clusters, deploy services, run tasks, and monitor container workloads."
+  tags:
+    - Amazon
+    - Containers
+    - Orchestration
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - import: ecs
+      location: ./shared/ecs.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: container-orchestration-api
+      description: "Unified REST API for Amazon ECS container orchestration."
+      resources:
+        - path: /v1/clusters
+          name: clusters
+          description: "ECS cluster management."
+          operations:
+            - method: GET
+              name: list-clusters
+              description: "List all ECS clusters."
+              call: "ecs.list-clusters"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-cluster
+              description: "Create a new ECS cluster."
+              call: "ecs.create-cluster"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/services
+          name: services
+          description: "ECS service management."
+          operations:
+            - method: GET
+              name: list-services
+              description: "List services in a cluster."
+              call: "ecs.list-services"
+              with:
+                cluster: "rest.cluster"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-service
+              description: "Create a new service."
+              call: "ecs.create-service"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/task-definitions
+          name: task-definitions
+          description: "ECS task definition management."
+          operations:
+            - method: GET
+              name: list-task-definitions
+              description: "List task definitions."
+              call: "ecs.list-task-definitions"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: register-task-definition
+              description: "Register a new task definition."
+              call: "ecs.register-task-definition"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/tasks
+          name: tasks
+          description: "ECS task execution."
+          operations:
+            - method: GET
+              name: list-tasks
+              description: "List tasks in a cluster."
+              call: "ecs.list-tasks"
+              with:
+                cluster: "rest.cluster"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: run-task
+              description: "Run a new task."
+              call: "ecs.run-task"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: container-orchestration-mcp
+      transport: http
+      description: "MCP server for AI-assisted Amazon ECS container orchestration."
+      tools:
+        - name: list-clusters
+          description: "List all ECS clusters in the account."
+          hints:
+            readOnly: true
+          call: "ecs.list-clusters"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-clusters
+          description: "Describe one or more ECS clusters."
+          hints:
+            readOnly: true
+          call: "ecs.describe-clusters"
+          with:
+            clusters: "tools.clusters"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-cluster
+          description: "Create a new ECS cluster."
+          hints:
+            readOnly: false
+          call: "ecs.create-cluster"
+          with:
+            clusterName: "tools.clusterName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-cluster
+          description: "Delete an ECS cluster."
+          hints:
+            destructive: true
+          call: "ecs.delete-cluster"
+          with:
+            cluster: "tools.cluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-services
+          description: "List services in an ECS cluster."
+          hints:
+            readOnly: true
+          call: "ecs.list-services"
+          with:
+            cluster: "tools.cluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-services
+          description: "Describe one or more ECS services."
+          hints:
+            readOnly: true
+          call: "ecs.describe-services"
+          with:
+            cluster: "tools.cluster"
+            services: "tools.services"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-service
+          description: "Create a new ECS service."
+          hints:
+            readOnly: false
+          call: "ecs.create-service"
+          with:
+            cluster: "tools.cluster"
+            serviceName: "tools.serviceName"
+            taskDefinition: "tools.taskDefinition"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-service
+          description: "Update an ECS service configuration."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "ecs.update-service"
+          with:
+            cluster: "tools.cluster"
+            service: "tools.service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-service
+          description: "Delete an ECS service."
+          hints:
+            destructive: true
+          call: "ecs.delete-service"
+          with:
+            cluster: "tools.cluster"
+            service: "tools.service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-task-definitions
+          description: "List task definition families or revisions."
+          hints:
+            readOnly: true
+          call: "ecs.list-task-definitions"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-task-definition
+          description: "Describe a task definition."
+          hints:
+            readOnly: true
+          call: "ecs.describe-task-definition"
+          with:
+            taskDefinition: "tools.taskDefinition"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: register-task-definition
+          description: "Register a new task definition."
+          hints:
+            readOnly: false
+          call: "ecs.register-task-definition"
+          with:
+            family: "tools.family"
+            containerDefinitions: "tools.containerDefinitions"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: deregister-task-definition
+          description: "Deregister a task definition revision."
+          hints:
+            destructive: true
+          call: "ecs.deregister-task-definition"
+          with:
+            taskDefinition: "tools.taskDefinition"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-task
+          description: "Run a new task from a task definition."
+          hints:
+            readOnly: false
+          call: "ecs.run-task"
+          with:
+            cluster: "tools.cluster"
+            taskDefinition: "tools.taskDefinition"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: stop-task
+          description: "Stop a running task."
+          hints:
+            destructive: true
+          call: "ecs.stop-task"
+          with:
+            cluster: "tools.cluster"
+            task: "tools.task"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-tasks
+          description: "List tasks in a cluster."
+          hints:
+            readOnly: true
+          call: "ecs.list-tasks"
+          with:
+            cluster: "tools.cluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-tasks
+          description: "Describe one or more tasks."
+          hints:
+            readOnly: true
+          call: "ecs.describe-tasks"
+          with:
+            cluster: "tools.cluster"
+            tasks: "tools.tasks"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: execute-command
+          description: "Execute a command in a running container."
+          hints:
+            readOnly: false
+          call: "ecs.execute-command"
+          with:
+            cluster: "tools.cluster"
+            task: "tools.task"
+            command: "tools.command"
+          outputParameters:
+            - type: object
+              mapping: "$."

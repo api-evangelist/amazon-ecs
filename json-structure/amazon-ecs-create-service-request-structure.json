@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CreateServiceRequest",
+  "type": "object",
+  "properties": {
+    "serviceName": {
+      "type": "string"
+    },
+    "cluster": {
+      "type": "string"
+    },
+    "taskDefinition": {
+      "type": "string"
+    },
+    "desiredCount": {
+      "type": "integer"
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "capacityProviderStrategy": {
+      "type": "array"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "loadBalancers": {
+      "type": "array"
+    },
+    "schedulingStrategy": {
+      "type": "string"
+    },
+    "placementConstraints": {
+      "type": "array"
+    },
+    "placementStrategy": {
+      "type": "array"
+    },
+    "healthCheckGracePeriodSeconds": {
+      "type": "integer"
+    },
+    "enableECSManagedTags": {
+      "type": "boolean"
+    },
+    "enableExecuteCommand": {
+      "type": "boolean"
+    },
+    "propagateTags": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "serviceRegistries": {
+      "type": "array"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "clientToken": {
+      "type": "string"
+    }
+  }
+}

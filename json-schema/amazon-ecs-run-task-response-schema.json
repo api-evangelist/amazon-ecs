@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RunTaskResponse",
+  "type": "object",
+  "properties": {
+    "tasks": {
+      "type": "array"
+    },
+    "failures": {
+      "type": "array"
+    }
+  }
+}

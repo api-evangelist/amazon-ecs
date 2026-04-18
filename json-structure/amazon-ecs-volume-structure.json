@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Volume",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "host": {
+      "type": "object"
+    },
+    "dockerVolumeConfiguration": {
+      "type": "object"
+    },
+    "efsVolumeConfiguration": {
+      "type": "object"
+    },
+    "fsxWindowsFileServerVolumeConfiguration": {
+      "type": "object"
+    }
+  }
+}

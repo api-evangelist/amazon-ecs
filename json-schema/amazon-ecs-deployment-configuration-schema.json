@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeploymentConfiguration",
+  "type": "object",
+  "description": "Deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.",
+  "properties": {
+    "deploymentCircuitBreaker": {
+      "type": "object"
+    },
+    "maximumPercent": {
+      "type": "integer",
+      "description": "The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running during a deployment."
+    },
+    "minimumHealthyPercent": {
+      "type": "integer",
+      "description": "The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running during a deployment."
+    },
+    "alarms": {
+      "type": "object"
+    }
+  }
+}

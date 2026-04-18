@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Service",
+  "type": "object",
+  "description": "Details on a service within a cluster. A service runs and maintains a specified number of instances of a task definition.",
+  "properties": {
+    "serviceArn": {
+      "type": "string",
+      "description": "The ARN that identifies the service."
+    },
+    "serviceName": {
+      "type": "string",
+      "description": "The name of your service."
+    },
+    "clusterArn": {
+      "type": "string",
+      "description": "The ARN of the cluster that hosts the service."
+    },
+    "loadBalancers": {
+      "type": "array"
+    },
+    "serviceRegistries": {
+      "type": "array"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the service."
+    },
+    "desiredCount": {
+      "type": "integer",
+      "description": "The desired number of instantiations of the task definition to keep running on the service."
+    },
+    "runningCount": {
+      "type": "integer",
+      "description": "The number of tasks in the cluster that are in the RUNNING state."
+    },
+    "pendingCount": {
+      "type": "integer",
+      "description": "The number of tasks in the cluster that are in the PENDING state."
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "capacityProviderStrategy": {
+      "type": "array"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "platformFamily": {
+      "type": "string"
+    },
+    "taskDefinition": {
+      "type": "string",
+      "description": "The task definition ARN used by tasks in the service."
+    },
+    "deployments": {
+      "type": "array"
+    },
+    "roleArn": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array"
+    },
+    "createdAt": {
+      "type": "number",
+      "description": "The Unix timestamp for when the service was created."
+    },
+    "placementConstraints": {
+      "type": "array"
+    },
+    "placementStrategy": {
+      "type": "array"
+    },
+    "healthCheckGracePeriodSeconds": {
+      "type": "integer"
+    },
+    "schedulingStrategy": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "enableECSManagedTags": {
+      "type": "boolean"
+    },
+    "enableExecuteCommand": {
+      "type": "boolean"
+    },
+    "propagateTags": {
+      "type": "string"
+    }
+  }
+}

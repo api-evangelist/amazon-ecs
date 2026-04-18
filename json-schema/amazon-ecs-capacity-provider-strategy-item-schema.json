@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapacityProviderStrategyItem",
+  "type": "object",
+  "properties": {
+    "capacityProvider": {
+      "type": "string",
+      "description": "The short name of the capacity provider."
+    },
+    "weight": {
+      "type": "integer",
+      "description": "The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000)."
+    },
+    "base": {
+      "type": "integer",
+      "description": "The number of tasks, at a minimum, to run on the specified capacity provider (0-100000)."
+    }
+  }
+}

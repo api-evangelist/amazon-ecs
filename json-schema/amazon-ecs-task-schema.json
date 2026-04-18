@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task",
+  "type": "object",
+  "description": "Details on a task in a cluster.",
+  "properties": {
+    "taskArn": {
+      "type": "string",
+      "description": "The ARN of the task."
+    },
+    "clusterArn": {
+      "type": "string",
+      "description": "The ARN of the cluster that hosts the task."
+    },
+    "taskDefinitionArn": {
+      "type": "string",
+      "description": "The ARN of the task definition that creates the task."
+    },
+    "containerInstanceArn": {
+      "type": "string",
+      "description": "The ARN of the container instances that host the task."
+    },
+    "lastStatus": {
+      "type": "string",
+      "description": "The last known status for the task."
+    },
+    "desiredStatus": {
+      "type": "string",
+      "description": "The desired status of the task."
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "memory": {
+      "type": "string"
+    },
+    "containers": {
+      "type": "array"
+    },
+    "startedBy": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "stoppedReason": {
+      "type": "string"
+    },
+    "stopCode": {
+      "type": "string"
+    },
+    "connectivity": {
+      "type": "string"
+    },
+    "connectivityAt": {
+      "type": "number"
+    },
+    "pullStartedAt": {
+      "type": "number"
+    },
+    "pullStoppedAt": {
+      "type": "number"
+    },
+    "executionStoppedAt": {
+      "type": "number"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "startedAt": {
+      "type": "number"
+    },
+    "stoppingAt": {
+      "type": "number"
+    },
+    "stoppedAt": {
+      "type": "number"
+    },
+    "group": {
+      "type": "string"
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "platformFamily": {
+      "type": "string"
+    },
+    "capacityProviderName": {
+      "type": "string"
+    },
+    "availabilityZone": {
+      "type": "string"
+    },
+    "attachments": {
+      "type": "array"
+    },
+    "healthStatus": {
+      "type": "string"
+    },
+    "enableExecuteCommand": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "inferenceAccelerators": {
+      "type": "array"
+    },
+    "attributes": {
+      "type": "array"
+    }
+  }
+}

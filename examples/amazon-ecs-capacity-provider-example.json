@@ -1,0 +1,8 @@
+{
+  "capacityProviderArn": "example_value",
+  "name": "Example Title",
+  "status": "example_value",
+  "updateStatus": "example_value",
+  "updateStatusReason": "example_value",
+  "tags": []
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deployment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "taskDefinition": {
+      "type": "string"
+    },
+    "desiredCount": {
+      "type": "integer"
+    },
+    "pendingCount": {
+      "type": "integer"
+    },
+    "runningCount": {
+      "type": "integer"
+    },
+    "failedTasks": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "updatedAt": {
+      "type": "number"
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "platformFamily": {
+      "type": "string"
+    },
+    "rolloutState": {
+      "type": "string"
+    },
+    "rolloutStateReason": {
+      "type": "string"
+    },
+    "capacityProviderStrategy": {
+      "type": "array"
+    }
+  }
+}

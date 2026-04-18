@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RunTaskRequest",
+  "type": "object",
+  "properties": {
+    "taskDefinition": {
+      "type": "string"
+    },
+    "cluster": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "launchType": {
+      "type": "string"
+    },
+    "capacityProviderStrategy": {
+      "type": "array"
+    },
+    "platformVersion": {
+      "type": "string"
+    },
+    "placementConstraints": {
+      "type": "array"
+    },
+    "placementStrategy": {
+      "type": "array"
+    },
+    "group": {
+      "type": "string"
+    },
+    "startedBy": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "enableECSManagedTags": {
+      "type": "boolean"
+    },
+    "enableExecuteCommand": {
+      "type": "boolean"
+    },
+    "propagateTags": {
+      "type": "string"
+    },
+    "clientToken": {
+      "type": "string"
+    }
+  }
+}

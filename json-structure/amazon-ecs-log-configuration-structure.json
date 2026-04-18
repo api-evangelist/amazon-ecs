@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LogConfiguration",
+  "type": "object",
+  "properties": {
+    "logDriver": {
+      "type": "string"
+    },
+    "options": {
+      "type": "object"
+    },
+    "secretOptions": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LoadBalancer",
+  "type": "object",
+  "properties": {
+    "targetGroupArn": {
+      "type": "string",
+      "description": "The full ARN of the Elastic Load Balancing target group."
+    },
+    "loadBalancerName": {
+      "type": "string",
+      "description": "The name of the load balancer (Classic Load Balancer only)."
+    },
+    "containerName": {
+      "type": "string",
+      "description": "The name of the container to associate with the load balancer."
+    },
+    "containerPort": {
+      "type": "integer",
+      "description": "The port on the container to associate with the load balancer."
+    }
+  }
+}

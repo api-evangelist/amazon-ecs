@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NetworkConfiguration",
+  "type": "object",
+  "description": "The network configuration for a task or service.",
+  "properties": {
+    "awsvpcConfiguration": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlacementStrategy",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of placement strategy."
+    },
+    "field": {
+      "type": "string",
+      "description": "The field to apply the placement strategy against."
+    }
+  }
+}

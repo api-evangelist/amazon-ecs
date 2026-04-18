@@ -1,0 +1,6 @@
+{
+  "deploymentCircuitBreaker": "example_value",
+  "maximumPercent": 10,
+  "minimumHealthyPercent": 10,
+  "alarms": "example_value"
+}

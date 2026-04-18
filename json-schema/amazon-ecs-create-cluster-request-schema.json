@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateClusterRequest",
+  "type": "object",
+  "properties": {
+    "clusterName": {
+      "type": "string",
+      "description": "The name of the cluster to create (up to 255 characters). If not specified, the default cluster is created."
+    },
+    "capacityProviders": {
+      "type": "array",
+      "description": "The short names of capacity providers to associate with the cluster."
+    },
+    "defaultCapacityProviderStrategy": {
+      "type": "array",
+      "description": "The default capacity provider strategy for the cluster."
+    },
+    "settings": {
+      "type": "array",
+      "description": "The cluster settings (e.g., Container Insights)."
+    },
+    "tags": {
+      "type": "array",
+      "description": "Metadata tags to apply to the cluster (up to 50)."
+    }
+  }
+}

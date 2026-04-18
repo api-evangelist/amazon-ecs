@@ -1,0 +1,21 @@
+{
+  "serviceName": "example_value",
+  "cluster": "example_value",
+  "taskDefinition": "example_value",
+  "desiredCount": 10,
+  "launchType": "example_value",
+  "capacityProviderStrategy": [],
+  "platformVersion": "example_value",
+  "loadBalancers": [],
+  "schedulingStrategy": "example_value",
+  "placementConstraints": [],
+  "placementStrategy": [],
+  "healthCheckGracePeriodSeconds": 10,
+  "enableECSManagedTags": true,
+  "enableExecuteCommand": true,
+  "propagateTags": "example_value",
+  "role": "example_value",
+  "serviceRegistries": [],
+  "tags": [],
+  "clientToken": "example_value"
+}

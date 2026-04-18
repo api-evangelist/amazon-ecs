@@ -1,19 +1,16 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TaskDefinition",
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TaskDefinition",
   "type": "object",
-  "description": "The details of a task definition which describes the container and volume definitions of an Amazon ECS task.",
   "properties": {
     "taskDefinitionArn": {
-      "type": "string",
-      "description": "The full ARN of the task definition."
+      "type": "string"
     },
     "containerDefinitions": {
       "type": "array"
     },
     "family": {
-      "type": "string",
-      "description": "The family of your task definition."
+      "type": "string"
     },
     "taskRoleArn": {
       "type": "string"
@@ -25,8 +22,7 @@
       "type": "string"
     },
     "revision": {
-      "type": "integer",
-      "description": "The revision of the task in a particular family."
+      "type": "integer"
     },
     "volumes": {
       "type": "array"
@@ -62,12 +58,10 @@
       "type": "array"
     },
     "registeredAt": {
-      "type": "number",
-      "description": "Unix timestamp for when the task definition was registered."
+      "type": "number"
     },
     "deregisteredAt": {
-      "type": "number",
-      "description": "Unix timestamp for when the task definition was deregistered."
+      "type": "number"
     },
     "registeredBy": {
       "type": "string"

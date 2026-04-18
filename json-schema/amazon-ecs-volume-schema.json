@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Volume",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the volume (up to 255 characters)."
+    },
+    "host": {
+      "type": "object",
+      "description": "The contents of the host parameter determine whether your data volume persists on the host container instance."
+    },
+    "dockerVolumeConfiguration": {
+      "type": "object"
+    },
+    "efsVolumeConfiguration": {
+      "type": "object"
+    },
+    "fsxWindowsFileServerVolumeConfiguration": {
+      "type": "object"
+    }
+  }
+}

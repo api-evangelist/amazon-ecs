@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ClusterConfiguration",
+  "type": "object",
+  "properties": {
+    "executeCommandConfiguration": {
+      "type": "object"
+    },
+    "managedStorageConfiguration": {
+      "type": "object"
+    }
+  }
+}

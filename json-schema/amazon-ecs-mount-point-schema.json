@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MountPoint",
+  "type": "object",
+  "properties": {
+    "sourceVolume": {
+      "type": "string",
+      "description": "The name of the volume to mount."
+    },
+    "containerPath": {
+      "type": "string",
+      "description": "The path on the container to mount the volume at."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "description": "If this value is true, the container has read-only access to the volume."
+    }
+  }
+}
