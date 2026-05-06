@@ -4,155 +4,115 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Amazon ECS
 providerId: amazon-ecs
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Amazon
-  - Aws
+  - AWS
   - Containers
   - Docker
-  - Ecs
+  - ECS
   - Orchestration
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Amazon ECS itself has no separate API or control-plane charge. Customers pay for the underlying
+  AWS resources used by their tasks (Fargate vCPU and memory, EC2 instance hours, ECS Managed Instances,
+  EBS, ENIs). Pricing is pay-as-you-go per second with a one-minute minimum. No upfront commitments;
+  Savings Plans available for long-term discounts.
+sources:
+  - https://aws.amazon.com/ecs/pricing/
+  - https://aws.amazon.com/fargate/pricing/
 plans:
-  - id: amazon-ecs-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Amazon ECS API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: amazon-ecs-platform-pricing
+    name: Platform Pricing Overview
+    type: pay-as-you-go
+    description: ECS API and orchestration are free. Charges accrue on the launch type chosen for tasks
+      (Fargate, EC2, or ECS Managed Instances) and any resources they touch.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
+      - label: ECS API and orchestration
+        name: ecs_control_plane
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: usage
         geo: global
-        domains:
-          - https://ecs.amazonaws.com
         unit: 1
         price: '0.00'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://ecs.amazonaws.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Amazon ECS API
-      - name: Amazon ECS Service Connect API
-      - name: Amazon ECS Anywhere API
-      - name: AWS Copilot CLI
-  - id: amazon-ecs-pro
-    name: Professional
-    type: paid
-    description: Production tier for Amazon ECS. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://ecs.amazonaws.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://ecs.amazonaws.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Fargate launch type (vCPU + memory)
+        name: fargate_resources
         type: metered
-        metric: requests
+        metric: varies
         limit: -1
-        timeFrame: month
+        timeFrame: usage
         geo: global
-        domains:
-          - https://ecs.amazonaws.com
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: see vendor pricing calculator
         userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Amazon ECS API
-      - name: Amazon ECS Service Connect API
-      - name: Amazon ECS Anywhere API
-      - name: AWS Copilot CLI
-  - id: amazon-ecs-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Amazon ECS. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: EC2 launch type (instance + storage + network)
+        name: ec2_resources
+        type: metered
+        metric: varies
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://ecs.amazonaws.com
+        timeFrame: usage
+        geo: global
         unit: 1
-        price: custom
+        price: see EC2 pricing
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://ecs.amazonaws.com
+      - label: ECS Managed Instances management fee
+        name: managed_instances_fee
+        type: metered
+        metric: instance-hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: see vendor pricing calculator
+        userMultiplied: false
+    elements:
+      - name: Per-second billing with one-minute minimum
+      - name: No upfront commitment
+      - name: Fargate, EC2, and ECS Managed Instance launch types
+      - name: ECS Anywhere (hybrid / on-premises)
+      - name: Service Connect, Service Discovery, App Mesh integration
+  - id: amazon-ecs-savings-plans
+    name: Compute Savings Plans
+    type: subscription
+    description: 1- or 3-year commitment for Fargate or EC2 spend in exchange for discounted hourly rates.
+    entries:
+      - label: Compute Savings Plan commitment
+        name: savings_plan
+        type: subscription
+        metric: USD_per_hour_committed
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: see vendor pricing calculator
+        userMultiplied: false
+    elements:
+      - name: Up to ~50% discount vs. on-demand
+      - name: Applies across Fargate, EC2, Lambda
+      - name: 1-year or 3-year commitment
+  - id: amazon-ecs-enterprise
+    name: Enterprise Discount Program
+    type: enterprise
+    description: Negotiated AWS Enterprise Discount Programs (EDP) and Private Pricing Agreements for committed
+      annual AWS spend.
+    entries:
+      - label: Negotiated rate
+        name: edp
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
         unit: 1
         price: custom
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Amazon ECS API
-      - name: Amazon ECS Service Connect API
-      - name: Amazon ECS Anywhere API
-      - name: AWS Copilot CLI
+      - name: Volume-based discounts
+      - name: Custom contract terms
+      - name: Enterprise Support included
+      - name: Dedicated Technical Account Manager
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
