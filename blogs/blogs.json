@@ -4,16 +4,16 @@
     {
       "source": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/",
       "feed_url": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
-      "saved": 10,
-      "title": "Amazon Elastic Container Service \u2013 AWS News Blog"
+      "title": "Amazon Elastic Container Service \u2013 AWS News Blog",
+      "saved": 0
     },
     {
       "source": "https://aws.amazon.com/blogs/aws/new-amazon-ecs-service-connect-enabling-easy-communication-between-microservices/",
-      "feed_url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
-      "saved": 10,
-      "title": "Recent Announcements"
+      "feed_url": "https://aws.amazon.com/rss/",
+      "title": "Recent Announcements",
+      "saved": 50
     }
   ],
-  "post_count": 20,
-  "fetched": "2026-05-03T23:21:24Z"
+  "post_count": 70,
+  "fetched": "2026-05-09T20:17:51Z"
 }
