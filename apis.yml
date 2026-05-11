@@ -242,6 +242,18 @@ common:
         description: Monitor container metrics, logs, and alarms with CloudWatch and Container Insights.
       - name: AWS IAM
         description: Fine-grained access control for ECS tasks and services using IAM roles and policies.
+  - type: Integrations
+    url: https://aws.amazon.com/marketplace
+integrations:
+  - name: Sign in
+  - name: Agent Mode
+  - name: 'Why AWS Marketplace?'
+  - name: Get started in AWS Marketplace
+  - name: Industry
+  - name: Resources
+  - name: Become a Channel Partner
+  - name: Sell in AWS Marketplace
+  - name: Manage Your Account
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
