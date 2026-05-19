@@ -1,0 +1,377 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon ECS Amazon Elastic Container Service (ECS) API — Task Definitions
+  description: 'Amazon ECS Amazon Elastic Container Service (ECS) API — Task Definitions. 8 operations. Lead operation: Amazon
+    Ecs Deregister a Task Definition. Self-contained Naftiko capability covering one Amazon Ecs business surface.'
+  tags:
+  - Amazon Ecs
+  - Task Definitions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_ECS_API_KEY: AMAZON_ECS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ecs-task-definitions
+    baseUri: https://ecs.{region}.amazonaws.com
+    description: Amazon ECS Amazon Elastic Container Service (ECS) API — Task Definitions business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition
+      operations:
+      - name: deregistertaskdefinition
+        method: POST
+        description: Amazon Ecs Deregister a Task Definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition
+      operations:
+      - name: describetaskdefinition
+        method: POST
+        description: Amazon Ecs Describe a Task Definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource
+      operations:
+      - name: listtagsforresource
+        method: POST
+        description: Amazon Ecs List Tags for an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies
+      operations:
+      - name: listtaskdefinitionfamilies
+        method: POST
+        description: Amazon Ecs List Task Definition Families
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions
+      operations:
+      - name: listtaskdefinitions
+        method: POST
+        description: Amazon Ecs List Task Definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition
+      operations:
+      - name: registertaskdefinition
+        method: POST
+        description: Amazon Ecs Register a New Task Definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource
+      operations:
+      - name: tagresource
+        method: POST
+        description: Amazon Ecs Tag an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource
+      operations:
+      - name: untagresource
+        method: POST
+        description: Amazon Ecs Remove Tags From an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_ECS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-ecs-task-definitions-rest
+    port: 8080
+    description: REST adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Task Definitions. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-deregistertaskdefinition
+      name: x-amz-target-amazonec2containerservicev20141113-deregistertaskdefinition
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition.'
+      operations:
+      - method: POST
+        name: deregistertaskdefinition
+        description: Amazon Ecs Deregister a Task Definition
+        call: amazon-ecs-task-definitions.deregistertaskdefinition
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-describetaskdefinition
+      name: x-amz-target-amazonec2containerservicev20141113-describetaskdefinition
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition.'
+      operations:
+      - method: POST
+        name: describetaskdefinition
+        description: Amazon Ecs Describe a Task Definition
+        call: amazon-ecs-task-definitions.describetaskdefinition
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listtagsforresource
+      name: x-amz-target-amazonec2containerservicev20141113-listtagsforresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource.'
+      operations:
+      - method: POST
+        name: listtagsforresource
+        description: Amazon Ecs List Tags for an Ecs Resource
+        call: amazon-ecs-task-definitions.listtagsforresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listtaskdefinitionfamilies
+      name: x-amz-target-amazonec2containerservicev20141113-listtaskdefinitionfamilies
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies.'
+      operations:
+      - method: POST
+        name: listtaskdefinitionfamilies
+        description: Amazon Ecs List Task Definition Families
+        call: amazon-ecs-task-definitions.listtaskdefinitionfamilies
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listtaskdefinitions
+      name: x-amz-target-amazonec2containerservicev20141113-listtaskdefinitions
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions.'
+      operations:
+      - method: POST
+        name: listtaskdefinitions
+        description: Amazon Ecs List Task Definitions
+        call: amazon-ecs-task-definitions.listtaskdefinitions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-registertaskdefinition
+      name: x-amz-target-amazonec2containerservicev20141113-registertaskdefinition
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition.'
+      operations:
+      - method: POST
+        name: registertaskdefinition
+        description: Amazon Ecs Register a New Task Definition
+        call: amazon-ecs-task-definitions.registertaskdefinition
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-tagresource
+      name: x-amz-target-amazonec2containerservicev20141113-tagresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource.'
+      operations:
+      - method: POST
+        name: tagresource
+        description: Amazon Ecs Tag an Ecs Resource
+        call: amazon-ecs-task-definitions.tagresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-untagresource
+      name: x-amz-target-amazonec2containerservicev20141113-untagresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource.'
+      operations:
+      - method: POST
+        name: untagresource
+        description: Amazon Ecs Remove Tags From an Ecs Resource
+        call: amazon-ecs-task-definitions.untagresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ecs-task-definitions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Task Definitions. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: amazon-ecs-deregister-task-definition
+      description: Amazon Ecs Deregister a Task Definition
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.deregistertaskdefinition
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-describe-task-definition
+      description: Amazon Ecs Describe a Task Definition
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.describetaskdefinition
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-tags-ecs
+      description: Amazon Ecs List Tags for an Ecs Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.listtagsforresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-task-definition
+      description: Amazon Ecs List Task Definition Families
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.listtaskdefinitionfamilies
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-task-definitions
+      description: Amazon Ecs List Task Definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.listtaskdefinitions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-register-new-task
+      description: Amazon Ecs Register a New Task Definition
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.registertaskdefinition
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-tag-ecs-resource
+      description: Amazon Ecs Tag an Ecs Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.tagresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-remove-tags-ecs
+      description: Amazon Ecs Remove Tags From an Ecs Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-task-definitions.untagresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,419 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon ECS Amazon Elastic Container Service (ECS) API — Tasks
+  description: 'Amazon ECS Amazon Elastic Container Service (ECS) API — Tasks. 9 operations. Lead operation: Amazon Ecs Describe
+    One or More Tasks. Self-contained Naftiko capability covering one Amazon Ecs business surface.'
+  tags:
+  - Amazon Ecs
+  - Tasks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_ECS_API_KEY: AMAZON_ECS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ecs-tasks
+    baseUri: https://ecs.{region}.amazonaws.com
+    description: Amazon ECS Amazon Elastic Container Service (ECS) API — Tasks business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks
+      operations:
+      - name: describetasks
+        method: POST
+        description: Amazon Ecs Describe One or More Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand
+      operations:
+      - name: executecommand
+        method: POST
+        description: Amazon Ecs Execute a Command in a Running Container
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource
+      operations:
+      - name: listtagsforresource
+        method: POST
+        description: Amazon Ecs List Tags for an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks
+      operations:
+      - name: listtasks
+        method: POST
+        description: Amazon Ecs List Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask
+      operations:
+      - name: runtask
+        method: POST
+        description: Amazon Ecs Run a New Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask
+      operations:
+      - name: starttask
+        method: POST
+        description: Amazon Ecs Start a Task on a Specific Container Instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask
+      operations:
+      - name: stoptask
+        method: POST
+        description: Amazon Ecs Stop a Running Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource
+      operations:
+      - name: tagresource
+        method: POST
+        description: Amazon Ecs Tag an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource
+      operations:
+      - name: untagresource
+        method: POST
+        description: Amazon Ecs Remove Tags From an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_ECS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-ecs-tasks-rest
+    port: 8080
+    description: REST adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Tasks. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-describetasks
+      name: x-amz-target-amazonec2containerservicev20141113-describetasks
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks.'
+      operations:
+      - method: POST
+        name: describetasks
+        description: Amazon Ecs Describe One or More Tasks
+        call: amazon-ecs-tasks.describetasks
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-executecommand
+      name: x-amz-target-amazonec2containerservicev20141113-executecommand
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand.'
+      operations:
+      - method: POST
+        name: executecommand
+        description: Amazon Ecs Execute a Command in a Running Container
+        call: amazon-ecs-tasks.executecommand
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listtagsforresource
+      name: x-amz-target-amazonec2containerservicev20141113-listtagsforresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource.'
+      operations:
+      - method: POST
+        name: listtagsforresource
+        description: Amazon Ecs List Tags for an Ecs Resource
+        call: amazon-ecs-tasks.listtagsforresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listtasks
+      name: x-amz-target-amazonec2containerservicev20141113-listtasks
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks.'
+      operations:
+      - method: POST
+        name: listtasks
+        description: Amazon Ecs List Tasks
+        call: amazon-ecs-tasks.listtasks
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-runtask
+      name: x-amz-target-amazonec2containerservicev20141113-runtask
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask.'
+      operations:
+      - method: POST
+        name: runtask
+        description: Amazon Ecs Run a New Task
+        call: amazon-ecs-tasks.runtask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-starttask
+      name: x-amz-target-amazonec2containerservicev20141113-starttask
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask.'
+      operations:
+      - method: POST
+        name: starttask
+        description: Amazon Ecs Start a Task on a Specific Container Instance
+        call: amazon-ecs-tasks.starttask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-stoptask
+      name: x-amz-target-amazonec2containerservicev20141113-stoptask
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask.'
+      operations:
+      - method: POST
+        name: stoptask
+        description: Amazon Ecs Stop a Running Task
+        call: amazon-ecs-tasks.stoptask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-tagresource
+      name: x-amz-target-amazonec2containerservicev20141113-tagresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource.'
+      operations:
+      - method: POST
+        name: tagresource
+        description: Amazon Ecs Tag an Ecs Resource
+        call: amazon-ecs-tasks.tagresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-untagresource
+      name: x-amz-target-amazonec2containerservicev20141113-untagresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource.'
+      operations:
+      - method: POST
+        name: untagresource
+        description: Amazon Ecs Remove Tags From an Ecs Resource
+        call: amazon-ecs-tasks.untagresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ecs-tasks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Tasks. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: amazon-ecs-describe-one-more
+      description: Amazon Ecs Describe One or More Tasks
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.describetasks
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-execute-command-running
+      description: Amazon Ecs Execute a Command in a Running Container
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.executecommand
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-tags-ecs
+      description: Amazon Ecs List Tags for an Ecs Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.listtagsforresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-tasks
+      description: Amazon Ecs List Tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.listtasks
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-run-new-task
+      description: Amazon Ecs Run a New Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.runtask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-start-task-specific
+      description: Amazon Ecs Start a Task on a Specific Container Instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.starttask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-stop-running-task
+      description: Amazon Ecs Stop a Running Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.stoptask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-tag-ecs-resource
+      description: Amazon Ecs Tag an Ecs Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.tagresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-remove-tags-ecs
+      description: Amazon Ecs Remove Tags From an Ecs Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-tasks.untagresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

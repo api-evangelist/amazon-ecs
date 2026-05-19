@@ -1,0 +1,125 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon ECS Amazon Elastic Container Service (ECS) API — Capacity Providers
+  description: 'Amazon ECS Amazon Elastic Container Service (ECS) API — Capacity Providers. 2 operations. Lead operation:
+    Amazon Ecs Create a Capacity Provider. Self-contained Naftiko capability covering one Amazon Ecs business surface.'
+  tags:
+  - Amazon Ecs
+  - Capacity Providers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_ECS_API_KEY: AMAZON_ECS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ecs-capacity-providers
+    baseUri: https://ecs.{region}.amazonaws.com
+    description: Amazon ECS Amazon Elastic Container Service (ECS) API — Capacity Providers business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider
+      operations:
+      - name: createcapacityprovider
+        method: POST
+        description: Amazon Ecs Create a Capacity Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders
+      operations:
+      - name: describecapacityproviders
+        method: POST
+        description: Amazon Ecs Describe Capacity Providers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_ECS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-ecs-capacity-providers-rest
+    port: 8080
+    description: REST adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Capacity Providers. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-createcapacityprovider
+      name: x-amz-target-amazonec2containerservicev20141113-createcapacityprovider
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider.'
+      operations:
+      - method: POST
+        name: createcapacityprovider
+        description: Amazon Ecs Create a Capacity Provider
+        call: amazon-ecs-capacity-providers.createcapacityprovider
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-describecapacityproviders
+      name: x-amz-target-amazonec2containerservicev20141113-describecapacityproviders
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders.'
+      operations:
+      - method: POST
+        name: describecapacityproviders
+        description: Amazon Ecs Describe Capacity Providers
+        call: amazon-ecs-capacity-providers.describecapacityproviders
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ecs-capacity-providers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Capacity Providers. One tool per
+      consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: amazon-ecs-create-capacity-provider
+      description: Amazon Ecs Create a Capacity Provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-capacity-providers.createcapacityprovider
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-describe-capacity-providers
+      description: Amazon Ecs Describe Capacity Providers
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-capacity-providers.describecapacityproviders
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

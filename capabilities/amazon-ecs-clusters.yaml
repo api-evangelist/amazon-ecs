@@ -1,0 +1,377 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon ECS Amazon Elastic Container Service (ECS) API — Clusters
+  description: 'Amazon ECS Amazon Elastic Container Service (ECS) API — Clusters. 8 operations. Lead operation: Amazon Ecs
+    Create a New Ecs Cluster. Self-contained Naftiko capability covering one Amazon Ecs business surface.'
+  tags:
+  - Amazon Ecs
+  - Clusters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_ECS_API_KEY: AMAZON_ECS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ecs-clusters
+    baseUri: https://ecs.{region}.amazonaws.com
+    description: Amazon ECS Amazon Elastic Container Service (ECS) API — Clusters business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster
+      operations:
+      - name: createcluster
+        method: POST
+        description: Amazon Ecs Create a New Ecs Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster
+      operations:
+      - name: deletecluster
+        method: POST
+        description: Amazon Ecs Delete an Ecs Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters
+      operations:
+      - name: describeclusters
+        method: POST
+        description: Amazon Ecs Describe One or More Ecs Clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters
+      operations:
+      - name: listclusters
+        method: POST
+        description: Amazon Ecs List Ecs Clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource
+      operations:
+      - name: listtagsforresource
+        method: POST
+        description: Amazon Ecs List Tags for an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource
+      operations:
+      - name: tagresource
+        method: POST
+        description: Amazon Ecs Tag an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource
+      operations:
+      - name: untagresource
+        method: POST
+        description: Amazon Ecs Remove Tags From an Ecs Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster'
+      path: /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster
+      operations:
+      - name: updatecluster
+        method: POST
+        description: Amazon Ecs Update an Ecs Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_ECS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-ecs-clusters-rest
+    port: 8080
+    description: REST adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Clusters. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-createcluster
+      name: x-amz-target-amazonec2containerservicev20141113-createcluster
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster.'
+      operations:
+      - method: POST
+        name: createcluster
+        description: Amazon Ecs Create a New Ecs Cluster
+        call: amazon-ecs-clusters.createcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-deletecluster
+      name: x-amz-target-amazonec2containerservicev20141113-deletecluster
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster.'
+      operations:
+      - method: POST
+        name: deletecluster
+        description: Amazon Ecs Delete an Ecs Cluster
+        call: amazon-ecs-clusters.deletecluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-describeclusters
+      name: x-amz-target-amazonec2containerservicev20141113-describeclusters
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters.'
+      operations:
+      - method: POST
+        name: describeclusters
+        description: Amazon Ecs Describe One or More Ecs Clusters
+        call: amazon-ecs-clusters.describeclusters
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listclusters
+      name: x-amz-target-amazonec2containerservicev20141113-listclusters
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters.'
+      operations:
+      - method: POST
+        name: listclusters
+        description: Amazon Ecs List Ecs Clusters
+        call: amazon-ecs-clusters.listclusters
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-listtagsforresource
+      name: x-amz-target-amazonec2containerservicev20141113-listtagsforresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource.'
+      operations:
+      - method: POST
+        name: listtagsforresource
+        description: Amazon Ecs List Tags for an Ecs Resource
+        call: amazon-ecs-clusters.listtagsforresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-tagresource
+      name: x-amz-target-amazonec2containerservicev20141113-tagresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource.'
+      operations:
+      - method: POST
+        name: tagresource
+        description: Amazon Ecs Tag an Ecs Resource
+        call: amazon-ecs-clusters.tagresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-untagresource
+      name: x-amz-target-amazonec2containerservicev20141113-untagresource
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource.'
+      operations:
+      - method: POST
+        name: untagresource
+        description: Amazon Ecs Remove Tags From an Ecs Resource
+        call: amazon-ecs-clusters.untagresource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-amazonec2containerservicev20141113-updatecluster
+      name: x-amz-target-amazonec2containerservicev20141113-updatecluster
+      description: 'REST surface for #X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster.'
+      operations:
+      - method: POST
+        name: updatecluster
+        description: Amazon Ecs Update an Ecs Cluster
+        call: amazon-ecs-clusters.updatecluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ecs-clusters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon ECS Amazon Elastic Container Service (ECS) API — Clusters. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: amazon-ecs-create-new-ecs
+      description: Amazon Ecs Create a New Ecs Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.createcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-delete-ecs-cluster
+      description: Amazon Ecs Delete an Ecs Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.deletecluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-describe-one-more
+      description: Amazon Ecs Describe One or More Ecs Clusters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.describeclusters
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-ecs-clusters
+      description: Amazon Ecs List Ecs Clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.listclusters
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-list-tags-ecs
+      description: Amazon Ecs List Tags for an Ecs Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.listtagsforresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-tag-ecs-resource
+      description: Amazon Ecs Tag an Ecs Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.tagresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-remove-tags-ecs
+      description: Amazon Ecs Remove Tags From an Ecs Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.untagresource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-ecs-update-ecs-cluster
+      description: Amazon Ecs Update an Ecs Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecs-clusters.updatecluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
