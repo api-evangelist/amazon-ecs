@@ -2,18 +2,41 @@
   "repo": "amazon-ecs",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/",
+      "source": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
       "feed_url": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
-      "title": "Amazon Elastic Container Service \u2013 AWS News Blog",
-      "saved": 20
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     },
     {
-      "source": "https://aws.amazon.com/blogs/aws/new-amazon-ecs-service-connect-enabling-easy-communication-between-microservices/",
+      "source": "https://aws.amazon.com/rss/",
       "feed_url": "https://aws.amazon.com/rss/",
-      "title": "Recent Announcements",
-      "saved": 49
+      "title": "",
+      "saved": 4,
+      "method": "feed"
+    },
+    {
+      "source": "https://aws.amazon.com/ecs/resources/",
+      "feed_url": "https://aws.amazon.com/ecs/resources/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html",
+      "feed_url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://aws.amazon.com/ecs/partners/",
+      "feed_url": "https://aws.amazon.com/ecs/partners/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 139,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 189,
+  "fetched": "2026-06-01T23:35:02Z"
 }
