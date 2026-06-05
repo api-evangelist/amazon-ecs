@@ -1,167 +1,187 @@
 # Amazon ECS (amazon-ecs)
+
 Amazon Elastic Container Service (ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications.
 
-**URL:** [Visit APIs.json URL](https://aws.amazon.com/ecs/)
+**APIs.json:** [https://aws.amazon.com/ecs/](https://aws.amazon.com/ecs/)
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Tags
 
-## Tags:
-
- - Amazon, Aws, Containers, Docker, Ecs, Orchestration
+- Amazon
+- Aws
+- Containers
+- Docker
+- Ecs
+- Orchestration
 
 ## Timestamps
 
-- **Created:** 2024 
-- **Modified:** 2026-04-18 
+- **Created:** 2024
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Amazon ECS API
+
 The Amazon ECS API provides programmatic access to manage containerized applications using Docker containers.
 
-**Human URL:** [https://aws.amazon.com/ecs/](https://aws.amazon.com/ecs/)
+- **Human URL:** [https://aws.amazon.com/ecs/](https://aws.amazon.com/ecs/)
+- **Base URL:** `https://ecs.amazonaws.com`
 
-#### Tags:
+#### Tags
 
- - Cloud, Containers, Docker, Microservices, Orchestration
+- Cloud
+- Containers
+- Docker
+- Microservices
+- Orchestration
 
 #### Properties
 
 - [Documentation](https://docs.aws.amazon.com/ecs/)
-- [OpenAPI](openapi/amazon-ecs-openapi.yml)
-- [APIReference](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html)
-- [GettingStarted](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started.html)
+- [OpenAPI](openapi/amazon-ecs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/amazon-ecs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/amazon-ecs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/ecs/2014-11-13/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [JSON Schema](json-schema/amazon-ecs-task-definition-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/amazon-ecs-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [API Reference](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html)
+- [Getting Started](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started.html)
 - [Pricing](https://aws.amazon.com/ecs/pricing/)
-- [CLI](https://docs.aws.amazon.com/cli/latest/reference/ecs/)
+- [SDK](https://aws.amazon.com/tools/)
+- [C L I](https://docs.aws.amazon.com/cli/latest/reference/ecs/)
+- [F A Q](https://aws.amazon.com/ecs/faqs/)
+- [Best Practices](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/intro.html)
+- [Status Page](https://status.aws.amazon.com/)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Operations.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
+- [Features](https://aws.amazon.com/ecs/features/)
+- [Security](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security.html)
+- [Troubleshooting](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-logging-monitoring.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+- [Changelog](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html)
+- [Partners](https://aws.amazon.com/ecs/partners/)
+- [Resources](https://aws.amazon.com/ecs/resources/)
+- [Blog](https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/)
+- [Knowledge Center](https://repost.aws/knowledge-center/ecs-troubleshoot-failed-deployments)
+- [Compliance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-compliance.html)
+- [Documentation](https://docs.aws.amazon.com/general/latest/gr/ecs-service.html)
 
 ### Amazon ECS Service Connect API
+
 Amazon ECS Service Connect provides management of service-to-service communication as Amazon ECS configuration, building both service discovery and a service mesh for connecting services within and across clusters and VPCs.
 
-**Human URL:** [https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+- **Human URL:** [https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+- **Base URL:** `https://ecs.amazonaws.com`
 
-#### Tags:
+#### Tags
 
- - Containers, Microservices, Networking, Service-Discovery, Service-Mesh
+- Containers
+- Microservices
+- Networking
+- Service-Discovery
+- Service-Mesh
 
 #### Properties
 
 - [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
-- [APIReference](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectConfiguration.html)
-- [GitHubRepository](https://github.com/aws/amazon-ecs-service-connect-agent)
+- [API Reference](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectConfiguration.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-concepts.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-concepts-deploy.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html)
+- [Blog](https://aws.amazon.com/blogs/aws/new-amazon-ecs-service-connect-enabling-easy-communication-between-microservices/)
+- [GitHub Repository](https://github.com/aws/amazon-ecs-service-connect-agent)
+- [Postman Collection](collections/amazon-ecs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/amazon-ecs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Amazon ECS Anywhere API
+
 Amazon ECS Anywhere extends Amazon ECS to support registering external instances such as on-premises servers or virtual machines to your Amazon ECS cluster, allowing you to run and manage containerized workloads on your own infrastructure.
 
-**Human URL:** [https://aws.amazon.com/ecs/anywhere/](https://aws.amazon.com/ecs/anywhere/)
+- **Human URL:** [https://aws.amazon.com/ecs/anywhere/](https://aws.amazon.com/ecs/anywhere/)
+- **Base URL:** `https://ecs.amazonaws.com`
 
-#### Tags:
+#### Tags
 
- - Containers, Edge, Hybrid-Cloud, On-Premises, Orchestration
+- Containers
+- Edge
+- Hybrid-Cloud
+- On-Premises
+- Orchestration
 
 #### Properties
 
 - [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-anywhere.html)
-- [GettingStarted](https://aws.amazon.com/ecs/anywhere/getting-started/)
+- [Getting Started](https://aws.amazon.com/ecs/anywhere/getting-started/)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch-type-external.html)
+- [Troubleshooting](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-anywhere-troubleshooting.html)
+- [F A Q](https://aws.amazon.com/ecs/anywhere/faqs/)
 - [Tutorials](https://github.com/aws-containers/ecs-anywhere-tutorial)
+- [Postman Collection](collections/amazon-ecs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/amazon-ecs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### AWS Copilot CLI
+
 AWS Copilot is an open source command line interface that simplifies building, releasing, and operating production-ready containerized applications on Amazon ECS and AWS Fargate, providing common cloud architectures and workflows.
 
-**Human URL:** [https://aws.amazon.com/containers/copilot/](https://aws.amazon.com/containers/copilot/)
+- **Human URL:** [https://aws.amazon.com/containers/copilot/](https://aws.amazon.com/containers/copilot/)
+- **Base URL:** `https://ecs.amazonaws.com`
 
-#### Tags:
+#### Tags
 
- - Cli, Containers, Deployment, Devops, Fargate
+- Cli
+- Containers
+- Deployment
+- Devops
+- Fargate
 
 #### Properties
 
 - [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Copilot.html)
-- [GitHubRepository](https://github.com/aws/copilot-cli)
-- [GettingStarted](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started-aws-copilot-cli.html)
+- [Documentation](https://aws.github.io/copilot-cli/)
+- [GitHub Repository](https://github.com/aws/copilot-cli)
+- [Getting Started](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started-aws-copilot-cli.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/copilot-install.html)
+- [Documentation](https://aws.github.io/copilot-cli/docs/overview/)
+- [Postman Collection](collections/amazon-ecs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/amazon-ecs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
 - [Documentation](https://docs.aws.amazon.com/ecs/)
 - [Pricing](https://aws.amazon.com/ecs/pricing/)
-- [FAQ](https://aws.amazon.com/ecs/faqs/)
+- [F A Q](https://aws.amazon.com/ecs/faqs/)
 - [Features](https://aws.amazon.com/ecs/features/)
-- [GettingStarted](https://aws.amazon.com/ecs/getting-started/)
+- [Getting Started](https://aws.amazon.com/ecs/getting-started/)
 - [Resources](https://aws.amazon.com/ecs/resources/)
 - [Partners](https://aws.amazon.com/ecs/partners/)
 - [Blog](https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/)
-- [StatusPage](https://status.aws.amazon.com/)
+- [Status Page](https://status.aws.amazon.com/)
 - [SDK](https://aws.amazon.com/tools/)
-- [CLI](https://docs.aws.amazon.com/cli/latest/reference/ecs/)
+- [C L I](https://docs.aws.amazon.com/cli/latest/reference/ecs/)
 - [Security](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security.html)
 - [Compliance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-compliance.html)
-- [BestPractices](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/intro.html)
+- [Best Practices](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/intro.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-logging-monitoring.html)
 - [Troubleshooting](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html)
 - [Console](https://console.aws.amazon.com/ecs/home)
-- [KnowledgeCenter](https://repost.aws/tags/TAd-wgX2x3QgSxyelEN6raFg/amazon-elastic-container-service)
-- [ChangeLog](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html)
-- [GitHubOrganization](https://github.com/aws)
-
-## Features
-
-| Name | Description |
-|------|-------------|
-| Fully Managed Container Orchestration | Run and manage Docker containers at scale without managing the underlying infrastructure or control plane. |
-| AWS Fargate Integration | Run containers serverlessly without provisioning or managing EC2 instances using AWS Fargate launch type. |
-| Service Auto Scaling | Automatically scale container workloads based on CloudWatch metrics, target tracking, or step scaling policies. |
-| Service Connect | Built-in service discovery and service mesh for connecting containerized services within and across clusters. |
-| ECS Anywhere | Extend ECS to on-premises and edge infrastructure to run containers on your own servers and virtual machines. |
-| Capacity Providers | Manage compute capacity with capacity provider strategies for optimal resource allocation across EC2 and Fargate. |
-| Task Definitions | Define containerized applications as task definitions with CPU, memory, networking, and IAM role configurations. |
-| Container Insights | Monitor container performance metrics and logs with CloudWatch Container Insights for operational visibility. |
-
-## Use Cases
-
-| Name | Description |
-|------|-------------|
-| Microservices Architecture | Deploy and manage microservices with independent scaling, deployment, and lifecycle management per service. |
-| Batch Processing | Run batch computing workloads using ECS tasks with automatic scaling and job scheduling. |
-| CI/CD Pipeline Deployment | Integrate with AWS CodePipeline and CodeDeploy for automated blue/green and rolling deployments of containerized applications. |
-| Hybrid Cloud Workloads | Run containerized workloads across AWS cloud and on-premises environments using ECS Anywhere. |
-| Machine Learning Inference | Deploy ML models as containerized inference endpoints with auto-scaling based on demand. |
-
-## Integrations
-
-| Name | Description |
-|------|-------------|
-| AWS Fargate | Serverless compute engine for running containers without managing underlying EC2 instances. |
-| Amazon ECR | Private container registry for storing, managing, and deploying Docker container images. |
-| AWS CloudFormation | Infrastructure as code for provisioning and managing ECS clusters, services, and task definitions. |
-| Elastic Load Balancing | Distribute traffic across containers with Application Load Balancer and Network Load Balancer integration. |
-| Amazon CloudWatch | Monitor container metrics, logs, and alarms with CloudWatch and Container Insights. |
-| AWS IAM | Fine-grained access control for ECS tasks and services using IAM roles and policies. |
-
-## Artifacts
-
-Machine-readable API specifications organized by format.
-
-### OpenAPI
-
-- [Amazon ECS API](openapi/amazon-ecs-openapi.yml)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Amazon ECS API](capabilities/shared/ecs.yaml) -- 28 operations for container orchestration
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Container Orchestration](capabilities/container-orchestration.yaml) | ECS | 18 | DevOps Engineer |
+- [Knowledge Center](https://repost.aws/tags/TAd-wgX2x3QgSxyelEN6raFg/amazon-elastic-container-service)
+- [Changelog](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html)
+- [Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-versions-changelog.html)
+- [GitHub Repository](https://github.com/aws/amazon-ecs-agent/releases)
+- [GitHub Organization](https://github.com/aws)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
+- [Integrations](https://aws.amazon.com/marketplace)
 
 ## Maintainers
 
-**FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
-**FN:** Amazon Web Services
-
+**URL:** https://apievangelist.com
 **Email:** support@aws.amazon.com
+**URL:** https://aws.amazon.com
