@@ -35,7 +35,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started.html
       - type: Pricing
         url: https://aws.amazon.com/ecs/pricing/
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
       - type: CLI
         url: https://docs.aws.amazon.com/cli/latest/reference/ecs/
@@ -179,7 +179,7 @@ common:
     url: https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/
   - type: StatusPage
     url: https://status.aws.amazon.com/
-  - type: SDK
+  - type: SDKs
     url: https://aws.amazon.com/tools/
   - type: CLI
     url: https://docs.aws.amazon.com/cli/latest/reference/ecs/
