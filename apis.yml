@@ -161,6 +161,14 @@ apis:
       - type: Documentation
         url: https://aws.github.io/copilot-cli/docs/overview/
 common:
+  - type: TrustCenter
+    url: security/amazon-ecs-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-ecs-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-ecs-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-ecs-authentication.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/ecs/
   - type: Pricing
