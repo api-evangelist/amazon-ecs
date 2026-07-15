@@ -161,6 +161,8 @@ apis:
       - type: Documentation
         url: https://aws.github.io/copilot-cli/docs/overview/
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-ecs-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-ecs-trust-center.yml
   - type: VulnerabilityDisclosure
