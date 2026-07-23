@@ -1,0 +1,587 @@
+openapi: 3.1.0
+info:
+  title: 'Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers #X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices API'
+  description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+  - format: openapi
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
+servers:
+- url: https://ecs.{region}.amazonaws.com
+  description: Amazon ECS regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- aws_sig_v4: []
+tags:
+- name: '#X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices'
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeServices:
+    post:
+      operationId: DescribeServices
+      summary: Amazon Ecs Describe One or More Ecs Services
+      description: Describes the specified services running in a cluster.
+      tags:
+      - '#X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices'
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServices.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - services
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster hosting the services.
+                services:
+                  type: array
+                  description: A list of services to describe (up to 10).
+                  items:
+                    type: string
+                  maxItems: 10
+                include:
+                  type: array
+                  description: Additional information to include in the response.
+                  items:
+                    type: string
+                    enum:
+                    - TAGS
+            examples:
+              DescribeservicesRequestExample:
+                summary: Default DescribeServices request
+                x-microcks-default: true
+                value:
+                  cluster: example_value
+                  services:
+                  - example_value
+                  include:
+                  - TAGS
+      responses:
+        '200':
+          description: Services described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Service'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+              examples:
+                Describeservices200Example:
+                  summary: Default DescribeServices 200 response
+                  x-microcks-default: true
+                  value:
+                    services:
+                    - serviceArn: example_value
+                      serviceName: example_value
+                      clusterArn: example_value
+                      loadBalancers:
+                      - {}
+                      serviceRegistries:
+                      - {}
+                      status: ACTIVE
+                      desiredCount: 10
+                      runningCount: 10
+                      pendingCount: 10
+                      launchType: EC2
+                      capacityProviderStrategy:
+                      - {}
+                      platformVersion: example_value
+                      platformFamily: example_value
+                      taskDefinition: example_value
+                      deployments:
+                      - {}
+                      roleArn: example_value
+                      events:
+                      - {}
+                      createdAt: 42.5
+                      placementConstraints:
+                      - {}
+                      placementStrategy:
+                      - {}
+                      healthCheckGracePeriodSeconds: 10
+                      schedulingStrategy: REPLICA
+                      tags:
+                      - {}
+                      createdBy: example_value
+                      enableECSManagedTags: true
+                      enableExecuteCommand: true
+                      propagateTags: TASK_DEFINITION
+                    failures:
+                    - arn: example_value
+                      reason: example_value
+                      detail: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ServiceRegistry:
+      type: object
+      properties:
+        registryArn:
+          type: string
+          description: The ARN of the Cloud Map service registry.
+          example: example_value
+        port:
+          type: integer
+          example: 10
+        containerName:
+          type: string
+          example: example_value
+        containerPort:
+          type: integer
+          example: 10
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
+    DeploymentController:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The deployment controller type to use.
+          enum:
+          - ECS
+          - CODE_DEPLOY
+          - EXTERNAL
+          example: ECS
+    Service:
+      type: object
+      description: Details on a service within a cluster. A service runs and maintains a specified number of instances of a task definition.
+      properties:
+        serviceArn:
+          type: string
+          description: The ARN that identifies the service.
+          example: example_value
+        serviceName:
+          type: string
+          description: The name of your service.
+          example: example_value
+        clusterArn:
+          type: string
+          description: The ARN of the cluster that hosts the service.
+          example: example_value
+        loadBalancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+          example: []
+        serviceRegistries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceRegistry'
+          example: []
+        status:
+          type: string
+          description: The status of the service.
+          enum:
+          - ACTIVE
+          - DRAINING
+          - INACTIVE
+          example: ACTIVE
+        desiredCount:
+          type: integer
+          description: The desired number of instantiations of the task definition to keep running on the service.
+          example: 10
+        runningCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the RUNNING state.
+          example: 10
+        pendingCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the PENDING state.
+          example: 10
+        launchType:
+          type: string
+          enum:
+          - EC2
+          - FARGATE
+          - EXTERNAL
+          example: EC2
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+        platformVersion:
+          type: string
+          example: example_value
+        platformFamily:
+          type: string
+          example: example_value
+        taskDefinition:
+          type: string
+          description: The task definition ARN used by tasks in the service.
+          example: example_value
+        deploymentConfiguration:
+          $ref: '#/components/schemas/DeploymentConfiguration'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+          example: []
+        roleArn:
+          type: string
+          example: example_value
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              createdAt:
+                type: number
+              message:
+                type: string
+          example: []
+        createdAt:
+          type: number
+          description: The Unix timestamp for when the service was created.
+          example: 42.5
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementConstraint'
+          example: []
+        placementStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementStrategy'
+          example: []
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        healthCheckGracePeriodSeconds:
+          type: integer
+          example: 10
+        schedulingStrategy:
+          type: string
+          enum:
+          - REPLICA
+          - DAEMON
+          example: REPLICA
+        deploymentController:
+          $ref: '#/components/schemas/DeploymentController'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          example: []
+        createdBy:
+          type: string
+          example: example_value
+        enableECSManagedTags:
+          type: boolean
+          example: true
+        enableExecuteCommand:
+          type: boolean
+          example: true
+        propagateTags:
+          type: string
+          enum:
+          - TASK_DEFINITION
+          - SERVICE
+          - NONE
+          example: TASK_DEFINITION
+    NetworkConfiguration:
+      type: object
+      description: The network configuration for a task or service.
+      properties:
+        awsvpcConfiguration:
+          type: object
+          required:
+          - subnets
+          properties:
+            subnets:
+              type: array
+              description: The IDs of the subnets associated with the task or service.
+              items:
+                type: string
+            securityGroups:
+              type: array
+              description: The IDs of the security groups associated with the task or service.
+              items:
+                type: string
+            assignPublicIp:
+              type: string
+              description: Whether the task's elastic network interface receives a public IP address.
+              enum:
+              - ENABLED
+              - DISABLED
+          example: example_value
+    DeploymentConfiguration:
+      type: object
+      description: Deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.
+      properties:
+        deploymentCircuitBreaker:
+          type: object
+          properties:
+            enable:
+              type: boolean
+              description: Whether to use the deployment circuit breaker logic.
+            rollback:
+              type: boolean
+              description: Whether to roll back to the last completed deployment on failure.
+          example: example_value
+        maximumPercent:
+          type: integer
+          description: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running during a deployment.
+          example: 10
+        minimumHealthyPercent:
+          type: integer
+          description: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running during a deployment.
+          example: 10
+        alarms:
+          type: object
+          properties:
+            alarmNames:
+              type: array
+              items:
+                type: string
+            enable:
+              type: boolean
+            rollback:
+              type: boolean
+          example: example_value
+    CapacityProviderStrategyItem:
+      type: object
+      required:
+      - capacityProvider
+      properties:
+        capacityProvider:
+          type: string
+          description: The short name of the capacity provider.
+          example: example_value
+        weight:
+          type: integer
+          description: The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000).
+          minimum: 0
+          maximum: 1000
+          example: 10
+        base:
+          type: integer
+          description: The number of tasks, at a minimum, to run on the specified capacity provider (0-100000).
+          minimum: 0
+          maximum: 100000
+          example: 10
+    LoadBalancer:
+      type: object
+      properties:
+        targetGroupArn:
+          type: string
+          description: The full ARN of the Elastic Load Balancing target group.
+          example: example_value
+        loadBalancerName:
+          type: string
+          description: The name of the load balancer (Classic Load Balancer only).
+          example: example_value
+        containerName:
+          type: string
+          description: The name of the container to associate with the load balancer.
+          example: example_value
+        containerPort:
+          type: integer
+          description: The port on the container to associate with the load balancer.
+          example: 10
+    PlacementConstraint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - distinctInstance
+          - memberOf
+          description: The type of placement constraint.
+          example: distinctInstance
+        expression:
+          type: string
+          description: A cluster query language expression.
+          example: example_value
+    PlacementStrategy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - random
+          - spread
+          - binpack
+          description: The type of placement strategy.
+          example: random
+        field:
+          type: string
+          description: The field to apply the placement strategy against.
+          example: example_value
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        status:
+          type: string
+          enum:
+          - PRIMARY
+          - ACTIVE
+          - INACTIVE
+          example: PRIMARY
+        taskDefinition:
+          type: string
+          example: example_value
+        desiredCount:
+          type: integer
+          example: 10
+        pendingCount:
+          type: integer
+          example: 10
+        runningCount:
+          type: integer
+          example: 10
+        failedTasks:
+          type: integer
+          example: 10
+        createdAt:
+          type: number
+          example: 42.5
+        updatedAt:
+          type: number
+          example: 42.5
+        launchType:
+          type: string
+          example: example_value
+        platformVersion:
+          type: string
+          example: example_value
+        platformFamily:
+          type: string
+          example: example_value
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        rolloutState:
+          type: string
+          enum:
+          - COMPLETED
+          - IN_PROGRESS
+          - FAILED
+          example: COMPLETED
+        rolloutStateReason:
+          type: string
+          example: example_value
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+  responses:
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html

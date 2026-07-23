@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: 'Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers #X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices API'
+  description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+  - format: openapi
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
+servers:
+- url: https://ecs.{region}.amazonaws.com
+  description: Amazon ECS regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- aws_sig_v4: []
+tags:
+- name: '#X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices'
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListServices:
+    post:
+      operationId: ListServices
+      summary: Amazon Ecs List Ecs Services
+      description: Returns a list of services in a specified cluster.
+      tags:
+      - '#X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices'
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListServices.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster.
+                maxResults:
+                  type: integer
+                  description: Maximum number of service results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+                launchType:
+                  type: string
+                  enum:
+                  - EC2
+                  - FARGATE
+                  - EXTERNAL
+                  description: Filter services by launch type.
+                schedulingStrategy:
+                  type: string
+                  enum:
+                  - REPLICA
+                  - DAEMON
+                  description: Filter services by scheduling strategy.
+            examples:
+              ListservicesRequestExample:
+                summary: Default ListServices request
+                x-microcks-default: true
+                value:
+                  cluster: example_value
+                  maxResults: 10
+                  nextToken: example_value
+                  launchType: EC2
+                  schedulingStrategy: REPLICA
+      responses:
+        '200':
+          description: Services listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  serviceArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+              examples:
+                Listservices200Example:
+                  summary: Default ListServices 200 response
+                  x-microcks-default: true
+                  value:
+                    serviceArns:
+                    - example_value
+                    nextToken: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html

@@ -1,0 +1,1696 @@
+openapi: 3.1.0
+info:
+  title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Task Definitions API
+  description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+  - format: openapi
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
+servers:
+- url: https://ecs.{region}.amazonaws.com
+  description: Amazon ECS regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- aws_sig_v4: []
+tags:
+- name: Task Definitions
+  description: Operations for managing ECS task definitions
+  externalDocs:
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition:
+    post:
+      operationId: RegisterTaskDefinition
+      summary: Amazon Ecs Register a New Task Definition
+      description: Registers a new task definition from the supplied family and container definitions. You can also register task definitions with a volumes parameter for data volumes used by the task containers.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/RegisterTaskDefinitionRequest'
+            examples:
+              RegistertaskdefinitionRequestExample:
+                summary: Default RegisterTaskDefinition request
+                x-microcks-default: true
+                value:
+                  family: example_value
+                  containerDefinitions:
+                  - name: Example Title
+                    image: example_value
+                    cpu: 10
+                    memory: 10
+                    memoryReservation: 10
+                    links: {}
+                    portMappings: {}
+                    essential: true
+                    entryPoint: {}
+                    command: {}
+                    environment: {}
+                    environmentFiles: {}
+                    mountPoints: {}
+                    volumesFrom: {}
+                    secrets: {}
+                    dependsOn: {}
+                    startTimeout: 10
+                    stopTimeout: 10
+                    hostname: example_value
+                    user: example_value
+                    workingDirectory: example_value
+                    disableNetworking: true
+                    privileged: true
+                    readonlyRootFilesystem: true
+                    dnsServers: {}
+                    dnsSearchDomains: {}
+                    extraHosts: {}
+                    dockerSecurityOptions: {}
+                    interactive: true
+                    pseudoTerminal: true
+                    dockerLabels: example_value
+                    ulimits: {}
+                    systemControls: {}
+                    resourceRequirements: {}
+                    firelensConfiguration: {}
+                    repositoryCredentials: {}
+                    restartPolicy: {}
+                    credentialSpecs: {}
+                  taskRoleArn: example_value
+                  executionRoleArn: example_value
+                  networkMode: bridge
+                  volumes:
+                  - name: Example Title
+                    host: {}
+                    dockerVolumeConfiguration: {}
+                    efsVolumeConfiguration: {}
+                    fsxWindowsFileServerVolumeConfiguration: {}
+                  placementConstraints:
+                  - type: memberOf
+                    expression: example_value
+                  requiresCompatibilities:
+                  - EC2
+                  cpu: example_value
+                  memory: example_value
+                  tags:
+                  - key: example_value
+                    value: example_value
+                  pidMode: host
+                  ipcMode: host
+                  proxyConfiguration:
+                    type: APPMESH
+                    containerName: example_value
+                    properties:
+                    - {}
+                  inferenceAccelerators:
+                  - deviceName: example_value
+                    deviceType: example_value
+                  ephemeralStorage:
+                    sizeInGiB: 10
+                  runtimePlatform:
+                    cpuArchitecture: X86_64
+                    operatingSystemFamily: LINUX
+                  enableFaultInjection: true
+      responses:
+        '200':
+          description: Task definition registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinition:
+                    $ref: '#/components/schemas/TaskDefinition'
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+              examples:
+                Registertaskdefinition200Example:
+                  summary: Default RegisterTaskDefinition 200 response
+                  x-microcks-default: true
+                  value:
+                    taskDefinition:
+                      taskDefinitionArn: example_value
+                      containerDefinitions:
+                      - {}
+                      family: example_value
+                      taskRoleArn: example_value
+                      executionRoleArn: example_value
+                      networkMode: bridge
+                      revision: 10
+                      volumes:
+                      - {}
+                      status: ACTIVE
+                      requiresAttributes:
+                      - name: Example Title
+                        value: example_value
+                        targetType: example_value
+                        targetId: '500123'
+                      placementConstraints:
+                      - {}
+                      compatibilities:
+                      - EC2
+                      requiresCompatibilities:
+                      - EC2
+                      cpu: example_value
+                      memory: example_value
+                      pidMode: host
+                      ipcMode: host
+                      proxyConfiguration:
+                        type: APPMESH
+                        containerName: example_value
+                        properties: {}
+                      inferenceAccelerators:
+                      - {}
+                      ephemeralStorage:
+                        sizeInGiB: 10
+                      runtimePlatform:
+                        cpuArchitecture: X86_64
+                        operatingSystemFamily: LINUX
+                      registeredAt: 42.5
+                      deregisteredAt: 42.5
+                      registeredBy: example_value
+                      enableFaultInjection: true
+                      tags:
+                      - {}
+                    tags:
+                    - key: example_value
+                      value: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition:
+    post:
+      operationId: DeregisterTaskDefinition
+      summary: Amazon Ecs Deregister a Task Definition
+      description: Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as INACTIVE.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeregisterTaskDefinition.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - taskDefinition
+              properties:
+                taskDefinition:
+                  type: string
+                  description: The family and revision (family:revision) or full ARN of the task definition to deregister.
+            examples:
+              DeregistertaskdefinitionRequestExample:
+                summary: Default DeregisterTaskDefinition request
+                x-microcks-default: true
+                value:
+                  taskDefinition: example_value
+      responses:
+        '200':
+          description: Task definition deregistered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinition:
+                    $ref: '#/components/schemas/TaskDefinition'
+              examples:
+                Deregistertaskdefinition200Example:
+                  summary: Default DeregisterTaskDefinition 200 response
+                  x-microcks-default: true
+                  value:
+                    taskDefinition:
+                      taskDefinitionArn: example_value
+                      containerDefinitions:
+                      - {}
+                      family: example_value
+                      taskRoleArn: example_value
+                      executionRoleArn: example_value
+                      networkMode: bridge
+                      revision: 10
+                      volumes:
+                      - {}
+                      status: ACTIVE
+                      requiresAttributes:
+                      - name: Example Title
+                        value: example_value
+                        targetType: example_value
+                        targetId: '500123'
+                      placementConstraints:
+                      - {}
+                      compatibilities:
+                      - EC2
+                      requiresCompatibilities:
+                      - EC2
+                      cpu: example_value
+                      memory: example_value
+                      pidMode: host
+                      ipcMode: host
+                      proxyConfiguration:
+                        type: APPMESH
+                        containerName: example_value
+                        properties: {}
+                      inferenceAccelerators:
+                      - {}
+                      ephemeralStorage:
+                        sizeInGiB: 10
+                      runtimePlatform:
+                        cpuArchitecture: X86_64
+                        operatingSystemFamily: LINUX
+                      registeredAt: 42.5
+                      deregisteredAt: 42.5
+                      registeredBy: example_value
+                      enableFaultInjection: true
+                      tags:
+                      - {}
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition:
+    post:
+      operationId: DescribeTaskDefinition
+      summary: Amazon Ecs Describe a Task Definition
+      description: Describes a task definition. You can specify a family and revision to find information about a specific task definition, or you can simply specify the family to find the latest ACTIVE revision in that family.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTaskDefinition.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - taskDefinition
+              properties:
+                taskDefinition:
+                  type: string
+                  description: The family and revision or full ARN of the task definition to describe.
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - TAGS
+            examples:
+              DescribetaskdefinitionRequestExample:
+                summary: Default DescribeTaskDefinition request
+                x-microcks-default: true
+                value:
+                  taskDefinition: example_value
+                  include:
+                  - TAGS
+      responses:
+        '200':
+          description: Task definition described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinition:
+                    $ref: '#/components/schemas/TaskDefinition'
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+              examples:
+                Describetaskdefinition200Example:
+                  summary: Default DescribeTaskDefinition 200 response
+                  x-microcks-default: true
+                  value:
+                    taskDefinition:
+                      taskDefinitionArn: example_value
+                      containerDefinitions:
+                      - {}
+                      family: example_value
+                      taskRoleArn: example_value
+                      executionRoleArn: example_value
+                      networkMode: bridge
+                      revision: 10
+                      volumes:
+                      - {}
+                      status: ACTIVE
+                      requiresAttributes:
+                      - name: Example Title
+                        value: example_value
+                        targetType: example_value
+                        targetId: '500123'
+                      placementConstraints:
+                      - {}
+                      compatibilities:
+                      - EC2
+                      requiresCompatibilities:
+                      - EC2
+                      cpu: example_value
+                      memory: example_value
+                      pidMode: host
+                      ipcMode: host
+                      proxyConfiguration:
+                        type: APPMESH
+                        containerName: example_value
+                        properties: {}
+                      inferenceAccelerators:
+                      - {}
+                      ephemeralStorage:
+                        sizeInGiB: 10
+                      runtimePlatform:
+                        cpuArchitecture: X86_64
+                        operatingSystemFamily: LINUX
+                      registeredAt: 42.5
+                      deregisteredAt: 42.5
+                      registeredBy: example_value
+                      enableFaultInjection: true
+                      tags:
+                      - {}
+                    tags:
+                    - key: example_value
+                      value: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions:
+    post:
+      operationId: ListTaskDefinitions
+      summary: Amazon Ecs List Task Definitions
+      description: Returns a list of task definitions that are registered to your account. You can filter by family name to find all revisions for a specific family.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTaskDefinitions.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                familyPrefix:
+                  type: string
+                  description: Filter by family name prefix.
+                status:
+                  type: string
+                  enum:
+                  - ACTIVE
+                  - INACTIVE
+                  - DELETE_IN_PROGRESS
+                  description: Filter by task definition status.
+                sort:
+                  type: string
+                  enum:
+                  - ASC
+                  - DESC
+                  description: Sort order for results.
+                maxResults:
+                  type: integer
+                  description: Maximum number of results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+            examples:
+              ListtaskdefinitionsRequestExample:
+                summary: Default ListTaskDefinitions request
+                x-microcks-default: true
+                value:
+                  familyPrefix: example_value
+                  status: ACTIVE
+                  sort: ASC
+                  maxResults: 10
+                  nextToken: example_value
+      responses:
+        '200':
+          description: Task definitions listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDefinitionArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+              examples:
+                Listtaskdefinitions200Example:
+                  summary: Default ListTaskDefinitions 200 response
+                  x-microcks-default: true
+                  value:
+                    taskDefinitionArns:
+                    - example_value
+                    nextToken: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies:
+    post:
+      operationId: ListTaskDefinitionFamilies
+      summary: Amazon Ecs List Task Definition Families
+      description: Returns a list of task definition families that are registered to your account, with ACTIVE task definitions.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTaskDefinitionFamilies.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                familyPrefix:
+                  type: string
+                  description: Filter by family name prefix.
+                status:
+                  type: string
+                  enum:
+                  - ACTIVE
+                  - INACTIVE
+                  - ALL
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+            examples:
+              ListtaskdefinitionfamiliesRequestExample:
+                summary: Default ListTaskDefinitionFamilies request
+                x-microcks-default: true
+                value:
+                  familyPrefix: example_value
+                  status: ACTIVE
+                  maxResults: 10
+                  nextToken: example_value
+      responses:
+        '200':
+          description: Task definition families listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  families:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+              examples:
+                Listtaskdefinitionfamilies200Example:
+                  summary: Default ListTaskDefinitionFamilies 200 response
+                  x-microcks-default: true
+                  value:
+                    families:
+                    - example_value
+                    nextToken: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource:
+    post:
+      operationId: TagResource
+      summary: Amazon Ecs Tag an Ecs Resource
+      description: Associates the specified tags to a resource with the specified resourceArn.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TagResource.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - resourceArn
+              - tags
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to tag.
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+            examples:
+              TagresourceRequestExample:
+                summary: Default TagResource request
+                x-microcks-default: true
+                value:
+                  resourceArn: example_value
+                  tags:
+                  - key: example_value
+                    value: example_value
+      responses:
+        '200':
+          description: Resource tagged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                Tagresource200Example:
+                  summary: Default TagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource:
+    post:
+      operationId: UntagResource
+      summary: Amazon Ecs Remove Tags From an Ecs Resource
+      description: Deletes specified tags from a resource.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UntagResource.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - resourceArn
+              - tagKeys
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to untag.
+                tagKeys:
+                  type: array
+                  items:
+                    type: string
+                  description: The keys of the tags to remove.
+            examples:
+              UntagresourceRequestExample:
+                summary: Default UntagResource request
+                x-microcks-default: true
+                value:
+                  resourceArn: example_value
+                  tagKeys:
+                  - example_value
+      responses:
+        '200':
+          description: Tags removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                Untagresource200Example:
+                  summary: Default UntagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource:
+    post:
+      operationId: ListTagsForResource
+      summary: Amazon Ecs List Tags for an Ecs Resource
+      description: Lists the tags for the specified resource.
+      tags:
+      - Task Definitions
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTagsForResource.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - resourceArn
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to list tags for.
+            examples:
+              ListtagsforresourceRequestExample:
+                summary: Default ListTagsForResource request
+                x-microcks-default: true
+                value:
+                  resourceArn: example_value
+      responses:
+        '200':
+          description: Tags listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+              examples:
+                Listtagsforresource200Example:
+                  summary: Default ListTagsForResource 200 response
+                  x-microcks-default: true
+                  value:
+                    tags:
+                    - key: example_value
+                      value: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    LogConfiguration:
+      type: object
+      required:
+      - logDriver
+      properties:
+        logDriver:
+          type: string
+          description: The log driver to use for the container.
+          enum:
+          - json-file
+          - syslog
+          - journald
+          - gelf
+          - fluentd
+          - awslogs
+          - splunk
+          - awsfirelens
+          example: json-file
+        options:
+          type: object
+          additionalProperties:
+            type: string
+          description: The configuration options to send to the log driver.
+          example: example_value
+        secretOptions:
+          type: array
+          description: The secrets to pass to the log driver configuration.
+          items:
+            type: object
+            required:
+            - name
+            - valueFrom
+            properties:
+              name:
+                type: string
+              valueFrom:
+                type: string
+          example: []
+    ProxyConfiguration:
+      type: object
+      required:
+      - containerName
+      properties:
+        type:
+          type: string
+          enum:
+          - APPMESH
+          description: The proxy type. The only supported value is APPMESH.
+          example: APPMESH
+        containerName:
+          type: string
+          description: The name of the container that will serve as the App Mesh proxy.
+          example: example_value
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+    RegisterTaskDefinitionRequest:
+      type: object
+      required:
+      - family
+      - containerDefinitions
+      properties:
+        family:
+          type: string
+          description: You must specify a family for a task definition. Up to 255 characters (uppercase and lowercase letters, numbers, underscores, and hyphens are allowed).
+          maxLength: 255
+          example: example_value
+        containerDefinitions:
+          type: array
+          description: A list of container definitions that describe the containers that make up the task.
+          items:
+            $ref: '#/components/schemas/ContainerDefinition'
+          example: []
+        taskRoleArn:
+          type: string
+          description: The short name or full ARN of the IAM role that containers in this task can assume.
+          example: example_value
+        executionRoleArn:
+          type: string
+          description: The ARN of the task execution role that grants the ECS container agent permission to make API calls on your behalf.
+          example: example_value
+        networkMode:
+          type: string
+          description: The Docker networking mode to use for the containers in the task.
+          enum:
+          - bridge
+          - host
+          - awsvpc
+          - none
+          example: bridge
+        volumes:
+          type: array
+          description: A list of volume definitions for the task.
+          items:
+            $ref: '#/components/schemas/Volume'
+          example: []
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskDefinitionPlacementConstraint'
+          maxItems: 10
+          example: []
+        requiresCompatibilities:
+          type: array
+          description: The task launch type compatibility requirement.
+          items:
+            type: string
+            enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+          example: []
+        cpu:
+          type: string
+          description: 'The number of CPU units used by the task. Required for Fargate launch type. Valid values: 256 (.25 vCPU) through 16384 (16 vCPU).'
+          example: example_value
+        memory:
+          type: string
+          description: The amount of memory (in MiB) used by the task. Required for Fargate launch type.
+          example: example_value
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+          example: []
+        pidMode:
+          type: string
+          description: The process namespace to use for the containers in the task.
+          enum:
+          - host
+          - task
+          example: host
+        ipcMode:
+          type: string
+          description: The IPC resource namespace to use for the containers in the task.
+          enum:
+          - host
+          - task
+          - none
+          example: host
+        proxyConfiguration:
+          $ref: '#/components/schemas/ProxyConfiguration'
+        inferenceAccelerators:
+          type: array
+          items:
+            $ref: '#/components/schemas/InferenceAccelerator'
+          example: []
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        runtimePlatform:
+          $ref: '#/components/schemas/RuntimePlatform'
+        enableFaultInjection:
+          type: boolean
+          description: Whether to enable fault injection for the task definition.
+          example: true
+    ContainerDefinition:
+      type: object
+      description: A container definition describes a container within a task definition.
+      required:
+      - name
+      - image
+      properties:
+        name:
+          type: string
+          description: The name of a container. Up to 255 characters (uppercase and lowercase letters, numbers, underscores, and hyphens).
+          example: Example Title
+        image:
+          type: string
+          description: The image used to start a container. Images in the Docker Hub registry are available by default. You can also specify an ECR repository.
+          example: example_value
+        cpu:
+          type: integer
+          description: The number of cpu units reserved for the container.
+          example: 10
+        memory:
+          type: integer
+          description: The amount (in MiB) of memory to present to the container. Corresponds to the hard limit.
+          example: 10
+        memoryReservation:
+          type: integer
+          description: The soft limit (in MiB) of memory to reserve for the container.
+          example: 10
+        links:
+          type: array
+          description: Allows containers to communicate without port mappings. Only supported for bridge network mode.
+          items:
+            type: string
+          example: []
+        portMappings:
+          type: array
+          description: The list of port mappings for the container.
+          items:
+            $ref: '#/components/schemas/PortMapping'
+          example: []
+        essential:
+          type: boolean
+          description: If the essential parameter of a container is marked as true and that container fails or stops, all other containers that are part of the task are stopped.
+          default: true
+          example: true
+        entryPoint:
+          type: array
+          description: The entry point that is passed to the container.
+          items:
+            type: string
+          example: []
+        command:
+          type: array
+          description: The command that is passed to the container.
+          items:
+            type: string
+          example: []
+        environment:
+          type: array
+          description: The environment variables to pass to a container.
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+        environmentFiles:
+          type: array
+          description: A list of files containing the environment variables to pass to a container.
+          items:
+            type: object
+            required:
+            - value
+            - type
+            properties:
+              value:
+                type: string
+                description: The ARN of the Amazon S3 object containing the environment variable file.
+              type:
+                type: string
+                enum:
+                - s3
+          example: []
+        mountPoints:
+          type: array
+          description: The mount points for data volumes in your container.
+          items:
+            $ref: '#/components/schemas/MountPoint'
+          example: []
+        volumesFrom:
+          type: array
+          description: Data volumes to mount from another container.
+          items:
+            type: object
+            properties:
+              sourceContainer:
+                type: string
+              readOnly:
+                type: boolean
+          example: []
+        secrets:
+          type: array
+          description: The secrets to pass to the container from AWS Secrets Manager or SSM Parameter Store.
+          items:
+            type: object
+            required:
+            - name
+            - valueFrom
+            properties:
+              name:
+                type: string
+              valueFrom:
+                type: string
+                description: The secret ARN from Secrets Manager or the full ARN of the SSM parameter.
+          example: []
+        logConfiguration:
+          $ref: '#/components/schemas/LogConfiguration'
+        healthCheck:
+          $ref: '#/components/schemas/HealthCheck'
+        linuxParameters:
+          $ref: '#/components/schemas/LinuxParameters'
+        dependsOn:
+          type: array
+          description: The dependencies defined for container startup and shutdown.
+          items:
+            type: object
+            required:
+            - containerName
+            - condition
+            properties:
+              containerName:
+                type: string
+              condition:
+                type: string
+                enum:
+                - START
+                - COMPLETE
+                - SUCCESS
+                - HEALTHY
+          example: []
+        startTimeout:
+          type: integer
+          description: Time duration (in seconds) to wait before giving up on resolving dependencies for a container.
+          example: 10
+        stopTimeout:
+          type: integer
+          description: Time duration (in seconds) to wait before the container is forcefully killed if it does not exit normally on its own.
+          example: 10
+        hostname:
+          type: string
+          example: example_value
+        user:
+          type: string
+          description: The user to run as inside the container.
+          example: example_value
+        workingDirectory:
+          type: string
+          description: The working directory to run commands inside the container in.
+          example: example_value
+        disableNetworking:
+          type: boolean
+          example: true
+        privileged:
+          type: boolean
+          description: When this parameter is true, the container is given elevated privileges on the host container instance.
+          example: true
+        readonlyRootFilesystem:
+          type: boolean
+          description: When this parameter is true, the container is given read-only access to its root file system.
+          example: true
+        dnsServers:
+          type: array
+          items:
+            type: string
+          example: []
+        dnsSearchDomains:
+          type: array
+          items:
+            type: string
+          example: []
+        extraHosts:
+          type: array
+          items:
+            type: object
+            required:
+            - hostname
+            - ipAddress
+            properties:
+              hostname:
+                type: string
+              ipAddress:
+                type: string
+          example: []
+        dockerSecurityOptions:
+          type: array
+          items:
+            type: string
+          example: []
+        interactive:
+          type: boolean
+          example: true
+        pseudoTerminal:
+          type: boolean
+          example: true
+        dockerLabels:
+          type: object
+          additionalProperties:
+            type: string
+          description: A key/value map of labels to add to the container.
+          example: example_value
+        ulimits:
+          type: array
+          items:
+            type: object
+            required:
+            - name
+            - softLimit
+            - hardLimit
+            properties:
+              name:
+                type: string
+                enum:
+                - core
+                - cpu
+                - data
+                - fsize
+                - locks
+                - memlock
+                - msgqueue
+                - nice
+                - nofile
+                - nproc
+                - rss
+                - rtprio
+                - rttime
+                - sigpending
+                - stack
+              softLimit:
+                type: integer
+              hardLimit:
+                type: integer
+          example: []
+        systemControls:
+          type: array
+          items:
+            type: object
+            properties:
+              namespace:
+                type: string
+              value:
+                type: string
+          example: []
+        resourceRequirements:
+          type: array
+          items:
+            type: object
+            required:
+            - type
+            - value
+            properties:
+              type:
+                type: string
+                enum:
+                - GPU
+                - InferenceAccelerator
+              value:
+                type: string
+          example: []
+        firelensConfiguration:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - fluentd
+              - fluentbit
+            options:
+              type: object
+              additionalProperties:
+                type: string
+          example: example_value
+        repositoryCredentials:
+          type: object
+          properties:
+            credentialsParameter:
+              type: string
+              description: The ARN of the secret containing the private repository credentials.
+          example: example_value
+        restartPolicy:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+            restartAttemptPeriod:
+              type: integer
+            ignoredExitCodes:
+              type: array
+              items:
+                type: integer
+          example: example_value
+        credentialSpecs:
+          type: array
+          items:
+            type: string
+          example: []
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+    RuntimePlatform:
+      type: object
+      properties:
+        cpuArchitecture:
+          type: string
+          description: The CPU architecture.
+          enum:
+          - X86_64
+          - ARM64
+          example: X86_64
+        operatingSystemFamily:
+          type: string
+          description: The operating system.
+          enum:
+          - LINUX
+          - WINDOWS_SERVER_2019_FULL
+          - WINDOWS_SERVER_2019_CORE
+          - WINDOWS_SERVER_2022_FULL
+          - WINDOWS_SERVER_2022_CORE
+          example: LINUX
+    EphemeralStorage:
+      type: object
+      required:
+      - sizeInGiB
+      properties:
+        sizeInGiB:
+          type: integer
+          description: The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is 21 GiB and the maximum supported value is 200 GiB.
+          minimum: 21
+          maximum: 200
+          example: 10
+    MountPoint:
+      type: object
+      properties:
+        sourceVolume:
+          type: string
+          description: The name of the volume to mount.
+          example: example_value
+        containerPath:
+          type: string
+          description: The path on the container to mount the volume at.
+          example: example_value
+        readOnly:
+          type: boolean
+          description: If this value is true, the container has read-only access to the volume.
+          example: true
+    PortMapping:
+      type: object
+      properties:
+        containerPort:
+          type: integer
+          description: The port number on the container bound to the host port.
+          example: 10
+        hostPort:
+          type: integer
+          description: The port number on the container instance to reserve for the container.
+          example: 10
+        protocol:
+          type: string
+          description: The protocol used for the port mapping.
+          enum:
+          - tcp
+          - udp
+          default: tcp
+          example: tcp
+        name:
+          type: string
+          description: The name to use for the port mapping (used with Service Connect).
+          example: Example Title
+        appProtocol:
+          type: string
+          description: The application protocol used for the port mapping.
+          enum:
+          - http
+          - http2
+          - grpc
+          example: http
+        containerPortRange:
+          type: string
+          description: The port number range on the container.
+          example: example_value
+    Volume:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the volume (up to 255 characters).
+          example: Example Title
+        host:
+          type: object
+          description: The contents of the host parameter determine whether your data volume persists on the host container instance.
+          properties:
+            sourcePath:
+              type: string
+          example: example_value
+        dockerVolumeConfiguration:
+          type: object
+          properties:
+            scope:
+              type: string
+              enum:
+              - task
+              - shared
+            autoprovision:
+              type: boolean
+            driver:
+              type: string
+            driverOpts:
+              type: object
+              additionalProperties:
+                type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+          example: example_value
+        efsVolumeConfiguration:
+          type: object
+          required:
+          - fileSystemId
+          properties:
+            fileSystemId:
+              type: string
+              description: The Amazon EFS file system ID to use.
+            rootDirectory:
+              type: string
+              description: The directory within the EFS file system to mount as the root directory.
+            transitEncryption:
+              type: string
+              enum:
+              - ENABLED
+              - DISABLED
+            transitEncryptionPort:
+              type: integer
+            authorizationConfig:
+              type: object
+              properties:
+                accessPointId:
+                  type: string
+                iam:
+                  type: string
+                  enum:
+                  - ENABLED
+                  - DISABLED
+          example: example_value
+        fsxWindowsFileServerVolumeConfiguration:
+          type: object
+          required:
+          - fileSystemId
+          - rootDirectory
+          - authorizationConfig
+          properties:
+            fileSystemId:
+              type: string
+            rootDirectory:
+              type: string
+            authorizationConfig:
+              type: object
+              required:
+              - credentialsParameter
+              - domain
+              properties:
+                credentialsParameter:
+                  type: string
+                domain:
+                  type: string
+          example: example_value
+    LinuxParameters:
+      type: object
+      properties:
+        capabilities:
+          type: object
+          properties:
+            add:
+              type: array
+              items:
+                type: string
+            drop:
+              type: array
+              items:
+                type: string
+          example: example_value
+        devices:
+          type: array
+          items:
+            type: object
+            required:
+            - hostPath
+            properties:
+              hostPath:
+                type: string
+              containerPath:
+                type: string
+              permissions:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - read
+                  - write
+                  - mknod
+          example: []
+        initProcessEnabled:
+          type: boolean
+          description: Run an init process inside the container that forwards signals and reaps processes.
+          example: true
+        sharedMemorySize:
+          type: integer
+          description: The value for the size (in MiB) of the /dev/shm volume.
+          example: 10
+        tmpfs:
+          type: array
+          items:
+            type: object
+            required:
+            - containerPath
+            - size
+            properties:
+              containerPath:
+                type: string
+              size:
+                type: integer
+              mountOptions:
+                type: array
+                items:
+                  type: string
+          example: []
+        maxSwap:
+          type: integer
+          description: The total amount of swap memory (in MiB) a container can use.
+          example: 10
+        swappiness:
+          type: integer
+          description: The container's memory swappiness behavior. A value of 0 prevents swapping; a value of 100 causes pages to be swapped aggressively.
+          minimum: 0
+          maximum: 100
+          example: 10
+    HealthCheck:
+      type: object
+      required:
+      - command
+      properties:
+        command:
+          type: array
+          description: A string array representing the command that the container runs to determine if it is healthy. The first element is CMD or CMD-SHELL.
+          items:
+            type: string
+          example: []
+        interval:
+          type: integer
+          description: The time period in seconds between each health check execution (default 30).
+          default: 30
+          example: 10
+        timeout:
+          type: integer
+          description: The time period in seconds to wait for a health check to succeed before it is considered a failure (default 5).
+          default: 5
+          example: 10
+        retries:
+          type: integer
+          description: The number of times to retry a failed health check before the container is considered unhealthy (default 3).
+          default: 3
+          example: 10
+        startPeriod:
+          type: integer
+          description: The optional grace period to provide containers time to bootstrap before failed health checks count towards the maximum retries (default 0).
+          default: 0
+          example: 10
+    TaskDefinitionPlacementConstraint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - memberOf
+          description: The type of constraint.
+          example: memberOf
+        expression:
+          type: string
+          description: A cluster query language expression to apply to the constraint.
+          example: example_value
+    TaskDefinition:
+      type: object
+      description: The details of a task definition which describes the container and volume definitions of an Amazon ECS task.
+      properties:
+        taskDefinitionArn:
+          type: string
+          description: The full ARN of the task definition.
+          example: example_value
+        containerDefinitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainerDefinition'
+          example: []
+        family:
+          type: string
+          description: The family of your task definition.
+          example: example_value
+        taskRoleArn:
+          type: string
+          example: example_value
+        executionRoleArn:
+          type: string
+          example: example_value
+        networkMode:
+          type: string
+          enum:
+          - bridge
+          - host
+          - awsvpc
+          - none
+          example: bridge
+        revision:
+          type: integer
+          description: The revision of the task in a particular family.
+          example: 10
+        volumes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Volume'
+          example: []
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DELETE_IN_PROGRESS
+          example: ACTIVE
+        requiresAttributes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              targetType:
+                type: string
+              targetId:
+                type: string
+          example: []
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskDefinitionPlacementConstraint'
+          example: []
+        compatibilities:
+          type: array
+          items:
+            type: string
+            enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+          example: []
+        requiresCompatibilities:
+          type: array
+          items:
+            type: string
+            enum:
+            - EC2
+            - FARGATE
+            - EXTERNAL
+          example: []
+        cpu:
+          type: string
+          example: example_value
+        memory:
+          type: string
+          example: example_value
+        pidMode:
+          type: string
+          enum:
+          - host
+          - task
+          example: host
+        ipcMode:
+          type: string
+          enum:
+          - host
+          - task
+          - none
+          example: host
+        proxyConfiguration:
+          $ref: '#/components/schemas/ProxyConfiguration'
+        inferenceAccelerators:
+          type: array
+          items:
+            $ref: '#/components/schemas/InferenceAccelerator'
+          example: []
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        runtimePlatform:
+          $ref: '#/components/schemas/RuntimePlatform'
+        registeredAt:
+          type: number
+          description: Unix timestamp for when the task definition was registered.
+          example: 42.5
+        deregisteredAt:
+          type: number
+          description: Unix timestamp for when the task definition was deregistered.
+          example: 42.5
+        registeredBy:
+          type: string
+          example: example_value
+        enableFaultInjection:
+          type: boolean
+          example: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          example: []
+    InferenceAccelerator:
+      type: object
+      required:
+      - deviceName
+      - deviceType
+      properties:
+        deviceName:
+          type: string
+          description: The Elastic Inference accelerator device name.
+          example: example_value
+        deviceType:
+          type: string
+          description: The Elastic Inference accelerator type to use.
+          example: example_value
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
+  responses:
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html

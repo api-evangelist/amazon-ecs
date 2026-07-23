@@ -1,0 +1,372 @@
+openapi: 3.1.0
+info:
+  title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers API
+  description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+  - format: openapi
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
+servers:
+- url: https://ecs.{region}.amazonaws.com
+  description: Amazon ECS regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- aws_sig_v4: []
+tags:
+- name: Capacity Providers
+  description: Operations for managing capacity providers
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider:
+    post:
+      operationId: CreateCapacityProvider
+      summary: Amazon Ecs Create a Capacity Provider
+      description: Creates a new capacity provider. Capacity providers are associated with an Auto Scaling group to manage the infrastructure for your tasks and services.
+      tags:
+      - Capacity Providers
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCapacityProvider.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - name
+              - autoScalingGroupProvider
+              properties:
+                name:
+                  type: string
+                  description: The name of the capacity provider (up to 255 characters).
+                autoScalingGroupProvider:
+                  $ref: '#/components/schemas/AutoScalingGroupProvider'
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+            examples:
+              CreatecapacityproviderRequestExample:
+                summary: Default CreateCapacityProvider request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  autoScalingGroupProvider:
+                    autoScalingGroupArn: example_value
+                    managedScaling:
+                      status: ENABLED
+                      targetCapacity: 10
+                      minimumScalingStepSize: 10
+                      maximumScalingStepSize: 10
+                      instanceWarmupPeriod: 10
+                    managedTerminationProtection: ENABLED
+                    managedDraining: ENABLED
+                  tags:
+                  - key: example_value
+                    value: example_value
+      responses:
+        '200':
+          description: Capacity provider created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  capacityProvider:
+                    $ref: '#/components/schemas/CapacityProvider'
+              examples:
+                Createcapacityprovider200Example:
+                  summary: Default CreateCapacityProvider 200 response
+                  x-microcks-default: true
+                  value:
+                    capacityProvider:
+                      capacityProviderArn: example_value
+                      name: Example Title
+                      status: ACTIVE
+                      autoScalingGroupProvider:
+                        autoScalingGroupArn: example_value
+                        managedScaling: {}
+                        managedTerminationProtection: ENABLED
+                        managedDraining: ENABLED
+                      updateStatus: DELETE_IN_PROGRESS
+                      updateStatusReason: example_value
+                      tags:
+                      - {}
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders:
+    post:
+      operationId: DescribeCapacityProviders
+      summary: Amazon Ecs Describe Capacity Providers
+      description: Describes one or more capacity providers.
+      tags:
+      - Capacity Providers
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeCapacityProviders.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                capacityProviders:
+                  type: array
+                  items:
+                    type: string
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - TAGS
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+            examples:
+              DescribecapacityprovidersRequestExample:
+                summary: Default DescribeCapacityProviders request
+                x-microcks-default: true
+                value:
+                  capacityProviders:
+                  - example_value
+                  include:
+                  - TAGS
+                  maxResults: 10
+                  nextToken: example_value
+      responses:
+        '200':
+          description: Capacity providers described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  capacityProviders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CapacityProvider'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+                  nextToken:
+                    type: string
+              examples:
+                Describecapacityproviders200Example:
+                  summary: Default DescribeCapacityProviders 200 response
+                  x-microcks-default: true
+                  value:
+                    capacityProviders:
+                    - capacityProviderArn: example_value
+                      name: Example Title
+                      status: ACTIVE
+                      updateStatus: DELETE_IN_PROGRESS
+                      updateStatusReason: example_value
+                      tags:
+                      - {}
+                    failures:
+                    - arn: example_value
+                      reason: example_value
+                      detail: example_value
+                    nextToken: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
+    AutoScalingGroupProvider:
+      type: object
+      required:
+      - autoScalingGroupArn
+      properties:
+        autoScalingGroupArn:
+          type: string
+          description: The ARN of the Auto Scaling group.
+          example: example_value
+        managedScaling:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - ENABLED
+              - DISABLED
+            targetCapacity:
+              type: integer
+              description: The target capacity utilization as a percentage (1-100).
+              minimum: 1
+              maximum: 100
+            minimumScalingStepSize:
+              type: integer
+              minimum: 1
+              maximum: 10000
+            maximumScalingStepSize:
+              type: integer
+              minimum: 1
+              maximum: 10000
+            instanceWarmupPeriod:
+              type: integer
+              minimum: 0
+              maximum: 10000
+          example: example_value
+        managedTerminationProtection:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          example: ENABLED
+        managedDraining:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          example: ENABLED
+    CapacityProvider:
+      type: object
+      properties:
+        capacityProviderArn:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          example: ACTIVE
+        autoScalingGroupProvider:
+          $ref: '#/components/schemas/AutoScalingGroupProvider'
+        updateStatus:
+          type: string
+          enum:
+          - DELETE_IN_PROGRESS
+          - DELETE_COMPLETE
+          - DELETE_FAILED
+          - UPDATE_IN_PROGRESS
+          - UPDATE_COMPLETE
+          - UPDATE_FAILED
+          example: DELETE_IN_PROGRESS
+        updateStatusReason:
+          type: string
+          example: example_value
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          example: []
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+  responses:
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html

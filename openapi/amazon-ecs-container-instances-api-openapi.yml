@@ -1,0 +1,464 @@
+openapi: 3.1.0
+info:
+  title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Container Instances API
+  description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+  - format: openapi
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
+servers:
+- url: https://ecs.{region}.amazonaws.com
+  description: Amazon ECS regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- aws_sig_v4: []
+tags:
+- name: Container Instances
+  description: Operations for managing container instances
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeContainerInstances:
+    post:
+      operationId: DescribeContainerInstances
+      summary: Amazon Ecs Describe Container Instances
+      description: Describes Amazon ECS container instances in a cluster.
+      tags:
+      - Container Instances
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeContainerInstances.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - containerInstances
+              properties:
+                cluster:
+                  type: string
+                containerInstances:
+                  type: array
+                  items:
+                    type: string
+                  maxItems: 100
+                include:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - TAGS
+                    - CONTAINER_INSTANCE_HEALTH
+            examples:
+              DescribecontainerinstancesRequestExample:
+                summary: Default DescribeContainerInstances request
+                x-microcks-default: true
+                value:
+                  cluster: example_value
+                  containerInstances:
+                  - example_value
+                  include:
+                  - TAGS
+      responses:
+        '200':
+          description: Container instances described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  containerInstances:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContainerInstance'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+              examples:
+                Describecontainerinstances200Example:
+                  summary: Default DescribeContainerInstances 200 response
+                  x-microcks-default: true
+                  value:
+                    containerInstances:
+                    - containerInstanceArn: example_value
+                      ec2InstanceId: '500123'
+                      version: 10
+                      versionInfo:
+                        agentVersion: example_value
+                        agentHash: example_value
+                        dockerVersion: example_value
+                      remainingResources:
+                      - {}
+                      registeredResources:
+                      - {}
+                      status: ACTIVE
+                      statusReason: example_value
+                      agentConnected: true
+                      runningTasksCount: 10
+                      pendingTasksCount: 10
+                      agentUpdateStatus: PENDING
+                      attributes:
+                      - {}
+                      registeredAt: 42.5
+                      attachments:
+                      - {}
+                      tags:
+                      - {}
+                      capacityProviderName: example_value
+                      healthStatus:
+                        overallStatus: OK
+                        details: {}
+                    failures:
+                    - arn: example_value
+                      reason: example_value
+                      detail: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListContainerInstances:
+    post:
+      operationId: ListContainerInstances
+      summary: Amazon Ecs List Container Instances
+      description: Returns a list of container instances in a specified cluster.
+      tags:
+      - Container Instances
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListContainerInstances.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                filter:
+                  type: string
+                  description: Filter using cluster query language expressions.
+                status:
+                  type: string
+                  enum:
+                  - ACTIVE
+                  - DRAINING
+                  - REGISTERING
+                  - DEREGISTERING
+                  - REGISTRATION_FAILED
+                maxResults:
+                  type: integer
+                nextToken:
+                  type: string
+            examples:
+              ListcontainerinstancesRequestExample:
+                summary: Default ListContainerInstances request
+                x-microcks-default: true
+                value:
+                  cluster: example_value
+                  filter: example_value
+                  status: ACTIVE
+                  maxResults: 10
+                  nextToken: example_value
+      responses:
+        '200':
+          description: Container instances listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  containerInstanceArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+              examples:
+                Listcontainerinstances200Example:
+                  summary: Default ListContainerInstances 200 response
+                  x-microcks-default: true
+                  value:
+                    containerInstanceArns:
+                    - example_value
+                    nextToken: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        type:
+          type: string
+          example: example_value
+        status:
+          type: string
+          example: example_value
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+    Resource:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Example Title
+        type:
+          type: string
+          example: example_value
+        doubleValue:
+          type: number
+          example: 42.5
+        longValue:
+          type: integer
+          example: 10
+        integerValue:
+          type: integer
+          example: 10
+        stringSetValue:
+          type: array
+          items:
+            type: string
+          example: []
+    ContainerInstance:
+      type: object
+      description: An Amazon EC2 instance that is registered into an ECS cluster and running the ECS agent.
+      properties:
+        containerInstanceArn:
+          type: string
+          example: example_value
+        ec2InstanceId:
+          type: string
+          example: '500123'
+        version:
+          type: integer
+          example: 10
+        versionInfo:
+          type: object
+          properties:
+            agentVersion:
+              type: string
+            agentHash:
+              type: string
+            dockerVersion:
+              type: string
+          example: example_value
+        remainingResources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+          example: []
+        registeredResources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+          example: []
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - DRAINING
+          - REGISTERING
+          - DEREGISTERING
+          - REGISTRATION_FAILED
+          example: ACTIVE
+        statusReason:
+          type: string
+          example: example_value
+        agentConnected:
+          type: boolean
+          example: true
+        runningTasksCount:
+          type: integer
+          example: 10
+        pendingTasksCount:
+          type: integer
+          example: 10
+        agentUpdateStatus:
+          type: string
+          enum:
+          - PENDING
+          - STAGING
+          - STAGED
+          - UPDATING
+          - UPDATED
+          - FAILED
+          example: PENDING
+        attributes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+          example: []
+        registeredAt:
+          type: number
+          example: 42.5
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+          example: []
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          example: []
+        capacityProviderName:
+          type: string
+          example: example_value
+        healthStatus:
+          type: object
+          properties:
+            overallStatus:
+              type: string
+              enum:
+              - OK
+              - IMPAIRED
+              - INSUFFICIENT_DATA
+              - INITIALIZING
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  status:
+                    type: string
+                  lastUpdated:
+                    type: number
+                  lastStatusChange:
+                    type: number
+          example: example_value
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+  responses:
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html

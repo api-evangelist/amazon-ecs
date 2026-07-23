@@ -1,0 +1,940 @@
+openapi: 3.1.0
+info:
+  title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Clusters API
+  description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
+  version: '2014-11-13'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/ecs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://aws.amazon.com/favicon.ico
+  x-origin:
+  - format: openapi
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
+servers:
+- url: https://ecs.{region}.amazonaws.com
+  description: Amazon ECS regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- aws_sig_v4: []
+tags:
+- name: Clusters
+  description: Operations for managing ECS clusters
+  externalDocs:
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
+paths:
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster:
+    post:
+      operationId: CreateCluster
+      summary: Amazon Ecs Create a New Ecs Cluster
+      description: Creates a new Amazon ECS cluster. By default, your account receives a default cluster when you launch your first container instance. You can create additional clusters to group resources.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              $ref: '#/components/schemas/CreateClusterRequest'
+            examples:
+              CreateclusterRequestExample:
+                summary: Default CreateCluster request
+                x-microcks-default: true
+                value:
+                  clusterName: example_value
+                  capacityProviders:
+                  - example_value
+                  defaultCapacityProviderStrategy:
+                  - capacityProvider: example_value
+                    weight: 10
+                    base: 10
+                  settings:
+                  - name: Example Title
+                    value: example_value
+                  configuration:
+                    executeCommandConfiguration:
+                      kmsKeyId: '500123'
+                      logConfiguration: {}
+                      logging: NONE
+                    managedStorageConfiguration:
+                      fargateEphemeralStorageKmsKeyId: '500123'
+                      kmsKeyId: '500123'
+                  serviceConnectDefaults:
+                    namespace: example_value
+                  tags:
+                  - key: example_value
+                    value: example_value
+      responses:
+        '200':
+          description: Cluster created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+              examples:
+                Createcluster200Example:
+                  summary: Default CreateCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster:
+                      clusterArn: example_value
+                      clusterName: example_value
+                      status: ACTIVE
+                      registeredContainerInstancesCount: 10
+                      runningTasksCount: 10
+                      pendingTasksCount: 10
+                      activeServicesCount: 10
+                      statistics:
+                      - {}
+                      tags:
+                      - {}
+                      settings:
+                      - {}
+                      capacityProviders:
+                      - {}
+                      defaultCapacityProviderStrategy:
+                      - {}
+                      attachments:
+                      - {}
+                      attachmentsStatus: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster:
+    post:
+      operationId: DeleteCluster
+      summary: Amazon Ecs Delete an Ecs Cluster
+      description: Deletes the specified cluster. The cluster must have been deregistered, and must not contain any services or tasks.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteCluster.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - cluster
+              properties:
+                cluster:
+                  type: string
+                  description: The short name or full ARN of the cluster to delete.
+            examples:
+              DeleteclusterRequestExample:
+                summary: Default DeleteCluster request
+                x-microcks-default: true
+                value:
+                  cluster: example_value
+      responses:
+        '200':
+          description: Cluster deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cluster:
+                    $ref: '#/components/schemas/Cluster'
+              examples:
+                Deletecluster200Example:
+                  summary: Default DeleteCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster:
+                      clusterArn: example_value
+                      clusterName: example_value
+                      status: ACTIVE
+                      registeredContainerInstancesCount: 10
+                      runningTasksCount: 10
+                      pendingTasksCount: 10
+                      activeServicesCount: 10
+                      statistics:
+                      - name: Example Title
+                        value: example_value
+                      tags:
+                      - {}
+                      settings:
+                      - {}
+                      capacityProviders:
+                      - example_value
+                      defaultCapacityProviderStrategy:
+                      - {}
+                      attachments:
+                      - {}
+                      attachmentsStatus: example_value
+                      configuration:
+                        executeCommandConfiguration: {}
+                        managedStorageConfiguration: {}
+                      serviceConnectDefaults:
+                        namespace: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters:
+    post:
+      operationId: DescribeClusters
+      summary: Amazon Ecs Describe One or More Ecs Clusters
+      description: Describes one or more of your clusters. Returns details about a cluster including its status, statistics, tags, and settings.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeClusters.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                clusters:
+                  type: array
+                  description: A list of up to 100 cluster names or full cluster ARN entries.
+                  items:
+                    type: string
+                include:
+                  type: array
+                  description: Additional information about your clusters to include in the response.
+                  items:
+                    type: string
+                    enum:
+                    - ATTACHMENTS
+                    - CONFIGURATIONS
+                    - SETTINGS
+                    - STATISTICS
+                    - TAGS
+            examples:
+              DescribeclustersRequestExample:
+                summary: Default DescribeClusters request
+                x-microcks-default: true
+                value:
+                  clusters:
+                  - example_value
+                  include:
+                  - ATTACHMENTS
+      responses:
+        '200':
+          description: Clusters described successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusters:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cluster'
+                  failures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Failure'
+              examples:
+                Describeclusters200Example:
+                  summary: Default DescribeClusters 200 response
+                  x-microcks-default: true
+                  value:
+                    clusters:
+                    - clusterArn: example_value
+                      clusterName: example_value
+                      status: ACTIVE
+                      registeredContainerInstancesCount: 10
+                      runningTasksCount: 10
+                      pendingTasksCount: 10
+                      activeServicesCount: 10
+                      statistics:
+                      - {}
+                      tags:
+                      - {}
+                      settings:
+                      - {}
+                      capacityProviders:
+                      - {}
+                      defaultCapacityProviderStrategy:
+                      - {}
+                      attachments:
+                      - {}
+                      attachmentsStatus: example_value
+                    failures:
+                    - arn: example_value
+                      reason: example_value
+                      detail: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters:
+    post:
+      operationId: ListClusters
+      summary: Amazon Ecs List Ecs Clusters
+      description: Returns a list of existing clusters.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListClusters.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: false
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                maxResults:
+                  type: integer
+                  description: Maximum number of cluster results per page (1-100).
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous response.
+            examples:
+              ListclustersRequestExample:
+                summary: Default ListClusters request
+                x-microcks-default: true
+                value:
+                  maxResults: 10
+                  nextToken: example_value
+      responses:
+        '200':
+          description: Clusters listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusterArns:
+                    type: array
+                    items:
+                      type: string
+                  nextToken:
+                    type: string
+              examples:
+                Listclusters200Example:
+                  summary: Default ListClusters 200 response
+                  x-microcks-default: true
+                  value:
+                    clusterArns:
+                    - example_value
+                    nextToken: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster:
+    post:
+      operationId: UpdateCluster
+      summary: Amazon Ecs Update an Ecs Cluster
+      description: Updates the cluster settings and configuration.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateCluster.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - cluster
+              properties:
+                cluster:
+                  type: string
+                  description: The name or ARN of the cluster to update.
+                settings:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ClusterSetting'
+                configuration:
+                  $ref: '#/components/schemas/ClusterConfiguration'
+                serviceConnectDefaults:
+                  $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+            examples:
+              UpdateclusterRequestExample:
+                summary: Default UpdateCluster request
+                x-microcks-default: true
+                value:
+                  cluster: example_value
+                  settings:
+                  - name: Example Title
+                    value: example_value
+                  configuration:
+                    executeCommandConfiguration:
+                      kmsKeyId: '500123'
+                      logConfiguration:
+                        cloudWatchEncryptionEnabled: true
+                        cloudWatchLogGroupName: example_value
+                        s3BucketName: example_value
+                        s3EncryptionEnabled: true
+                        s3KeyPrefix: example_value
+                      logging: NONE
+                    managedStorageConfiguration:
+                      fargateEphemeralStorageKmsKeyId: '500123'
+                      kmsKeyId: '500123'
+                  serviceConnectDefaults:
+                    namespace: example_value
+      responses:
+        '200':
+          description: Cluster updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cluster:
+                    $ref: '#/components/schemas/Cluster'
+              examples:
+                Updatecluster200Example:
+                  summary: Default UpdateCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster:
+                      clusterArn: example_value
+                      clusterName: example_value
+                      status: ACTIVE
+                      registeredContainerInstancesCount: 10
+                      runningTasksCount: 10
+                      pendingTasksCount: 10
+                      activeServicesCount: 10
+                      statistics:
+                      - name: Example Title
+                        value: example_value
+                      tags:
+                      - {}
+                      settings:
+                      - {}
+                      capacityProviders:
+                      - example_value
+                      defaultCapacityProviderStrategy:
+                      - {}
+                      attachments:
+                      - {}
+                      attachmentsStatus: example_value
+                      configuration:
+                        executeCommandConfiguration: {}
+                        managedStorageConfiguration: {}
+                      serviceConnectDefaults:
+                        namespace: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource:
+    post:
+      operationId: TagResource
+      summary: Amazon Ecs Tag an Ecs Resource
+      description: Associates the specified tags to a resource with the specified resourceArn.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TagResource.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - resourceArn
+              - tags
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to tag.
+                tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+            examples:
+              TagresourceRequestExample:
+                summary: Default TagResource request
+                x-microcks-default: true
+                value:
+                  resourceArn: example_value
+                  tags:
+                  - key: example_value
+                    value: example_value
+      responses:
+        '200':
+          description: Resource tagged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                Tagresource200Example:
+                  summary: Default TagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource:
+    post:
+      operationId: UntagResource
+      summary: Amazon Ecs Remove Tags From an Ecs Resource
+      description: Deletes specified tags from a resource.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UntagResource.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - resourceArn
+              - tagKeys
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to untag.
+                tagKeys:
+                  type: array
+                  items:
+                    type: string
+                  description: The keys of the tags to remove.
+            examples:
+              UntagresourceRequestExample:
+                summary: Default UntagResource request
+                x-microcks-default: true
+                value:
+                  resourceArn: example_value
+                  tagKeys:
+                  - example_value
+      responses:
+        '200':
+          description: Tags removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                Untagresource200Example:
+                  summary: Default UntagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource:
+    post:
+      operationId: ListTagsForResource
+      summary: Amazon Ecs List Tags for an Ecs Resource
+      description: Lists the tags for the specified resource.
+      tags:
+      - Clusters
+      externalDocs:
+        url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTagsForResource.html
+      parameters:
+      - $ref: '#/components/parameters/X-Amz-Target'
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - resourceArn
+              properties:
+                resourceArn:
+                  type: string
+                  description: The ARN of the resource to list tags for.
+            examples:
+              ListtagsforresourceRequestExample:
+                summary: Default ListTagsForResource request
+                x-microcks-default: true
+                value:
+                  resourceArn: example_value
+      responses:
+        '200':
+          description: Tags listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+              examples:
+                Listtagsforresource200Example:
+                  summary: Default ListTagsForResource 200 response
+                  x-microcks-default: true
+                  value:
+                    tags:
+                    - key: example_value
+                      value: example_value
+        '400':
+          $ref: '#/components/responses/ClientError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ClusterConfiguration:
+      type: object
+      properties:
+        executeCommandConfiguration:
+          type: object
+          properties:
+            kmsKeyId:
+              type: string
+              description: The KMS key ID to encrypt data between the container and the SSM session.
+            logConfiguration:
+              type: object
+              properties:
+                cloudWatchEncryptionEnabled:
+                  type: boolean
+                cloudWatchLogGroupName:
+                  type: string
+                s3BucketName:
+                  type: string
+                s3EncryptionEnabled:
+                  type: boolean
+                s3KeyPrefix:
+                  type: string
+            logging:
+              type: string
+              enum:
+              - NONE
+              - DEFAULT
+              - OVERRIDE
+              description: The log setting to use for redirecting logs for execute command results.
+          example: example_value
+        managedStorageConfiguration:
+          type: object
+          properties:
+            fargateEphemeralStorageKmsKeyId:
+              type: string
+            kmsKeyId:
+              type: string
+          example: example_value
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
+    ClusterServiceConnectDefaults:
+      type: object
+      properties:
+        namespace:
+          type: string
+          description: The namespace name or ARN of the Cloud Map namespace that is used when a service is created without specifying a Service Connect configuration.
+          example: example_value
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
+    CapacityProviderStrategyItem:
+      type: object
+      required:
+      - capacityProvider
+      properties:
+        capacityProvider:
+          type: string
+          description: The short name of the capacity provider.
+          example: example_value
+        weight:
+          type: integer
+          description: The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000).
+          minimum: 0
+          maximum: 1000
+          example: 10
+        base:
+          type: integer
+          description: The number of tasks, at a minimum, to run on the specified capacity provider (0-100000).
+          minimum: 0
+          maximum: 100000
+          example: 10
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        type:
+          type: string
+          example: example_value
+        status:
+          type: string
+          example: example_value
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Cluster:
+      type: object
+      description: A regional grouping of one or more container instances on which you can run tasks and services.
+      properties:
+        clusterArn:
+          type: string
+          description: The ARN that identifies the cluster.
+          example: example_value
+        clusterName:
+          type: string
+          description: A user-generated string that you use to identify your cluster.
+          example: example_value
+        status:
+          type: string
+          description: The status of the cluster.
+          enum:
+          - ACTIVE
+          - PROVISIONING
+          - DEPROVISIONING
+          - FAILED
+          - INACTIVE
+          example: ACTIVE
+        registeredContainerInstancesCount:
+          type: integer
+          description: The number of container instances registered into the cluster.
+          example: 10
+        runningTasksCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the RUNNING state.
+          example: 10
+        pendingTasksCount:
+          type: integer
+          description: The number of tasks in the cluster that are in the PENDING state.
+          example: 10
+        activeServicesCount:
+          type: integer
+          description: The number of services in the cluster that are in an ACTIVE state.
+          example: 10
+        statistics:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+          example: []
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          example: []
+        settings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClusterSetting'
+          example: []
+        capacityProviders:
+          type: array
+          items:
+            type: string
+          example: []
+        defaultCapacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+          example: []
+        attachmentsStatus:
+          type: string
+          example: example_value
+        configuration:
+          $ref: '#/components/schemas/ClusterConfiguration'
+        serviceConnectDefaults:
+          $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+    CreateClusterRequest:
+      type: object
+      properties:
+        clusterName:
+          type: string
+          description: The name of the cluster to create (up to 255 characters). If not specified, the default cluster is created.
+          maxLength: 255
+          example: example_value
+        capacityProviders:
+          type: array
+          description: The short names of capacity providers to associate with the cluster.
+          items:
+            type: string
+          example: []
+        defaultCapacityProviderStrategy:
+          type: array
+          description: The default capacity provider strategy for the cluster.
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+        settings:
+          type: array
+          description: The cluster settings (e.g., Container Insights).
+          items:
+            $ref: '#/components/schemas/ClusterSetting'
+          example: []
+        configuration:
+          $ref: '#/components/schemas/ClusterConfiguration'
+        serviceConnectDefaults:
+          $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+        tags:
+          type: array
+          description: Metadata tags to apply to the cluster (up to 50).
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+          example: []
+    ClusterSetting:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the cluster setting (e.g., containerInsights).
+          example: Example Title
+        value:
+          type: string
+          description: The value of the cluster setting.
+          example: example_value
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+  responses:
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+externalDocs:
+  description: Amazon ECS API Reference
+  url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
