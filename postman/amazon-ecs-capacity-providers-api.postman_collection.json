@@ -1,0 +1,488 @@
+{
+  "info": {
+    "_postman_id": "d01400f9-ae01-473a-8e06-76ee01be93e5",
+    "name": "Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers API",
+    "description": "Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:19:56.000Z",
+    "updatedAt": "2026-07-28T10:19:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d01400f9-ae01-473a-8e06-76ee01be93e5"
+  },
+  "item": [
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider",
+      "item": [
+        {
+          "name": "Amazon Ecs Create a Capacity Provider",
+          "id": "cdadb0f0-6f34-4e7f-bd3a-fa622abb739e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"autoScalingGroupProvider\": {\n    \"autoScalingGroupArn\": \"<string>\",\n    \"managedScaling\": {\n      \"status\": \"DISABLED\",\n      \"targetCapacity\": \"<integer>\",\n      \"minimumScalingStepSize\": \"<integer>\",\n      \"maximumScalingStepSize\": \"<integer>\",\n      \"instanceWarmupPeriod\": \"<integer>\"\n    },\n    \"managedTerminationProtection\": \"ENABLED\",\n    \"managedDraining\": \"DISABLED\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider"
+            },
+            "description": "Creates a new capacity provider. Capacity providers are associated with an Auto Scaling group to manage the infrastructure for your tasks and services."
+          },
+          "response": [
+            {
+              "id": "68c42467-74f5-4d48-83fc-8dd19a6f449a",
+              "name": "Capacity provider created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"autoScalingGroupProvider\": {\n    \"autoScalingGroupArn\": \"<string>\",\n    \"managedScaling\": {\n      \"status\": \"DISABLED\",\n      \"targetCapacity\": \"<integer>\",\n      \"minimumScalingStepSize\": \"<integer>\",\n      \"maximumScalingStepSize\": \"<integer>\",\n      \"instanceWarmupPeriod\": \"<integer>\"\n    },\n    \"managedTerminationProtection\": \"ENABLED\",\n    \"managedDraining\": \"DISABLED\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"capacityProvider\": {\n    \"capacityProviderArn\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"INACTIVE\",\n    \"autoScalingGroupProvider\": {\n      \"autoScalingGroupArn\": \"<string>\",\n      \"managedScaling\": {\n        \"status\": \"DISABLED\",\n        \"targetCapacity\": \"<integer>\",\n        \"minimumScalingStepSize\": \"<integer>\",\n        \"maximumScalingStepSize\": \"<integer>\",\n        \"instanceWarmupPeriod\": \"<integer>\"\n      },\n      \"managedTerminationProtection\": \"ENABLED\",\n      \"managedDraining\": \"ENABLED\"\n    },\n    \"updateStatus\": \"DELETE_IN_PROGRESS\",\n    \"updateStatusReason\": \"<string>\",\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T10:19:56.000Z",
+              "updatedAt": "2026-07-28T10:19:56.000Z",
+              "uid": "35240-68c42467-74f5-4d48-83fc-8dd19a6f449a"
+            },
+            {
+              "id": "87551bb7-29d3-4c92-b462-478a408eeaad",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"autoScalingGroupProvider\": {\n    \"autoScalingGroupArn\": \"<string>\",\n    \"managedScaling\": {\n      \"status\": \"DISABLED\",\n      \"targetCapacity\": \"<integer>\",\n      \"minimumScalingStepSize\": \"<integer>\",\n      \"maximumScalingStepSize\": \"<integer>\",\n      \"instanceWarmupPeriod\": \"<integer>\"\n    },\n    \"managedTerminationProtection\": \"ENABLED\",\n    \"managedDraining\": \"DISABLED\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:56.000Z",
+              "updatedAt": "2026-07-28T10:19:56.000Z",
+              "uid": "35240-87551bb7-29d3-4c92-b462-478a408eeaad"
+            },
+            {
+              "id": "3ec08200-48fa-4f20-aaf2-c1ebd449a1cc",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"autoScalingGroupProvider\": {\n    \"autoScalingGroupArn\": \"<string>\",\n    \"managedScaling\": {\n      \"status\": \"DISABLED\",\n      \"targetCapacity\": \"<integer>\",\n      \"minimumScalingStepSize\": \"<integer>\",\n      \"maximumScalingStepSize\": \"<integer>\",\n      \"instanceWarmupPeriod\": \"<integer>\"\n    },\n    \"managedTerminationProtection\": \"ENABLED\",\n    \"managedDraining\": \"DISABLED\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCapacityProvider"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:56.000Z",
+              "updatedAt": "2026-07-28T10:19:56.000Z",
+              "uid": "35240-3ec08200-48fa-4f20-aaf2-c1ebd449a1cc"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:56.000Z",
+          "updatedAt": "2026-07-28T10:19:56.000Z",
+          "uid": "35240-cdadb0f0-6f34-4e7f-bd3a-fa622abb739e"
+        }
+      ],
+      "id": "962d9fee-f77c-4691-b3ff-de0667fb5631",
+      "createdAt": "2026-07-28T10:19:56.000Z",
+      "updatedAt": "2026-07-28T10:19:56.000Z",
+      "uid": "35240-962d9fee-f77c-4691-b3ff-de0667fb5631"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders",
+      "item": [
+        {
+          "name": "Amazon Ecs Describe Capacity Providers",
+          "id": "97fe8efa-3f23-4f3f-b743-14679205ba01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders"
+            },
+            "description": "Describes one or more capacity providers."
+          },
+          "response": [
+            {
+              "id": "948b5a9a-ac14-4620-9213-295905789630",
+              "name": "Capacity providers described successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"capacityProviders\": [\n    {\n      \"capacityProviderArn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"autoScalingGroupProvider\": {\n        \"autoScalingGroupArn\": \"<string>\",\n        \"managedScaling\": {\n          \"status\": \"ENABLED\",\n          \"targetCapacity\": \"<integer>\",\n          \"minimumScalingStepSize\": \"<integer>\",\n          \"maximumScalingStepSize\": \"<integer>\",\n          \"instanceWarmupPeriod\": \"<integer>\"\n        },\n        \"managedTerminationProtection\": \"DISABLED\",\n        \"managedDraining\": \"DISABLED\"\n      },\n      \"updateStatus\": \"UPDATE_IN_PROGRESS\",\n      \"updateStatusReason\": \"<string>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"capacityProviderArn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"INACTIVE\",\n      \"autoScalingGroupProvider\": {\n        \"autoScalingGroupArn\": \"<string>\",\n        \"managedScaling\": {\n          \"status\": \"ENABLED\",\n          \"targetCapacity\": \"<integer>\",\n          \"minimumScalingStepSize\": \"<integer>\",\n          \"maximumScalingStepSize\": \"<integer>\",\n          \"instanceWarmupPeriod\": \"<integer>\"\n        },\n        \"managedTerminationProtection\": \"ENABLED\",\n        \"managedDraining\": \"ENABLED\"\n      },\n      \"updateStatus\": \"UPDATE_FAILED\",\n      \"updateStatusReason\": \"<string>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"failures\": [\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:56.000Z",
+              "updatedAt": "2026-07-28T10:19:56.000Z",
+              "uid": "35240-948b5a9a-ac14-4620-9213-295905789630"
+            },
+            {
+              "id": "5c98b54c-f073-4202-98a6-9340f0b38555",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:56.000Z",
+              "updatedAt": "2026-07-28T10:19:56.000Z",
+              "uid": "35240-5c98b54c-f073-4202-98a6-9340f0b38555"
+            },
+            {
+              "id": "8677c4b9-bd79-42c6-9818-9273e6337cd2",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeCapacityProviders"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:56.000Z",
+              "updatedAt": "2026-07-28T10:19:56.000Z",
+              "uid": "35240-8677c4b9-bd79-42c6-9818-9273e6337cd2"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:56.000Z",
+          "updatedAt": "2026-07-28T10:19:56.000Z",
+          "uid": "35240-97fe8efa-3f23-4f3f-b743-14679205ba01"
+        }
+      ],
+      "id": "df347b35-2e9c-41fc-ae09-84eae57554b1",
+      "createdAt": "2026-07-28T10:19:56.000Z",
+      "updatedAt": "2026-07-28T10:19:56.000Z",
+      "uid": "35240-df347b35-2e9c-41fc-ae09-84eae57554b1"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://ecs.{{region}}.amazonaws.com"
+    }
+  ]
+}

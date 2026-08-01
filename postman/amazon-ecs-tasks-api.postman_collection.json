@@ -1,0 +1,2042 @@
+{
+  "info": {
+    "_postman_id": "cda54f2a-fab1-42da-a9ce-f7726eb6c47f",
+    "name": "Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Tasks API",
+    "description": "Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:20:01.000Z",
+    "updatedAt": "2026-07-28T10:20:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cda54f2a-fab1-42da-a9ce-f7726eb6c47f"
+  },
+  "item": [
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask",
+      "item": [
+        {
+          "name": "Amazon Ecs Run a New Task",
+          "id": "2f50e766-6738-4ec5-8235-96fd85f76fb5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"count\": 1,\n  \"launchType\": \"EC2\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"group\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"NONE\",\n  \"clientToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask"
+            },
+            "description": "Starts a new task using the specified task definition. You can specify the cluster, launch type, network configuration, and overrides."
+          },
+          "response": [
+            {
+              "id": "9874593d-04f9-4728-af20-b10496cbc284",
+              "name": "Task started successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"count\": 1,\n  \"launchType\": \"EC2\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"group\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"NONE\",\n  \"clientToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tasks\": [\n    {\n      \"taskArn\": \"<string>\",\n      \"clusterArn\": \"<string>\",\n      \"taskDefinitionArn\": \"<string>\",\n      \"containerInstanceArn\": \"<string>\",\n      \"overrides\": {\n        \"containerOverrides\": [\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"taskRoleArn\": \"<string>\",\n        \"executionRoleArn\": \"<string>\",\n        \"ephemeralStorage\": {\n          \"sizeInGiB\": \"<integer>\"\n        },\n        \"inferenceAcceleratorOverrides\": [\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          },\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          }\n        ]\n      },\n      \"lastStatus\": \"PROVISIONING\",\n      \"desiredStatus\": \"RUNNING\",\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"containers\": [\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"startedBy\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"stoppedReason\": \"<string>\",\n      \"stopCode\": \"TerminationNotice\",\n      \"connectivity\": \"DISCONNECTED\",\n      \"connectivityAt\": \"<number>\",\n      \"pullStartedAt\": \"<number>\",\n      \"pullStoppedAt\": \"<number>\",\n      \"executionStoppedAt\": \"<number>\",\n      \"createdAt\": \"<number>\",\n      \"startedAt\": \"<number>\",\n      \"stoppingAt\": \"<number>\",\n      \"stoppedAt\": \"<number>\",\n      \"group\": \"<string>\",\n      \"launchType\": \"EC2\",\n      \"platformVersion\": \"<string>\",\n      \"platformFamily\": \"<string>\",\n      \"capacityProviderName\": \"<string>\",\n      \"availabilityZone\": \"<string>\",\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"healthStatus\": \"UNKNOWN\",\n      \"enableExecuteCommand\": \"<boolean>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAccelerators\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ],\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"taskArn\": \"<string>\",\n      \"clusterArn\": \"<string>\",\n      \"taskDefinitionArn\": \"<string>\",\n      \"containerInstanceArn\": \"<string>\",\n      \"overrides\": {\n        \"containerOverrides\": [\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"taskRoleArn\": \"<string>\",\n        \"executionRoleArn\": \"<string>\",\n        \"ephemeralStorage\": {\n          \"sizeInGiB\": \"<integer>\"\n        },\n        \"inferenceAcceleratorOverrides\": [\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          },\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          }\n        ]\n      },\n      \"lastStatus\": \"STOPPING\",\n      \"desiredStatus\": \"PENDING\",\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"containers\": [\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"startedBy\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"stoppedReason\": \"<string>\",\n      \"stopCode\": \"SpotInterruption\",\n      \"connectivity\": \"DISCONNECTED\",\n      \"connectivityAt\": \"<number>\",\n      \"pullStartedAt\": \"<number>\",\n      \"pullStoppedAt\": \"<number>\",\n      \"executionStoppedAt\": \"<number>\",\n      \"createdAt\": \"<number>\",\n      \"startedAt\": \"<number>\",\n      \"stoppingAt\": \"<number>\",\n      \"stoppedAt\": \"<number>\",\n      \"group\": \"<string>\",\n      \"launchType\": \"FARGATE\",\n      \"platformVersion\": \"<string>\",\n      \"platformFamily\": \"<string>\",\n      \"capacityProviderName\": \"<string>\",\n      \"availabilityZone\": \"<string>\",\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"healthStatus\": \"UNHEALTHY\",\n      \"enableExecuteCommand\": \"<boolean>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAccelerators\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ],\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"failures\": [\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-9874593d-04f9-4728-af20-b10496cbc284"
+            },
+            {
+              "id": "8e835e01-a277-4cbe-96f2-9a0746994b07",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"count\": 1,\n  \"launchType\": \"EC2\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"group\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"NONE\",\n  \"clientToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-8e835e01-a277-4cbe-96f2-9a0746994b07"
+            },
+            {
+              "id": "ba5cd45d-36dc-4034-97de-2d41806b917a",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"count\": 1,\n  \"launchType\": \"EC2\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"group\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"NONE\",\n  \"clientToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RunTask"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-ba5cd45d-36dc-4034-97de-2d41806b917a"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-2f50e766-6738-4ec5-8235-96fd85f76fb5"
+        }
+      ],
+      "id": "9a0230f6-fb7a-4e70-8f7b-7cc2d29aa1fe",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-9a0230f6-fb7a-4e70-8f7b-7cc2d29aa1fe"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask",
+      "item": [
+        {
+          "name": "Amazon Ecs Start a Task on a Specific Container Instance",
+          "id": "d9311a0e-1ee5-449f-b3fe-89f428d9b5d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"containerInstances\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"startedBy\": \"<string>\",\n  \"group\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"DISABLED\"\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask"
+            },
+            "description": "Starts a new task from the specified task definition on the specified container instance or instances."
+          },
+          "response": [
+            {
+              "id": "cd50fc11-ac6d-40c2-9ec3-c4aff8db4e7c",
+              "name": "Task started successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"containerInstances\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"startedBy\": \"<string>\",\n  \"group\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"DISABLED\"\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tasks\": [\n    {\n      \"taskArn\": \"<string>\",\n      \"clusterArn\": \"<string>\",\n      \"taskDefinitionArn\": \"<string>\",\n      \"containerInstanceArn\": \"<string>\",\n      \"overrides\": {\n        \"containerOverrides\": [\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"taskRoleArn\": \"<string>\",\n        \"executionRoleArn\": \"<string>\",\n        \"ephemeralStorage\": {\n          \"sizeInGiB\": \"<integer>\"\n        },\n        \"inferenceAcceleratorOverrides\": [\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          },\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          }\n        ]\n      },\n      \"lastStatus\": \"PROVISIONING\",\n      \"desiredStatus\": \"RUNNING\",\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"containers\": [\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"startedBy\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"stoppedReason\": \"<string>\",\n      \"stopCode\": \"TerminationNotice\",\n      \"connectivity\": \"DISCONNECTED\",\n      \"connectivityAt\": \"<number>\",\n      \"pullStartedAt\": \"<number>\",\n      \"pullStoppedAt\": \"<number>\",\n      \"executionStoppedAt\": \"<number>\",\n      \"createdAt\": \"<number>\",\n      \"startedAt\": \"<number>\",\n      \"stoppingAt\": \"<number>\",\n      \"stoppedAt\": \"<number>\",\n      \"group\": \"<string>\",\n      \"launchType\": \"EC2\",\n      \"platformVersion\": \"<string>\",\n      \"platformFamily\": \"<string>\",\n      \"capacityProviderName\": \"<string>\",\n      \"availabilityZone\": \"<string>\",\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"healthStatus\": \"UNKNOWN\",\n      \"enableExecuteCommand\": \"<boolean>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAccelerators\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ],\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"taskArn\": \"<string>\",\n      \"clusterArn\": \"<string>\",\n      \"taskDefinitionArn\": \"<string>\",\n      \"containerInstanceArn\": \"<string>\",\n      \"overrides\": {\n        \"containerOverrides\": [\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"taskRoleArn\": \"<string>\",\n        \"executionRoleArn\": \"<string>\",\n        \"ephemeralStorage\": {\n          \"sizeInGiB\": \"<integer>\"\n        },\n        \"inferenceAcceleratorOverrides\": [\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          },\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          }\n        ]\n      },\n      \"lastStatus\": \"STOPPING\",\n      \"desiredStatus\": \"PENDING\",\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"containers\": [\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"startedBy\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"stoppedReason\": \"<string>\",\n      \"stopCode\": \"SpotInterruption\",\n      \"connectivity\": \"DISCONNECTED\",\n      \"connectivityAt\": \"<number>\",\n      \"pullStartedAt\": \"<number>\",\n      \"pullStoppedAt\": \"<number>\",\n      \"executionStoppedAt\": \"<number>\",\n      \"createdAt\": \"<number>\",\n      \"startedAt\": \"<number>\",\n      \"stoppingAt\": \"<number>\",\n      \"stoppedAt\": \"<number>\",\n      \"group\": \"<string>\",\n      \"launchType\": \"FARGATE\",\n      \"platformVersion\": \"<string>\",\n      \"platformFamily\": \"<string>\",\n      \"capacityProviderName\": \"<string>\",\n      \"availabilityZone\": \"<string>\",\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"healthStatus\": \"UNHEALTHY\",\n      \"enableExecuteCommand\": \"<boolean>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAccelerators\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ],\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"failures\": [\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-cd50fc11-ac6d-40c2-9ec3-c4aff8db4e7c"
+            },
+            {
+              "id": "94bf3f3f-9fb2-4606-a9ed-f35524fbc21b",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"containerInstances\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"startedBy\": \"<string>\",\n  \"group\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"DISABLED\"\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-94bf3f3f-9fb2-4606-a9ed-f35524fbc21b"
+            },
+            {
+              "id": "eabf869b-ceb7-4c79-91f8-805bf033ead8",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"containerInstances\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"overrides\": {\n    \"containerOverrides\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"environment\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"environmentFiles\": [\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"type\": \"s3\"\n          }\n        ],\n        \"cpu\": \"<integer>\",\n        \"memory\": \"<integer>\",\n        \"memoryReservation\": \"<integer>\",\n        \"resourceRequirements\": [\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"taskRoleArn\": \"<string>\",\n    \"executionRoleArn\": \"<string>\",\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAcceleratorOverrides\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ]\n  },\n  \"startedBy\": \"<string>\",\n  \"group\": \"<string>\",\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"DISABLED\"\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StartTask"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-eabf869b-ceb7-4c79-91f8-805bf033ead8"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-d9311a0e-1ee5-449f-b3fe-89f428d9b5d2"
+        }
+      ],
+      "id": "e162e2f1-0f39-4385-8b89-bdea788a0036",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-e162e2f1-0f39-4385-8b89-bdea788a0036"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask",
+      "item": [
+        {
+          "name": "Amazon Ecs Stop a Running Task",
+          "id": "a650ea43-5028-471d-9b9f-261babb81cfb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"reason\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask"
+            },
+            "description": "Stops a running task. Resources are cleaned up and the task transitions to STOPPED status."
+          },
+          "response": [
+            {
+              "id": "1dab6ba3-37d2-4f55-82d6-4f3653a30811",
+              "name": "Task stopped successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"reason\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"task\": {\n    \"taskArn\": \"<string>\",\n    \"clusterArn\": \"<string>\",\n    \"taskDefinitionArn\": \"<string>\",\n    \"containerInstanceArn\": \"<string>\",\n    \"overrides\": {\n      \"containerOverrides\": [\n        {\n          \"name\": \"<string>\",\n          \"command\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"environment\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"environmentFiles\": [\n            {\n              \"value\": \"<string>\",\n              \"type\": \"s3\"\n            },\n            {\n              \"value\": \"<string>\",\n              \"type\": \"s3\"\n            }\n          ],\n          \"cpu\": \"<integer>\",\n          \"memory\": \"<integer>\",\n          \"memoryReservation\": \"<integer>\",\n          \"resourceRequirements\": [\n            {\n              \"type\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"command\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"environment\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"environmentFiles\": [\n            {\n              \"value\": \"<string>\",\n              \"type\": \"s3\"\n            },\n            {\n              \"value\": \"<string>\",\n              \"type\": \"s3\"\n            }\n          ],\n          \"cpu\": \"<integer>\",\n          \"memory\": \"<integer>\",\n          \"memoryReservation\": \"<integer>\",\n          \"resourceRequirements\": [\n            {\n              \"type\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"taskRoleArn\": \"<string>\",\n      \"executionRoleArn\": \"<string>\",\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAcceleratorOverrides\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ]\n    },\n    \"lastStatus\": \"DEACTIVATING\",\n    \"desiredStatus\": \"STOPPED\",\n    \"cpu\": \"<string>\",\n    \"memory\": \"<string>\",\n    \"containers\": [\n      {\n        \"containerArn\": \"<string>\",\n        \"taskArn\": \"<string>\",\n        \"name\": \"<string>\",\n        \"image\": \"<string>\",\n        \"imageDigest\": \"<string>\",\n        \"runtimeId\": \"<string>\",\n        \"lastStatus\": \"<string>\",\n        \"exitCode\": \"<integer>\",\n        \"reason\": \"<string>\",\n        \"healthStatus\": \"UNHEALTHY\",\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"memoryReservation\": \"<string>\",\n        \"gpuIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"networkBindings\": [\n          {\n            \"bindIP\": \"<string>\",\n            \"containerPort\": \"<integer>\",\n            \"hostPort\": \"<integer>\",\n            \"protocol\": \"tcp\",\n            \"containerPortRange\": \"<string>\",\n            \"hostPortRange\": \"<string>\"\n          },\n          {\n            \"bindIP\": \"<string>\",\n            \"containerPort\": \"<integer>\",\n            \"hostPort\": \"<integer>\",\n            \"protocol\": \"udp\",\n            \"containerPortRange\": \"<string>\",\n            \"hostPortRange\": \"<string>\"\n          }\n        ],\n        \"networkInterfaces\": [\n          {\n            \"attachmentId\": \"<string>\",\n            \"privateIpv4Address\": \"<string>\",\n            \"ipv6Address\": \"<string>\"\n          },\n          {\n            \"attachmentId\": \"<string>\",\n            \"privateIpv4Address\": \"<string>\",\n            \"ipv6Address\": \"<string>\"\n          }\n        ],\n        \"managedAgents\": [\n          {\n            \"name\": \"<string>\",\n            \"lastStatus\": \"<string>\",\n            \"lastStartedAt\": \"<number>\",\n            \"reason\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"lastStatus\": \"<string>\",\n            \"lastStartedAt\": \"<number>\",\n            \"reason\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"containerArn\": \"<string>\",\n        \"taskArn\": \"<string>\",\n        \"name\": \"<string>\",\n        \"image\": \"<string>\",\n        \"imageDigest\": \"<string>\",\n        \"runtimeId\": \"<string>\",\n        \"lastStatus\": \"<string>\",\n        \"exitCode\": \"<integer>\",\n        \"reason\": \"<string>\",\n        \"healthStatus\": \"HEALTHY\",\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"memoryReservation\": \"<string>\",\n        \"gpuIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"networkBindings\": [\n          {\n            \"bindIP\": \"<string>\",\n            \"containerPort\": \"<integer>\",\n            \"hostPort\": \"<integer>\",\n            \"protocol\": \"tcp\",\n            \"containerPortRange\": \"<string>\",\n            \"hostPortRange\": \"<string>\"\n          },\n          {\n            \"bindIP\": \"<string>\",\n            \"containerPort\": \"<integer>\",\n            \"hostPort\": \"<integer>\",\n            \"protocol\": \"tcp\",\n            \"containerPortRange\": \"<string>\",\n            \"hostPortRange\": \"<string>\"\n          }\n        ],\n        \"networkInterfaces\": [\n          {\n            \"attachmentId\": \"<string>\",\n            \"privateIpv4Address\": \"<string>\",\n            \"ipv6Address\": \"<string>\"\n          },\n          {\n            \"attachmentId\": \"<string>\",\n            \"privateIpv4Address\": \"<string>\",\n            \"ipv6Address\": \"<string>\"\n          }\n        ],\n        \"managedAgents\": [\n          {\n            \"name\": \"<string>\",\n            \"lastStatus\": \"<string>\",\n            \"lastStartedAt\": \"<number>\",\n            \"reason\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"lastStatus\": \"<string>\",\n            \"lastStartedAt\": \"<number>\",\n            \"reason\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"startedBy\": \"<string>\",\n    \"version\": \"<integer>\",\n    \"stoppedReason\": \"<string>\",\n    \"stopCode\": \"SpotInterruption\",\n    \"connectivity\": \"DISCONNECTED\",\n    \"connectivityAt\": \"<number>\",\n    \"pullStartedAt\": \"<number>\",\n    \"pullStoppedAt\": \"<number>\",\n    \"executionStoppedAt\": \"<number>\",\n    \"createdAt\": \"<number>\",\n    \"startedAt\": \"<number>\",\n    \"stoppingAt\": \"<number>\",\n    \"stoppedAt\": \"<number>\",\n    \"group\": \"<string>\",\n    \"launchType\": \"FARGATE\",\n    \"platformVersion\": \"<string>\",\n    \"platformFamily\": \"<string>\",\n    \"capacityProviderName\": \"<string>\",\n    \"availabilityZone\": \"<string>\",\n    \"attachments\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"healthStatus\": \"HEALTHY\",\n    \"enableExecuteCommand\": \"<boolean>\",\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": \"<integer>\"\n    },\n    \"inferenceAccelerators\": [\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      },\n      {\n        \"deviceName\": \"<string>\",\n        \"deviceType\": \"<string>\"\n      }\n    ],\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"targetType\": \"<string>\",\n        \"targetId\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"targetType\": \"<string>\",\n        \"targetId\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-1dab6ba3-37d2-4f55-82d6-4f3653a30811"
+            },
+            {
+              "id": "40cbfb07-8e10-4dce-b9b1-daa56efdd9da",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"reason\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-40cbfb07-8e10-4dce-b9b1-daa56efdd9da"
+            },
+            {
+              "id": "174e8503-07b7-4a31-9a92-49dfc025dec2",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"reason\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.StopTask"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-174e8503-07b7-4a31-9a92-49dfc025dec2"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-a650ea43-5028-471d-9b9f-261babb81cfb"
+        }
+      ],
+      "id": "e3d2d8d7-2d7b-4b16-9757-64cd1bf2a5bd",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-e3d2d8d7-2d7b-4b16-9757-64cd1bf2a5bd"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks",
+      "item": [
+        {
+          "name": "Amazon Ecs Describe One or More Tasks",
+          "id": "2da01488-3120-4b81-8265-627fc880023a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tasks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks"
+            },
+            "description": "Describes a specified task or tasks in a cluster."
+          },
+          "response": [
+            {
+              "id": "a4f6c571-46bc-424e-8eed-f5ae5fe02164",
+              "name": "Tasks described successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tasks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tasks\": [\n    {\n      \"taskArn\": \"<string>\",\n      \"clusterArn\": \"<string>\",\n      \"taskDefinitionArn\": \"<string>\",\n      \"containerInstanceArn\": \"<string>\",\n      \"overrides\": {\n        \"containerOverrides\": [\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"taskRoleArn\": \"<string>\",\n        \"executionRoleArn\": \"<string>\",\n        \"ephemeralStorage\": {\n          \"sizeInGiB\": \"<integer>\"\n        },\n        \"inferenceAcceleratorOverrides\": [\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          },\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          }\n        ]\n      },\n      \"lastStatus\": \"STOPPING\",\n      \"desiredStatus\": \"STOPPED\",\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"containers\": [\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"HEALTHY\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"startedBy\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"stoppedReason\": \"<string>\",\n      \"stopCode\": \"ServiceSchedulerInitiated\",\n      \"connectivity\": \"CONNECTED\",\n      \"connectivityAt\": \"<number>\",\n      \"pullStartedAt\": \"<number>\",\n      \"pullStoppedAt\": \"<number>\",\n      \"executionStoppedAt\": \"<number>\",\n      \"createdAt\": \"<number>\",\n      \"startedAt\": \"<number>\",\n      \"stoppingAt\": \"<number>\",\n      \"stoppedAt\": \"<number>\",\n      \"group\": \"<string>\",\n      \"launchType\": \"EXTERNAL\",\n      \"platformVersion\": \"<string>\",\n      \"platformFamily\": \"<string>\",\n      \"capacityProviderName\": \"<string>\",\n      \"availabilityZone\": \"<string>\",\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"healthStatus\": \"UNHEALTHY\",\n      \"enableExecuteCommand\": \"<boolean>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAccelerators\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ],\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"taskArn\": \"<string>\",\n      \"clusterArn\": \"<string>\",\n      \"taskDefinitionArn\": \"<string>\",\n      \"containerInstanceArn\": \"<string>\",\n      \"overrides\": {\n        \"containerOverrides\": [\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"command\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"environment\": [\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ],\n            \"environmentFiles\": [\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"type\": \"s3\"\n              }\n            ],\n            \"cpu\": \"<integer>\",\n            \"memory\": \"<integer>\",\n            \"memoryReservation\": \"<integer>\",\n            \"resourceRequirements\": [\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"value\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"cpu\": \"<string>\",\n        \"memory\": \"<string>\",\n        \"taskRoleArn\": \"<string>\",\n        \"executionRoleArn\": \"<string>\",\n        \"ephemeralStorage\": {\n          \"sizeInGiB\": \"<integer>\"\n        },\n        \"inferenceAcceleratorOverrides\": [\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          },\n          {\n            \"deviceName\": \"<string>\",\n            \"deviceType\": \"<string>\"\n          }\n        ]\n      },\n      \"lastStatus\": \"STOPPING\",\n      \"desiredStatus\": \"STOPPED\",\n      \"cpu\": \"<string>\",\n      \"memory\": \"<string>\",\n      \"containers\": [\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"UNKNOWN\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"udp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"containerArn\": \"<string>\",\n          \"taskArn\": \"<string>\",\n          \"name\": \"<string>\",\n          \"image\": \"<string>\",\n          \"imageDigest\": \"<string>\",\n          \"runtimeId\": \"<string>\",\n          \"lastStatus\": \"<string>\",\n          \"exitCode\": \"<integer>\",\n          \"reason\": \"<string>\",\n          \"healthStatus\": \"HEALTHY\",\n          \"cpu\": \"<string>\",\n          \"memory\": \"<string>\",\n          \"memoryReservation\": \"<string>\",\n          \"gpuIds\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"networkBindings\": [\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            },\n            {\n              \"bindIP\": \"<string>\",\n              \"containerPort\": \"<integer>\",\n              \"hostPort\": \"<integer>\",\n              \"protocol\": \"tcp\",\n              \"containerPortRange\": \"<string>\",\n              \"hostPortRange\": \"<string>\"\n            }\n          ],\n          \"networkInterfaces\": [\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            },\n            {\n              \"attachmentId\": \"<string>\",\n              \"privateIpv4Address\": \"<string>\",\n              \"ipv6Address\": \"<string>\"\n            }\n          ],\n          \"managedAgents\": [\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"lastStatus\": \"<string>\",\n              \"lastStartedAt\": \"<number>\",\n              \"reason\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"startedBy\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"stoppedReason\": \"<string>\",\n      \"stopCode\": \"EssentialContainerExited\",\n      \"connectivity\": \"CONNECTED\",\n      \"connectivityAt\": \"<number>\",\n      \"pullStartedAt\": \"<number>\",\n      \"pullStoppedAt\": \"<number>\",\n      \"executionStoppedAt\": \"<number>\",\n      \"createdAt\": \"<number>\",\n      \"startedAt\": \"<number>\",\n      \"stoppingAt\": \"<number>\",\n      \"stoppedAt\": \"<number>\",\n      \"group\": \"<string>\",\n      \"launchType\": \"EXTERNAL\",\n      \"platformVersion\": \"<string>\",\n      \"platformFamily\": \"<string>\",\n      \"capacityProviderName\": \"<string>\",\n      \"availabilityZone\": \"<string>\",\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"healthStatus\": \"HEALTHY\",\n      \"enableExecuteCommand\": \"<boolean>\",\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"ephemeralStorage\": {\n        \"sizeInGiB\": \"<integer>\"\n      },\n      \"inferenceAccelerators\": [\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        },\n        {\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\"\n        }\n      ],\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"targetType\": \"<string>\",\n          \"targetId\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"failures\": [\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-a4f6c571-46bc-424e-8eed-f5ae5fe02164"
+            },
+            {
+              "id": "4e8ddfea-0b42-4f66-bde6-a67104203917",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tasks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-4e8ddfea-0b42-4f66-bde6-a67104203917"
+            },
+            {
+              "id": "fe0ef726-47c1-487c-98b8-c6f3dd4b970e",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tasks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster\": \"<string>\",\n  \"include\": [\n    \"TAGS\",\n    \"TAGS\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTasks"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-fe0ef726-47c1-487c-98b8-c6f3dd4b970e"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-2da01488-3120-4b81-8265-627fc880023a"
+        }
+      ],
+      "id": "a0c1dfd7-ba4b-44be-817d-d7af8489673a",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-a0c1dfd7-ba4b-44be-817d-d7af8489673a"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks",
+      "item": [
+        {
+          "name": "Amazon Ecs List Tasks",
+          "id": "f36cb84c-c740-48a3-8630-c8251b58fa0d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster\": \"<string>\",\n  \"containerInstance\": \"<string>\",\n  \"family\": \"<string>\",\n  \"serviceName\": \"<string>\",\n  \"desiredStatus\": \"PENDING\",\n  \"launchType\": \"FARGATE\",\n  \"startedBy\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks"
+            },
+            "description": "Returns a list of tasks. You can filter by cluster, container instance, family, or service."
+          },
+          "response": [
+            {
+              "id": "a063e862-fcac-465e-8a7d-9e6faddde7a3",
+              "name": "Tasks listed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\",\n  \"containerInstance\": \"<string>\",\n  \"family\": \"<string>\",\n  \"serviceName\": \"<string>\",\n  \"desiredStatus\": \"PENDING\",\n  \"launchType\": \"FARGATE\",\n  \"startedBy\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"taskArns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-a063e862-fcac-465e-8a7d-9e6faddde7a3"
+            },
+            {
+              "id": "bf1aa2ae-842c-4e41-8bec-1063fb84579e",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\",\n  \"containerInstance\": \"<string>\",\n  \"family\": \"<string>\",\n  \"serviceName\": \"<string>\",\n  \"desiredStatus\": \"PENDING\",\n  \"launchType\": \"FARGATE\",\n  \"startedBy\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-bf1aa2ae-842c-4e41-8bec-1063fb84579e"
+            },
+            {
+              "id": "3e422d1d-1490-48cf-b907-ba6b25960584",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\",\n  \"containerInstance\": \"<string>\",\n  \"family\": \"<string>\",\n  \"serviceName\": \"<string>\",\n  \"desiredStatus\": \"PENDING\",\n  \"launchType\": \"FARGATE\",\n  \"startedBy\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTasks"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-3e422d1d-1490-48cf-b907-ba6b25960584"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-f36cb84c-c740-48a3-8630-c8251b58fa0d"
+        }
+      ],
+      "id": "dafbd8cb-7dea-452e-8726-f277afc2db0c",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-dafbd8cb-7dea-452e-8726-f277afc2db0c"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+      "item": [
+        {
+          "name": "Amazon Ecs Tag an Ecs Resource",
+          "id": "beda39db-2243-404d-9057-626ea28b17d6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+            },
+            "description": "Associates the specified tags to a resource with the specified resourceArn."
+          },
+          "response": [
+            {
+              "id": "dc568e2f-ca42-4565-ad5d-da921b605cd1",
+              "name": "Resource tagged successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-dc568e2f-ca42-4565-ad5d-da921b605cd1"
+            },
+            {
+              "id": "d1858389-ca1e-4fbd-a00f-f0be6668631d",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-d1858389-ca1e-4fbd-a00f-f0be6668631d"
+            },
+            {
+              "id": "e0011f75-dad0-4cf7-96d4-f9964203ac02",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-e0011f75-dad0-4cf7-96d4-f9964203ac02"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-beda39db-2243-404d-9057-626ea28b17d6"
+        }
+      ],
+      "id": "05c38ec3-a882-49fc-8e86-d98352ee2b65",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-05c38ec3-a882-49fc-8e86-d98352ee2b65"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+      "item": [
+        {
+          "name": "Amazon Ecs Remove Tags From an Ecs Resource",
+          "id": "6604e016-d47f-497d-8461-1c7284004864",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+            },
+            "description": "Deletes specified tags from a resource."
+          },
+          "response": [
+            {
+              "id": "3ac3a634-c397-471b-9eb3-0d3aad958edd",
+              "name": "Tags removed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-3ac3a634-c397-471b-9eb3-0d3aad958edd"
+            },
+            {
+              "id": "e604cc76-8bb6-4b20-afcd-ae15070da149",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-e604cc76-8bb6-4b20-afcd-ae15070da149"
+            },
+            {
+              "id": "4bfecbfa-9cf2-429c-900c-4e0ff01e16c9",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-4bfecbfa-9cf2-429c-900c-4e0ff01e16c9"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-6604e016-d47f-497d-8461-1c7284004864"
+        }
+      ],
+      "id": "956c3a0f-0fa3-471a-9ece-e60c832c93bb",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-956c3a0f-0fa3-471a-9ece-e60c832c93bb"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+      "item": [
+        {
+          "name": "Amazon Ecs List Tags for an Ecs Resource",
+          "id": "2fe53782-86f4-43e0-a525-a5e15c9b895e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+            },
+            "description": "Lists the tags for the specified resource."
+          },
+          "response": [
+            {
+              "id": "18af5780-36bf-46ff-804f-8e3e13dd5d58",
+              "name": "Tags listed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-18af5780-36bf-46ff-804f-8e3e13dd5d58"
+            },
+            {
+              "id": "2f99b2d5-e9e0-4551-92df-a2a8dd32072d",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-2f99b2d5-e9e0-4551-92df-a2a8dd32072d"
+            },
+            {
+              "id": "c31a7821-3efe-46c6-8a7f-293a7216c44e",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-c31a7821-3efe-46c6-8a7f-293a7216c44e"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-2fe53782-86f4-43e0-a525-a5e15c9b895e"
+        }
+      ],
+      "id": "eecf9908-d785-4157-bf3a-9f7253886f49",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-eecf9908-d785-4157-bf3a-9f7253886f49"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand",
+      "item": [
+        {
+          "name": "Amazon Ecs Execute a Command in a Running Container",
+          "id": "0e63609d-a876-4a38-8923-69e8c822d92e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"command\": \"<string>\",\n  \"interactive\": \"<boolean>\",\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"container\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand"
+            },
+            "description": "Runs a command remotely on a container within a task that is managed by Amazon ECS using AWS Systems Manager Session Manager."
+          },
+          "response": [
+            {
+              "id": "39b3cb18-299a-4804-bd92-91f2352d9fe8",
+              "name": "Command executed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"command\": \"<string>\",\n  \"interactive\": \"<boolean>\",\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"container\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"clusterArn\": \"<string>\",\n  \"containerArn\": \"<string>\",\n  \"containerName\": \"<string>\",\n  \"interactive\": \"<boolean>\",\n  \"session\": {\n    \"sessionId\": \"<string>\",\n    \"streamUrl\": \"<string>\",\n    \"tokenValue\": \"<string>\"\n  },\n  \"taskArn\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-39b3cb18-299a-4804-bd92-91f2352d9fe8"
+            },
+            {
+              "id": "7aff4ae8-4c01-4506-a81c-6b758353fa48",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"command\": \"<string>\",\n  \"interactive\": \"<boolean>\",\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"container\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-7aff4ae8-4c01-4506-a81c-6b758353fa48"
+            },
+            {
+              "id": "f00bfba1-6e6f-4b2d-a2e3-5599e00308cd",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"command\": \"<string>\",\n  \"interactive\": \"<boolean>\",\n  \"task\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"container\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ExecuteCommand"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:02.000Z",
+              "updatedAt": "2026-07-28T10:20:02.000Z",
+              "uid": "35240-f00bfba1-6e6f-4b2d-a2e3-5599e00308cd"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:02.000Z",
+          "updatedAt": "2026-07-28T10:20:02.000Z",
+          "uid": "35240-0e63609d-a876-4a38-8923-69e8c822d92e"
+        }
+      ],
+      "id": "35420d13-8c02-4f66-9351-2907a9e492bb",
+      "createdAt": "2026-07-28T10:20:01.000Z",
+      "updatedAt": "2026-07-28T10:20:01.000Z",
+      "uid": "35240-35420d13-8c02-4f66-9351-2907a9e492bb"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://ecs.{{region}}.amazonaws.com"
+    }
+  ]
+}

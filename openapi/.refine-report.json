@@ -1,0 +1,32 @@
+{
+  "provider": "amazon-ecs",
+  "sources": [
+    "amazon-ecs-capacity-providers-api-openapi.yml",
+    "amazon-ecs-clusters-api-openapi.yml",
+    "amazon-ecs-container-instances-api-openapi.yml",
+    "amazon-ecs-task-definitions-api-openapi.yml",
+    "amazon-ecs-tasks-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-ecs-capacity-providers-api-openapi.yml",
+    "amazon-ecs-clusters-api-openapi.yml",
+    "amazon-ecs-container-instances-api-openapi.yml",
+    "amazon-ecs-task-definitions-api-openapi.yml",
+    "amazon-ecs-tasks-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml",
+    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

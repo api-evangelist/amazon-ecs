@@ -1,0 +1,1820 @@
+{
+  "info": {
+    "_postman_id": "d673fbb2-20c6-444c-be68-83549f1ffc08",
+    "name": "Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Clusters API",
+    "description": "Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:19:57.000Z",
+    "updatedAt": "2026-07-28T10:19:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d673fbb2-20c6-444c-be68-83549f1ffc08"
+  },
+  "item": [
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster",
+      "item": [
+        {
+          "name": "Amazon Ecs Create a New Ecs Cluster",
+          "id": "7e8d86e9-f30b-4100-b3f7-299afd65af67",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clusterName\": \"<string>\",\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultCapacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"OVERRIDE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster"
+            },
+            "description": "Creates a new Amazon ECS cluster. By default, your account receives a default cluster when you launch your first container instance. You can create additional clusters to group resources."
+          },
+          "response": [
+            {
+              "id": "930fb40f-ee26-498f-9a34-75889eb384e7",
+              "name": "Cluster created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clusterName\": \"<string>\",\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultCapacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"OVERRIDE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"cluster\": {\n    \"clusterArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"DEPROVISIONING\",\n    \"registeredContainerInstancesCount\": \"<integer>\",\n    \"runningTasksCount\": \"<integer>\",\n    \"pendingTasksCount\": \"<integer>\",\n    \"activeServicesCount\": \"<integer>\",\n    \"statistics\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"settings\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"capacityProviders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultCapacityProviderStrategy\": [\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      },\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      }\n    ],\n    \"attachments\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"attachmentsStatus\": \"<string>\",\n    \"configuration\": {\n      \"executeCommandConfiguration\": {\n        \"kmsKeyId\": \"<string>\",\n        \"logConfiguration\": {\n          \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n          \"cloudWatchLogGroupName\": \"<string>\",\n          \"s3BucketName\": \"<string>\",\n          \"s3EncryptionEnabled\": \"<boolean>\",\n          \"s3KeyPrefix\": \"<string>\"\n        },\n        \"logging\": \"DEFAULT\"\n      },\n      \"managedStorageConfiguration\": {\n        \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n        \"kmsKeyId\": \"<string>\"\n      }\n    },\n    \"serviceConnectDefaults\": {\n      \"namespace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-930fb40f-ee26-498f-9a34-75889eb384e7"
+            },
+            {
+              "id": "a32e3f03-a99d-4bfe-bd19-2e88a4b05a03",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clusterName\": \"<string>\",\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultCapacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"OVERRIDE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-a32e3f03-a99d-4bfe-bd19-2e88a4b05a03"
+            },
+            {
+              "id": "6ff751f1-dad5-4aad-86bb-e2732f258efc",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clusterName\": \"<string>\",\n  \"capacityProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultCapacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"OVERRIDE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateCluster"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-6ff751f1-dad5-4aad-86bb-e2732f258efc"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-7e8d86e9-f30b-4100-b3f7-299afd65af67"
+        }
+      ],
+      "id": "3347681c-6084-41c1-bb87-f13c0b747f7e",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-3347681c-6084-41c1-bb87-f13c0b747f7e"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster",
+      "item": [
+        {
+          "name": "Amazon Ecs Delete an Ecs Cluster",
+          "id": "391ddb58-8b3e-47c9-82e4-a243e38b2452",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster"
+            },
+            "description": "Deletes the specified cluster. The cluster must have been deregistered, and must not contain any services or tasks."
+          },
+          "response": [
+            {
+              "id": "e40f769c-7e17-4830-a15a-839baafaff74",
+              "name": "Cluster deleted successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"cluster\": {\n    \"clusterArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"DEPROVISIONING\",\n    \"registeredContainerInstancesCount\": \"<integer>\",\n    \"runningTasksCount\": \"<integer>\",\n    \"pendingTasksCount\": \"<integer>\",\n    \"activeServicesCount\": \"<integer>\",\n    \"statistics\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"settings\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"capacityProviders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultCapacityProviderStrategy\": [\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      },\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      }\n    ],\n    \"attachments\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"attachmentsStatus\": \"<string>\",\n    \"configuration\": {\n      \"executeCommandConfiguration\": {\n        \"kmsKeyId\": \"<string>\",\n        \"logConfiguration\": {\n          \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n          \"cloudWatchLogGroupName\": \"<string>\",\n          \"s3BucketName\": \"<string>\",\n          \"s3EncryptionEnabled\": \"<boolean>\",\n          \"s3KeyPrefix\": \"<string>\"\n        },\n        \"logging\": \"DEFAULT\"\n      },\n      \"managedStorageConfiguration\": {\n        \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n        \"kmsKeyId\": \"<string>\"\n      }\n    },\n    \"serviceConnectDefaults\": {\n      \"namespace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-e40f769c-7e17-4830-a15a-839baafaff74"
+            },
+            {
+              "id": "8872977a-36ad-4951-a0a6-4c3306a52bcb",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-8872977a-36ad-4951-a0a6-4c3306a52bcb"
+            },
+            {
+              "id": "33520d2a-7379-4dad-9cc5-42384d6bc5be",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteCluster"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-33520d2a-7379-4dad-9cc5-42384d6bc5be"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-391ddb58-8b3e-47c9-82e4-a243e38b2452"
+        }
+      ],
+      "id": "89fa68aa-f3e0-4035-89af-c97115bb8a76",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-89fa68aa-f3e0-4035-89af-c97115bb8a76"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters",
+      "item": [
+        {
+          "name": "Amazon Ecs Describe One or More Ecs Clusters",
+          "id": "956405ac-162f-4502-b91d-7fa5ee753d31",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clusters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"SETTINGS\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters"
+            },
+            "description": "Describes one or more of your clusters. Returns details about a cluster including its status, statistics, tags, and settings."
+          },
+          "response": [
+            {
+              "id": "e63c85b3-7e99-40d5-9771-5b2883eb0dba",
+              "name": "Clusters described successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clusters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"SETTINGS\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"clusters\": [\n    {\n      \"clusterArn\": \"<string>\",\n      \"clusterName\": \"<string>\",\n      \"status\": \"INACTIVE\",\n      \"registeredContainerInstancesCount\": \"<integer>\",\n      \"runningTasksCount\": \"<integer>\",\n      \"pendingTasksCount\": \"<integer>\",\n      \"activeServicesCount\": \"<integer>\",\n      \"statistics\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"settings\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"capacityProviders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"defaultCapacityProviderStrategy\": [\n        {\n          \"capacityProvider\": \"<string>\",\n          \"weight\": \"<integer>\",\n          \"base\": \"<integer>\"\n        },\n        {\n          \"capacityProvider\": \"<string>\",\n          \"weight\": \"<integer>\",\n          \"base\": \"<integer>\"\n        }\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"attachmentsStatus\": \"<string>\",\n      \"configuration\": {\n        \"executeCommandConfiguration\": {\n          \"kmsKeyId\": \"<string>\",\n          \"logConfiguration\": {\n            \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n            \"cloudWatchLogGroupName\": \"<string>\",\n            \"s3BucketName\": \"<string>\",\n            \"s3EncryptionEnabled\": \"<boolean>\",\n            \"s3KeyPrefix\": \"<string>\"\n          },\n          \"logging\": \"DEFAULT\"\n        },\n        \"managedStorageConfiguration\": {\n          \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n          \"kmsKeyId\": \"<string>\"\n        }\n      },\n      \"serviceConnectDefaults\": {\n        \"namespace\": \"<string>\"\n      }\n    },\n    {\n      \"clusterArn\": \"<string>\",\n      \"clusterName\": \"<string>\",\n      \"status\": \"DEPROVISIONING\",\n      \"registeredContainerInstancesCount\": \"<integer>\",\n      \"runningTasksCount\": \"<integer>\",\n      \"pendingTasksCount\": \"<integer>\",\n      \"activeServicesCount\": \"<integer>\",\n      \"statistics\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"settings\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"capacityProviders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"defaultCapacityProviderStrategy\": [\n        {\n          \"capacityProvider\": \"<string>\",\n          \"weight\": \"<integer>\",\n          \"base\": \"<integer>\"\n        },\n        {\n          \"capacityProvider\": \"<string>\",\n          \"weight\": \"<integer>\",\n          \"base\": \"<integer>\"\n        }\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"status\": \"<string>\",\n          \"details\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"attachmentsStatus\": \"<string>\",\n      \"configuration\": {\n        \"executeCommandConfiguration\": {\n          \"kmsKeyId\": \"<string>\",\n          \"logConfiguration\": {\n            \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n            \"cloudWatchLogGroupName\": \"<string>\",\n            \"s3BucketName\": \"<string>\",\n            \"s3EncryptionEnabled\": \"<boolean>\",\n            \"s3KeyPrefix\": \"<string>\"\n          },\n          \"logging\": \"OVERRIDE\"\n        },\n        \"managedStorageConfiguration\": {\n          \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n          \"kmsKeyId\": \"<string>\"\n        }\n      },\n      \"serviceConnectDefaults\": {\n        \"namespace\": \"<string>\"\n      }\n    }\n  ],\n  \"failures\": [\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    },\n    {\n      \"arn\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-e63c85b3-7e99-40d5-9771-5b2883eb0dba"
+            },
+            {
+              "id": "a59d6092-29b2-4b1e-bb57-f47ea32bc62c",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clusters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"SETTINGS\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-a59d6092-29b2-4b1e-bb57-f47ea32bc62c"
+            },
+            {
+              "id": "e495cc65-3f66-42ca-a3fc-1e9155ed15eb",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clusters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include\": [\n    \"TAGS\",\n    \"SETTINGS\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeClusters"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-e495cc65-3f66-42ca-a3fc-1e9155ed15eb"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-956405ac-162f-4502-b91d-7fa5ee753d31"
+        }
+      ],
+      "id": "3f63e335-f2b0-4292-8cd8-bd8e7cf9e609",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-3f63e335-f2b0-4292-8cd8-bd8e7cf9e609"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters",
+      "item": [
+        {
+          "name": "Amazon Ecs List Ecs Clusters",
+          "id": "98d69257-3d30-416c-8d90-6c721f8f3f61",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters"
+            },
+            "description": "Returns a list of existing clusters."
+          },
+          "response": [
+            {
+              "id": "05f7266a-aeb3-4ca0-9273-c7aaf0ee483c",
+              "name": "Clusters listed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"clusterArns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-05f7266a-aeb3-4ca0-9273-c7aaf0ee483c"
+            },
+            {
+              "id": "c9a3504c-c153-42ac-a2eb-e1689fc4bc97",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-c9a3504c-c153-42ac-a2eb-e1689fc4bc97"
+            },
+            {
+              "id": "8b4f48cb-3a9f-47b0-8434-5ff113773b0d",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListClusters"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-8b4f48cb-3a9f-47b0-8434-5ff113773b0d"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-98d69257-3d30-416c-8d90-6c721f8f3f61"
+        }
+      ],
+      "id": "392af68b-3066-4fe3-b197-3c069906ccab",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-392af68b-3066-4fe3-b197-3c069906ccab"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster",
+      "item": [
+        {
+          "name": "Amazon Ecs Update an Ecs Cluster",
+          "id": "00727ce9-c468-4c4e-b481-f9176534e041",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"NONE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster"
+            },
+            "description": "Updates the cluster settings and configuration."
+          },
+          "response": [
+            {
+              "id": "d87d2d82-9a4f-46b7-a3c7-81cfaa5c6f17",
+              "name": "Cluster updated successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"NONE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"cluster\": {\n    \"clusterArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"DEPROVISIONING\",\n    \"registeredContainerInstancesCount\": \"<integer>\",\n    \"runningTasksCount\": \"<integer>\",\n    \"pendingTasksCount\": \"<integer>\",\n    \"activeServicesCount\": \"<integer>\",\n    \"statistics\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"settings\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"capacityProviders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultCapacityProviderStrategy\": [\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      },\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      }\n    ],\n    \"attachments\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"details\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"attachmentsStatus\": \"<string>\",\n    \"configuration\": {\n      \"executeCommandConfiguration\": {\n        \"kmsKeyId\": \"<string>\",\n        \"logConfiguration\": {\n          \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n          \"cloudWatchLogGroupName\": \"<string>\",\n          \"s3BucketName\": \"<string>\",\n          \"s3EncryptionEnabled\": \"<boolean>\",\n          \"s3KeyPrefix\": \"<string>\"\n        },\n        \"logging\": \"DEFAULT\"\n      },\n      \"managedStorageConfiguration\": {\n        \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n        \"kmsKeyId\": \"<string>\"\n      }\n    },\n    \"serviceConnectDefaults\": {\n      \"namespace\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-d87d2d82-9a4f-46b7-a3c7-81cfaa5c6f17"
+            },
+            {
+              "id": "278f55d2-3443-477d-8aa4-0d02859c8041",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"NONE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-278f55d2-3443-477d-8aa4-0d02859c8041"
+            },
+            {
+              "id": "021b9a84-a253-4334-be7a-a244857631a0",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"configuration\": {\n    \"executeCommandConfiguration\": {\n      \"kmsKeyId\": \"<string>\",\n      \"logConfiguration\": {\n        \"cloudWatchEncryptionEnabled\": \"<boolean>\",\n        \"cloudWatchLogGroupName\": \"<string>\",\n        \"s3BucketName\": \"<string>\",\n        \"s3EncryptionEnabled\": \"<boolean>\",\n        \"s3KeyPrefix\": \"<string>\"\n      },\n      \"logging\": \"NONE\"\n    },\n    \"managedStorageConfiguration\": {\n      \"fargateEphemeralStorageKmsKeyId\": \"<string>\",\n      \"kmsKeyId\": \"<string>\"\n    }\n  },\n  \"serviceConnectDefaults\": {\n    \"namespace\": \"<string>\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateCluster"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-021b9a84-a253-4334-be7a-a244857631a0"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-00727ce9-c468-4c4e-b481-f9176534e041"
+        }
+      ],
+      "id": "36d41f95-d96b-480f-8ce6-5ad6804918eb",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-36d41f95-d96b-480f-8ce6-5ad6804918eb"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+      "item": [
+        {
+          "name": "Amazon Ecs Tag an Ecs Resource",
+          "id": "32b85f9e-4f88-4573-b9dd-61e1a3c9aee8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+            },
+            "description": "Associates the specified tags to a resource with the specified resourceArn."
+          },
+          "response": [
+            {
+              "id": "6e21d98e-6235-4037-9926-75718e9f37cb",
+              "name": "Resource tagged successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-6e21d98e-6235-4037-9926-75718e9f37cb"
+            },
+            {
+              "id": "9f6a9ba7-3d10-4ff7-99b5-dea1eee58ddf",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-9f6a9ba7-3d10-4ff7-99b5-dea1eee58ddf"
+            },
+            {
+              "id": "1b262782-f39c-4f18-98d2-3cec126dfad4",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-1b262782-f39c-4f18-98d2-3cec126dfad4"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-32b85f9e-4f88-4573-b9dd-61e1a3c9aee8"
+        }
+      ],
+      "id": "5efd9ac7-4622-4496-9a98-249d9c3dcba9",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-5efd9ac7-4622-4496-9a98-249d9c3dcba9"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+      "item": [
+        {
+          "name": "Amazon Ecs Remove Tags From an Ecs Resource",
+          "id": "7365ce59-8fad-44f7-a1ce-e542a3e4111e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+            },
+            "description": "Deletes specified tags from a resource."
+          },
+          "response": [
+            {
+              "id": "3a56dc65-bccf-42ac-831b-ac3d191adf0f",
+              "name": "Tags removed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-3a56dc65-bccf-42ac-831b-ac3d191adf0f"
+            },
+            {
+              "id": "c01764c8-87fa-4cc9-aaed-f8eacf24cc1f",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-c01764c8-87fa-4cc9-aaed-f8eacf24cc1f"
+            },
+            {
+              "id": "8a365c8e-da89-498e-9fca-252853ff8f4a",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-8a365c8e-da89-498e-9fca-252853ff8f4a"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-7365ce59-8fad-44f7-a1ce-e542a3e4111e"
+        }
+      ],
+      "id": "99baef6b-c58e-4382-aae8-ff4d663d4b40",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-99baef6b-c58e-4382-aae8-ff4d663d4b40"
+    },
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+      "item": [
+        {
+          "name": "Amazon Ecs List Tags for an Ecs Resource",
+          "id": "4c9c5947-c979-47e8-bc75-710b2c224547",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+            },
+            "description": "Lists the tags for the specified resource."
+          },
+          "response": [
+            {
+              "id": "1f0dfb7b-3877-4340-a633-ce577c3d3e7f",
+              "name": "Tags listed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-1f0dfb7b-3877-4340-a633-ce577c3d3e7f"
+            },
+            {
+              "id": "7cf121e5-d24b-499c-a8c0-7ec06d630846",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-7cf121e5-d24b-499c-a8c0-7ec06d630846"
+            },
+            {
+              "id": "06ea50af-a7b2-45ee-956b-cb2ebed6283c",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:19:58.000Z",
+              "updatedAt": "2026-07-28T10:19:58.000Z",
+              "uid": "35240-06ea50af-a7b2-45ee-956b-cb2ebed6283c"
+            }
+          ],
+          "createdAt": "2026-07-28T10:19:58.000Z",
+          "updatedAt": "2026-07-28T10:19:58.000Z",
+          "uid": "35240-4c9c5947-c979-47e8-bc75-710b2c224547"
+        }
+      ],
+      "id": "43e27e29-134c-4b17-ac77-4a17cec412ea",
+      "createdAt": "2026-07-28T10:19:58.000Z",
+      "updatedAt": "2026-07-28T10:19:58.000Z",
+      "uid": "35240-43e27e29-134c-4b17-ac77-4a17cec412ea"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://ecs.{{region}}.amazonaws.com"
+    }
+  ]
+}

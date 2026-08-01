@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "dd31ddbf-833c-4c42-bddc-8bfd6c251729",
+    "name": "Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService API",
+    "description": "Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:20:27.000Z",
+    "updatedAt": "2026-07-28T10:20:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dd31ddbf-833c-4c42-bddc-8bfd6c251729"
+  },
+  "item": [
+    {
+      "name": "#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService",
+      "item": [
+        {
+          "name": "Amazon Ecs Create a New Ecs Service",
+          "id": "4f92965a-76d7-40d3-b8e6-e3cbbaf79b63",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceName\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"taskDefinition\": \"<string>\",\n  \"desiredCount\": \"<integer>\",\n  \"launchType\": \"FARGATE\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"loadBalancers\": [\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"deploymentConfiguration\": {\n    \"deploymentCircuitBreaker\": {\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    },\n    \"maximumPercent\": \"<integer>\",\n    \"minimumHealthyPercent\": \"<integer>\",\n    \"alarms\": {\n      \"alarmNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    }\n  },\n  \"deploymentController\": {\n    \"type\": \"EXTERNAL\"\n  },\n  \"schedulingStrategy\": \"REPLICA\",\n  \"placementConstraints\": [\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"binpack\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"healthCheckGracePeriodSeconds\": \"<integer>\",\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\",\n  \"role\": \"<string>\",\n  \"serviceRegistries\": [\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"serviceConnectConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"namespace\": \"<string>\",\n    \"services\": [\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      },\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      }\n    ],\n    \"logConfiguration\": {\n      \"logDriver\": \"awslogs\",\n      \"options\": {\n        \"ipsum88a\": \"<string>\",\n        \"ex6d8\": \"<string>\"\n      },\n      \"secretOptions\": [\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"clientToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService"
+            },
+            "description": "Runs and maintains a specified number of instances of a task definition simultaneously in an ECS cluster. If the desired count of tasks in a service drops below the desired count, Amazon ECS runs another instantiation of the task to bring the count back up."
+          },
+          "response": [
+            {
+              "id": "53b9131d-0745-4dcd-9a42-0f5c9fe6c872",
+              "name": "Service created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serviceName\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"taskDefinition\": \"<string>\",\n  \"desiredCount\": \"<integer>\",\n  \"launchType\": \"FARGATE\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"loadBalancers\": [\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"deploymentConfiguration\": {\n    \"deploymentCircuitBreaker\": {\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    },\n    \"maximumPercent\": \"<integer>\",\n    \"minimumHealthyPercent\": \"<integer>\",\n    \"alarms\": {\n      \"alarmNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    }\n  },\n  \"deploymentController\": {\n    \"type\": \"EXTERNAL\"\n  },\n  \"schedulingStrategy\": \"REPLICA\",\n  \"placementConstraints\": [\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"binpack\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"healthCheckGracePeriodSeconds\": \"<integer>\",\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\",\n  \"role\": \"<string>\",\n  \"serviceRegistries\": [\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"serviceConnectConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"namespace\": \"<string>\",\n    \"services\": [\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      },\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      }\n    ],\n    \"logConfiguration\": {\n      \"logDriver\": \"awslogs\",\n      \"options\": {\n        \"ipsum88a\": \"<string>\",\n        \"ex6d8\": \"<string>\"\n      },\n      \"secretOptions\": [\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"clientToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"service\": {\n    \"serviceArn\": \"<string>\",\n    \"serviceName\": \"<string>\",\n    \"clusterArn\": \"<string>\",\n    \"loadBalancers\": [\n      {\n        \"targetGroupArn\": \"<string>\",\n        \"loadBalancerName\": \"<string>\",\n        \"containerName\": \"<string>\",\n        \"containerPort\": \"<integer>\"\n      },\n      {\n        \"targetGroupArn\": \"<string>\",\n        \"loadBalancerName\": \"<string>\",\n        \"containerName\": \"<string>\",\n        \"containerPort\": \"<integer>\"\n      }\n    ],\n    \"serviceRegistries\": [\n      {\n        \"registryArn\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"containerName\": \"<string>\",\n        \"containerPort\": \"<integer>\"\n      },\n      {\n        \"registryArn\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"containerName\": \"<string>\",\n        \"containerPort\": \"<integer>\"\n      }\n    ],\n    \"status\": \"INACTIVE\",\n    \"desiredCount\": \"<integer>\",\n    \"runningCount\": \"<integer>\",\n    \"pendingCount\": \"<integer>\",\n    \"launchType\": \"EXTERNAL\",\n    \"capacityProviderStrategy\": [\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      },\n      {\n        \"capacityProvider\": \"<string>\",\n        \"weight\": \"<integer>\",\n        \"base\": \"<integer>\"\n      }\n    ],\n    \"platformVersion\": \"<string>\",\n    \"platformFamily\": \"<string>\",\n    \"taskDefinition\": \"<string>\",\n    \"deploymentConfiguration\": {\n      \"deploymentCircuitBreaker\": {\n        \"enable\": \"<boolean>\",\n        \"rollback\": \"<boolean>\"\n      },\n      \"maximumPercent\": \"<integer>\",\n      \"minimumHealthyPercent\": \"<integer>\",\n      \"alarms\": {\n        \"alarmNames\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enable\": \"<boolean>\",\n        \"rollback\": \"<boolean>\"\n      }\n    },\n    \"deployments\": [\n      {\n        \"id\": \"<string>\",\n        \"status\": \"INACTIVE\",\n        \"taskDefinition\": \"<string>\",\n        \"desiredCount\": \"<integer>\",\n        \"pendingCount\": \"<integer>\",\n        \"runningCount\": \"<integer>\",\n        \"failedTasks\": \"<integer>\",\n        \"createdAt\": \"<number>\",\n        \"updatedAt\": \"<number>\",\n        \"launchType\": \"<string>\",\n        \"platformVersion\": \"<string>\",\n        \"platformFamily\": \"<string>\",\n        \"networkConfiguration\": {\n          \"awsvpcConfiguration\": {\n            \"subnets\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"securityGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"assignPublicIp\": \"ENABLED\"\n          }\n        },\n        \"rolloutState\": \"IN_PROGRESS\",\n        \"rolloutStateReason\": \"<string>\",\n        \"capacityProviderStrategy\": [\n          {\n            \"capacityProvider\": \"<string>\",\n            \"weight\": \"<integer>\",\n            \"base\": \"<integer>\"\n          },\n          {\n            \"capacityProvider\": \"<string>\",\n            \"weight\": \"<integer>\",\n            \"base\": \"<integer>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"status\": \"ACTIVE\",\n        \"taskDefinition\": \"<string>\",\n        \"desiredCount\": \"<integer>\",\n        \"pendingCount\": \"<integer>\",\n        \"runningCount\": \"<integer>\",\n        \"failedTasks\": \"<integer>\",\n        \"createdAt\": \"<number>\",\n        \"updatedAt\": \"<number>\",\n        \"launchType\": \"<string>\",\n        \"platformVersion\": \"<string>\",\n        \"platformFamily\": \"<string>\",\n        \"networkConfiguration\": {\n          \"awsvpcConfiguration\": {\n            \"subnets\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"securityGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"assignPublicIp\": \"ENABLED\"\n          }\n        },\n        \"rolloutState\": \"FAILED\",\n        \"rolloutStateReason\": \"<string>\",\n        \"capacityProviderStrategy\": [\n          {\n            \"capacityProvider\": \"<string>\",\n            \"weight\": \"<integer>\",\n            \"base\": \"<integer>\"\n          },\n          {\n            \"capacityProvider\": \"<string>\",\n            \"weight\": \"<integer>\",\n            \"base\": \"<integer>\"\n          }\n        ]\n      }\n    ],\n    \"roleArn\": \"<string>\",\n    \"events\": [\n      {\n        \"id\": \"<string>\",\n        \"createdAt\": \"<number>\",\n        \"message\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"createdAt\": \"<number>\",\n        \"message\": \"<string>\"\n      }\n    ],\n    \"createdAt\": \"<number>\",\n    \"placementConstraints\": [\n      {\n        \"type\": \"memberOf\",\n        \"expression\": \"<string>\"\n      },\n      {\n        \"type\": \"memberOf\",\n        \"expression\": \"<string>\"\n      }\n    ],\n    \"placementStrategy\": [\n      {\n        \"type\": \"spread\",\n        \"field\": \"<string>\"\n      },\n      {\n        \"type\": \"spread\",\n        \"field\": \"<string>\"\n      }\n    ],\n    \"networkConfiguration\": {\n      \"awsvpcConfiguration\": {\n        \"subnets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"securityGroups\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"assignPublicIp\": \"ENABLED\"\n      }\n    },\n    \"healthCheckGracePeriodSeconds\": \"<integer>\",\n    \"schedulingStrategy\": \"REPLICA\",\n    \"deploymentController\": {\n      \"type\": \"CODE_DEPLOY\"\n    },\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"createdBy\": \"<string>\",\n    \"enableECSManagedTags\": \"<boolean>\",\n    \"enableExecuteCommand\": \"<boolean>\",\n    \"propagateTags\": \"SERVICE\"\n  }\n}",
+              "createdAt": "2026-07-28T10:20:28.000Z",
+              "updatedAt": "2026-07-28T10:20:28.000Z",
+              "uid": "35240-53b9131d-0745-4dcd-9a42-0f5c9fe6c872"
+            },
+            {
+              "id": "d6efe289-7cfc-4c6d-9c42-3f1b137bae6f",
+              "name": "Client error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serviceName\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"taskDefinition\": \"<string>\",\n  \"desiredCount\": \"<integer>\",\n  \"launchType\": \"FARGATE\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"loadBalancers\": [\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"deploymentConfiguration\": {\n    \"deploymentCircuitBreaker\": {\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    },\n    \"maximumPercent\": \"<integer>\",\n    \"minimumHealthyPercent\": \"<integer>\",\n    \"alarms\": {\n      \"alarmNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    }\n  },\n  \"deploymentController\": {\n    \"type\": \"EXTERNAL\"\n  },\n  \"schedulingStrategy\": \"REPLICA\",\n  \"placementConstraints\": [\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"binpack\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"healthCheckGracePeriodSeconds\": \"<integer>\",\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\",\n  \"role\": \"<string>\",\n  \"serviceRegistries\": [\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"serviceConnectConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"namespace\": \"<string>\",\n    \"services\": [\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      },\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      }\n    ],\n    \"logConfiguration\": {\n      \"logDriver\": \"awslogs\",\n      \"options\": {\n        \"ipsum88a\": \"<string>\",\n        \"ex6d8\": \"<string>\"\n      },\n      \"secretOptions\": [\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"clientToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:28.000Z",
+              "updatedAt": "2026-07-28T10:20:28.000Z",
+              "uid": "35240-d6efe289-7cfc-4c6d-9c42-3f1b137bae6f"
+            },
+            {
+              "id": "42cfd87f-34b9-47c2-a06c-91e7a57ab47f",
+              "name": "Server error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.1"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serviceName\": \"<string>\",\n  \"cluster\": \"<string>\",\n  \"taskDefinition\": \"<string>\",\n  \"desiredCount\": \"<integer>\",\n  \"launchType\": \"FARGATE\",\n  \"capacityProviderStrategy\": [\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    },\n    {\n      \"capacityProvider\": \"<string>\",\n      \"weight\": \"<integer>\",\n      \"base\": \"<integer>\"\n    }\n  ],\n  \"platformVersion\": \"<string>\",\n  \"loadBalancers\": [\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"targetGroupArn\": \"<string>\",\n      \"loadBalancerName\": \"<string>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"networkConfiguration\": {\n    \"awsvpcConfiguration\": {\n      \"subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"assignPublicIp\": \"ENABLED\"\n    }\n  },\n  \"deploymentConfiguration\": {\n    \"deploymentCircuitBreaker\": {\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    },\n    \"maximumPercent\": \"<integer>\",\n    \"minimumHealthyPercent\": \"<integer>\",\n    \"alarms\": {\n      \"alarmNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enable\": \"<boolean>\",\n      \"rollback\": \"<boolean>\"\n    }\n  },\n  \"deploymentController\": {\n    \"type\": \"EXTERNAL\"\n  },\n  \"schedulingStrategy\": \"REPLICA\",\n  \"placementConstraints\": [\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"distinctInstance\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"placementStrategy\": [\n    {\n      \"type\": \"binpack\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"type\": \"spread\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"healthCheckGracePeriodSeconds\": \"<integer>\",\n  \"enableECSManagedTags\": \"<boolean>\",\n  \"enableExecuteCommand\": \"<boolean>\",\n  \"propagateTags\": \"TASK_DEFINITION\",\n  \"role\": \"<string>\",\n  \"serviceRegistries\": [\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    },\n    {\n      \"registryArn\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"containerName\": \"<string>\",\n      \"containerPort\": \"<integer>\"\n    }\n  ],\n  \"serviceConnectConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"namespace\": \"<string>\",\n    \"services\": [\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      },\n      {\n        \"portName\": \"<string>\",\n        \"discoveryName\": \"<string>\",\n        \"clientAliases\": [\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          },\n          {\n            \"port\": \"<integer>\",\n            \"dnsName\": \"<string>\"\n          }\n        ],\n        \"ingressPortOverride\": \"<integer>\",\n        \"timeout\": {\n          \"idleTimeoutSeconds\": \"<integer>\",\n          \"perRequestTimeoutSeconds\": \"<integer>\"\n        },\n        \"tls\": {\n          \"issuerCertificateAuthority\": {\n            \"awsPcaAuthorityArn\": \"<string>\"\n          },\n          \"kmsKey\": \"<string>\",\n          \"roleArn\": \"<string>\"\n        }\n      }\n    ],\n    \"logConfiguration\": {\n      \"logDriver\": \"awslogs\",\n      \"options\": {\n        \"ipsum88a\": \"<string>\",\n        \"ex6d8\": \"<string>\"\n      },\n      \"secretOptions\": [\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"clientToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"__type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:20:28.000Z",
+              "updatedAt": "2026-07-28T10:20:28.000Z",
+              "uid": "35240-42cfd87f-34b9-47c2-a06c-91e7a57ab47f"
+            }
+          ],
+          "createdAt": "2026-07-28T10:20:27.000Z",
+          "updatedAt": "2026-07-28T10:20:27.000Z",
+          "uid": "35240-4f92965a-76d7-40d3-b8e6-e3cbbaf79b63"
+        }
+      ],
+      "id": "1adbf541-bb5b-448a-b217-24f6e897e589",
+      "createdAt": "2026-07-28T10:20:27.000Z",
+      "updatedAt": "2026-07-28T10:20:27.000Z",
+      "uid": "35240-1adbf541-bb5b-448a-b217-24f6e897e589"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://ecs.{{region}}.amazonaws.com"
+    }
+  ]
+}
