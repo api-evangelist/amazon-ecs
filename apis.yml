@@ -777,6 +777,17 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 common:
+  - type: IssueTracker
+    url: https://github.com/aws/amazon-ecs-service-connect-agent/issues
+  - type: Releases
+    url: https://github.com/aws/amazon-ecs-service-connect-agent/releases
+  - type: CodeOfConduct
+    url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/CONTRIBUTING.md
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-ecs/overview
   - type: AgenticAccess
