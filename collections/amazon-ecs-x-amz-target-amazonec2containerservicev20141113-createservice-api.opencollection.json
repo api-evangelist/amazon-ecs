@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService API",
+    "version": "3.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Ecs Create a New Ecs Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://ecs.{region}.amazonaws.com/#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs and maintains a specified number of instances of a task definition simultaneously in an ECS cluster. If the desired count of tasks in a service drops below the desired count, Amazon ECS runs another instantiation of the task to bring the count back up."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

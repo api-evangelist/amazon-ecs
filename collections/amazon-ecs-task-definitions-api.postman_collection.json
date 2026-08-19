@@ -1,0 +1,1954 @@
+{
+  "item": [
+    {
+      "id": "8be22a1b-2958-4d92-bd79-5844a1aef076",
+      "name": "Task Definitions",
+      "description": {
+        "content": "Operations for managing ECS task definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d732b116-9a6b-4210-bd6b-f1340586b215",
+          "name": "Amazon Ecs Register a New Task Definition",
+          "request": {
+            "name": "Amazon Ecs Register a New Task Definition",
+            "description": {
+              "content": "Registers a new task definition from the supplied family and container definitions. You can also register task definitions with a volumes parameter for data volumes used by the task containers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"family\": \"<string>\",\n  \"containerDefinitions\": [\n    {\n      \"name\": \"<string>\",\n      \"image\": \"<string>\",\n      \"cpu\": \"<integer>\",\n      \"memory\": \"<integer>\",\n      \"memoryReservation\": \"<integer>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"portMappings\": [\n        {\n          \"containerPort\": \"<integer>\",\n          \"hostPort\": \"<integer>\",\n          \"protocol\": \"tcp\",\n          \"name\": \"<string>\",\n          \"appProtocol\": \"<string>\",\n          \"containerPortRange\": \"<string>\"\n        },\n        {\n          \"containerPort\": \"<integer>\",\n          \"hostPort\": \"<integer>\",\n          \"protocol\": \"tcp\",\n          \"name\": \"<string>\",\n          \"appProtocol\": \"<string>\",\n          \"containerPortRange\": \"<string>\"\n        }\n      ],\n      \"essential\": true,\n      \"entryPoint\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"environment\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"environmentFiles\": [\n        {\n          \"value\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"mountPoints\": [\n        {\n          \"sourceVolume\": \"<string>\",\n          \"containerPath\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        },\n        {\n          \"sourceVolume\": \"<string>\",\n          \"containerPath\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        }\n      ],\n      \"volumesFrom\": [\n        {\n          \"sourceContainer\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        },\n        {\n          \"sourceContainer\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        }\n      ],\n      \"secrets\": [\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        }\n      ],\n      \"logConfiguration\": {\n        \"logDriver\": \"<string>\",\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        \"secretOptions\": [\n          {\n            \"name\": \"<string>\",\n            \"valueFrom\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"valueFrom\": \"<string>\"\n          }\n        ]\n      },\n      \"healthCheck\": {\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"interval\": 30,\n        \"timeout\": 5,\n        \"retries\": 3,\n        \"startPeriod\": 0\n      },\n      \"linuxParameters\": {\n        \"capabilities\": {\n          \"add\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"drop\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"devices\": [\n          {\n            \"hostPath\": \"<string>\",\n            \"containerPath\": \"<string>\",\n            \"permissions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"hostPath\": \"<string>\",\n            \"containerPath\": \"<string>\",\n            \"permissions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"initProcessEnabled\": \"<boolean>\",\n        \"sharedMemorySize\": \"<integer>\",\n        \"tmpfs\": [\n          {\n            \"containerPath\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"mountOptions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"containerPath\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"mountOptions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"maxSwap\": \"<integer>\",\n        \"swappiness\": \"<integer>\"\n      },\n      \"dependsOn\": [\n        {\n          \"containerName\": \"<string>\",\n          \"condition\": \"<string>\"\n        },\n        {\n          \"containerName\": \"<string>\",\n          \"condition\": \"<string>\"\n        }\n      ],\n      \"startTimeout\": \"<integer>\",\n      \"stopTimeout\": \"<integer>\",\n      \"hostname\": \"<string>\",\n      \"user\": \"<string>\",\n      \"workingDirectory\": \"<string>\",\n      \"disableNetworking\": \"<boolean>\",\n      \"privileged\": \"<boolean>\",\n      \"readonlyRootFilesystem\": \"<boolean>\",\n      \"dnsServers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dnsSearchDomains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extraHosts\": [\n        {\n          \"hostname\": \"<string>\",\n          \"ipAddress\": \"<string>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"ipAddress\": \"<string>\"\n        }\n      ],\n      \"dockerSecurityOptions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"interactive\": \"<boolean>\",\n      \"pseudoTerminal\": \"<boolean>\",\n      \"dockerLabels\": {\n        \"key_0\": \"<string>\"\n      },\n      \"ulimits\": [\n        {\n          \"name\": \"<string>\",\n          \"softLimit\": \"<integer>\",\n          \"hardLimit\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"softLimit\": \"<integer>\",\n          \"hardLimit\": \"<integer>\"\n        }\n      ],\n      \"systemControls\": [\n        {\n          \"namespace\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"namespace\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"resourceRequirements\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"firelensConfiguration\": {\n        \"type\": \"<string>\",\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      },\n      \"repositoryCredentials\": {\n        \"credentialsParameter\": \"<string>\"\n      },\n      \"restartPolicy\": {\n        \"enabled\": \"<boolean>\",\n        \"restartAttemptPeriod\": \"<integer>\",\n        \"ignoredExitCodes\": [\n          \"<integer>\",\n          \"<integer>\"\n        ]\n      },\n      \"credentialSpecs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"image\": \"<string>\",\n      \"cpu\": \"<integer>\",\n      \"memory\": \"<integer>\",\n      \"memoryReservation\": \"<integer>\",\n      \"links\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"portMappings\": [\n        {\n          \"containerPort\": \"<integer>\",\n          \"hostPort\": \"<integer>\",\n          \"protocol\": \"tcp\",\n          \"name\": \"<string>\",\n          \"appProtocol\": \"<string>\",\n          \"containerPortRange\": \"<string>\"\n        },\n        {\n          \"containerPort\": \"<integer>\",\n          \"hostPort\": \"<integer>\",\n          \"protocol\": \"tcp\",\n          \"name\": \"<string>\",\n          \"appProtocol\": \"<string>\",\n          \"containerPortRange\": \"<string>\"\n        }\n      ],\n      \"essential\": true,\n      \"entryPoint\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"environment\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"environmentFiles\": [\n        {\n          \"value\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"mountPoints\": [\n        {\n          \"sourceVolume\": \"<string>\",\n          \"containerPath\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        },\n        {\n          \"sourceVolume\": \"<string>\",\n          \"containerPath\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        }\n      ],\n      \"volumesFrom\": [\n        {\n          \"sourceContainer\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        },\n        {\n          \"sourceContainer\": \"<string>\",\n          \"readOnly\": \"<boolean>\"\n        }\n      ],\n      \"secrets\": [\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"valueFrom\": \"<string>\"\n        }\n      ],\n      \"logConfiguration\": {\n        \"logDriver\": \"<string>\",\n        \"options\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"secretOptions\": [\n          {\n            \"name\": \"<string>\",\n            \"valueFrom\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"valueFrom\": \"<string>\"\n          }\n        ]\n      },\n      \"healthCheck\": {\n        \"command\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"interval\": 30,\n        \"timeout\": 5,\n        \"retries\": 3,\n        \"startPeriod\": 0\n      },\n      \"linuxParameters\": {\n        \"capabilities\": {\n          \"add\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"drop\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"devices\": [\n          {\n            \"hostPath\": \"<string>\",\n            \"containerPath\": \"<string>\",\n            \"permissions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"hostPath\": \"<string>\",\n            \"containerPath\": \"<string>\",\n            \"permissions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"initProcessEnabled\": \"<boolean>\",\n        \"sharedMemorySize\": \"<integer>\",\n        \"tmpfs\": [\n          {\n            \"containerPath\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"mountOptions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"containerPath\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"mountOptions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"maxSwap\": \"<integer>\",\n        \"swappiness\": \"<integer>\"\n      },\n      \"dependsOn\": [\n        {\n          \"containerName\": \"<string>\",\n          \"condition\": \"<string>\"\n        },\n        {\n          \"containerName\": \"<string>\",\n          \"condition\": \"<string>\"\n        }\n      ],\n      \"startTimeout\": \"<integer>\",\n      \"stopTimeout\": \"<integer>\",\n      \"hostname\": \"<string>\",\n      \"user\": \"<string>\",\n      \"workingDirectory\": \"<string>\",\n      \"disableNetworking\": \"<boolean>\",\n      \"privileged\": \"<boolean>\",\n      \"readonlyRootFilesystem\": \"<boolean>\",\n      \"dnsServers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dnsSearchDomains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extraHosts\": [\n        {\n          \"hostname\": \"<string>\",\n          \"ipAddress\": \"<string>\"\n        },\n        {\n          \"hostname\": \"<string>\",\n          \"ipAddress\": \"<string>\"\n        }\n      ],\n      \"dockerSecurityOptions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"interactive\": \"<boolean>\",\n      \"pseudoTerminal\": \"<boolean>\",\n      \"dockerLabels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"ulimits\": [\n        {\n          \"name\": \"<string>\",\n          \"softLimit\": \"<integer>\",\n          \"hardLimit\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"softLimit\": \"<integer>\",\n          \"hardLimit\": \"<integer>\"\n        }\n      ],\n      \"systemControls\": [\n        {\n          \"namespace\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"namespace\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"resourceRequirements\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"firelensConfiguration\": {\n        \"type\": \"<string>\",\n        \"options\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"repositoryCredentials\": {\n        \"credentialsParameter\": \"<string>\"\n      },\n      \"restartPolicy\": {\n        \"enabled\": \"<boolean>\",\n        \"restartAttemptPeriod\": \"<integer>\",\n        \"ignoredExitCodes\": [\n          \"<integer>\",\n          \"<integer>\"\n        ]\n      },\n      \"credentialSpecs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"taskRoleArn\": \"<string>\",\n  \"executionRoleArn\": \"<string>\",\n  \"networkMode\": \"<string>\",\n  \"volumes\": [\n    {\n      \"name\": \"<string>\",\n      \"host\": {\n        \"sourcePath\": \"<string>\"\n      },\n      \"dockerVolumeConfiguration\": {\n        \"scope\": \"<string>\",\n        \"autoprovision\": \"<boolean>\",\n        \"driver\": \"<string>\",\n        \"driverOpts\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"labels\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        }\n      },\n      \"efsVolumeConfiguration\": {\n        \"fileSystemId\": \"<string>\",\n        \"rootDirectory\": \"<string>\",\n        \"transitEncryption\": \"<string>\",\n        \"transitEncryptionPort\": \"<integer>\",\n        \"authorizationConfig\": {\n          \"accessPointId\": \"<string>\",\n          \"iam\": \"<string>\"\n        }\n      },\n      \"fsxWindowsFileServerVolumeConfiguration\": {\n        \"fileSystemId\": \"<string>\",\n        \"rootDirectory\": \"<string>\",\n        \"authorizationConfig\": {\n          \"credentialsParameter\": \"<string>\",\n          \"domain\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"host\": {\n        \"sourcePath\": \"<string>\"\n      },\n      \"dockerVolumeConfiguration\": {\n        \"scope\": \"<string>\",\n        \"autoprovision\": \"<boolean>\",\n        \"driver\": \"<string>\",\n        \"driverOpts\": {\n          \"key_0\": \"<string>\"\n        },\n        \"labels\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"efsVolumeConfiguration\": {\n        \"fileSystemId\": \"<string>\",\n        \"rootDirectory\": \"<string>\",\n        \"transitEncryption\": \"<string>\",\n        \"transitEncryptionPort\": \"<integer>\",\n        \"authorizationConfig\": {\n          \"accessPointId\": \"<string>\",\n          \"iam\": \"<string>\"\n        }\n      },\n      \"fsxWindowsFileServerVolumeConfiguration\": {\n        \"fileSystemId\": \"<string>\",\n        \"rootDirectory\": \"<string>\",\n        \"authorizationConfig\": {\n          \"credentialsParameter\": \"<string>\",\n          \"domain\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"placementConstraints\": [\n    {\n      \"type\": \"<string>\",\n      \"expression\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"expression\": \"<string>\"\n    }\n  ],\n  \"requiresCompatibilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cpu\": \"<string>\",\n  \"memory\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"pidMode\": \"<string>\",\n  \"ipcMode\": \"<string>\",\n  \"proxyConfiguration\": {\n    \"containerName\": \"<string>\",\n    \"type\": \"<string>\",\n    \"properties\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  },\n  \"inferenceAccelerators\": [\n    {\n      \"deviceName\": \"<string>\",\n      \"deviceType\": \"<string>\"\n    },\n    {\n      \"deviceName\": \"<string>\",\n      \"deviceType\": \"<string>\"\n    }\n  ],\n  \"ephemeralStorage\": {\n    \"sizeInGiB\": \"<integer>\"\n  },\n  \"runtimePlatform\": {\n    \"cpuArchitecture\": \"<string>\",\n    \"operatingSystemFamily\": \"<string>\"\n  },\n  \"enableFaultInjection\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "8912fd44-09e2-4d74-a96e-8a09a2aa5141",
+              "name": "Task definition registered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"family\": \"example_value\",\n  \"containerDefinitions\": [\n    {\n      \"name\": \"Example Title\",\n      \"image\": \"example_value\",\n      \"cpu\": 10,\n      \"memory\": 10,\n      \"memoryReservation\": 10,\n      \"links\": {},\n      \"portMappings\": {},\n      \"essential\": true,\n      \"entryPoint\": {},\n      \"command\": {},\n      \"environment\": {},\n      \"environmentFiles\": {},\n      \"mountPoints\": {},\n      \"volumesFrom\": {},\n      \"secrets\": {},\n      \"dependsOn\": {},\n      \"startTimeout\": 10,\n      \"stopTimeout\": 10,\n      \"hostname\": \"example_value\",\n      \"user\": \"example_value\",\n      \"workingDirectory\": \"example_value\",\n      \"disableNetworking\": true,\n      \"privileged\": true,\n      \"readonlyRootFilesystem\": true,\n      \"dnsServers\": {},\n      \"dnsSearchDomains\": {},\n      \"extraHosts\": {},\n      \"dockerSecurityOptions\": {},\n      \"interactive\": true,\n      \"pseudoTerminal\": true,\n      \"dockerLabels\": \"example_value\",\n      \"ulimits\": {},\n      \"systemControls\": {},\n      \"resourceRequirements\": {},\n      \"firelensConfiguration\": {},\n      \"repositoryCredentials\": {},\n      \"restartPolicy\": {},\n      \"credentialSpecs\": {}\n    }\n  ],\n  \"taskRoleArn\": \"example_value\",\n  \"executionRoleArn\": \"example_value\",\n  \"networkMode\": \"bridge\",\n  \"volumes\": [\n    {\n      \"name\": \"Example Title\",\n      \"host\": {},\n      \"dockerVolumeConfiguration\": {},\n      \"efsVolumeConfiguration\": {},\n      \"fsxWindowsFileServerVolumeConfiguration\": {}\n    }\n  ],\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"example_value\"\n    }\n  ],\n  \"requiresCompatibilities\": [\n    \"EC2\"\n  ],\n  \"cpu\": \"example_value\",\n  \"memory\": \"example_value\",\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"pidMode\": \"host\",\n  \"ipcMode\": \"host\",\n  \"proxyConfiguration\": {\n    \"type\": \"APPMESH\",\n    \"containerName\": \"example_value\",\n    \"properties\": [\n      {}\n    ]\n  },\n  \"inferenceAccelerators\": [\n    {\n      \"deviceName\": \"example_value\",\n      \"deviceType\": \"example_value\"\n    }\n  ],\n  \"ephemeralStorage\": {\n    \"sizeInGiB\": 10\n  },\n  \"runtimePlatform\": {\n    \"cpuArchitecture\": \"X86_64\",\n    \"operatingSystemFamily\": \"LINUX\"\n  },\n  \"enableFaultInjection\": true\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskDefinition\": {\n    \"taskDefinitionArn\": \"example_value\",\n    \"containerDefinitions\": [\n      {}\n    ],\n    \"family\": \"example_value\",\n    \"taskRoleArn\": \"example_value\",\n    \"executionRoleArn\": \"example_value\",\n    \"networkMode\": \"bridge\",\n    \"revision\": 10,\n    \"volumes\": [\n      {}\n    ],\n    \"status\": \"ACTIVE\",\n    \"requiresAttributes\": [\n      {\n        \"name\": \"Example Title\",\n        \"value\": \"example_value\",\n        \"targetType\": \"example_value\",\n        \"targetId\": \"500123\"\n      }\n    ],\n    \"placementConstraints\": [\n      {}\n    ],\n    \"compatibilities\": [\n      \"EC2\"\n    ],\n    \"requiresCompatibilities\": [\n      \"EC2\"\n    ],\n    \"cpu\": \"example_value\",\n    \"memory\": \"example_value\",\n    \"pidMode\": \"host\",\n    \"ipcMode\": \"host\",\n    \"proxyConfiguration\": {\n      \"type\": \"APPMESH\",\n      \"containerName\": \"example_value\",\n      \"properties\": {}\n    },\n    \"inferenceAccelerators\": [\n      {}\n    ],\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": 10\n    },\n    \"runtimePlatform\": {\n      \"cpuArchitecture\": \"X86_64\",\n      \"operatingSystemFamily\": \"LINUX\"\n    },\n    \"registeredAt\": 42.5,\n    \"deregisteredAt\": 42.5,\n    \"registeredBy\": \"example_value\",\n    \"enableFaultInjection\": true,\n    \"tags\": [\n      {}\n    ]\n  },\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74b093f0-3550-4dbe-b969-42f4a869e5a8",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"family\": \"example_value\",\n  \"containerDefinitions\": [\n    {\n      \"name\": \"Example Title\",\n      \"image\": \"example_value\",\n      \"cpu\": 10,\n      \"memory\": 10,\n      \"memoryReservation\": 10,\n      \"links\": {},\n      \"portMappings\": {},\n      \"essential\": true,\n      \"entryPoint\": {},\n      \"command\": {},\n      \"environment\": {},\n      \"environmentFiles\": {},\n      \"mountPoints\": {},\n      \"volumesFrom\": {},\n      \"secrets\": {},\n      \"dependsOn\": {},\n      \"startTimeout\": 10,\n      \"stopTimeout\": 10,\n      \"hostname\": \"example_value\",\n      \"user\": \"example_value\",\n      \"workingDirectory\": \"example_value\",\n      \"disableNetworking\": true,\n      \"privileged\": true,\n      \"readonlyRootFilesystem\": true,\n      \"dnsServers\": {},\n      \"dnsSearchDomains\": {},\n      \"extraHosts\": {},\n      \"dockerSecurityOptions\": {},\n      \"interactive\": true,\n      \"pseudoTerminal\": true,\n      \"dockerLabels\": \"example_value\",\n      \"ulimits\": {},\n      \"systemControls\": {},\n      \"resourceRequirements\": {},\n      \"firelensConfiguration\": {},\n      \"repositoryCredentials\": {},\n      \"restartPolicy\": {},\n      \"credentialSpecs\": {}\n    }\n  ],\n  \"taskRoleArn\": \"example_value\",\n  \"executionRoleArn\": \"example_value\",\n  \"networkMode\": \"bridge\",\n  \"volumes\": [\n    {\n      \"name\": \"Example Title\",\n      \"host\": {},\n      \"dockerVolumeConfiguration\": {},\n      \"efsVolumeConfiguration\": {},\n      \"fsxWindowsFileServerVolumeConfiguration\": {}\n    }\n  ],\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"example_value\"\n    }\n  ],\n  \"requiresCompatibilities\": [\n    \"EC2\"\n  ],\n  \"cpu\": \"example_value\",\n  \"memory\": \"example_value\",\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"pidMode\": \"host\",\n  \"ipcMode\": \"host\",\n  \"proxyConfiguration\": {\n    \"type\": \"APPMESH\",\n    \"containerName\": \"example_value\",\n    \"properties\": [\n      {}\n    ]\n  },\n  \"inferenceAccelerators\": [\n    {\n      \"deviceName\": \"example_value\",\n      \"deviceType\": \"example_value\"\n    }\n  ],\n  \"ephemeralStorage\": {\n    \"sizeInGiB\": 10\n  },\n  \"runtimePlatform\": {\n    \"cpuArchitecture\": \"X86_64\",\n    \"operatingSystemFamily\": \"LINUX\"\n  },\n  \"enableFaultInjection\": true\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d312c616-cfae-4d89-9295-c600dc148d15",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"family\": \"example_value\",\n  \"containerDefinitions\": [\n    {\n      \"name\": \"Example Title\",\n      \"image\": \"example_value\",\n      \"cpu\": 10,\n      \"memory\": 10,\n      \"memoryReservation\": 10,\n      \"links\": {},\n      \"portMappings\": {},\n      \"essential\": true,\n      \"entryPoint\": {},\n      \"command\": {},\n      \"environment\": {},\n      \"environmentFiles\": {},\n      \"mountPoints\": {},\n      \"volumesFrom\": {},\n      \"secrets\": {},\n      \"dependsOn\": {},\n      \"startTimeout\": 10,\n      \"stopTimeout\": 10,\n      \"hostname\": \"example_value\",\n      \"user\": \"example_value\",\n      \"workingDirectory\": \"example_value\",\n      \"disableNetworking\": true,\n      \"privileged\": true,\n      \"readonlyRootFilesystem\": true,\n      \"dnsServers\": {},\n      \"dnsSearchDomains\": {},\n      \"extraHosts\": {},\n      \"dockerSecurityOptions\": {},\n      \"interactive\": true,\n      \"pseudoTerminal\": true,\n      \"dockerLabels\": \"example_value\",\n      \"ulimits\": {},\n      \"systemControls\": {},\n      \"resourceRequirements\": {},\n      \"firelensConfiguration\": {},\n      \"repositoryCredentials\": {},\n      \"restartPolicy\": {},\n      \"credentialSpecs\": {}\n    }\n  ],\n  \"taskRoleArn\": \"example_value\",\n  \"executionRoleArn\": \"example_value\",\n  \"networkMode\": \"bridge\",\n  \"volumes\": [\n    {\n      \"name\": \"Example Title\",\n      \"host\": {},\n      \"dockerVolumeConfiguration\": {},\n      \"efsVolumeConfiguration\": {},\n      \"fsxWindowsFileServerVolumeConfiguration\": {}\n    }\n  ],\n  \"placementConstraints\": [\n    {\n      \"type\": \"memberOf\",\n      \"expression\": \"example_value\"\n    }\n  ],\n  \"requiresCompatibilities\": [\n    \"EC2\"\n  ],\n  \"cpu\": \"example_value\",\n  \"memory\": \"example_value\",\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"pidMode\": \"host\",\n  \"ipcMode\": \"host\",\n  \"proxyConfiguration\": {\n    \"type\": \"APPMESH\",\n    \"containerName\": \"example_value\",\n    \"properties\": [\n      {}\n    ]\n  },\n  \"inferenceAccelerators\": [\n    {\n      \"deviceName\": \"example_value\",\n      \"deviceType\": \"example_value\"\n    }\n  ],\n  \"ephemeralStorage\": {\n    \"sizeInGiB\": 10\n  },\n  \"runtimePlatform\": {\n    \"cpuArchitecture\": \"X86_64\",\n    \"operatingSystemFamily\": \"LINUX\"\n  },\n  \"enableFaultInjection\": true\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1f72a19-459b-4bf0-b8f9-930597e0b9c8",
+          "name": "Amazon Ecs Deregister a Task Definition",
+          "request": {
+            "name": "Amazon Ecs Deregister a Task Definition",
+            "description": {
+              "content": "Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as INACTIVE.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskDefinition\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "6cd4ac12-0e33-43f3-9f47-4263a18c21d0",
+              "name": "Task definition deregistered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"example_value\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskDefinition\": {\n    \"taskDefinitionArn\": \"example_value\",\n    \"containerDefinitions\": [\n      {}\n    ],\n    \"family\": \"example_value\",\n    \"taskRoleArn\": \"example_value\",\n    \"executionRoleArn\": \"example_value\",\n    \"networkMode\": \"bridge\",\n    \"revision\": 10,\n    \"volumes\": [\n      {}\n    ],\n    \"status\": \"ACTIVE\",\n    \"requiresAttributes\": [\n      {\n        \"name\": \"Example Title\",\n        \"value\": \"example_value\",\n        \"targetType\": \"example_value\",\n        \"targetId\": \"500123\"\n      }\n    ],\n    \"placementConstraints\": [\n      {}\n    ],\n    \"compatibilities\": [\n      \"EC2\"\n    ],\n    \"requiresCompatibilities\": [\n      \"EC2\"\n    ],\n    \"cpu\": \"example_value\",\n    \"memory\": \"example_value\",\n    \"pidMode\": \"host\",\n    \"ipcMode\": \"host\",\n    \"proxyConfiguration\": {\n      \"type\": \"APPMESH\",\n      \"containerName\": \"example_value\",\n      \"properties\": {}\n    },\n    \"inferenceAccelerators\": [\n      {}\n    ],\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": 10\n    },\n    \"runtimePlatform\": {\n      \"cpuArchitecture\": \"X86_64\",\n      \"operatingSystemFamily\": \"LINUX\"\n    },\n    \"registeredAt\": 42.5,\n    \"deregisteredAt\": 42.5,\n    \"registeredBy\": \"example_value\",\n    \"enableFaultInjection\": true,\n    \"tags\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d631f358-5ffe-413a-9871-394aefc3a08a",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"example_value\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef9c45ca-3875-4767-b0a8-7a2e00ef24b6",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"example_value\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa07a24d-657e-4cf4-9380-4b768b82951c",
+          "name": "Amazon Ecs Describe a Task Definition",
+          "request": {
+            "name": "Amazon Ecs Describe a Task Definition",
+            "description": {
+              "content": "Describes a task definition. You can specify a family and revision to find information about a specific task definition, or you can simply specify the family to find the latest ACTIVE revision in that family.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskDefinition\": \"<string>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "997179ee-b577-4263-9303-45e721b9a6be",
+              "name": "Task definition described successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"example_value\",\n  \"include\": [\n    \"TAGS\"\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskDefinition\": {\n    \"taskDefinitionArn\": \"example_value\",\n    \"containerDefinitions\": [\n      {}\n    ],\n    \"family\": \"example_value\",\n    \"taskRoleArn\": \"example_value\",\n    \"executionRoleArn\": \"example_value\",\n    \"networkMode\": \"bridge\",\n    \"revision\": 10,\n    \"volumes\": [\n      {}\n    ],\n    \"status\": \"ACTIVE\",\n    \"requiresAttributes\": [\n      {\n        \"name\": \"Example Title\",\n        \"value\": \"example_value\",\n        \"targetType\": \"example_value\",\n        \"targetId\": \"500123\"\n      }\n    ],\n    \"placementConstraints\": [\n      {}\n    ],\n    \"compatibilities\": [\n      \"EC2\"\n    ],\n    \"requiresCompatibilities\": [\n      \"EC2\"\n    ],\n    \"cpu\": \"example_value\",\n    \"memory\": \"example_value\",\n    \"pidMode\": \"host\",\n    \"ipcMode\": \"host\",\n    \"proxyConfiguration\": {\n      \"type\": \"APPMESH\",\n      \"containerName\": \"example_value\",\n      \"properties\": {}\n    },\n    \"inferenceAccelerators\": [\n      {}\n    ],\n    \"ephemeralStorage\": {\n      \"sizeInGiB\": 10\n    },\n    \"runtimePlatform\": {\n      \"cpuArchitecture\": \"X86_64\",\n      \"operatingSystemFamily\": \"LINUX\"\n    },\n    \"registeredAt\": 42.5,\n    \"deregisteredAt\": 42.5,\n    \"registeredBy\": \"example_value\",\n    \"enableFaultInjection\": true,\n    \"tags\": [\n      {}\n    ]\n  },\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ce3ff14-d608-4c6a-aa76-e63112fec63c",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"example_value\",\n  \"include\": [\n    \"TAGS\"\n  ]\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "548330fb-b3e5-4677-8e12-f77b64040567",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskDefinition\": \"example_value\",\n  \"include\": [\n    \"TAGS\"\n  ]\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "381a71b7-baed-4ccb-956f-748f0dac9207",
+          "name": "Amazon Ecs List Task Definitions",
+          "request": {
+            "name": "Amazon Ecs List Task Definitions",
+            "description": {
+              "content": "Returns a list of task definitions that are registered to your account. You can filter by family name to find all revisions for a specific family.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"familyPrefix\": \"<string>\",\n  \"status\": \"<string>\",\n  \"sort\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "a49a816c-34b6-4e2d-a472-000fd28b1983",
+              "name": "Task definitions listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"familyPrefix\": \"example_value\",\n  \"status\": \"ACTIVE\",\n  \"sort\": \"ASC\",\n  \"maxResults\": 10,\n  \"nextToken\": \"example_value\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskDefinitionArns\": [\n    \"example_value\"\n  ],\n  \"nextToken\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7850a620-f888-41f7-a4d0-70b40f0690ab",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"familyPrefix\": \"example_value\",\n  \"status\": \"ACTIVE\",\n  \"sort\": \"ASC\",\n  \"maxResults\": 10,\n  \"nextToken\": \"example_value\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "191e6453-6a71-44c3-b009-cba07385abaf",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"familyPrefix\": \"example_value\",\n  \"status\": \"ACTIVE\",\n  \"sort\": \"ASC\",\n  \"maxResults\": 10,\n  \"nextToken\": \"example_value\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8831a2a3-50e3-4191-b8ef-9f1fca2fad9a",
+          "name": "Amazon Ecs List Task Definition Families",
+          "request": {
+            "name": "Amazon Ecs List Task Definition Families",
+            "description": {
+              "content": "Returns a list of task definition families that are registered to your account, with ACTIVE task definitions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"familyPrefix\": \"<string>\",\n  \"status\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "3c157a8e-b97c-460b-81b6-781be1b3eaa1",
+              "name": "Task definition families listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"familyPrefix\": \"example_value\",\n  \"status\": \"ACTIVE\",\n  \"maxResults\": 10,\n  \"nextToken\": \"example_value\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"families\": [\n    \"example_value\"\n  ],\n  \"nextToken\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90dd4a77-7e4e-401f-8044-2e8668f241df",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"familyPrefix\": \"example_value\",\n  \"status\": \"ACTIVE\",\n  \"maxResults\": 10,\n  \"nextToken\": \"example_value\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c79abdc-1799-41bd-82e2-a0d7b541becd",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"familyPrefix\": \"example_value\",\n  \"status\": \"ACTIVE\",\n  \"maxResults\": 10,\n  \"nextToken\": \"example_value\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "286765ed-1c19-4093-8047-2693f02c1f0a",
+          "name": "Amazon Ecs Tag an Ecs Resource",
+          "request": {
+            "name": "Amazon Ecs Tag an Ecs Resource",
+            "description": {
+              "content": "Associates the specified tags to a resource with the specified resourceArn.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "12ebd809-0061-4c04-a3e8-4c424c6e4a48",
+              "name": "Resource tagged successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\",\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a95966a6-3e1e-4b58-a4ee-ad1a75682ed6",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\",\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f462a29-d837-471b-9268-ca7e7903109e",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\",\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f914ebb-3dbe-4cc1-a6f7-4289b04476a8",
+          "name": "Amazon Ecs Remove Tags From an Ecs Resource",
+          "request": {
+            "name": "Amazon Ecs Remove Tags From an Ecs Resource",
+            "description": {
+              "content": "Deletes specified tags from a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\",\n  \"tagKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "ddc786b7-5eca-4c7f-8ade-c4d28aff61c8",
+              "name": "Tags removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\",\n  \"tagKeys\": [\n    \"example_value\"\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "315edf62-4ab9-4f69-a775-028f2859350c",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\",\n  \"tagKeys\": [\n    \"example_value\"\n  ]\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4706ba06-1f19-4de1-8f52-73f214ea432f",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\",\n  \"tagKeys\": [\n    \"example_value\"\n  ]\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4892d95b-9b09-4a7e-82d2-8f43eb0d913e",
+          "name": "Amazon Ecs List Tags for an Ecs Resource",
+          "request": {
+            "name": "Amazon Ecs List Tags for an Ecs Resource",
+            "description": {
+              "content": "Lists the tags for the specified resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceArn\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "b7311dde-678e-44a6-a6e1-d433e3190ae6",
+              "name": "Tags listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": [\n    {\n      \"key\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4f5c9fa-063d-4e1d-8d83-a4e7a531ad13",
+              "name": "Client error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98298dc1-2ed2-47d3-b810-5b3e6550601c",
+              "name": "Server error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceArn\": \"example_value\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__type\": \"example_value\",\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-south-1,sa-east-1,ca-central-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://ecs.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "84366c65-74d9-41aa-96cd-e7d00c26ce0e",
+    "name": "Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Task Definitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}
