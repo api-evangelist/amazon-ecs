@@ -19,7 +19,7 @@ description: >-
 url: https://aws.amazon.com/ecs/
 created: '2024'
 modified: '2026-05-19'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 apis:
 - name: Amazon ECS Service Connect API
   description: >-
