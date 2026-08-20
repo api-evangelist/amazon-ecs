@@ -33,6 +33,12 @@ apis:
   - Containers
   - Microservices
   - Networking
+  - Service Discovery
+  - Service Mesh
+  tags_raw:
+  - Containers
+  - Microservices
+  - Networking
   - Service-Discovery
   - Service-Mesh
   properties:
@@ -65,6 +71,12 @@ apis:
   tags:
   - Containers
   - Edge
+  - Hybrid Cloud
+  - On-Premises
+  - Orchestration
+  tags_raw:
+  - Containers
+  - Edge
   - Hybrid-Cloud
   - On-Premises
   - Orchestration
@@ -91,6 +103,12 @@ apis:
   humanURL: https://aws.amazon.com/containers/copilot/
   baseURL: https://ecs.amazonaws.com
   tags:
+  - CLI
+  - Containers
+  - Deployment
+  - DevOps
+  - Fargate
+  tags_raw:
   - Cli
   - Containers
   - Deployment
@@ -181,6 +199,8 @@ apis:
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
@@ -376,6 +396,8 @@ apis:
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -442,7 +464,8 @@ apis:
     for #x amz target=amazonec2containerservicev20141113.createservice.
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService'
   properties:
   - type: OpenAPI
@@ -510,7 +533,8 @@ apis:
     for #x amz target=amazonec2containerservicev20141113.deleteservice.
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService'
   properties:
   - type: OpenAPI
@@ -579,7 +603,8 @@ apis:
     for #x amz target=amazonec2containerservicev20141113.describeservices.
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices'
   properties:
   - type: OpenAPI
@@ -647,7 +672,8 @@ apis:
     for #x amz target=amazonec2containerservicev20141113.listservices.
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices'
   properties:
   - type: OpenAPI
@@ -715,7 +741,8 @@ apis:
     for #x amz target=amazonec2containerservicev20141113.updateservice.
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService'
   properties:
   - type: OpenAPI
@@ -920,6 +947,13 @@ maintainers:
     email: support@aws.amazon.com
     url: https://aws.amazon.com
 tags:
+  - Amazon
+  - AWS
+  - Containers
+  - Docker
+  - ECS
+  - Orchestration
+tags_raw:
   - Amazon
   - Aws
   - Containers
