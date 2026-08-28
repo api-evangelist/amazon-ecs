@@ -1,0 +1,82 @@
+slug: amazon-ecs
+provider: Amazon ECS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Clusters
+  spec_file: amazon-ecs-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: CreateCluster  Amazon Ecs Create a New Ecs Cluster; schemas Cluster, ClusterConfiguration
+  reason: Lifecycle management of container clusters is squarely cloud compute infrastructure management.
+- tag: Container Instances
+  spec_file: amazon-ecs-container-instances-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: DescribeContainerInstances  Amazon Ecs Describe Container Instances; schemas ContainerInstance,
+    Resource
+  reason: Inventory and inspection of container host instances — compute infrastructure management.
+- tag: Tasks
+  spec_file: amazon-ecs-tasks-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: RunTask  Amazon Ecs Run a New Task; StopTask  Amazon Ecs Stop a Running Task; ExecuteCommand  Amazon
+    Ecs Execute a Command in a Running Container
+  reason: '''Tasks'' here are running containers, not business work items — running/stopping container
+    workloads is cloud compute infrastructure operations.'
+- tag: '#X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService'
+  spec_file: amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST ... DeleteService  Amazon Ecs Delete an Ecs Service — "fully managed container orchestration
+    service"
+  reason: Deleting an ECS service is cloud compute/container infrastructure operation, not a business
+    service. Maps to IT Infrastructure Management; 'Service' here is a container workload construct (schemas
+    Deployment, LoadBalancer, NetworkConfiguration), a homograph for business service.
+- tag: '#X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices'
+  spec_file: amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: DescribeServices  Amazon Ecs Describe One or More Ecs Services
+  reason: Read operation over container workload definitions (schemas Deployment, CapacityProviderStrategyItem,
+    NetworkConfiguration) — cloud compute infrastructure management.
+- tag: Capacity Providers
+  spec_file: amazon-ecs-capacity-providers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateCapacityProvider  Amazon Ecs Create a Capacity Provider — schemas AutoScalingGroupProvider
+  reason: Capacity providers bind ECS clusters to auto-scaling compute groups — provisioning and management
+    of cloud compute infrastructure.
+- tag: Task Definitions
+  spec_file: amazon-ecs-task-definitions-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: RegisterTaskDefinition  Amazon Ecs Register a New Task Definition; schemas ContainerDefinition,
+    PortMapping, LogConfiguration
+  reason: Task definitions are container workload specifications (images, CPU, volumes) — cloud infrastructure
+    configuration, not business task/work management.
