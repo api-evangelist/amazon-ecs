@@ -47,8 +47,8 @@ apis:
   - Containers
   - Microservices
   - Networking
-  - Service Discovery
-  - Service Mesh
+  - Service-Discovery
+  - Service-Mesh
   tags_raw:
   - Containers
   - Microservices
@@ -85,7 +85,7 @@ apis:
   tags:
   - Containers
   - Edge
-  - Hybrid Cloud
+  - Hybrid-Cloud
   - On-Premises
   - Orchestration
   tags_raw:
@@ -117,10 +117,10 @@ apis:
   humanURL: https://aws.amazon.com/containers/copilot/
   baseURL: https://ecs.amazonaws.com
   tags:
-  - CLI
+  - Cli
   - Containers
   - Deployment
-  - DevOps
+  - Devops
   - Fargate
   tags_raw:
   - Cli
@@ -965,10 +965,10 @@ maintainers:
     url: https://aws.amazon.com
 tags:
   - Amazon
-  - AWS
+  - Aws
   - Containers
   - Docker
-  - ECS
+  - Ecs
   - Orchestration
 tags_raw:
   - Amazon

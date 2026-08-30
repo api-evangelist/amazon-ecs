@@ -12,7 +12,7 @@
       "source": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
       "feed_url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
       "title": "",
-      "saved": 8,
+      "saved": 4,
       "method": "feed"
     },
     {
@@ -37,6 +37,6 @@
       "method": "none"
     }
   ],
-  "post_count": 700,
-  "fetched": "2026-08-22T20:20:02Z"
+  "post_count": 751,
+  "fetched": "2026-08-30T22:33:40Z"
 }
