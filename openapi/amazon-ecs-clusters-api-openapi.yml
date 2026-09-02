@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Clusters API
   description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
@@ -641,58 +641,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ClusterConfiguration:
+    ClusterSetting:
       type: object
       properties:
-        executeCommandConfiguration:
-          type: object
-          properties:
-            kmsKeyId:
-              type: string
-              description: The KMS key ID to encrypt data between the container and the SSM session.
-            logConfiguration:
-              type: object
-              properties:
-                cloudWatchEncryptionEnabled:
-                  type: boolean
-                cloudWatchLogGroupName:
-                  type: string
-                s3BucketName:
-                  type: string
-                s3EncryptionEnabled:
-                  type: boolean
-                s3KeyPrefix:
-                  type: string
-            logging:
-              type: string
-              enum:
-              - NONE
-              - DEFAULT
-              - OVERRIDE
-              description: The log setting to use for redirecting logs for execute command results.
-          example: example_value
-        managedStorageConfiguration:
-          type: object
-          properties:
-            fargateEphemeralStorageKmsKeyId:
-              type: string
-            kmsKeyId:
-              type: string
-          example: example_value
-    Failure:
-      type: object
-      properties:
-        arn:
+        name:
           type: string
-          description: The ARN of the failed resource.
-          example: example_value
-        reason:
+          description: The name of the cluster setting (e.g., containerInsights).
+          example: Example Title
+        value:
           type: string
-          description: The reason for the failure.
-          example: example_value
-        detail:
-          type: string
-          description: The details of the failure.
+          description: The value of the cluster setting.
           example: example_value
     ClusterServiceConnectDefaults:
       type: object
@@ -700,17 +658,6 @@ components:
         namespace:
           type: string
           description: The namespace name or ARN of the Cloud Map namespace that is used when a service is created without specifying a Service Connect configuration.
-          example: example_value
-    KeyValuePair:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the key-value pair.
-          example: Example Title
-        value:
-          type: string
-          description: The value of the key-value pair.
           example: example_value
     CapacityProviderStrategyItem:
       type: object
@@ -745,39 +692,6 @@ components:
           type: string
           description: The tag value (up to 256 characters).
           maxLength: 256
-          example: example_value
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        type:
-          type: string
-          example: example_value
-        status:
-          type: string
-          example: example_value
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-          example: []
-    CreateClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
           example: example_value
     Cluster:
       type: object
@@ -859,6 +773,44 @@ components:
           $ref: '#/components/schemas/ClusterConfiguration'
         serviceConnectDefaults:
           $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+    ClusterConfiguration:
+      type: object
+      properties:
+        executeCommandConfiguration:
+          type: object
+          properties:
+            kmsKeyId:
+              type: string
+              description: The KMS key ID to encrypt data between the container and the SSM session.
+            logConfiguration:
+              type: object
+              properties:
+                cloudWatchEncryptionEnabled:
+                  type: boolean
+                cloudWatchLogGroupName:
+                  type: string
+                s3BucketName:
+                  type: string
+                s3EncryptionEnabled:
+                  type: boolean
+                s3KeyPrefix:
+                  type: string
+            logging:
+              type: string
+              enum:
+              - NONE
+              - DEFAULT
+              - OVERRIDE
+              description: The log setting to use for redirecting logs for execute command results.
+          example: example_value
+        managedStorageConfiguration:
+          type: object
+          properties:
+            fargateEphemeralStorageKmsKeyId:
+              type: string
+            kmsKeyId:
+              type: string
+          example: example_value
     CreateClusterRequest:
       type: object
       properties:
@@ -896,25 +848,65 @@ components:
             $ref: '#/components/schemas/Tag'
           maxItems: 50
           example: []
-    ClusterSetting:
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        type:
+          type: string
+          example: example_value
+        status:
+          type: string
+          example: example_value
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+    KeyValuePair:
       type: object
       properties:
         name:
           type: string
-          description: The name of the cluster setting (e.g., containerInsights).
+          description: The name of the key-value pair.
           example: Example Title
         value:
           type: string
-          description: The value of the cluster setting.
+          description: The value of the key-value pair.
           example: example_value
-  parameters:
-    X-Amz-Target:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
   responses:
     ServerError:
       description: Server error response
@@ -928,6 +920,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
   securitySchemes:
     aws_sig_v4:
       type: apiKey

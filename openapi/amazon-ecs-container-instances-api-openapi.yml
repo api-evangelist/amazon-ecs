@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Container Instances API
   description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
@@ -227,38 +227,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Failure:
-      type: object
-      properties:
-        arn:
-          type: string
-          description: The ARN of the failed resource.
-          example: example_value
-        reason:
-          type: string
-          description: The reason for the failure.
-          example: example_value
-        detail:
-          type: string
-          description: The details of the failure.
-          example: example_value
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        type:
-          type: string
-          example: example_value
-        status:
-          type: string
-          example: example_value
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-          example: []
     Resource:
       type: object
       properties:
@@ -282,6 +250,19 @@ components:
           items:
             type: string
           example: []
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
     ContainerInstance:
       type: object
       description: An Amazon EC2 instance that is registered into an ECS cluster and running the ECS agent.
@@ -396,16 +377,37 @@ components:
                   lastStatusChange:
                     type: number
           example: example_value
-    Error:
+    Attachment:
       type: object
       properties:
-        __type:
+        id:
           type: string
-          description: The error type.
+          example: abc123
+        type:
+          type: string
           example: example_value
-        message:
+        status:
           type: string
-          description: A human-readable description of the error.
+          example: example_value
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
           example: example_value
     KeyValuePair:
       type: object
@@ -418,27 +420,17 @@ components:
           type: string
           description: The value of the key-value pair.
           example: example_value
-    Tag:
+    Error:
       type: object
       properties:
-        key:
+        __type:
           type: string
-          description: The tag key (up to 128 characters).
-          maxLength: 128
+          description: The error type.
           example: example_value
-        value:
+        message:
           type: string
-          description: The tag value (up to 256 characters).
-          maxLength: 256
+          description: A human-readable description of the error.
           example: example_value
-  parameters:
-    X-Amz-Target:
-      name: X-Amz-Target
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
   responses:
     ServerError:
       description: Server error response
@@ -452,6 +444,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    X-Amz-Target:
+      name: X-Amz-Target
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
   securitySchemes:
     aws_sig_v4:
       type: apiKey
