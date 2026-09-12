@@ -2,31 +2,15 @@
   "repo": "amazon-ecs",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
-      "feed_url": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
-    },
-    {
-      "source": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
-      "feed_url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
-      "title": "",
-      "saved": 4,
-      "method": "feed"
-    },
-    {
-      "source": "https://aws.amazon.com/ecs/resources/",
-      "feed_url": "https://aws.amazon.com/ecs/resources/",
+      "source": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html",
+      "feed_url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html",
       "title": "",
       "saved": 0,
       "method": "none"
     },
     {
-      "source": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html",
-      "feed_url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html",
+      "source": "https://aws.amazon.com/ecs/resources/",
+      "feed_url": "https://aws.amazon.com/ecs/resources/",
       "title": "",
       "saved": 0,
       "method": "none"
@@ -37,10 +21,24 @@
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
+      "feed_url": "https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
+      "feed_url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
+      "title": "",
+      "saved": 9,
+      "method": "feed"
     }
   ],
-  "post_count": 751,
-  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 807,
+  "fetched": "2026-09-06T19:17:18Z",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
