@@ -28,19 +28,17 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-ecs.png
 name: Amazon ECS
-description: >-
-  Amazon Elastic Container Service (ECS) is a fully managed container orchestration service that makes it easy to
-  deploy, manage, and scale containerized applications.
+description: Amazon Elastic Container Service (ECS) is a fully managed container orchestration service
+  that makes it easy to deploy, manage, and scale containerized applications.
 url: https://aws.amazon.com/ecs/
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - name: Amazon ECS Service Connect API
-  description: >-
-    Amazon ECS Service Connect provides management of service-to-service communication as Amazon ECS configuration,
-    building both service discovery and a service mesh for connecting services within and across clusters
-    and VPCs.
+  description: Amazon ECS Service Connect provides management of service-to-service communication as Amazon
+    ECS configuration, building both service discovery and a service mesh for connecting services within
+    and across clusters and VPCs.
   image: https://aws.amazon.com/favicon.ico
   humanURL: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html
   baseURL: https://ecs.amazonaws.com
@@ -60,26 +58,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html
   - type: APIReference
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectConfiguration.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectConfiguration.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-concepts.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-concepts.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-concepts-deploy.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect-concepts-deploy.html
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service-connect.html
   - type: Blog
-    url: >-
-      https://aws.amazon.com/blogs/aws/new-amazon-ecs-service-connect-enabling-easy-communication-between-microservices/
+    url: https://aws.amazon.com/blogs/aws/new-amazon-ecs-service-connect-enabling-easy-communication-between-microservices/
   - type: GitHubRepository
     url: https://github.com/aws/amazon-ecs-service-connect-agent
 - name: Amazon ECS Anywhere API
-  description: >-
-    Amazon ECS Anywhere extends Amazon ECS to support registering external instances such as on-premises
-    servers or virtual machines to your Amazon ECS cluster, allowing you to run and manage containerized
-    workloads on your own infrastructure.
+  description: Amazon ECS Anywhere extends Amazon ECS to support registering external instances such as
+    on-premises servers or virtual machines to your Amazon ECS cluster, allowing you to run and manage
+    containerized workloads on your own infrastructure.
   image: https://aws.amazon.com/favicon.ico
   humanURL: https://aws.amazon.com/ecs/anywhere/
   baseURL: https://ecs.amazonaws.com
@@ -103,17 +96,15 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch-type-external.html
   - type: Troubleshooting
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-anywhere-troubleshooting.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-anywhere-troubleshooting.html
   - type: FAQ
     url: https://aws.amazon.com/ecs/anywhere/faqs/
   - type: Tutorials
     url: https://github.com/aws-containers/ecs-anywhere-tutorial
 - name: AWS Copilot CLI
-  description: >-
-    AWS Copilot is an open source command line interface that simplifies building, releasing, and operating
-    production-ready containerized applications on Amazon ECS and AWS Fargate, providing common cloud
-    architectures and workflows.
+  description: AWS Copilot is an open source command line interface that simplifies building, releasing,
+    and operating production-ready containerized applications on Amazon ECS and AWS Fargate, providing
+    common cloud architectures and workflows.
   image: https://aws.amazon.com/favicon.ico
   humanURL: https://aws.amazon.com/containers/copilot/
   baseURL: https://ecs.amazonaws.com
@@ -137,8 +128,7 @@ apis:
   - type: GitHubRepository
     url: https://github.com/aws/copilot-cli
   - type: GettingStarted
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started-aws-copilot-cli.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started-aws-copilot-cli.html
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/copilot-install.html
   - type: Documentation
@@ -192,8 +182,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -259,8 +248,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -324,8 +312,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -389,8 +376,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -456,8 +442,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -474,9 +459,8 @@ apis:
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 - aid: amazon-ecs:amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api
   name: 'Amazon ECS #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService API'
-  description: >-
-    The #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService API from Amazon ECS — 1 operation(s)
-    for #x amz target=amazonec2containerservicev20141113.createservice.
+  description: 'The #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService API from Amazon ECS
+    — 1 operation(s) for #x amz target=amazonec2containerservicev20141113.createservice.'
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags: []
@@ -484,8 +468,7 @@ apis:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService'
   properties:
   - type: OpenAPI
-    url: >-
-      openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml
+    url: openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/ecs/
   - type: JSONSchema
@@ -525,8 +508,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -543,9 +525,8 @@ apis:
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 - aid: amazon-ecs:amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api
   name: 'Amazon ECS #X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService API'
-  description: >-
-    The #X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService API from Amazon ECS — 1 operation(s)
-    for #x amz target=amazonec2containerservicev20141113.deleteservice.
+  description: 'The #X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService API from Amazon ECS
+    — 1 operation(s) for #x amz target=amazonec2containerservicev20141113.deleteservice.'
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags: []
@@ -553,8 +534,7 @@ apis:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService'
   properties:
   - type: OpenAPI
-    url: >-
-      openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml
+    url: openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/ecs/
   - type: JSONSchema
@@ -594,8 +574,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -610,12 +589,10 @@ apis:
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-compliance.html
   - type: Documentation
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
-- aid: >-
-    amazon-ecs:amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api
+- aid: amazon-ecs:amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api
   name: 'Amazon ECS #X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices API'
-  description: >-
-    The #X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices API from Amazon ECS — 1 operation(s)
-    for #x amz target=amazonec2containerservicev20141113.describeservices.
+  description: 'The #X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices API from Amazon
+    ECS — 1 operation(s) for #x amz target=amazonec2containerservicev20141113.describeservices.'
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags: []
@@ -623,8 +600,7 @@ apis:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices'
   properties:
   - type: OpenAPI
-    url: >-
-      openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml
+    url: openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/ecs/
   - type: JSONSchema
@@ -664,8 +640,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -682,9 +657,8 @@ apis:
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 - aid: amazon-ecs:amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api
   name: 'Amazon ECS #X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices API'
-  description: >-
-    The #X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices API from Amazon ECS — 1 operation(s)
-    for #x amz target=amazonec2containerservicev20141113.listservices.
+  description: 'The #X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices API from Amazon ECS
+    — 1 operation(s) for #x amz target=amazonec2containerservicev20141113.listservices.'
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags: []
@@ -692,8 +666,7 @@ apis:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices'
   properties:
   - type: OpenAPI
-    url: >-
-      openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml
+    url: openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/ecs/
   - type: JSONSchema
@@ -733,8 +706,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -751,9 +723,8 @@ apis:
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 - aid: amazon-ecs:amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api
   name: 'Amazon ECS #X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService API'
-  description: >-
-    The #X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService API from Amazon ECS — 1 operation(s)
-    for #x amz target=amazonec2containerservicev20141113.updateservice.
+  description: 'The #X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService API from Amazon ECS
+    — 1 operation(s) for #x amz target=amazonec2containerservicev20141113.updateservice.'
   humanURL: https://aws.amazon.com/ecs/
   baseURL: https://ecs.amazonaws.com
   tags: []
@@ -761,8 +732,7 @@ apis:
   - '#X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService'
   properties:
   - type: OpenAPI
-    url: >-
-      openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml
+    url: openapi/amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/ecs/
   - type: JSONSchema
@@ -802,8 +772,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html
   - type: Documentation
-    url: >-
-      https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
+    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html
   - type: ChangeLog
     url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
   - type: Partners
@@ -819,164 +788,170 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 common:
-  - type: CapabilityMap
-    url: capabilities/amazon-ecs-capability-edges.yml
-    name: Amazon ECS Business Capability Map
-  - type: IssueTracker
-    url: https://github.com/aws/amazon-ecs-service-connect-agent/issues
-  - type: Releases
-    url: https://github.com/aws/amazon-ecs-service-connect-agent/releases
-  - type: CodeOfConduct
-    url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/CODE_OF_CONDUCT.md
-  - type: ContributionGuide
-    url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/CONTRIBUTING.md
-  - type: License
-    name: Apache-2.0
-    url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/LICENSE
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/amazon-ecs/overview
-  - type: AgenticAccess
-    url: agentic-access/amazon-ecs-agentic-access.yml
-  - type: TrustCenter
-    url: security/amazon-ecs-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/amazon-ecs-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/amazon-ecs-domain-security.yml
-  - type: Authentication
-    url: authentication/amazon-ecs-authentication.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/ecs/
-  - type: Pricing
-    url: https://aws.amazon.com/ecs/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/ecs/faqs/
-  - type: Features
-    url: https://aws.amazon.com/ecs/features/
-  - type: GettingStarted
-    url: https://aws.amazon.com/ecs/getting-started/
-  - type: Resources
-    url: https://aws.amazon.com/ecs/resources/
-  - type: Partners
-    url: https://aws.amazon.com/ecs/partners/
-  - type: Blog
-    url: https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/
-  - type: StatusPage
-    url: https://status.aws.amazon.com/
-  - type: SDKs
-    url: https://aws.amazon.com/tools/
-  - type: CLI
-    url: https://docs.aws.amazon.com/cli/latest/reference/ecs/
-  - type: Security
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security.html
-  - type: Compliance
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-compliance.html
-  - type: BestPractices
-    url: https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/intro.html
-  - type: Documentation
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html
-  - type: Documentation
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-logging-monitoring.html
-  - type: Troubleshooting
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html
-  - type: Console
-    url: https://console.aws.amazon.com/ecs/home
-  - type: KnowledgeCenter
-    url: https://repost.aws/tags/TAd-wgX2x3QgSxyelEN6raFg/amazon-elastic-container-service
-  - type: ChangeLog
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
-  - type: Documentation
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html
-  - type: Documentation
-    url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-versions-changelog.html
-  - type: GitHubRepository
-    url: https://github.com/aws/amazon-ecs-agent/releases
-  - type: GitHubOrganization
-    url: https://github.com/aws
-  - type: Features
-    data:
-      - name: Fully Managed Container Orchestration
-        description: Run and manage Docker containers at scale without managing the underlying infrastructure or control plane.
-      - name: AWS Fargate Integration
-        description: Run containers serverlessly without provisioning or managing EC2 instances using AWS Fargate launch type.
-      - name: Service Auto Scaling
-        description: >-
-          Automatically scale container workloads based on CloudWatch metrics, target tracking, or step scaling
-          policies.
-      - name: Service Connect
-        description: Built-in service discovery and service mesh for connecting containerized services within and across clusters.
-      - name: ECS Anywhere
-        description: Extend ECS to on-premises and edge infrastructure to run containers on your own servers and virtual machines.
-      - name: Capacity Providers
-        description: >-
-          Manage compute capacity with capacity provider strategies for optimal resource allocation across EC2 and
-          Fargate.
-      - name: Task Definitions
-        description: >-
-          Define containerized applications as task definitions with CPU, memory, networking, and IAM role
-          configurations.
-      - name: Container Insights
-        description: Monitor container performance metrics and logs with CloudWatch Container Insights for operational visibility.
-  - type: UseCases
-    data:
-      - name: Microservices Architecture
-        description: Deploy and manage microservices with independent scaling, deployment, and lifecycle management per service.
-      - name: Batch Processing
-        description: Run batch computing workloads using ECS tasks with automatic scaling and job scheduling.
-      - name: CI/CD Pipeline Deployment
-        description: >-
-          Integrate with AWS CodePipeline and CodeDeploy for automated blue/green and rolling deployments of
-          containerized applications.
-      - name: Hybrid Cloud Workloads
-        description: Run containerized workloads across AWS cloud and on-premises environments using ECS Anywhere.
-      - name: Machine Learning Inference
-        description: Deploy ML models as containerized inference endpoints with auto-scaling based on demand.
-  - type: Integrations
-    data:
-      - name: AWS Fargate
-        description: Serverless compute engine for running containers without managing underlying EC2 instances.
-      - name: Amazon ECR
-        description: Private container registry for storing, managing, and deploying Docker container images.
-      - name: AWS CloudFormation
-        description: Infrastructure as code for provisioning and managing ECS clusters, services, and task definitions.
-      - name: Elastic Load Balancing
-        description: Distribute traffic across containers with Application Load Balancer and Network Load Balancer integration.
-      - name: Amazon CloudWatch
-        description: Monitor container metrics, logs, and alarms with CloudWatch and Container Insights.
-      - name: AWS IAM
-        description: Fine-grained access control for ECS tasks and services using IAM roles and policies.
-  - type: Integrations
-    url: https://aws.amazon.com/marketplace
+- type: Website
+  url: https://amazon.com
+- type: CapabilityMap
+  url: capabilities/amazon-ecs-capability-edges.yml
+  name: Amazon ECS Business Capability Map
+- type: IssueTracker
+  url: https://github.com/aws/amazon-ecs-service-connect-agent/issues
+- type: Releases
+  url: https://github.com/aws/amazon-ecs-service-connect-agent/releases
+- type: CodeOfConduct
+  url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/CONTRIBUTING.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/aws/amazon-ecs-service-connect-agent/blob/main/LICENSE
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-ecs/overview
+- type: AgenticAccess
+  url: agentic-access/amazon-ecs-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-ecs-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-ecs-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-ecs-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-ecs-authentication.yml
+- type: Documentation
+  url: https://docs.aws.amazon.com/ecs/
+- type: Pricing
+  url: https://aws.amazon.com/ecs/pricing/
+- type: FAQ
+  url: https://aws.amazon.com/ecs/faqs/
+- type: Features
+  url: https://aws.amazon.com/ecs/features/
+- type: GettingStarted
+  url: https://aws.amazon.com/ecs/getting-started/
+- type: Resources
+  url: https://aws.amazon.com/ecs/resources/
+- type: Partners
+  url: https://aws.amazon.com/ecs/partners/
+- type: Blog
+  url: https://aws.amazon.com/blogs/aws/category/compute/amazon-elastic-container-service/
+- type: StatusPage
+  url: https://status.aws.amazon.com/
+- type: SDKs
+  url: https://aws.amazon.com/tools/
+- type: CLI
+  url: https://docs.aws.amazon.com/cli/latest/reference/ecs/
+- type: Security
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security.html
+- type: Compliance
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-compliance.html
+- type: BestPractices
+  url: https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/intro.html
+- type: Documentation
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html
+- type: Documentation
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-logging-monitoring.html
+- type: Troubleshooting
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html
+- type: Console
+  url: https://console.aws.amazon.com/ecs/home
+- type: KnowledgeCenter
+  url: https://repost.aws/tags/TAd-wgX2x3QgSxyelEN6raFg/amazon-elastic-container-service
+- type: ChangeLog
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/document_history.html
+- type: Documentation
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html
+- type: Documentation
+  url: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-versions-changelog.html
+- type: GitHubRepository
+  url: https://github.com/aws/amazon-ecs-agent/releases
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: Features
+  data:
+  - name: Fully Managed Container Orchestration
+    description: Run and manage Docker containers at scale without managing the underlying infrastructure
+      or control plane.
+  - name: AWS Fargate Integration
+    description: Run containers serverlessly without provisioning or managing EC2 instances using AWS
+      Fargate launch type.
+  - name: Service Auto Scaling
+    description: Automatically scale container workloads based on CloudWatch metrics, target tracking,
+      or step scaling policies.
+  - name: Service Connect
+    description: Built-in service discovery and service mesh for connecting containerized services within
+      and across clusters.
+  - name: ECS Anywhere
+    description: Extend ECS to on-premises and edge infrastructure to run containers on your own servers
+      and virtual machines.
+  - name: Capacity Providers
+    description: Manage compute capacity with capacity provider strategies for optimal resource allocation
+      across EC2 and Fargate.
+  - name: Task Definitions
+    description: Define containerized applications as task definitions with CPU, memory, networking, and
+      IAM role configurations.
+  - name: Container Insights
+    description: Monitor container performance metrics and logs with CloudWatch Container Insights for
+      operational visibility.
+- type: UseCases
+  data:
+  - name: Microservices Architecture
+    description: Deploy and manage microservices with independent scaling, deployment, and lifecycle management
+      per service.
+  - name: Batch Processing
+    description: Run batch computing workloads using ECS tasks with automatic scaling and job scheduling.
+  - name: CI/CD Pipeline Deployment
+    description: Integrate with AWS CodePipeline and CodeDeploy for automated blue/green and rolling deployments
+      of containerized applications.
+  - name: Hybrid Cloud Workloads
+    description: Run containerized workloads across AWS cloud and on-premises environments using ECS Anywhere.
+  - name: Machine Learning Inference
+    description: Deploy ML models as containerized inference endpoints with auto-scaling based on demand.
+- type: Integrations
+  data:
+  - name: AWS Fargate
+    description: Serverless compute engine for running containers without managing underlying EC2 instances.
+  - name: Amazon ECR
+    description: Private container registry for storing, managing, and deploying Docker container images.
+  - name: AWS CloudFormation
+    description: Infrastructure as code for provisioning and managing ECS clusters, services, and task
+      definitions.
+  - name: Elastic Load Balancing
+    description: Distribute traffic across containers with Application Load Balancer and Network Load
+      Balancer integration.
+  - name: Amazon CloudWatch
+    description: Monitor container metrics, logs, and alarms with CloudWatch and Container Insights.
+  - name: AWS IAM
+    description: Fine-grained access control for ECS tasks and services using IAM roles and policies.
+- type: Integrations
+  url: https://aws.amazon.com/marketplace
 integrations:
-  - name: Sign in
-  - name: Agent Mode
-  - name: Why AWS Marketplace?
-  - name: Get started in AWS Marketplace
-  - name: Industry
-  - name: Resources
-  - name: Become a Channel Partner
-  - name: Sell in AWS Marketplace
-  - name: Manage Your Account
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account
 maintainers:
-  - name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-  - name: Amazon Web Services
-    email: support@aws.amazon.com
-    url: https://aws.amazon.com
+- name: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+- name: Amazon Web Services
+  email: support@aws.amazon.com
+  url: https://aws.amazon.com
 tags:
-  - Amazon
-  - AWS
-  - Containers
-  - Docker
-  - ECS
-  - Orchestration
+- Amazon
+- AWS
+- Containers
+- Docker
+- ECS
+- Orchestration
 tags_raw:
-  - Amazon
-  - Aws
-  - Containers
-  - Docker
-  - Ecs
-  - Orchestration
+- Amazon
+- Aws
+- Containers
+- Docker
+- Ecs
+- Orchestration
 x-parent: aws
 x-relationship: product
