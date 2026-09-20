@@ -1,125 +1,48 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Amazon ECS
-providerId: amazon-ecs
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Amazon
-  - AWS
-  - Containers
-  - Docker
-  - ECS
-  - Orchestration
-description: Amazon ECS itself has no separate API or control-plane charge. Customers pay for the underlying
-  AWS resources used by their tasks (Fargate vCPU and memory, EC2 instance hours, ECS Managed Instances,
-  EBS, ENIs). Pricing is pay-as-you-go per second with a one-minute minimum. No upfront commitments;
-  Savings Plans available for long-term discounts.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://aws.amazon.com/ecs/pricing/
 sources:
-  - https://aws.amazon.com/ecs/pricing/
-  - https://aws.amazon.com/fargate/pricing/
+- https://aws.amazon.com/ecs/pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+published: true
+note: ECS itself has no orchestration charge; page prices underlying compute. Region-specific Fargate
+  vCPU/GB rates are rendered dynamically and not visible in text; only example rates and ECS Anywhere/Managed
+  Instances example fees show numbers.
+plan_count: 4
+currency: USD
 plans:
-  - id: amazon-ecs-platform-pricing
-    name: Platform Pricing Overview
-    type: pay-as-you-go
-    description: ECS API and orchestration are free. Charges accrue on the launch type chosen for tasks
-      (Fargate, EC2, or ECS Managed Instances) and any resources they touch.
-    entries:
-      - label: ECS API and orchestration
-        name: ecs_control_plane
-        type: flat
-        metric: request
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Fargate launch type (vCPU + memory)
-        name: fargate_resources
-        type: metered
-        metric: varies
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: see vendor pricing calculator
-        userMultiplied: false
-      - label: EC2 launch type (instance + storage + network)
-        name: ec2_resources
-        type: metered
-        metric: varies
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: see EC2 pricing
-        userMultiplied: false
-      - label: ECS Managed Instances management fee
-        name: managed_instances_fee
-        type: metered
-        metric: instance-hour
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: see vendor pricing calculator
-        userMultiplied: false
-    elements:
-      - name: Per-second billing with one-minute minimum
-      - name: No upfront commitment
-      - name: Fargate, EC2, and ECS Managed Instance launch types
-      - name: ECS Anywhere (hybrid / on-premises)
-      - name: Service Connect, Service Discovery, App Mesh integration
-  - id: amazon-ecs-savings-plans
-    name: Compute Savings Plans
-    type: subscription
-    description: 1- or 3-year commitment for Fargate or EC2 spend in exchange for discounted hourly rates.
-    entries:
-      - label: Compute Savings Plan commitment
-        name: savings_plan
-        type: subscription
-        metric: USD_per_hour_committed
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: see vendor pricing calculator
-        userMultiplied: false
-    elements:
-      - name: Up to ~50% discount vs. on-demand
-      - name: Applies across Fargate, EC2, Lambda
-      - name: 1-year or 3-year commitment
-  - id: amazon-ecs-enterprise
-    name: Enterprise Discount Program
-    type: enterprise
-    description: Negotiated AWS Enterprise Discount Programs (EDP) and Private Pricing Agreements for committed
-      annual AWS spend.
-    entries:
-      - label: Negotiated rate
-        name: edp
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Volume-based discounts
-      - name: Custom contract terms
-      - name: Enterprise Support included
-      - name: Dedicated Technical Account Manager
-maintainers:
-  - name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-  - name: Amazon Web Services
-    email: support@aws.amazon.com
-    url: https://aws.amazon.com
+- name: Amazon ECS orchestration
+  price_text: There is no additional charge for Amazon ECS orchestration
+  period: none
+  included_quota: Pay only for underlying compute and resources
+- name: ECS Anywhere
+  price_text: $0.01025 per registered on-premises instance/hour
+  price: 0.01025
+  currency: USD
+  period: per-use
+  unit: registered on-premises instance/hour
+  overage: Per-hour (1 hr min.)
+- name: AWS Fargate (Linux/X86, US East N. Virginia example)
+  price_text: 'CPU cost: $0.000011244 per vCPU second'
+  price: 1.1244e-05
+  currency: USD
+  period: per-use
+  unit: vCPU second
+  included_quota: Each Fargate task receives 20 GB of ephemeral storage at no additional charge
+  overage: Additional storage above 20 GB, up to a maximum of 200 GB, is charged at the rate above
+- name: ECS Managed Instances management fee (example c6a.2xlarge)
+  price_text: $0.037
+  price: 0.037
+  currency: USD
+  period: per-use
+  unit: per instance hour
+  overage: Billed per second with a one-minute minimum
+rate_limit_statements:
+- A minimum charge of one minute applies.
+- Per-hour (1 hr min.)
