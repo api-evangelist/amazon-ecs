@@ -10,6 +10,12 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: developer-api
 pricing_basis: usage-other
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: ECS Anywhere $0.01025 per registered on-premises instance/hour
+  managed_tier: AWS Fargate
 published: true
 note: ECS itself has no orchestration charge; page prices underlying compute. Region-specific Fargate
   vCPU/GB rates are rendered dynamically and not visible in text; only example rates and ECS Anywhere/Managed
