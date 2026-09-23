@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Tasks API
+  title: Amazon ECS Amazon Elastic Container Service (ECS) Tasks API
   description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
-  version: '3.1'
+  version: '2014-11-13'
   contact:
     name: Amazon Web Services
     url: https://aws.amazon.com/ecs/
@@ -16,6 +16,7 @@ info:
   x-origin:
   - format: openapi
     url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
 servers:
 - url: https://ecs.{region}.amazonaws.com
   description: Amazon ECS regional endpoint
@@ -907,42 +908,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PlacementConstraint:
+    Error:
       type: object
       properties:
-        type:
+        __type:
           type: string
-          enum:
-          - distinctInstance
-          - memberOf
-          description: The type of placement constraint.
-          example: distinctInstance
-        expression:
-          type: string
-          description: A cluster query language expression.
+          description: The error type.
           example: example_value
-    KeyValuePair:
-      type: object
-      properties:
-        name:
+        message:
           type: string
-          description: The name of the key-value pair.
-          example: Example Title
-        value:
-          type: string
-          description: The value of the key-value pair.
+          description: A human-readable description of the error.
           example: example_value
-    EphemeralStorage:
-      type: object
-      required:
-      - sizeInGiB
-      properties:
-        sizeInGiB:
-          type: integer
-          description: The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is 21 GiB and the maximum supported value is 200 GiB.
-          minimum: 21
-          maximum: 200
-          example: 10
     Failure:
       type: object
       properties:
@@ -957,6 +933,17 @@ components:
         detail:
           type: string
           description: The details of the failure.
+          example: example_value
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
           example: example_value
     NetworkConfiguration:
       type: object
@@ -997,6 +984,176 @@ components:
           items:
             $ref: '#/components/schemas/Failure'
           example: []
+    Container:
+      type: object
+      description: A container that is part of a task.
+      properties:
+        containerArn:
+          type: string
+          example: example_value
+        taskArn:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        image:
+          type: string
+          example: example_value
+        imageDigest:
+          type: string
+          example: example_value
+        runtimeId:
+          type: string
+          example: '500123'
+        lastStatus:
+          type: string
+          example: example_value
+        exitCode:
+          type: integer
+          example: 10
+        reason:
+          type: string
+          example: example_value
+        healthStatus:
+          type: string
+          enum:
+          - HEALTHY
+          - UNHEALTHY
+          - UNKNOWN
+          example: HEALTHY
+        cpu:
+          type: string
+          example: example_value
+        memory:
+          type: string
+          example: example_value
+        memoryReservation:
+          type: string
+          example: example_value
+        gpuIds:
+          type: array
+          items:
+            type: string
+          example: []
+        networkBindings:
+          type: array
+          items:
+            type: object
+            properties:
+              bindIP:
+                type: string
+              containerPort:
+                type: integer
+              hostPort:
+                type: integer
+              protocol:
+                type: string
+                enum:
+                - tcp
+                - udp
+              containerPortRange:
+                type: string
+              hostPortRange:
+                type: string
+          example: []
+        networkInterfaces:
+          type: array
+          items:
+            type: object
+            properties:
+              attachmentId:
+                type: string
+              privateIpv4Address:
+                type: string
+              ipv6Address:
+                type: string
+          example: []
+        managedAgents:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              lastStatus:
+                type: string
+              lastStartedAt:
+                type: number
+              reason:
+                type: string
+          example: []
+    TaskOverride:
+      type: object
+      description: The overrides associated with a task.
+      properties:
+        containerOverrides:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the container that receives the override.
+              command:
+                type: array
+                items:
+                  type: string
+              environment:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KeyValuePair'
+              environmentFiles:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                      - s3
+              cpu:
+                type: integer
+              memory:
+                type: integer
+              memoryReservation:
+                type: integer
+              resourceRequirements:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    value:
+                      type: string
+          example: []
+        cpu:
+          type: string
+          example: example_value
+        memory:
+          type: string
+          example: example_value
+        taskRoleArn:
+          type: string
+          example: example_value
+        executionRoleArn:
+          type: string
+          example: example_value
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorage'
+        inferenceAcceleratorOverrides:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceName:
+                type: string
+              deviceType:
+                type: string
+          example: []
     Tag:
       type: object
       properties:
@@ -1010,6 +1167,41 @@ components:
           description: The tag value (up to 256 characters).
           maxLength: 256
           example: example_value
+    InferenceAccelerator:
+      type: object
+      required:
+      - deviceName
+      - deviceType
+      properties:
+        deviceName:
+          type: string
+          description: The Elastic Inference accelerator device name.
+          example: example_value
+        deviceType:
+          type: string
+          description: The Elastic Inference accelerator type to use.
+          example: example_value
+    CapacityProviderStrategyItem:
+      type: object
+      required:
+      - capacityProvider
+      properties:
+        capacityProvider:
+          type: string
+          description: The short name of the capacity provider.
+          example: example_value
+        weight:
+          type: integer
+          description: The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000).
+          minimum: 0
+          maximum: 1000
+          example: 10
+        base:
+          type: integer
+          description: The number of tasks, at a minimum, to run on the specified capacity provider (0-100000).
+          minimum: 0
+          maximum: 100000
+          example: 10
     RunTaskRequest:
       type: object
       required:
@@ -1093,98 +1285,20 @@ components:
           type: string
           description: An identifier you provide to ensure the idempotency of the request.
           example: example_value
-    CapacityProviderStrategyItem:
+    PlacementConstraint:
       type: object
-      required:
-      - capacityProvider
       properties:
-        capacityProvider:
+        type:
           type: string
-          description: The short name of the capacity provider.
-          example: example_value
-        weight:
-          type: integer
-          description: The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000).
-          minimum: 0
-          maximum: 1000
-          example: 10
-        base:
-          type: integer
-          description: The number of tasks, at a minimum, to run on the specified capacity provider (0-100000).
-          minimum: 0
-          maximum: 100000
-          example: 10
-    TaskOverride:
-      type: object
-      description: The overrides associated with a task.
-      properties:
-        containerOverrides:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The name of the container that receives the override.
-              command:
-                type: array
-                items:
-                  type: string
-              environment:
-                type: array
-                items:
-                  $ref: '#/components/schemas/KeyValuePair'
-              environmentFiles:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    value:
-                      type: string
-                    type:
-                      type: string
-                      enum:
-                      - s3
-              cpu:
-                type: integer
-              memory:
-                type: integer
-              memoryReservation:
-                type: integer
-              resourceRequirements:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                    value:
-                      type: string
-          example: []
-        cpu:
+          enum:
+          - distinctInstance
+          - memberOf
+          description: The type of placement constraint.
+          example: distinctInstance
+        expression:
           type: string
+          description: A cluster query language expression.
           example: example_value
-        memory:
-          type: string
-          example: example_value
-        taskRoleArn:
-          type: string
-          example: example_value
-        executionRoleArn:
-          type: string
-          example: example_value
-        ephemeralStorage:
-          $ref: '#/components/schemas/EphemeralStorage'
-        inferenceAcceleratorOverrides:
-          type: array
-          items:
-            type: object
-            properties:
-              deviceName:
-                type: string
-              deviceType:
-                type: string
-          example: []
     Task:
       type: object
       description: Details on a task in a cluster.
@@ -1351,145 +1465,6 @@ components:
               targetId:
                 type: string
           example: []
-    Container:
-      type: object
-      description: A container that is part of a task.
-      properties:
-        containerArn:
-          type: string
-          example: example_value
-        taskArn:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        image:
-          type: string
-          example: example_value
-        imageDigest:
-          type: string
-          example: example_value
-        runtimeId:
-          type: string
-          example: '500123'
-        lastStatus:
-          type: string
-          example: example_value
-        exitCode:
-          type: integer
-          example: 10
-        reason:
-          type: string
-          example: example_value
-        healthStatus:
-          type: string
-          enum:
-          - HEALTHY
-          - UNHEALTHY
-          - UNKNOWN
-          example: HEALTHY
-        cpu:
-          type: string
-          example: example_value
-        memory:
-          type: string
-          example: example_value
-        memoryReservation:
-          type: string
-          example: example_value
-        gpuIds:
-          type: array
-          items:
-            type: string
-          example: []
-        networkBindings:
-          type: array
-          items:
-            type: object
-            properties:
-              bindIP:
-                type: string
-              containerPort:
-                type: integer
-              hostPort:
-                type: integer
-              protocol:
-                type: string
-                enum:
-                - tcp
-                - udp
-              containerPortRange:
-                type: string
-              hostPortRange:
-                type: string
-          example: []
-        networkInterfaces:
-          type: array
-          items:
-            type: object
-            properties:
-              attachmentId:
-                type: string
-              privateIpv4Address:
-                type: string
-              ipv6Address:
-                type: string
-          example: []
-        managedAgents:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              lastStatus:
-                type: string
-              lastStartedAt:
-                type: number
-              reason:
-                type: string
-          example: []
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
-    PlacementStrategy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - random
-          - spread
-          - binpack
-          description: The type of placement strategy.
-          example: random
-        field:
-          type: string
-          description: The field to apply the placement strategy against.
-          example: example_value
-    InferenceAccelerator:
-      type: object
-      required:
-      - deviceName
-      - deviceType
-      properties:
-        deviceName:
-          type: string
-          description: The Elastic Inference accelerator device name.
-          example: example_value
-        deviceType:
-          type: string
-          description: The Elastic Inference accelerator type to use.
-          example: example_value
     Attachment:
       type: object
       properties:
@@ -1507,6 +1482,45 @@ components:
           items:
             $ref: '#/components/schemas/KeyValuePair'
           example: []
+    EphemeralStorage:
+      type: object
+      required:
+      - sizeInGiB
+      properties:
+        sizeInGiB:
+          type: integer
+          description: The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is 21 GiB and the maximum supported value is 200 GiB.
+          minimum: 21
+          maximum: 200
+          example: 10
+    PlacementStrategy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - random
+          - spread
+          - binpack
+          description: The type of placement strategy.
+          example: random
+        field:
+          type: string
+          description: The field to apply the placement strategy against.
+          example: example_value
+  responses:
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     X-Amz-Target:
       name: X-Amz-Target
@@ -1515,19 +1529,6 @@ components:
       schema:
         type: string
       description: The target API action in the format AmazonEC2ContainerServiceV20141113.ActionName.
-  responses:
-    ServerError:
-      description: Server error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ClientError:
-      description: Client error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     aws_sig_v4:
       type: apiKey

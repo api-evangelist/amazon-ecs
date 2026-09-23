@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Amazon ECS Amazon Elastic Container Service (ECS) Capacity Providers Container Instances API
+  title: Amazon ECS Amazon Elastic Container Service (ECS) Container…
   description: Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications. The Amazon ECS API uses an RPC model where all actions are routed to a single endpoint via POST with an X-Amz-Target header specifying the action. This specification models the core ECS resource operations for clusters, services, tasks, and task definitions.
-  version: '3.1'
+  version: '2014-11-13'
   contact:
     name: Amazon Web Services
     url: https://aws.amazon.com/ecs/
@@ -16,6 +16,7 @@ info:
   x-origin:
   - format: openapi
     url: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html
+    version: '3.1'
 servers:
 - url: https://ecs.{region}.amazonaws.com
   description: Amazon ECS regional endpoint
@@ -227,6 +228,56 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
     Resource:
       type: object
       properties:
@@ -250,19 +301,23 @@ components:
           items:
             type: string
           example: []
-    Tag:
+    Attachment:
       type: object
       properties:
-        key:
+        id:
           type: string
-          description: The tag key (up to 128 characters).
-          maxLength: 128
-          example: example_value
-        value:
+          example: abc123
+        type:
           type: string
-          description: The tag value (up to 256 characters).
-          maxLength: 256
           example: example_value
+        status:
+          type: string
+          example: example_value
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
     ContainerInstance:
       type: object
       description: An Amazon EC2 instance that is registered into an ECS cluster and running the ECS agent.
@@ -377,69 +432,15 @@ components:
                   lastStatusChange:
                     type: number
           example: example_value
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        type:
-          type: string
-          example: example_value
-        status:
-          type: string
-          example: example_value
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-          example: []
-    Failure:
-      type: object
-      properties:
-        arn:
-          type: string
-          description: The ARN of the failed resource.
-          example: example_value
-        reason:
-          type: string
-          description: The reason for the failure.
-          example: example_value
-        detail:
-          type: string
-          description: The details of the failure.
-          example: example_value
-    KeyValuePair:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the key-value pair.
-          example: Example Title
-        value:
-          type: string
-          description: The value of the key-value pair.
-          example: example_value
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
   responses:
-    ServerError:
-      description: Server error response
+    ClientError:
+      description: Client error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ClientError:
-      description: Client error response
+    ServerError:
+      description: Server error response
       content:
         application/json:
           schema:
