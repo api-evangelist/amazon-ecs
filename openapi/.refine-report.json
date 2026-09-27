@@ -4,34 +4,29 @@
     "_original/amazon-ecs-openapi.yml"
   ],
   "outputs": [
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml",
+    "amazon-ecs-amazon-ecs-amazon-elastic-container-service-ecs-api-api-openapi.yml",
     "amazon-ecs-capacity-providers-api-openapi.yml",
     "amazon-ecs-clusters-api-openapi.yml",
     "amazon-ecs-container-instances-api-openapi.yml",
     "amazon-ecs-task-definitions-api-openapi.yml",
     "amazon-ecs-tasks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 5 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "amazon-ecs-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService -> #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService",
-    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteService -> #X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService",
-    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeServices -> #X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices",
-    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListServices -> #X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices",
-    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateService -> #X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService",
-    "amazon-ecs-openapi.yml: declared missing tag: #X Amz Target=AmazonEC2ContainerServiceV20141113.CreateService",
-    "amazon-ecs-openapi.yml: declared missing tag: #X Amz Target=AmazonEC2ContainerServiceV20141113.DeleteService",
-    "amazon-ecs-openapi.yml: declared missing tag: #X Amz Target=AmazonEC2ContainerServiceV20141113.DescribeServices",
-    "amazon-ecs-openapi.yml: declared missing tag: #X Amz Target=AmazonEC2ContainerServiceV20141113.ListServices",
-    "amazon-ecs-openapi.yml: declared missing tag: #X Amz Target=AmazonEC2ContainerServiceV20141113.UpdateService",
-    "apis.yml register: already-registered"
+    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.CreateService -> Amazon ECS Amazon Elastic Container Service (ECS) API",
+    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DeleteService -> Amazon ECS Amazon Elastic Container Service (ECS) API",
+    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.DescribeServices -> Amazon ECS Amazon Elastic Container Service (ECS) API",
+    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListServices -> Amazon ECS Amazon Elastic Container Service (ECS) API",
+    "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateService -> Amazon ECS Amazon Elastic Container Service (ECS) API",
+    "amazon-ecs-openapi.yml: declared missing tag: Amazon ECS Amazon Elastic Container Service (ECS) API",
+    "superseded outputs removed: amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 9 total)"
   ],
   "skipped": [
     "amazon-ecs-capacity-providers-api-openapi.yml: previously refined output, superseded by openapi/_original/",

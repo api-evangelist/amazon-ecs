@@ -219,17 +219,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
     Failure:
       type: object
       properties:
@@ -244,19 +233,6 @@ components:
         detail:
           type: string
           description: The details of the failure.
-          example: example_value
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The tag key (up to 128 characters).
-          maxLength: 128
-          example: example_value
-        value:
-          type: string
-          description: The tag value (up to 256 characters).
-          maxLength: 256
           example: example_value
     CapacityProvider:
       type: object
@@ -340,15 +316,39 @@ components:
           - ENABLED
           - DISABLED
           example: ENABLED
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
   responses:
-    ClientError:
-      description: Client error response
+    ServerError:
+      description: Server error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error response
+    ClientError:
+      description: Client error response
       content:
         application/json:
           schema:
