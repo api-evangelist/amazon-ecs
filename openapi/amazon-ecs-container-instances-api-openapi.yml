@@ -245,6 +245,17 @@ components:
           items:
             $ref: '#/components/schemas/KeyValuePair'
           example: []
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
     Failure:
       type: object
       properties:
@@ -260,16 +271,16 @@ components:
           type: string
           description: The details of the failure.
           example: example_value
-    KeyValuePair:
+    Error:
       type: object
       properties:
-        name:
+        __type:
           type: string
-          description: The name of the key-value pair.
-          example: Example Title
-        value:
+          description: The error type.
+          example: example_value
+        message:
           type: string
-          description: The value of the key-value pair.
+          description: A human-readable description of the error.
           example: example_value
     Resource:
       type: object
@@ -294,6 +305,19 @@ components:
           items:
             type: string
           example: []
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
     ContainerInstance:
       type: object
       description: An Amazon EC2 instance that is registered into an ECS cluster and running the ECS agent.
@@ -407,30 +431,6 @@ components:
                     type: number
                   lastStatusChange:
                     type: number
-          example: example_value
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The tag key (up to 128 characters).
-          maxLength: 128
-          example: example_value
-        value:
-          type: string
-          description: The tag value (up to 256 characters).
-          maxLength: 256
           example: example_value
   responses:
     ServerError:

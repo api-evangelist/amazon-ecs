@@ -715,43 +715,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ServiceRegistry:
-      type: object
-      properties:
-        registryArn:
-          type: string
-          description: The ARN of the Cloud Map service registry.
-          example: example_value
-        port:
-          type: integer
-          example: 10
-        containerName:
-          type: string
-          example: example_value
-        containerPort:
-          type: integer
-          example: 10
-    CapacityProviderStrategyItem:
-      type: object
-      required:
-      - capacityProvider
-      properties:
-        capacityProvider:
-          type: string
-          description: The short name of the capacity provider.
-          example: example_value
-        weight:
-          type: integer
-          description: The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000).
-          minimum: 0
-          maximum: 1000
-          example: 10
-        base:
-          type: integer
-          description: The number of tasks, at a minimum, to run on the specified capacity provider (0-100000).
-          minimum: 0
-          maximum: 100000
-          example: 10
     DeploymentController:
       type: object
       properties:
@@ -763,69 +726,6 @@ components:
           - CODE_DEPLOY
           - EXTERNAL
           example: ECS
-    Failure:
-      type: object
-      properties:
-        arn:
-          type: string
-          description: The ARN of the failed resource.
-          example: example_value
-        reason:
-          type: string
-          description: The reason for the failure.
-          example: example_value
-        detail:
-          type: string
-          description: The details of the failure.
-          example: example_value
-    DeploymentConfiguration:
-      type: object
-      description: Deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.
-      properties:
-        deploymentCircuitBreaker:
-          type: object
-          properties:
-            enable:
-              type: boolean
-              description: Whether to use the deployment circuit breaker logic.
-            rollback:
-              type: boolean
-              description: Whether to roll back to the last completed deployment on failure.
-          example: example_value
-        maximumPercent:
-          type: integer
-          description: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running during a deployment.
-          example: 10
-        minimumHealthyPercent:
-          type: integer
-          description: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running during a deployment.
-          example: 10
-        alarms:
-          type: object
-          properties:
-            alarmNames:
-              type: array
-              items:
-                type: string
-            enable:
-              type: boolean
-            rollback:
-              type: boolean
-          example: example_value
-    PlacementConstraint:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - distinctInstance
-          - memberOf
-          description: The type of placement constraint.
-          example: distinctInstance
-        expression:
-          type: string
-          description: A cluster query language expression.
-          example: example_value
     ServiceConnectConfiguration:
       type: object
       properties:
@@ -905,6 +805,62 @@ components:
                   valueFrom:
                     type: string
           example: example_value
+    ServiceRegistry:
+      type: object
+      properties:
+        registryArn:
+          type: string
+          description: The ARN of the Cloud Map service registry.
+          example: example_value
+        port:
+          type: integer
+          example: 10
+        containerName:
+          type: string
+          example: example_value
+        containerPort:
+          type: integer
+          example: 10
+    LoadBalancer:
+      type: object
+      properties:
+        targetGroupArn:
+          type: string
+          description: The full ARN of the Elastic Load Balancing target group.
+          example: example_value
+        loadBalancerName:
+          type: string
+          description: The name of the load balancer (Classic Load Balancer only).
+          example: example_value
+        containerName:
+          type: string
+          description: The name of the container to associate with the load balancer.
+          example: example_value
+        containerPort:
+          type: integer
+          description: The port on the container to associate with the load balancer.
+          example: 10
+    CapacityProviderStrategyItem:
+      type: object
+      required:
+      - capacityProvider
+      properties:
+        capacityProvider:
+          type: string
+          description: The short name of the capacity provider.
+          example: example_value
+        weight:
+          type: integer
+          description: The weight value designating the relative percentage of the total number of tasks launched that should use the capacity provider (0-1000).
+          minimum: 0
+          maximum: 1000
+          example: 10
+        base:
+          type: integer
+          description: The number of tasks, at a minimum, to run on the specified capacity provider (0-100000).
+          minimum: 0
+          maximum: 100000
+          example: 10
     NetworkConfiguration:
       type: object
       description: The network configuration for a task or service.
@@ -930,6 +886,113 @@ components:
               enum:
               - ENABLED
               - DISABLED
+          example: example_value
+    CreateServiceRequest:
+      type: object
+      required:
+      - serviceName
+      properties:
+        serviceName:
+          type: string
+          description: The name of your service (up to 255 characters).
+          maxLength: 255
+          example: example_value
+        cluster:
+          type: string
+          description: The short name or full ARN of the cluster to run the service on.
+          example: example_value
+        taskDefinition:
+          type: string
+          description: The family and revision or full ARN of the task definition.
+          example: example_value
+        desiredCount:
+          type: integer
+          description: The number of instantiations of the specified task definition to place and keep running.
+          example: 10
+        launchType:
+          type: string
+          description: The launch type on which to run your service.
+          enum:
+          - EC2
+          - FARGATE
+          - EXTERNAL
+          example: EC2
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+        platformVersion:
+          type: string
+          description: The platform version that your tasks in the service are running on (Fargate only).
+          example: example_value
+        loadBalancers:
+          type: array
+          description: A load balancer object representing the load balancers to use with your service.
+          items:
+            $ref: '#/components/schemas/LoadBalancer'
+          example: []
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        deploymentConfiguration:
+          $ref: '#/components/schemas/DeploymentConfiguration'
+        deploymentController:
+          $ref: '#/components/schemas/DeploymentController'
+        schedulingStrategy:
+          type: string
+          description: The scheduling strategy to use for the service.
+          enum:
+          - REPLICA
+          - DAEMON
+          example: REPLICA
+        placementConstraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementConstraint'
+          example: []
+        placementStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementStrategy'
+          example: []
+        healthCheckGracePeriodSeconds:
+          type: integer
+          description: The period of time, in seconds, that the ECS service scheduler ignores unhealthy Elastic Load Balancing target health checks after a task has first started.
+          example: 10
+        enableECSManagedTags:
+          type: boolean
+          example: true
+        enableExecuteCommand:
+          type: boolean
+          description: Whether to enable Amazon ECS Exec for the tasks within the service.
+          example: true
+        propagateTags:
+          type: string
+          enum:
+          - TASK_DEFINITION
+          - SERVICE
+          - NONE
+          example: TASK_DEFINITION
+        role:
+          type: string
+          description: The IAM role that allows Amazon ECS to make calls to your load balancer.
+          example: example_value
+        serviceRegistries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceRegistry'
+          example: []
+        serviceConnectConfiguration:
+          $ref: '#/components/schemas/ServiceConnectConfiguration'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
+          example: []
+        clientToken:
+          type: string
+          description: An identifier you provide to ensure the idempotency of the request.
           example: example_value
     Service:
       type: object
@@ -1069,132 +1132,35 @@ components:
           - SERVICE
           - NONE
           example: TASK_DEFINITION
-    CreateServiceRequest:
-      type: object
-      required:
-      - serviceName
-      properties:
-        serviceName:
-          type: string
-          description: The name of your service (up to 255 characters).
-          maxLength: 255
-          example: example_value
-        cluster:
-          type: string
-          description: The short name or full ARN of the cluster to run the service on.
-          example: example_value
-        taskDefinition:
-          type: string
-          description: The family and revision or full ARN of the task definition.
-          example: example_value
-        desiredCount:
-          type: integer
-          description: The number of instantiations of the specified task definition to place and keep running.
-          example: 10
-        launchType:
-          type: string
-          description: The launch type on which to run your service.
-          enum:
-          - EC2
-          - FARGATE
-          - EXTERNAL
-          example: EC2
-        capacityProviderStrategy:
-          type: array
-          items:
-            $ref: '#/components/schemas/CapacityProviderStrategyItem'
-          example: []
-        platformVersion:
-          type: string
-          description: The platform version that your tasks in the service are running on (Fargate only).
-          example: example_value
-        loadBalancers:
-          type: array
-          description: A load balancer object representing the load balancers to use with your service.
-          items:
-            $ref: '#/components/schemas/LoadBalancer'
-          example: []
-        networkConfiguration:
-          $ref: '#/components/schemas/NetworkConfiguration'
-        deploymentConfiguration:
-          $ref: '#/components/schemas/DeploymentConfiguration'
-        deploymentController:
-          $ref: '#/components/schemas/DeploymentController'
-        schedulingStrategy:
-          type: string
-          description: The scheduling strategy to use for the service.
-          enum:
-          - REPLICA
-          - DAEMON
-          example: REPLICA
-        placementConstraints:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlacementConstraint'
-          example: []
-        placementStrategy:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlacementStrategy'
-          example: []
-        healthCheckGracePeriodSeconds:
-          type: integer
-          description: The period of time, in seconds, that the ECS service scheduler ignores unhealthy Elastic Load Balancing target health checks after a task has first started.
-          example: 10
-        enableECSManagedTags:
-          type: boolean
-          example: true
-        enableExecuteCommand:
-          type: boolean
-          description: Whether to enable Amazon ECS Exec for the tasks within the service.
-          example: true
-        propagateTags:
-          type: string
-          enum:
-          - TASK_DEFINITION
-          - SERVICE
-          - NONE
-          example: TASK_DEFINITION
-        role:
-          type: string
-          description: The IAM role that allows Amazon ECS to make calls to your load balancer.
-          example: example_value
-        serviceRegistries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceRegistry'
-          example: []
-        serviceConnectConfiguration:
-          $ref: '#/components/schemas/ServiceConnectConfiguration'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-          maxItems: 50
-          example: []
-        clientToken:
-          type: string
-          description: An identifier you provide to ensure the idempotency of the request.
-          example: example_value
-    LoadBalancer:
+    PlacementConstraint:
       type: object
       properties:
-        targetGroupArn:
+        type:
           type: string
-          description: The full ARN of the Elastic Load Balancing target group.
-          example: example_value
-        loadBalancerName:
+          enum:
+          - distinctInstance
+          - memberOf
+          description: The type of placement constraint.
+          example: distinctInstance
+        expression:
           type: string
-          description: The name of the load balancer (Classic Load Balancer only).
+          description: A cluster query language expression.
           example: example_value
-        containerName:
+    Failure:
+      type: object
+      properties:
+        arn:
           type: string
-          description: The name of the container to associate with the load balancer.
+          description: The ARN of the failed resource.
           example: example_value
-        containerPort:
-          type: integer
-          description: The port on the container to associate with the load balancer.
-          example: 10
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
     Error:
       type: object
       properties:
@@ -1294,6 +1260,40 @@ components:
           items:
             $ref: '#/components/schemas/CapacityProviderStrategyItem'
           example: []
+    DeploymentConfiguration:
+      type: object
+      description: Deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.
+      properties:
+        deploymentCircuitBreaker:
+          type: object
+          properties:
+            enable:
+              type: boolean
+              description: Whether to use the deployment circuit breaker logic.
+            rollback:
+              type: boolean
+              description: Whether to roll back to the last completed deployment on failure.
+          example: example_value
+        maximumPercent:
+          type: integer
+          description: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running during a deployment.
+          example: 10
+        minimumHealthyPercent:
+          type: integer
+          description: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running during a deployment.
+          example: 10
+        alarms:
+          type: object
+          properties:
+            alarmNames:
+              type: array
+              items:
+                type: string
+            enable:
+              type: boolean
+            rollback:
+              type: boolean
+          example: example_value
   responses:
     ServerError:
       description: Server error response

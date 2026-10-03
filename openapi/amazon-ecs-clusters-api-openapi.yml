@@ -642,6 +642,39 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        type:
+          type: string
+          example: example_value
+        status:
+          type: string
+          example: example_value
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+          example: []
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
     CapacityProviderStrategyItem:
       type: object
       required:
@@ -663,22 +696,42 @@ components:
           minimum: 0
           maximum: 100000
           example: 10
-    Attachment:
+    CreateClusterRequest:
       type: object
       properties:
-        id:
+        clusterName:
           type: string
-          example: abc123
-        type:
-          type: string
+          description: The name of the cluster to create (up to 255 characters). If not specified, the default cluster is created.
+          maxLength: 255
           example: example_value
-        status:
-          type: string
-          example: example_value
-        details:
+        capacityProviders:
           type: array
+          description: The short names of capacity providers to associate with the cluster.
           items:
-            $ref: '#/components/schemas/KeyValuePair'
+            type: string
+          example: []
+        defaultCapacityProviderStrategy:
+          type: array
+          description: The default capacity provider strategy for the cluster.
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+        settings:
+          type: array
+          description: The cluster settings (e.g., Container Insights).
+          items:
+            $ref: '#/components/schemas/ClusterSetting'
+          example: []
+        configuration:
+          $ref: '#/components/schemas/ClusterConfiguration'
+        serviceConnectDefaults:
+          $ref: '#/components/schemas/ClusterServiceConnectDefaults'
+        tags:
+          type: array
+          description: Metadata tags to apply to the cluster (up to 50).
+          items:
+            $ref: '#/components/schemas/Tag'
+          maxItems: 50
           example: []
     Failure:
       type: object
@@ -694,6 +747,86 @@ components:
         detail:
           type: string
           description: The details of the failure.
+          example: example_value
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+    ClusterServiceConnectDefaults:
+      type: object
+      properties:
+        namespace:
+          type: string
+          description: The namespace name or ARN of the Cloud Map namespace that is used when a service is created without specifying a Service Connect configuration.
+          example: example_value
+    ClusterSetting:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the cluster setting (e.g., containerInsights).
+          example: Example Title
+        value:
+          type: string
+          description: The value of the cluster setting.
+          example: example_value
+    ClusterConfiguration:
+      type: object
+      properties:
+        executeCommandConfiguration:
+          type: object
+          properties:
+            kmsKeyId:
+              type: string
+              description: The KMS key ID to encrypt data between the container and the SSM session.
+            logConfiguration:
+              type: object
+              properties:
+                cloudWatchEncryptionEnabled:
+                  type: boolean
+                cloudWatchLogGroupName:
+                  type: string
+                s3BucketName:
+                  type: string
+                s3EncryptionEnabled:
+                  type: boolean
+                s3KeyPrefix:
+                  type: string
+            logging:
+              type: string
+              enum:
+              - NONE
+              - DEFAULT
+              - OVERRIDE
+              description: The log setting to use for redirecting logs for execute command results.
+          example: example_value
+        managedStorageConfiguration:
+          type: object
+          properties:
+            fargateEphemeralStorageKmsKeyId:
+              type: string
+            kmsKeyId:
+              type: string
           example: example_value
     Cluster:
       type: object
@@ -775,139 +908,6 @@ components:
           $ref: '#/components/schemas/ClusterConfiguration'
         serviceConnectDefaults:
           $ref: '#/components/schemas/ClusterServiceConnectDefaults'
-    KeyValuePair:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the key-value pair.
-          example: Example Title
-        value:
-          type: string
-          description: The value of the key-value pair.
-          example: example_value
-    ClusterServiceConnectDefaults:
-      type: object
-      properties:
-        namespace:
-          type: string
-          description: The namespace name or ARN of the Cloud Map namespace that is used when a service is created without specifying a Service Connect configuration.
-          example: example_value
-    CreateClusterRequest:
-      type: object
-      properties:
-        clusterName:
-          type: string
-          description: The name of the cluster to create (up to 255 characters). If not specified, the default cluster is created.
-          maxLength: 255
-          example: example_value
-        capacityProviders:
-          type: array
-          description: The short names of capacity providers to associate with the cluster.
-          items:
-            type: string
-          example: []
-        defaultCapacityProviderStrategy:
-          type: array
-          description: The default capacity provider strategy for the cluster.
-          items:
-            $ref: '#/components/schemas/CapacityProviderStrategyItem'
-          example: []
-        settings:
-          type: array
-          description: The cluster settings (e.g., Container Insights).
-          items:
-            $ref: '#/components/schemas/ClusterSetting'
-          example: []
-        configuration:
-          $ref: '#/components/schemas/ClusterConfiguration'
-        serviceConnectDefaults:
-          $ref: '#/components/schemas/ClusterServiceConnectDefaults'
-        tags:
-          type: array
-          description: Metadata tags to apply to the cluster (up to 50).
-          items:
-            $ref: '#/components/schemas/Tag'
-          maxItems: 50
-          example: []
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
-    CreateClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The tag key (up to 128 characters).
-          maxLength: 128
-          example: example_value
-        value:
-          type: string
-          description: The tag value (up to 256 characters).
-          maxLength: 256
-          example: example_value
-    ClusterConfiguration:
-      type: object
-      properties:
-        executeCommandConfiguration:
-          type: object
-          properties:
-            kmsKeyId:
-              type: string
-              description: The KMS key ID to encrypt data between the container and the SSM session.
-            logConfiguration:
-              type: object
-              properties:
-                cloudWatchEncryptionEnabled:
-                  type: boolean
-                cloudWatchLogGroupName:
-                  type: string
-                s3BucketName:
-                  type: string
-                s3EncryptionEnabled:
-                  type: boolean
-                s3KeyPrefix:
-                  type: string
-            logging:
-              type: string
-              enum:
-              - NONE
-              - DEFAULT
-              - OVERRIDE
-              description: The log setting to use for redirecting logs for execute command results.
-          example: example_value
-        managedStorageConfiguration:
-          type: object
-          properties:
-            fargateEphemeralStorageKmsKeyId:
-              type: string
-            kmsKeyId:
-              type: string
-          example: example_value
-    ClusterSetting:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the cluster setting (e.g., containerInsights).
-          example: Example Title
-        value:
-          type: string
-          description: The value of the cluster setting.
-          example: example_value
   responses:
     ServerError:
       description: Server error response

@@ -11,9 +11,7 @@
     "amazon-ecs-task-definitions-api-openapi.yml",
     "amazon-ecs-tasks-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 5 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -25,19 +23,14 @@
     "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.ListServices -> Amazon ECS Amazon Elastic Container Service (ECS) API",
     "amazon-ecs-openapi.yml: tagged paths POST /#X-Amz-Target=AmazonEC2ContainerServiceV20141113.UpdateService -> Amazon ECS Amazon Elastic Container Service (ECS) API",
     "amazon-ecs-openapi.yml: declared missing tag: Amazon ECS Amazon Elastic Container Service (ECS) API",
-    "superseded outputs removed: amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml, amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 9 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
+    "amazon-ecs-amazon-ecs-amazon-elastic-container-service-ecs-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-ecs-capacity-providers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-ecs-clusters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-ecs-container-instances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-ecs-task-definitions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecs-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-createservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-deleteservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-describeservices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-listservices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecs-x-amz-target-amazonec2containerservicev20141113-updateservice-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "amazon-ecs-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
