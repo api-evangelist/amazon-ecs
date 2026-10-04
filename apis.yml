@@ -478,7 +478,8 @@ apis:
     amazon ecs amazon elastic container service (ecs) api.
   humanURL: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html
   baseURL: https://ecs.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - Amazon ECS Amazon Elastic Container Service (ECS) API
   properties:
   - type: OpenAPI
@@ -698,13 +699,15 @@ tags:
 - Containers
 - Docker
 - ECS
-- Orchestration
+- Container Orchestration
 tags_raw:
 - Amazon
 - Aws
 - Containers
 - Docker
 - Ecs
-- Orchestration
+- Container Orchestration
 x-parent: amazon-web-services
 x-relationship: product
+x-tags-removed:
+- Orchestration
