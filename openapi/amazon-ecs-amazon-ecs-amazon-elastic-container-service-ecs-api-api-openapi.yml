@@ -714,132 +714,20 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    DeploymentController:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The deployment controller type to use.
-          enum:
-          - ECS
-          - CODE_DEPLOY
-          - EXTERNAL
-          example: ECS
-    ServiceConnectConfiguration:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Whether Service Connect is enabled for this service.
-          example: true
-        namespace:
-          type: string
-          description: The namespace name or ARN of the Cloud Map namespace for the service.
-          example: example_value
-        services:
-          type: array
-          items:
-            type: object
-            properties:
-              portName:
-                type: string
-              discoveryName:
-                type: string
-              clientAliases:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    port:
-                      type: integer
-                    dnsName:
-                      type: string
-              ingressPortOverride:
-                type: integer
-              timeout:
-                type: object
-                properties:
-                  idleTimeoutSeconds:
-                    type: integer
-                  perRequestTimeoutSeconds:
-                    type: integer
-              tls:
-                type: object
-                properties:
-                  issuerCertificateAuthority:
-                    type: object
-                    properties:
-                      awsPcaAuthorityArn:
-                        type: string
-                  kmsKey:
-                    type: string
-                  roleArn:
-                    type: string
-          example: []
-        logConfiguration:
-          type: object
-          properties:
-            logDriver:
-              type: string
-              enum:
-              - json-file
-              - syslog
-              - journald
-              - gelf
-              - fluentd
-              - awslogs
-              - splunk
-              - awsfirelens
-            options:
-              type: object
-              additionalProperties:
-                type: string
-            secretOptions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  valueFrom:
-                    type: string
-          example: example_value
-    ServiceRegistry:
-      type: object
-      properties:
-        registryArn:
-          type: string
-          description: The ARN of the Cloud Map service registry.
-          example: example_value
-        port:
-          type: integer
-          example: 10
-        containerName:
-          type: string
-          example: example_value
-        containerPort:
-          type: integer
-          example: 10
-    LoadBalancer:
-      type: object
-      properties:
-        targetGroupArn:
-          type: string
-          description: The full ARN of the Elastic Load Balancing target group.
-          example: example_value
-        loadBalancerName:
-          type: string
-          description: The name of the load balancer (Classic Load Balancer only).
-          example: example_value
-        containerName:
-          type: string
-          description: The name of the container to associate with the load balancer.
-          example: example_value
-        containerPort:
-          type: integer
-          description: The port on the container to associate with the load balancer.
-          example: 10
     CapacityProviderStrategyItem:
       type: object
       required:
@@ -861,32 +749,93 @@ components:
           minimum: 0
           maximum: 100000
           example: 10
-    NetworkConfiguration:
+    Deployment:
       type: object
-      description: The network configuration for a task or service.
       properties:
-        awsvpcConfiguration:
-          type: object
-          required:
-          - subnets
-          properties:
-            subnets:
-              type: array
-              description: The IDs of the subnets associated with the task or service.
-              items:
-                type: string
-            securityGroups:
-              type: array
-              description: The IDs of the security groups associated with the task or service.
-              items:
-                type: string
-            assignPublicIp:
-              type: string
-              description: Whether the task's elastic network interface receives a public IP address.
-              enum:
-              - ENABLED
-              - DISABLED
+        id:
+          type: string
+          example: abc123
+        status:
+          type: string
+          enum:
+          - PRIMARY
+          - ACTIVE
+          - INACTIVE
+          example: PRIMARY
+        taskDefinition:
+          type: string
           example: example_value
+        desiredCount:
+          type: integer
+          example: 10
+        pendingCount:
+          type: integer
+          example: 10
+        runningCount:
+          type: integer
+          example: 10
+        failedTasks:
+          type: integer
+          example: 10
+        createdAt:
+          type: number
+          example: 42.5
+        updatedAt:
+          type: number
+          example: 42.5
+        launchType:
+          type: string
+          example: example_value
+        platformVersion:
+          type: string
+          example: example_value
+        platformFamily:
+          type: string
+          example: example_value
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        rolloutState:
+          type: string
+          enum:
+          - COMPLETED
+          - IN_PROGRESS
+          - FAILED
+          example: COMPLETED
+        rolloutStateReason:
+          type: string
+          example: example_value
+        capacityProviderStrategy:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapacityProviderStrategyItem'
+          example: []
+    ServiceRegistry:
+      type: object
+      properties:
+        registryArn:
+          type: string
+          description: The ARN of the Cloud Map service registry.
+          example: example_value
+        port:
+          type: integer
+          example: 10
+        containerName:
+          type: string
+          example: example_value
+        containerPort:
+          type: integer
+          example: 10
+    DeploymentController:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The deployment controller type to use.
+          enum:
+          - ECS
+          - CODE_DEPLOY
+          - EXTERNAL
+          example: ECS
     CreateServiceRequest:
       type: object
       required:
@@ -993,6 +942,104 @@ components:
         clientToken:
           type: string
           description: An identifier you provide to ensure the idempotency of the request.
+          example: example_value
+    LoadBalancer:
+      type: object
+      properties:
+        targetGroupArn:
+          type: string
+          description: The full ARN of the Elastic Load Balancing target group.
+          example: example_value
+        loadBalancerName:
+          type: string
+          description: The name of the load balancer (Classic Load Balancer only).
+          example: example_value
+        containerName:
+          type: string
+          description: The name of the container to associate with the load balancer.
+          example: example_value
+        containerPort:
+          type: integer
+          description: The port on the container to associate with the load balancer.
+          example: 10
+    PlacementStrategy:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - random
+          - spread
+          - binpack
+          description: The type of placement strategy.
+          example: random
+        field:
+          type: string
+          description: The field to apply the placement strategy against.
+          example: example_value
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The tag key (up to 128 characters).
+          maxLength: 128
+          example: example_value
+        value:
+          type: string
+          description: The tag value (up to 256 characters).
+          maxLength: 256
+          example: example_value
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
+          example: example_value
+    NetworkConfiguration:
+      type: object
+      description: The network configuration for a task or service.
+      properties:
+        awsvpcConfiguration:
+          type: object
+          required:
+          - subnets
+          properties:
+            subnets:
+              type: array
+              description: The IDs of the subnets associated with the task or service.
+              items:
+                type: string
+            securityGroups:
+              type: array
+              description: The IDs of the security groups associated with the task or service.
+              items:
+                type: string
+            assignPublicIp:
+              type: string
+              description: Whether the task's elastic network interface receives a public IP address.
+              enum:
+              - ENABLED
+              - DISABLED
+          example: example_value
+    PlacementConstraint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - distinctInstance
+          - memberOf
+          description: The type of placement constraint.
+          example: distinctInstance
+        expression:
+          type: string
+          description: A cluster query language expression.
           example: example_value
     Service:
       type: object
@@ -1132,134 +1179,6 @@ components:
           - SERVICE
           - NONE
           example: TASK_DEFINITION
-    PlacementConstraint:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - distinctInstance
-          - memberOf
-          description: The type of placement constraint.
-          example: distinctInstance
-        expression:
-          type: string
-          description: A cluster query language expression.
-          example: example_value
-    Failure:
-      type: object
-      properties:
-        arn:
-          type: string
-          description: The ARN of the failed resource.
-          example: example_value
-        reason:
-          type: string
-          description: The reason for the failure.
-          example: example_value
-        detail:
-          type: string
-          description: The details of the failure.
-          example: example_value
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
-    PlacementStrategy:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - random
-          - spread
-          - binpack
-          description: The type of placement strategy.
-          example: random
-        field:
-          type: string
-          description: The field to apply the placement strategy against.
-          example: example_value
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The tag key (up to 128 characters).
-          maxLength: 128
-          example: example_value
-        value:
-          type: string
-          description: The tag value (up to 256 characters).
-          maxLength: 256
-          example: example_value
-    Deployment:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        status:
-          type: string
-          enum:
-          - PRIMARY
-          - ACTIVE
-          - INACTIVE
-          example: PRIMARY
-        taskDefinition:
-          type: string
-          example: example_value
-        desiredCount:
-          type: integer
-          example: 10
-        pendingCount:
-          type: integer
-          example: 10
-        runningCount:
-          type: integer
-          example: 10
-        failedTasks:
-          type: integer
-          example: 10
-        createdAt:
-          type: number
-          example: 42.5
-        updatedAt:
-          type: number
-          example: 42.5
-        launchType:
-          type: string
-          example: example_value
-        platformVersion:
-          type: string
-          example: example_value
-        platformFamily:
-          type: string
-          example: example_value
-        networkConfiguration:
-          $ref: '#/components/schemas/NetworkConfiguration'
-        rolloutState:
-          type: string
-          enum:
-          - COMPLETED
-          - IN_PROGRESS
-          - FAILED
-          example: COMPLETED
-        rolloutStateReason:
-          type: string
-          example: example_value
-        capacityProviderStrategy:
-          type: array
-          items:
-            $ref: '#/components/schemas/CapacityProviderStrategyItem'
-          example: []
     DeploymentConfiguration:
       type: object
       description: Deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.
@@ -1294,19 +1213,100 @@ components:
             rollback:
               type: boolean
           example: example_value
-  responses:
-    ServerError:
-      description: Server error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ClientError:
-      description: Client error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
+    ServiceConnectConfiguration:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether Service Connect is enabled for this service.
+          example: true
+        namespace:
+          type: string
+          description: The namespace name or ARN of the Cloud Map namespace for the service.
+          example: example_value
+        services:
+          type: array
+          items:
+            type: object
+            properties:
+              portName:
+                type: string
+              discoveryName:
+                type: string
+              clientAliases:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    port:
+                      type: integer
+                    dnsName:
+                      type: string
+              ingressPortOverride:
+                type: integer
+              timeout:
+                type: object
+                properties:
+                  idleTimeoutSeconds:
+                    type: integer
+                  perRequestTimeoutSeconds:
+                    type: integer
+              tls:
+                type: object
+                properties:
+                  issuerCertificateAuthority:
+                    type: object
+                    properties:
+                      awsPcaAuthorityArn:
+                        type: string
+                  kmsKey:
+                    type: string
+                  roleArn:
+                    type: string
+          example: []
+        logConfiguration:
+          type: object
+          properties:
+            logDriver:
+              type: string
+              enum:
+              - json-file
+              - syslog
+              - journald
+              - gelf
+              - fluentd
+              - awslogs
+              - splunk
+              - awsfirelens
+            options:
+              type: object
+              additionalProperties:
+                type: string
+            secretOptions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  valueFrom:
+                    type: string
+          example: example_value
   parameters:
     X-Amz-Target:
       name: X-Amz-Target

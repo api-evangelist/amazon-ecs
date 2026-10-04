@@ -227,6 +227,19 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    ClientError:
+      description: Client error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Attachment:
       type: object
@@ -245,43 +258,6 @@ components:
           items:
             $ref: '#/components/schemas/KeyValuePair'
           example: []
-    KeyValuePair:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the key-value pair.
-          example: Example Title
-        value:
-          type: string
-          description: The value of the key-value pair.
-          example: example_value
-    Failure:
-      type: object
-      properties:
-        arn:
-          type: string
-          description: The ARN of the failed resource.
-          example: example_value
-        reason:
-          type: string
-          description: The reason for the failure.
-          example: example_value
-        detail:
-          type: string
-          description: The details of the failure.
-          example: example_value
-    Error:
-      type: object
-      properties:
-        __type:
-          type: string
-          description: The error type.
-          example: example_value
-        message:
-          type: string
-          description: A human-readable description of the error.
-          example: example_value
     Resource:
       type: object
       properties:
@@ -317,6 +293,17 @@ components:
           type: string
           description: The tag value (up to 256 characters).
           maxLength: 256
+          example: example_value
+    Error:
+      type: object
+      properties:
+        __type:
+          type: string
+          description: The error type.
+          example: example_value
+        message:
+          type: string
+          description: A human-readable description of the error.
           example: example_value
     ContainerInstance:
       type: object
@@ -432,19 +419,32 @@ components:
                   lastStatusChange:
                     type: number
           example: example_value
-  responses:
-    ServerError:
-      description: Server error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ClientError:
-      description: Client error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    KeyValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the key-value pair.
+          example: Example Title
+        value:
+          type: string
+          description: The value of the key-value pair.
+          example: example_value
+    Failure:
+      type: object
+      properties:
+        arn:
+          type: string
+          description: The ARN of the failed resource.
+          example: example_value
+        reason:
+          type: string
+          description: The reason for the failure.
+          example: example_value
+        detail:
+          type: string
+          description: The details of the failure.
+          example: example_value
   parameters:
     X-Amz-Target:
       name: X-Amz-Target
