@@ -12,8 +12,19 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 7
+edge_count: 8
 edges:
+- tag: Amazon ECS Amazon Elastic Container Service (ECS) API
+  spec_file: amazon-ecs-amazon-ecs-amazon-elastic-container-service-ecs-api-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: '"fully managed container orchestration service"; operations CreateService, UpdateService,
+    DeleteService for "Ecs Service" with schemas LoadBalancer, NetworkConfiguration, CapacityProviderStrategyItem'
+  reason: Operations provision and manage containerised compute workloads (clusters, services, tasks)
+    on cloud infrastructure — this is cloud compute/infrastructure management, not an industry business
+    capability.
 - tag: Clusters
   spec_file: amazon-ecs-clusters-api-openapi.yml
   capability_id: BC-600.50
