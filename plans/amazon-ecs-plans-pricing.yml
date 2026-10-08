@@ -52,3 +52,42 @@ plans:
 rate_limit_statements:
 - A minimum charge of one minute applies.
 - Per-hour (1 hr min.)
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - compute
+  plans:
+  - name: Amazon ECS orchestration
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: ECS Anywhere
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: AWS Fargate (Linux/X86, US East N. Virginia example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: ECS Managed Instances management fee (example c6a.2xlarge)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
