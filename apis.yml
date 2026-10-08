@@ -540,6 +540,10 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/general/latest/gr/ecs-service.html
 common:
+- type: RateLimits
+  url: rate-limits/amazon-ecs-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-ecs-finops.yml
 - type: Plans
   url: plans/amazon-ecs-plans-pricing.yml
 - type: Website
