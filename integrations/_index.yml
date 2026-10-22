@@ -37,3 +37,34 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
+- slug: amazon-ecs-homebrew
+  label: Homebrew
+  partner: homebrew
+  partner_name: Homebrew
+  category: official CLI (Homebrew)
+  type: register
+  channel: package-registry
+  evidence: https://formulae.brew.sh/formula/amazon-ecs-cli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Homebrew (public package index)
+    spec_file: null
+    packages:
+    - name: amazon-ecs-cli
+      kind: formula
+      version: 1.21.0
+      released: null
+      lapsed: true
+      page: https://formulae.brew.sh/formula/amazon-ecs-cli
+      cli: 'formula desc: CLI for Amazon ECS to manage clusters and tasks for development'
+      repo_leg: domain:amazon.com
+      publisher_leg: artifact-shared-github-org:aws
+      matched_by: domain+name-among-holders
+    current: false
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
