@@ -1,0 +1,93 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://aws.amazon.com/ecs/pricing/
+sources:
+- https://aws.amazon.com/ecs/pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: ECS Anywhere $0.01025 per registered on-premises instance/hour
+  managed_tier: AWS Fargate
+published: true
+note: ECS itself has no orchestration charge; page prices underlying compute. Region-specific Fargate
+  vCPU/GB rates are rendered dynamically and not visible in text; only example rates and ECS Anywhere/Managed
+  Instances example fees show numbers.
+plan_count: 4
+currency: USD
+plans:
+- name: Amazon ECS orchestration
+  price_text: There is no additional charge for Amazon ECS orchestration
+  period: none
+  included_quota: Pay only for underlying compute and resources
+- name: ECS Anywhere
+  price_text: $0.01025 per registered on-premises instance/hour
+  price: 0.01025
+  currency: USD
+  period: per-use
+  unit: registered on-premises instance/hour
+  overage: Per-hour (1 hr min.)
+- name: AWS Fargate (Linux/X86, US East N. Virginia example)
+  price_text: 'CPU cost: $0.000011244 per vCPU second'
+  price: 1.1244e-05
+  currency: USD
+  period: per-use
+  unit: vCPU second
+  included_quota: Each Fargate task receives 20 GB of ephemeral storage at no additional charge
+  overage: Additional storage above 20 GB, up to a maximum of 200 GB, is charged at the rate above
+- name: ECS Managed Instances management fee (example c6a.2xlarge)
+  price_text: $0.037
+  price: 0.037
+  currency: USD
+  period: per-use
+  unit: per instance hour
+  overage: Billed per second with a one-minute minimum
+rate_limit_statements:
+- A minimum charge of one minute applies.
+- Per-hour (1 hr min.)
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - compute
+  plans:
+  - name: Amazon ECS orchestration
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: ECS Anywhere
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: AWS Fargate (Linux/X86, US East N. Virginia example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: ECS Managed Instances management fee (example c6a.2xlarge)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
